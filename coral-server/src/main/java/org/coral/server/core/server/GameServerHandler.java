@@ -5,7 +5,7 @@ import org.coral.net.core.base.Commander;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.Packet;
 import org.coral.net.core.base.ServerHandler;
-import org.coral.net.core.base.executor2.DisruptorDispatchTask;
+import org.coral.net.core.base.executor.DisruptorDispatchTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

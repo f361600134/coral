@@ -51,37 +51,6 @@ public class HandlerProcessor implements InitializingBean{
 		log.info("The initialization message is complete and takes [{}] milliseconds.", (System.currentTimeMillis() - startTime));
 	}
 	
-//	/**
-//	 * 协议调用
-//	 * 
-//	 * @param session	玩家会话信息
-//	 * @param cmd		协议号
-//	 * @param bytes		协议体
-//	 * @throws Exception
-//	 */
-//	public void invoke(GameSession session, int cmd, byte[] bytes) throws Exception {
-//		Commander commander = commanderMap.get(cmd);
-//		if (commander != null) {
-//			long begin = System.currentTimeMillis();
-//
-//			Method parser = commander.getProtobufParser();
-//			
-//			GeneratedMessageLite params = (GeneratedMessageLite) parser.invoke(null, bytes);
-//			
-//			log.debug("收到协议[{}], pid={}, params={}, size={}B",
-//					cmd, session.getPlayerId(), MessageOutput.create(params), bytes.length);
-//
-//			commander.getMethod().invoke(commander.getHandler(), session, params);
-//
-//			long used = System.currentTimeMillis() - begin;
-//			// 协议处理超过1秒
-//			if (used > 1000) {
-//				log.error("协议[{}]处理慢!!!耗时{}ms", cmd, used);
-//			}
-//
-//		}
-//	}
-	
 	/**
 	 * 协议调用
 	 * 
@@ -99,7 +68,7 @@ public class HandlerProcessor implements InitializingBean{
 			byte[] bytes = packet.data();
 			
 			Method parser = commander.getProtobufParser();
-			GeneratedMessageLite params = (GeneratedMessageLite) parser.invoke(null, bytes);
+			GeneratedMessageLite<?, ?> params = (GeneratedMessageLite<?, ?>) parser.invoke(null, bytes);
 			
 			log.debug("收到协议[{}], pid={}, params={}, size={}B",
 					cmd, session.getPlayerId(), MessageOutput.create(params), bytes.length);

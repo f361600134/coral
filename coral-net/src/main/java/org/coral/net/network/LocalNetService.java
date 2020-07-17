@@ -1,5 +1,7 @@
 package org.coral.net.network;
 
+import javax.annotation.PreDestroy;
+
 import org.coral.net.common.NetConfig;
 import org.coral.net.core.base.IServerHandler;
 import org.coral.net.network.bootstrap.IServer;
@@ -43,7 +45,7 @@ public class LocalNetService implements InitializingBean{
 	}
 	
 	/**
-	 * 启动
+	 * 关闭
 	 * @date 2020年7月9日
 	 * @throws Exception
 	 */
@@ -88,16 +90,26 @@ public class LocalNetService implements InitializingBean{
 //		
 //	}
 	
+	@PreDestroy
+	public void preDestroy() {
+		try {
+			shutdown();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		if (config.isTcpEnable()) {
 			tcpServer = new TcpServerStarter(serverHandler, config.getServerIp(), config.getTcpPort());
-			tcpServer.startServer();
+//			tcpServer.startServer();
 		}
 		if (config.isWebscoketEnable()){
 			websocketServer = new WebSocketServerStarter(serverHandler, config.getServerIp(), config.getWebscoketPort());
-			websocketServer.startServer();
+//			websocketServer.startServer();
 		}
+		startup();
 	}
 
 }

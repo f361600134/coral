@@ -1,4 +1,4 @@
-package org.coral.net.core.base.executor2;
+package org.coral.net.core.base.executor;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
