@@ -1,0 +1,170 @@
+2020-07-08 00:01:12.062 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 16984 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:01:12.064 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:01:13.898 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-08 00:01:13.909 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:01:13.910 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-08 00:01:13.910 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-08 00:01:14.005 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-08 00:01:14.005 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1889 ms
+2020-07-08 00:01:14.315 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-08 00:01:14.836 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-08 00:01:14.911 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [15] milliseconds.
+2020-07-08 00:01:15.092 [main] INFO  org.coral.net.core.base.ServerHandler - End to init DisruptorExecutorGroup, initWorkers:16, cost time:44
+2020-07-08 00:01:15.964 [main] INFO  org.coral.net.network.EchoServer - Netty server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-07-08 00:01:15.969 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-08 00:01:15.970 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-08 00:01:16.328 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-08 00:01:16.358 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:01:16.375 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-08 00:01:16.391 [main] INFO  org.coral.server.App - Started App in 4.743 seconds (JVM running for 5.107)
+2020-07-08 00:10:27.227 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 16468 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:10:27.229 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:10:27.850 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'getServerHandler' defined in class path resource [org/coral/net/core/base/ServerHandlerConfig.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=serverHandlerConfig; factoryMethodName=getServerHandler; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/coral/net/core/base/ServerHandlerConfig.class]] for bean 'getServerHandler': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=gameServerHandlerConfig; factoryMethodName=getServerHandler; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/coral/server/core/server/GameServerHandlerConfig.class]] bound.
+2020-07-08 00:10:27.861 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-08 00:10:27.864 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'getServerHandler', defined in class path resource [org/coral/net/core/base/ServerHandlerConfig.class], could not be registered. A bean with that name has already been defined in class path resource [org/coral/server/core/server/GameServerHandlerConfig.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2020-07-08 00:11:00.841 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 35088 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:11:00.843 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:11:02.730 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-08 00:11:02.740 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:11:02.740 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-08 00:11:02.740 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-08 00:11:02.823 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-08 00:11:02.823 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1945 ms
+2020-07-08 00:11:03.050 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-08 00:11:03.505 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-08 00:11:03.581 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [11] milliseconds.
+2020-07-08 00:11:03.739 [main] INFO  org.coral.net.core.base.ServerHandler - End to init DisruptorExecutorGroup, initWorkers:16, cost time:34
+2020-07-08 00:11:04.592 [main] INFO  org.coral.net.network.EchoServer - Netty server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-07-08 00:11:04.596 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-08 00:11:04.597 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-08 00:11:04.963 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-08 00:11:04.984 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:11:05.002 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-08 00:11:05.021 [main] INFO  org.coral.server.App - Started App in 4.592 seconds (JVM running for 4.943)
+2020-07-08 00:11:32.221 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 2176 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:11:32.223 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:11:34.105 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-08 00:11:34.115 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:11:34.116 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-08 00:11:34.116 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-08 00:11:34.203 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-08 00:11:34.203 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1941 ms
+2020-07-08 00:11:34.465 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-08 00:11:34.951 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-08 00:11:35.038 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [12] milliseconds.
+2020-07-08 00:11:35.236 [main] INFO  org.coral.net.core.base.ServerHandler - End to init DisruptorExecutorGroup, initWorkers:16, cost time:58
+2020-07-08 00:11:36.122 [main] INFO  org.coral.net.network.EchoServer - Netty server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-07-08 00:11:36.127 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-08 00:11:36.128 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-08 00:11:36.505 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-08 00:11:36.533 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:11:36.548 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-08 00:11:36.564 [main] INFO  org.coral.server.App - Started App in 4.742 seconds (JVM running for 5.096)
+2020-07-08 00:12:38.066 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 8992 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:12:38.068 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:12:39.847 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-08 00:12:39.859 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:12:39.859 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-08 00:12:39.859 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-08 00:12:39.942 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-08 00:12:39.942 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1834 ms
+2020-07-08 00:12:40.210 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-08 00:12:40.661 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-08 00:12:40.731 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [9] milliseconds.
+2020-07-08 00:12:40.905 [main] INFO  org.coral.net.core.base.ServerHandler - End to init DisruptorExecutorGroup, initWorkers:16, cost time:48
+2020-07-08 00:12:41.806 [main] INFO  org.coral.net.network.EchoServer - Netty server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-07-08 00:12:41.810 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-08 00:12:41.811 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-08 00:12:42.162 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-08 00:12:42.185 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:12:42.201 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-08 00:12:42.216 [main] INFO  org.coral.server.App - Started App in 4.553 seconds (JVM running for 4.893)
+2020-07-08 00:13:35.965 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 36728 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:13:35.967 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:13:36.526 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'getServerHandler' defined in class path resource [org/coral/net/core/base/ServerHandlerConfig.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=serverHandlerConfig; factoryMethodName=getServerHandler; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/coral/net/core/base/ServerHandlerConfig.class]] for bean 'getServerHandler': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=gameServerHandlerConfig; factoryMethodName=getServerHandler; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/coral/server/core/server/GameServerHandlerConfig.class]] bound.
+2020-07-08 00:13:36.535 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-08 00:13:36.537 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'getServerHandler', defined in class path resource [org/coral/net/core/base/ServerHandlerConfig.class], could not be registered. A bean with that name has already been defined in class path resource [org/coral/server/core/server/GameServerHandlerConfig.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2020-07-08 00:27:53.681 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 35628 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:27:53.684 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:27:55.613 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-08 00:27:55.625 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:27:55.626 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-08 00:27:55.626 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-08 00:27:55.728 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-08 00:27:55.729 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2000 ms
+2020-07-08 00:27:55.987 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-08 00:27:56.441 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-08 00:27:56.529 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [9] milliseconds.
+2020-07-08 00:27:56.657 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'echoServer': Unsatisfied dependency expressed through field 'serverHandler'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.coral.net.core.base.IServerHandler' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2020-07-08 00:27:56.668 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-07-08 00:27:56.671 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2020-07-08 00:27:56.685 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-07-08 00:27:56.847 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field serverHandler in org.coral.net.network.EchoServer required a bean of type 'org.coral.net.core.base.IServerHandler' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.coral.net.core.base.IServerHandler' in your configuration.
+
+2020-07-08 00:28:27.438 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 13940 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-08 00:28:27.440 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-08 00:28:29.395 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-08 00:28:29.406 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:28:29.407 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-08 00:28:29.407 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-08 00:28:29.505 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-08 00:28:29.505 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2024 ms
+2020-07-08 00:28:29.761 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-08 00:28:30.209 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-08 00:28:30.304 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [11] milliseconds.
+2020-07-08 00:28:30.365 [main] INFO  org.coral.net.core.base.ServerHandler - End to init DisruptorExecutorGroup, initWorkers:16, cost time:55
+2020-07-08 00:28:31.368 [main] INFO  org.coral.net.network.EchoServer - Netty server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-07-08 00:28:31.373 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-08 00:28:31.374 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-08 00:28:31.757 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-08 00:28:31.791 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-08 00:28:31.817 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-08 00:28:31.835 [main] INFO  org.coral.server.App - Started App in 4.862 seconds (JVM running for 5.234)

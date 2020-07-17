@@ -1,0 +1,63 @@
+20200618
+orm框架
+在游戏业务中, cat游戏持久框架, 应遵循以下几点
+1. 开发人员无需关注持久层业务, 不需要自己手动操作对象的增删改查. 更不需要写sql语句
+2. 所有对象可通过统一接口进行存储, 不需要对新的持久类进行新的持久代码编写.(譬如hibernate的dao,mybaits的mapper编写)
+3. 提供立即保存, 异步保存, 批量异步保存等多种持久方式.
+
+
+两种方案
+1. 使用Java反射,在orm层组装sql语句,实现操作数据
+	需要手动实现对象的sql语句, 代码简约, 且可扩展
+	
+2. 基于mybatis通用mapper实现.
+	仅实现异步处理
+
+20200619
+游戏不会牵扯复杂业务, 仅需要增删改查基础操作. 在简单研究mybaits后, 没有找到一种合适的方式通用的去处理所有持久化对象
+基于此, 选择实现自定义持久框架.
+
+此时, 面临一个问题, 是否使用sun提供的javax.persistence注解. 此注解是sun为了统一orm提供的接口.
+在看了接口后, 跟我想法中的思路相差甚远. 遂,自定义自己的注解.
+	
+20200620
+搞定了springboot + druid集成后, 意外的发现如果使用hibernate或mybaits也可以支撑我们通用持久业务
+对比hibernate和mybaits后, 决定以后期的便捷和维护考虑, 使用mybaits.
+
+思路如下:
+//通用mapper
+public interface BaseDao<T extends UserBase> extends BaseMapper<T>{
+    PageQuery<CoreAudit> queryByCondtion(PageQuery<CoreAudit> query);
+}
+//指定dao
+public interface UserDao extends BaseDao<User>{
+
+}
+//最终调用
+/**
+key:className
+value:dao
+**/
+@Autowired
+private Map<String, BaseDao<?>> daoMap;
+
+public <T extends UserBase> List<T> bbb(Class<? extends UserBase> cls) {
+	BaseDao<T> baseDao = (BaseDao<T>) daoMap.get("aaa");
+	List<T> data = baseDao.all();
+	return data;
+}
+
+经过层层思考后, 决定以锻炼技术为目的, 先自行实现一套自己私有的orm
+然后再实现mybaits orm, 且两者可以随时切换, 最终两者对别效率.
+
+
+20200624
+有点麻烦, 还是切换成mybaits吧!!
+
+
+20200702
+orm框架, 没有做异步处理, 异步处理开率如下
+1, 批量插入是否分类, 是否需要区分到每个模块下. 即: 每个模块缓存数据, 最终批量插入或更新
+
+
+

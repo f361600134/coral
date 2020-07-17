@@ -1,0 +1,446 @@
+2020-07-16 17:24:44.364 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 35684 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 17:24:44.370 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 17:24:47.124 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 17:24:47.142 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:24:47.143 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 17:24:47.143 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 17:24:47.272 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 17:24:47.273 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2835 ms
+2020-07-16 17:24:47.647 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 17:24:48.271 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 17:24:48.379 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [14] milliseconds.
+2020-07-16 17:24:48.451 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:62
+2020-07-16 17:24:49.589 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 17:24:49.595 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 17:24:49.596 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 17:24:50.226 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 17:24:50.286 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:24:50.319 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 17:24:50.347 [main] INFO  org.coral.server.App - Started App in 6.698 seconds (JVM running for 7.58)
+2020-07-16 17:27:00.282 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 26568 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 17:27:00.288 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 17:27:02.908 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 17:27:02.927 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:27:02.927 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 17:27:02.928 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 17:27:03.063 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 17:27:03.063 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2706 ms
+2020-07-16 17:27:03.495 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 17:27:03.983 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 17:27:04.088 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [16] milliseconds.
+2020-07-16 17:27:04.159 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:61
+2020-07-16 17:27:05.244 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 17:27:05.251 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 17:27:05.252 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 17:27:05.728 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 17:27:05.761 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:27:05.790 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 17:27:05.804 [main] INFO  org.coral.server.App - Started App in 6.217 seconds (JVM running for 7.016)
+2020-07-16 17:31:13.415 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 23024 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 17:31:13.421 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 17:31:16.111 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 17:31:16.127 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:31:16.127 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 17:31:16.127 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 17:31:16.242 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 17:31:16.242 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2741 ms
+2020-07-16 17:31:16.579 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 17:31:17.111 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 17:31:17.207 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [15] milliseconds.
+2020-07-16 17:31:17.279 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:61
+2020-07-16 17:31:18.412 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 17:31:18.419 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 17:31:18.420 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 17:31:18.937 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 17:31:18.969 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:31:18.997 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 17:31:19.011 [main] INFO  org.coral.server.App - Started App in 6.255 seconds (JVM running for 7.082)
+2020-07-16 17:37:31.421 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 35488 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 17:37:31.430 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 17:37:34.295 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 17:37:34.319 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:37:34.320 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 17:37:34.320 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 17:37:34.461 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 17:37:34.461 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2943 ms
+2020-07-16 17:37:34.770 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 17:37:35.342 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 17:37:35.447 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [16] milliseconds.
+2020-07-16 17:37:35.508 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:52
+2020-07-16 17:37:36.707 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 17:37:36.713 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 17:37:36.714 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 17:37:37.350 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 17:37:37.395 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:37:37.434 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 17:37:37.460 [main] INFO  org.coral.server.App - Started App in 7.011 seconds (JVM running for 7.842)
+2020-07-16 17:37:53.179 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:37:53.180 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:50646
+2020-07-16 17:37:53.252 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============
+2020-07-16 17:37:53.282 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:37:53.283 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:50646
+2020-07-16 17:39:03.640 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:39:03.640 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:50777
+2020-07-16 17:39:12.582 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============
+2020-07-16 17:39:40.895 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:39:40.895 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:50777
+2020-07-16 17:40:20.238 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 36444 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 17:40:20.244 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 17:40:23.002 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 17:40:23.019 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:40:23.019 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 17:40:23.020 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 17:40:23.169 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 17:40:23.169 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2852 ms
+2020-07-16 17:40:23.562 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 17:40:24.066 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 17:40:24.175 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [16] milliseconds.
+2020-07-16 17:40:24.240 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:54
+2020-07-16 17:40:30.896 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 17:40:30.903 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 17:40:30.904 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 17:40:31.400 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 17:40:31.444 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 17:40:31.538 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 17:40:31.559 [main] INFO  org.coral.server.App - Started App in 11.983 seconds (JVM running for 12.83)
+2020-07-16 17:40:47.080 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:40:47.081 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:50980
+2020-07-16 17:40:52.195 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============
+2020-07-16 17:41:02.678 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xa4520fce, L:/127.0.0.1:6001 - R:/127.0.0.1:50980]]握手失败,[false][null]
+2020-07-16 17:41:09.867 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:41:09.867 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:50980
+2020-07-16 17:52:47.984 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:52:47.984 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:52005
+2020-07-16 17:53:17.988 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:53:17.989 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:52005
+2020-07-16 17:55:53.172 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:55:53.172 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:52285
+2020-07-16 17:56:01.384 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============exceptionCaught=============
+2020-07-16 17:56:01.385 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:56:01.385 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:52285
+2020-07-16 17:56:29.225 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:56:29.226 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:52368
+2020-07-16 17:56:43.379 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============exceptionCaught=============
+2020-07-16 17:56:43.379 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:56:43.379 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:52368
+2020-07-16 17:57:49.707 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 17:57:49.707 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:52512
+2020-07-16 17:58:00.071 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============exceptionCaught=============
+2020-07-16 17:58:00.072 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 17:58:00.072 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:52512
+2020-07-16 18:01:29.858 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 18:01:29.858 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:52844
+2020-07-16 18:01:29.920 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============
+2020-07-16 18:01:29.920 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xb180dabc, L:/127.0.0.1:6001 - R:/127.0.0.1:52844]]握手失败,[false][null]
+2020-07-16 18:01:29.921 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 18:01:29.922 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:52844
+2020-07-16 18:39:56.187 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 15244 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 18:39:56.193 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 18:39:58.968 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 18:39:58.985 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 18:39:58.985 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 18:39:58.985 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 18:39:59.091 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 18:39:59.091 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2831 ms
+2020-07-16 18:39:59.473 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 18:39:59.951 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 18:40:00.048 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [14] milliseconds.
+2020-07-16 18:40:00.117 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:58
+2020-07-16 18:40:01.236 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 18:40:01.241 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 18:40:01.242 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 18:40:01.745 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 18:40:01.777 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 18:40:01.846 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 18:40:01.865 [main] INFO  org.coral.server.App - Started App in 6.342 seconds (JVM running for 7.135)
+2020-07-16 18:40:10.194 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 18:40:10.194 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:53611
+2020-07-16 18:40:10.242 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============DefaultFullHttpRequest(decodeResult: failure(java.lang.IllegalArgumentException: text is empty (possibly HTTP/0.9)), version: HTTP/1.0, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 0, cap: 0))
+GET /bad-request HTTP/1.0
+2020-07-16 18:40:10.246 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0xc15f7005, L:/127.0.0.1:6001 - R:/127.0.0.1:53611]]处理握手
+2020-07-16 18:40:10.263 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xc15f7005, L:/127.0.0.1:6001 - R:/127.0.0.1:53611]]握手失败,[false][null]
+2020-07-16 18:40:10.281 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 18:40:10.281 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:53611
+2020-07-16 20:09:11.267 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 8924 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 20:09:11.272 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 20:09:13.766 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 20:09:13.780 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 20:09:13.780 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 20:09:13.781 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 20:09:13.907 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 20:09:13.907 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2559 ms
+2020-07-16 20:09:14.298 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 20:09:14.846 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 20:09:14.944 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [12] milliseconds.
+2020-07-16 20:09:15.006 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:53
+2020-07-16 20:09:16.132 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 20:09:16.138 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 20:09:16.139 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 20:09:16.634 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 20:09:16.715 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 20:09:16.741 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 20:09:16.758 [main] INFO  org.coral.server.App - Started App in 6.135 seconds (JVM running for 6.885)
+2020-07-16 21:07:31.271 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 2536 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 21:07:31.274 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 21:07:33.091 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 21:07:33.103 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 21:07:33.103 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 21:07:33.103 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 21:07:33.190 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 21:07:33.191 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1878 ms
+2020-07-16 21:07:33.424 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 21:07:33.918 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 21:07:33.992 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [11] milliseconds.
+2020-07-16 21:07:34.050 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:50
+2020-07-16 21:07:35.010 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08b7a6fb] REGISTERED
+2020-07-16 21:07:35.012 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08b7a6fb] BIND: 0.0.0.0/0.0.0.0:6001
+2020-07-16 21:07:35.014 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 21:07:35.014 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08b7a6fb, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-07-16 21:07:35.018 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 21:07:35.019 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 21:07:35.369 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 21:07:35.391 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 21:07:35.407 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 21:07:35.420 [main] INFO  org.coral.server.App - Started App in 4.557 seconds (JVM running for 4.912)
+2020-07-16 21:08:11.146 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08b7a6fb, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0x4ac0dc3b, L:/127.0.0.1:6001 - R:/127.0.0.1:50698]
+2020-07-16 21:08:11.148 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08b7a6fb, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 21:08:11.217 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 21:08:11.218 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:50698
+2020-07-16 21:08:36.365 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============exceptionCaught=============
+2020-07-16 21:08:36.367 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - exceptionCaught IOException error, e:
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-16 21:08:36.370 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 21:08:36.370 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:50698
+2020-07-16 21:10:35.695 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 30512 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 21:10:35.701 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 21:10:38.343 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 21:10:38.360 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 21:10:38.361 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 21:10:38.361 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 21:10:38.494 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 21:10:38.494 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2730 ms
+2020-07-16 21:10:38.818 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 21:10:39.369 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 21:10:39.459 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [12] milliseconds.
+2020-07-16 21:10:39.523 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:54
+2020-07-16 21:10:40.586 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2] REGISTERED
+2020-07-16 21:10:40.590 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2] BIND: 0.0.0.0/0.0.0.0:6001
+2020-07-16 21:10:40.593 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 21:10:40.593 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-07-16 21:10:40.599 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 21:10:40.600 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 21:10:41.149 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 21:10:41.184 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 21:10:41.213 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 21:10:41.231 [main] INFO  org.coral.server.App - Started App in 6.206 seconds (JVM running for 7.002)
+2020-07-16 21:10:55.383 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0x402cb48b, L:/127.0.0.1:6001 - R:/127.0.0.1:50968]
+2020-07-16 21:10:55.385 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 21:10:55.563 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 21:10:55.563 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:50968
+2020-07-16 21:11:05.102 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============exceptionCaught=============
+2020-07-16 21:11:05.104 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - exceptionCaught IOException error, e:
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:253)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1133)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:350)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:148)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-16 21:11:05.108 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 21:11:05.108 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:50968
+2020-07-16 21:11:48.591 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0xf60d4f54, L:/127.0.0.1:6001 - R:/127.0.0.1:51076]
+2020-07-16 21:11:48.592 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xadcee0d2, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 21:11:48.593 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 21:11:48.593 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:51076
+2020-07-16 21:11:48.668 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============DefaultFullHttpRequest(decodeResult: failure(java.lang.IllegalArgumentException: text is empty (possibly HTTP/0.9)), version: HTTP/1.0, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 0, cap: 0))
+GET /bad-request HTTP/1.0
+2020-07-16 21:11:48.672 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0xf60d4f54, L:/127.0.0.1:6001 - R:/127.0.0.1:51076]]处理握手
+2020-07-16 21:11:48.672 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xf60d4f54, L:/127.0.0.1:6001 - R:/127.0.0.1:51076]]握手失败,[false][null]
+2020-07-16 21:11:48.687 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 21:11:48.687 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:51076
+2020-07-16 21:13:00.674 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 26652 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 21:13:00.680 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 21:13:03.628 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 21:13:03.645 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 21:13:03.646 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 21:13:03.646 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 21:13:03.764 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 21:13:03.764 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3004 ms
+2020-07-16 21:13:04.167 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 21:13:04.659 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 21:13:04.758 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [14] milliseconds.
+2020-07-16 21:13:04.830 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:62
+2020-07-16 21:13:05.926 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa841e6c5] REGISTERED
+2020-07-16 21:13:05.929 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa841e6c5] BIND: 0.0.0.0/0.0.0.0:6001
+2020-07-16 21:13:05.931 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 21:13:05.931 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa841e6c5, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-07-16 21:13:05.936 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 21:13:05.937 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 21:13:06.398 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 21:13:06.433 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 21:13:06.496 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 21:13:06.513 [main] INFO  org.coral.server.App - Started App in 6.595 seconds (JVM running for 7.404)
+2020-07-16 21:13:16.504 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa841e6c5, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0xaac68215, L:/127.0.0.1:6001 - R:/127.0.0.1:51239]
+2020-07-16 21:13:16.506 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa841e6c5, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 21:13:16.784 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 21:13:16.785 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/127.0.0.1:51239
+2020-07-16 21:13:16.822 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============DefaultFullHttpRequest(decodeResult: failure(java.lang.IllegalArgumentException: text is empty (possibly HTTP/0.9)), version: HTTP/1.0, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 0, cap: 0))
+GET /bad-request HTTP/1.0
+2020-07-16 21:13:16.827 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0xaac68215, L:/127.0.0.1:6001 - R:/127.0.0.1:51239]]处理握手
+2020-07-16 21:13:16.828 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xaac68215, L:/127.0.0.1:6001 - R:/127.0.0.1:51239]]握手失败,[false][null]
+2020-07-16 21:13:16.830 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketProtocolEncoder - ======WebsocketProtocolEncoder======, msg:DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 15, cap: 64))
+HTTP/1.1 400 Bad Request
+content-length: 15
+2020-07-16 21:13:16.846 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 21:13:16.846 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/127.0.0.1:51239
+2020-07-16 22:40:48.900 [main] INFO  org.coral.server.App - Starting App on DESKTOP-I6VTE4Q with PID 35988 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jereme in E:\server\jeremy\workspace\coral\coral-server)
+2020-07-16 22:40:48.903 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-07-16 22:40:51.250 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-07-16 22:40:51.263 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-07-16 22:40:51.264 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-07-16 22:40:51.264 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-07-16 22:40:51.404 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-07-16 22:40:51.405 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2448 ms
+2020-07-16 22:40:51.708 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-07-16 22:40:52.362 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-07-16 22:40:52.455 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [17] milliseconds.
+2020-07-16 22:40:52.526 [main] INFO  o.c.net.core.base.executor2.DisruptorExecutorGroup - End to init DisruptorExecutorGroup, initWorkers:16, cost time:61
+2020-07-16 22:40:53.633 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837] REGISTERED
+2020-07-16 22:40:53.635 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837] BIND: 0.0.0.0/0.0.0.0:6001
+2020-07-16 22:40:53.636 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-07-16 22:40:53.636 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-07-16 22:40:53.644 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-07-16 22:40:53.646 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-07-16 22:40:54.147 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-07-16 22:40:54.180 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-07-16 22:40:54.203 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-07-16 22:40:54.225 [main] INFO  org.coral.server.App - Started App in 5.824 seconds (JVM running for 6.236)
+2020-07-16 22:41:00.113 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0xc52cc22d, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60855]
+2020-07-16 22:41:00.115 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 22:41:00.115 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0xe0dcdf15, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60856]
+2020-07-16 22:41:00.115 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 22:41:00.191 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 22:41:00.191 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/0:0:0:0:0:0:0:1:60855
+2020-07-16 22:41:00.192 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 22:41:00.192 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/0:0:0:0:0:0:0:1:60856
+2020-07-16 22:41:00.243 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============HttpObjectAggregator$AggregatedFullHttpRequest(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=0))
+GET /websocket HTTP/1.1
+Host: localhost:6001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-CA;q=0.7,en-US;q=0.6,en-NZ;q=0.5,en-IN;q=0.4,en-GB;q=0.3,ja;q=0.2,de;q=0.1,de-DE;q=0.1
+content-length: 0
+2020-07-16 22:41:00.246 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0xc52cc22d, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60855]]处理握手
+2020-07-16 22:41:00.246 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xc52cc22d, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60855]]握手失败,[true][null]
+2020-07-16 22:41:00.247 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketProtocolEncoder - ======WebsocketProtocolEncoder======, msg:DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 15, cap: 64))
+HTTP/1.1 400 Bad Request
+content-length: 15
+2020-07-16 22:41:00.252 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 22:41:00.253 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/0:0:0:0:0:0:0:1:60855
+2020-07-16 22:41:00.370 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============HttpObjectAggregator$AggregatedFullHttpRequest(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=0))
+GET /favicon.ico HTTP/1.1
+Host: localhost:6001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:6001/websocket
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-CA;q=0.7,en-US;q=0.6,en-NZ;q=0.5,en-IN;q=0.4,en-GB;q=0.3,ja;q=0.2,de;q=0.1,de-DE;q=0.1
+content-length: 0
+2020-07-16 22:41:00.370 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0xe0dcdf15, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60856]]处理握手
+2020-07-16 22:41:00.370 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xe0dcdf15, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60856]]握手失败,[true][null]
+2020-07-16 22:41:00.370 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketProtocolEncoder - ======WebsocketProtocolEncoder======, msg:DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 15, cap: 64))
+HTTP/1.1 400 Bad Request
+content-length: 15
+2020-07-16 22:41:00.372 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 22:41:00.373 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/0:0:0:0:0:0:0:1:60856
+2020-07-16 22:41:17.759 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0x436e0fa1, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60886]
+2020-07-16 22:41:17.760 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 22:41:17.761 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 22:41:17.761 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ: [id: 0xc3f8654a, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60887]
+2020-07-16 22:41:17.761 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/0:0:0:0:0:0:0:1:60886
+2020-07-16 22:41:17.761 [WEBSOCKET_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcb5cb837, L:/0:0:0:0:0:0:0:0:6001] READ COMPLETE
+2020-07-16 22:41:17.762 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelActive=============
+2020-07-16 22:41:17.762 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接游戏服:/0:0:0:0:0:0:0:1:60887
+2020-07-16 22:41:17.764 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============HttpObjectAggregator$AggregatedFullHttpRequest(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=0))
+GET /websocket HTTP/1.1
+Host: localhost:6001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-CA;q=0.7,en-US;q=0.6,en-NZ;q=0.5,en-IN;q=0.4,en-GB;q=0.3,ja;q=0.2,de;q=0.1,de-DE;q=0.1
+content-length: 0
+2020-07-16 22:41:17.764 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0x436e0fa1, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60886]]处理握手
+2020-07-16 22:41:17.764 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0x436e0fa1, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60886]]握手失败,[true][null]
+2020-07-16 22:41:17.764 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketProtocolEncoder - ======WebsocketProtocolEncoder======, msg:DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 15, cap: 64))
+HTTP/1.1 400 Bad Request
+content-length: 15
+2020-07-16 22:41:17.765 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 22:41:17.765 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/0:0:0:0:0:0:0:1:60886
+2020-07-16 22:41:17.823 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelRead0=============HttpObjectAggregator$AggregatedFullHttpRequest(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=0))
+GET /favicon.ico HTTP/1.1
+Host: localhost:6001
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:6001/websocket
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-CA;q=0.7,en-US;q=0.6,en-NZ;q=0.5,en-IN;q=0.4,en-GB;q=0.3,ja;q=0.2,de;q=0.1,de-DE;q=0.1
+content-length: 0
+2020-07-16 22:41:17.823 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ========[[id: 0xc3f8654a, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60887]]处理握手
+2020-07-16 22:41:17.824 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - [[id: 0xc3f8654a, L:/0:0:0:0:0:0:0:1:6001 - R:/0:0:0:0:0:0:0:1:60887]]握手失败,[true][null]
+2020-07-16 22:41:17.824 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketProtocolEncoder - ======WebsocketProtocolEncoder======, msg:DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 15, cap: 64))
+HTTP/1.1 400 Bad Request
+content-length: 15
+2020-07-16 22:41:17.825 [WEBSOCKET_SERVER_WORKER-3-1] INFO  o.c.net.network.websocket.WebsocketServerHandler - ============channelInactive=============
+2020-07-16 22:41:17.825 [WEBSOCKET_SERVER_WORKER-3-1] INFO  org.coral.net.core.base.ServerHandler - 客户端连接断开:/0:0:0:0:0:0:0:1:60887
