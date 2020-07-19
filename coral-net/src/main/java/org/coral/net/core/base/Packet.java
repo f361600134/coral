@@ -12,10 +12,10 @@ public class Packet {
 	/** 协议长度 */
 	public static final int PROTO_LEN = 2;
 	
-	private final int cmd;
+	private final short cmd;
 	private final byte[] data;
 
-	public Packet(int cmd, byte[] data) {
+	public Packet(short cmd, byte[] data) {
 		this.cmd = cmd;
 		this.data = data;
 	}
@@ -28,25 +28,17 @@ public class Packet {
 		return data;
 	}
 	
-	
 	public static Packet decode(ByteBuf byteBuf) {
-		int cmd = byteBuf.readShort();
+		short cmd = byteBuf.readShort();
 		byte[] newdata = new byte[byteBuf.readableBytes()];
 		byteBuf.readBytes(newdata);
 		return new Packet(cmd, newdata);
 	}
-
 	
-	public static DataCarrier encode(int cmd, byte[] data) {
-		return DataCarrier.protocolLen2Bytes(cmd, data);
-	}
-	
-	
-	public static DataCarrier encode(IProtocol protocol) {
-		int cmd = protocol.protocol();
+	public static Packet encode(IProtocol protocol) {
+		short cmd = protocol.protocol();
 		byte[] data = protocol.toBytes();
-		return encode(cmd, data);
+		return new Packet(cmd, data);
 	}
-	
 	
 }	

@@ -3,7 +3,7 @@ package org.coral.net.common;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * 缓存配置
+ * 网络配置
  * @author Jeremy
  * @date 2020年6月29日
  *

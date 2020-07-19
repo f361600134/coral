@@ -24,11 +24,10 @@ public class TcpClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-    	ReqLogin relogin = ReqLogin.create();
-    	Object obj = Packet.encode(relogin);
-    	ctx.writeAndFlush(obj);
-//        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks !", CharsetUtil.UTF_8));
         log.info("==================server channelActive==================");
+        ReqLogin relogin = ReqLogin.create();
+    	Packet obj = Packet.encode(relogin);
+    	ctx.writeAndFlush(obj);
     }
     
     /**
@@ -39,7 +38,8 @@ public class TcpClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
-        log.info("Client received: {}", byteBuf.toString(CharsetUtil.UTF_8));
+    	Packet packet = Packet.decode(byteBuf);
+    	log.info("Client received: {}", packet.cmd());
     }
 
     /**

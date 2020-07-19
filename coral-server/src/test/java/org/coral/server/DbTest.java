@@ -23,7 +23,7 @@ public class DbTest extends TestCase{
 	@Test void contextLoads() {
 //		testInsert();
 		testSelect();
-		testSelect();
+//		testSelect();
 //		testReplace();
 //		testUpdate();
 //		testInsertBatch();

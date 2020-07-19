@@ -68,7 +68,7 @@ public class HandlerProcessor implements InitializingBean{
 			byte[] bytes = packet.data();
 			
 			Method parser = commander.getProtobufParser();
-			GeneratedMessageLite<?, ?> params = (GeneratedMessageLite<?, ?>) parser.invoke(null, bytes);
+			GeneratedMessageLite params = (GeneratedMessageLite) parser.invoke(null, bytes);
 			
 			log.debug("收到协议[{}], pid={}, params={}, size={}B",
 					cmd, session.getPlayerId(), MessageOutput.create(params), bytes.length);

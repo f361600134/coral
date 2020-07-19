@@ -11,6 +11,10 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 
 /**
  * 客户端
@@ -53,11 +57,16 @@ public class TcpClient {
             b.group(group)
                     .channel(NioSocketChannel.class)
                     .remoteAddress(new InetSocketAddress(host,port))
+                    .handler(new LoggingHandler(LogLevel.INFO))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        	socketChannel.pipeline().addLast("protocolEncoder", new TcpProtocolEncoder());
-                            socketChannel.pipeline().addLast(new TcpClientHandler());
+                        	socketChannel.pipeline().addLast("lengthEncoder", new LengthFieldPrepender(4));
+                        	socketChannel.pipeline().addLast(new TcpProtocolEncoder());
+                        	
+                        	socketChannel.pipeline().addLast("lengthDecoder", new LengthFieldBasedFrameDecoder(8 * 1024, 0, 4, 0, 4));
+                        	
+                        	socketChannel.pipeline().addLast(new TcpClientHandler());
                         }
                     });
             //绑定端口

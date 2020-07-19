@@ -56,7 +56,7 @@ public class WebSocketClient {
      */
     private void start() throws Exception {
     	URI uri = new URI("ws://127.0.0.1:6001/websocket");
-    	WebSocketClientHandshaker handshaker = 
+    	final WebSocketClientHandshaker handshaker = 
     			WebSocketClientHandshakerFactory.newHandshaker(uri, WebSocketVersion.V13, null, true, new DefaultHttpHeaders());
         EventLoopGroup group = new NioEventLoopGroup();
         try {

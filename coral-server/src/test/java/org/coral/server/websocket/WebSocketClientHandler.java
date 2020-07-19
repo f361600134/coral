@@ -1,6 +1,5 @@
 package org.coral.server.websocket;
 
-import org.coral.net.core.base.DataCarrier;
 import org.coral.net.core.base.Packet;
 import org.coral.server.game.module.player.proto.ReqLogin;
 import org.slf4j.Logger;
@@ -103,15 +102,15 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
 
 	private void sendTestMessage(ChannelHandlerContext ctx) throws Exception {
 		ReqLogin relogin = ReqLogin.create();
-		DataCarrier obj = Packet.encode(relogin);
+		Packet obj = Packet.encode(relogin);
 		BinaryWebSocketFrame binaryWebSocketFrame = new BinaryWebSocketFrame(createBuf(obj));
 		ctx.writeAndFlush(binaryWebSocketFrame);
 	}
 
-	private ByteBuf createBuf(DataCarrier obj) {
+	private ByteBuf createBuf(Packet obj) {
 		ByteBuf byteBuf = Unpooled.buffer(256);
-		byteBuf.writeShort(obj.getProtocol());
-		byteBuf.writeBytes(obj.getStructure());
+		byteBuf.writeShort(obj.cmd());
+		byteBuf.writeBytes(obj.data());
 		return byteBuf;
 	}
 

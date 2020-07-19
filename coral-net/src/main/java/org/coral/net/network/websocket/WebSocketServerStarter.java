@@ -100,11 +100,14 @@ public class WebSocketServerStarter extends AbstractServer {
 							// idle connection detection
 							pipeline.addLast("idleState", new IdleStateHandler(30, 0, 0)); // 默认30秒
 							pipeline.addLast("idleDetection", new IdleDetectionHandler());
-							// inbound
-							pipeline.addLast("lengthDecoder", new LengthFieldBasedFrameDecoder(8 * 1024, 0, 4, 0, 4));
+							/*
+							 * inbound
+							 * websocket
+							 * */
+							//pipeline.addLast("lengthDecoder", new LengthFieldBasedFrameDecoder(8 * 1024, 0, 4, 0, 4));
 							pipeline.addLast("serverHandler", new WebsocketServerHandler(serverHandler));
 							// outbound
-							pipeline.addLast("lengthEncoder", new LengthFieldPrepender(4));
+							//pipeline.addLast("lengthEncoder", new LengthFieldPrepender(4));
 							pipeline.addLast("protocolEncoder", new WebsocketProtocolEncoder());
 							
 						}

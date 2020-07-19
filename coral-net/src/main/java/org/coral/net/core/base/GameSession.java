@@ -10,7 +10,6 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.socket.DatagramChannel;
-import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 
 /**
  * 会话信息
@@ -77,21 +76,11 @@ public class GameSession {
 	}
 	
 	public void push(IProtocol protocol) {
-		DataCarrier data = Packet.encode(protocol);
+		Packet data = Packet.encode(protocol);
 		if (isConnect()) {
-//			ByteBuf bytebuf = createBuf(data);
-//			BinaryWebSocketFrame binaryWebSocketFrame = new BinaryWebSocketFrame(bytebuf);
-//			channel.writeAndFlush(binaryWebSocketFrame);
 			channel.writeAndFlush(data);
 			log.info("========push========:{}", data);
 		}
-	}
-	
-	private ByteBuf createBuf(DataCarrier obj) {
-		ByteBuf byteBuf = Unpooled.buffer(256);
-		byteBuf.writeShort(obj.getProtocol());
-		byteBuf.writeBytes(obj.getStructure());
-		return byteBuf;
 	}
 	
 	public void send(Object message) {
