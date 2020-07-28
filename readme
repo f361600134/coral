@@ -1,8 +1,6 @@
 前言
 每个项目都会有一个代号, 这个项目代号为[珊瑚]coral
 
-每个项目拥有一个代号, 此代号为coral
-
 基于springboot, netty, disruptor高并发游戏服务器
 持久层, 网络层, 业务层分离, 可根据需要随时装卸替换持久层与网络层, 不影响业务代码
 
@@ -12,17 +10,15 @@
 
 
 1.coral-orm 持久层
-
 1.1 redis缓存- 预计实现
 	作为项目的二级缓存, 需要存储的数据先加入到redis.1分钟存储一次. 用于容灾处理
 1.2 mysql存储-已实现
 	作为项目持久层,通用接口异步存储所有玩家数据.
 	
-2.coral-net 网络层, 同时支持两种协议, 可通过配置自由选择网络协议.
+2.coral-net 网络层, 同时支持两种协议, 可通过配置自由选择网络通讯方式.
 2.1 tcp 已支持
 2.2 websocket 已支持
-2.3 RPC远程调用 https://blog.csdn.net/belonghuang157405/article/details/84070689
+2.3 RPC远程调用, 暂未支持. https://blog.csdn.net/belonghuang157405/article/details/84070689
 
-3.底层支持Actor, 用于支持业务线程安全
+3.底层支持akka Actor, 用于支持业务线程安全.暂未支持
 
-20200720 检查停服进程是否可以正常关闭
