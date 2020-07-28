@@ -8,6 +8,7 @@ import org.coral.net.core.base.ServerHandler;
 import org.coral.net.core.base.executor.DisruptorDispatchTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import io.netty.buffer.ByteBuf;
@@ -15,17 +16,18 @@ import io.netty.buffer.ByteBuf;
 /**
  * 游戏服分发处理器
  */
+@Primary
 @Component
 public class GameServerHandler extends ServerHandler {
 	
 	private static final Logger log = LoggerFactory.getLogger(GameServerHandler.class);
 	
 	public void onConnect(GameSession session) {
-		log.info("客户端连接游戏服:{}", session.getChannel().remoteAddress());
+		log.info("自定义分发器, 客户端连接游戏服:{}", session.getChannel().remoteAddress());
 	}
 
 	public void onReceive(GameSession session, ByteBuf message) {
-		log.info("客户端连接游戏服:{}", session.getChannel().remoteAddress());
+		log.info("自定义分发器, 客户端连接游戏服:{}", session.getChannel().remoteAddress());
 		Packet packet = null;
 		try {
 			if (!serverRunning) {
@@ -33,7 +35,7 @@ public class GameServerHandler extends ServerHandler {
 				return;
 			} 
 			packet = Packet.decode(message);
-			log.info("收到未处理协议, processor:{}",  processor.getCommanderMap());
+			//log.info("收到未处理协议, processor:{}",  processor.getCommanderMap());
 			Commander commander = processor.getCommander(packet.cmd());
 			if (commander == null) {
 				log.info("收到未处理协议, cmd=[{}]",  packet.cmd());
@@ -64,11 +66,11 @@ public class GameServerHandler extends ServerHandler {
 
 	@Override
 	public void onClose(GameSession session) {
-		log.info("客户端连接断开:{}", session.getChannel().remoteAddress());
+		log.info("自定义分发器, 客户端连接断开:{}", session.getChannel().remoteAddress());
 	}
 
 	@Override
 	public void onException(GameSession session, Throwable e) {
-		log.error("游戏协议通信过程出错", e);
+		log.error("自定义分发器, 游戏协议通信过程出错", e);
 	}
 }

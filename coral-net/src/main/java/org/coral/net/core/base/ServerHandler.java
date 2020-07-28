@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import io.netty.buffer.ByteBuf;
 
 /**
- * 游戏服分发处理器
+ * 默认游戏服分发处理器
  */
 @Component
 public class ServerHandler implements IServerHandler {
@@ -26,14 +26,14 @@ public class ServerHandler implements IServerHandler {
 	protected boolean serverRunning; // 服务器状态, true-运行中
 	
 	public void onConnect(GameSession session) {
-		log.info("客户端连接游戏服:{}", session.getChannel().remoteAddress());
+		log.info("默认分发处理器, 客户端连接游戏服:{}", session.getChannel().remoteAddress());
 	}
 
 	public void onReceive(GameSession session, ByteBuf message) {
 		Packet packet = null;
 		try {
 			if (!serverRunning) {
-				log.error("服务器不在运行状态, 舍弃消息"); 
+				log.error("默认分发处理器, 服务器不在运行状态, 舍弃消息"); 
 				return;
 			} 
 			packet = Packet.decode(message);
@@ -61,12 +61,12 @@ public class ServerHandler implements IServerHandler {
 
 	@Override
 	public void onClose(GameSession session) {
-		log.info("客户端连接断开:{}", session.getChannel().remoteAddress());
+		log.info("默认分发处理器, 客户端连接断开:{}", session.getChannel().remoteAddress());
 	}
 
 	@Override
 	public void onException(GameSession session, Throwable e) {
-		log.error("游戏协议通信过程出错", e);
+		log.error("默认分发处理器, 游戏协议通信过程出错", e);
 	}
 
 	@Override

@@ -68,7 +68,7 @@ public class HandlerProcessor implements InitializingBean{
 			byte[] bytes = packet.data();
 			
 			Method parser = commander.getProtobufParser();
-			GeneratedMessageLite params = (GeneratedMessageLite) parser.invoke(null, bytes);
+			GeneratedMessageLite<?, ?> params = (GeneratedMessageLite<?, ?>) parser.invoke(null, bytes);
 			
 			log.debug("收到协议[{}], pid={}, params={}, size={}B",
 					cmd, session.getPlayerId(), MessageOutput.create(params), bytes.length);
@@ -84,17 +84,8 @@ public class HandlerProcessor implements InitializingBean{
 		}
 	}
 	
-	public Map<Integer, Commander> getCommanderMap() {
-		return commanderMap;
-	}
-
 	public Commander getCommander(int cmd) {
 		return commanderMap.get(cmd);
 	}
-	
-//	@Async("taskAsyncPool")
-//	public void aaa() {
-//		System.out.println("===========2========="+Thread.currentThread().getName());
-//	}
 
 }
