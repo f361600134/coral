@@ -28,7 +28,7 @@ public class CommandSelectAll extends AbsCommand implements Executable<Collectio
 	public Collection<BasePo> execute() throws Exception {
 		if (props instanceof Object[]
 				&& obj instanceof Object[]) {
-			return dao.select((Object[])props, (Object[])obj);
+			return dao.selectAll();
 		}
 		return null;
 	}

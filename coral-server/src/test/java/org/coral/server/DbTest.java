@@ -71,12 +71,12 @@ public class DbTest extends TestCase{
 	}
 	
 	public void testselectAll() {
-		List<BasePo> users = processor.select(User.class);
+		List<BasePo> users = (List<BasePo>) processor.selectAll(User.class);
 		System.out.println("users=============>"+users.size());
 	}
 	//测试查询
 	public void testSelect() {
-		User user = (User)processor.select(User.class, new Object[] {11});
+		User user = (User)processor.selectByPrimaryKey(User.class, 11);
 		System.out.println("user=============>"+user);
 	}
 	

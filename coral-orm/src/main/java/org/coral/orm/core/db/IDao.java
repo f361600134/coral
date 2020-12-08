@@ -32,7 +32,7 @@ public interface IDao {
 	 * @return BasePo  
 	 * @date 2020年9月7日下午4:53:28
 	 */
-	BasePo selectByPrimaryKey(Object[] props);
+	BasePo selectByKey(Object value);
 	
 	
 	/**

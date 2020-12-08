@@ -42,16 +42,17 @@ public class CommonDao implements IDao{
 	 * @date 2020年6月29日
 	 * @return
 	 */
-	public Collection<BasePo> selectByIndex(Object[] indexs, Object[] values) {
-		log.info("select sql:{}, objs:{}, cls:{}", poMapper.select, indexs, values, poMapper.cls);
-		return null;
+	@Override
+	public BasePo selectByKey(Object value) {
+		log.info("select sql:{}, objs:{}, cls:{}", poMapper.selectByKey, value, poMapper.cls);
+		return (BasePo)jdbcTemplate.queryForObject(poMapper.selectByKey, new BeanPropertyRowMapper(poMapper.cls), value);
 	}
 
 	@Override
-	public BasePo selectByPrimaryKey(Object[] props) {
-		log.info("select sql:{}, objs:{}, cls:{}", poMapper.select, props, poMapper.cls);
-//		return (BasePo) jdbcTemplate.queryForObject(poMapper.select, objs, poMapper.cls);
-		return (BasePo) jdbcTemplate.queryForObject(poMapper.select, new BeanPropertyRowMapper(poMapper.cls), props);
+	public Collection<BasePo> selectByIndex(Object[] props, Object[] value) {
+		log.info("select sql:{}, objs:{}, cls:{}", poMapper.selectByIndex, props, poMapper.cls);
+		//return (BasePo) jdbcTemplate.queryForObject(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
+		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
 	}
 	
 	/**
@@ -118,16 +119,6 @@ public class CommonDao implements IDao{
 		}
 		log.debug("deleteBatch sql:{}", poMapper.delete);
 		return jdbcTemplate.batchUpdate(poMapper.delete, calValues);
-	}
-
-	@Override
-	public Collection<BasePo> select(Object[] props, Object[] objs) {
-		StringBuilder sb = new StringBuilder("SELECT * FROM `").append(poMapper.tbName).append("` WHERE ");
-		sb.append(props[0]).append("=?");
-		for (int i = 1; i < props.length; i++) {
-			sb.append(" and ").append(props[i]).append("=?");
-		}
-		return jdbcTemplate.query(sb.toString(), new BeanPropertyRowMapper(poMapper.cls), objs);
 	}
 
 }

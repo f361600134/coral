@@ -19,7 +19,7 @@ public class ItemObserver {
      */
     @Subscribe
     public void onAfterLogin(PlayerAfterLoginEvent event) {
-        itemService.onLogin(event.getPlayerId());
+//        itemService.onLogin(event.getPlayerId());
     }
 
 

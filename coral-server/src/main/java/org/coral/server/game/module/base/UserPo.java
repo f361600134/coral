@@ -7,7 +7,7 @@ import org.coral.orm.core.base.BasePo;
 * UserPo
 * @author Jeremy
 */
-@PO(name = "k_User")
+@PO(name = "User")
 public abstract class UserPo extends BasePo {
 
 	public static final String PROP_ID = "id";

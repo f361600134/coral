@@ -22,8 +22,8 @@ public class PropertyLoader {
 	
 	public static void load() throws Exception {
 //		initENV();
-		loadConfigData();
-		loadSensitiveWordTxt();
+//		loadConfigData();
+//		loadSensitiveWordTxt();
 	}
 	
 //	private static void initENV() throws Exception {

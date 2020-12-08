@@ -1,6 +1,7 @@
 package org.coral.orm.core;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,11 +37,30 @@ public class Processor implements InitializingBean{
 	private Map<String, IDao> commonDaoMap;
 	
 	public void print() {
-////		System.out.println("==========>" + BasePos);
-//		System.out.println("=====1=====>" + basePoMap);
-//		System.out.println("=====2=====>" + ormConfig.getConcurrencyLevel());
-////		System.out.println("=====2=====>" + commonDao);
-//		System.out.println("=====2=====>" + jdbcTemplate);
+	}
+	
+	/**
+	 * 查询信息
+	 * @date 2020年6月30日
+	 * @param clazz
+	 * @return
+	 */
+	public Collection<BasePo> selectAll(Class<?> clazz, Object[] obj) {
+		String name = clazz.getSimpleName().toLowerCase();
+		IDao dao = commonDaoMap.get(name);
+		return dao.selectAll();
+	}
+	
+	/**
+	 * 查询信息
+	 * @date 2020年6月30日
+	 * @param clazz
+	 * @return
+	 */
+	public BasePo selectByPrimaryKey(Class<?> clazz, Object value) {
+		String name = clazz.getSimpleName().toLowerCase();
+		IDao dao = commonDaoMap.get(name);
+		return dao.selectByKey(value);
 	}
 	
 	/**
@@ -49,34 +69,10 @@ public class Processor implements InitializingBean{
 	 * @param clazz
 	 * @return
 	 */
-	public List<BasePo> selectByPrimaryKey(Class<?> clazz) {
+	public Collection<BasePo> selectByIndex(Class<?> clazz, Object[] props, Object[] objs) {
 		String name = clazz.getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		return dao.select();
-	}
-	
-	/**
-	 * 查询玩家信息
-	 * @date 2020年6月30日
-	 * @param clazz
-	 * @return
-	 */
-	public BasePo select(Class<?> clazz, Object[] obj) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
-		return dao.selectByPrimaryKey(obj);
-	}
-	
-	/**
-	 * 查询玩家信息
-	 * @date 2020年6月30日
-	 * @param clazz
-	 * @return
-	 */
-	public BasePo select(Class<?> clazz, Object[] props, Object[] objs) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
-		return dao.select(props, objs);
+		return dao.selectByIndex(props, objs);
 	}
 	
 	/**

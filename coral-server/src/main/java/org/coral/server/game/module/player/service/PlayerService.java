@@ -100,7 +100,7 @@ public class PlayerService implements IPlayerService{
 	}
 	
 	/**
-	 * 创建一个玩家
+	 * 查询一个玩家
 	 * @date 2020年7月17日
 	 * @param playerId
 	 * @return
@@ -108,7 +108,7 @@ public class PlayerService implements IPlayerService{
 	private Player loadPlayer(String username, int initServerId) {
 		Object[] props = new Object[] {Player.PROP_ACCOUNTNAME, Player.PROP_INITSERVERID};
 		Object[] objs = new Object[] {username, initServerId};
-		Player player = (Player)process.select(Player.class, props, objs);
+		Player player = (Player)process.selectByIndex(Player.class, props, objs);
 		return player;
 	}
 	

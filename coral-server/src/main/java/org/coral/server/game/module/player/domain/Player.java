@@ -3,10 +3,7 @@ package org.coral.server.game.module.player.domain;
 import java.util.Map;
 
 import org.coral.server.game.module.base.PlayerPo;
-import org.coral.server.game.module.chat.domain.ChatRule;
 import org.springframework.stereotype.Repository;
-
-import com.google.common.collect.Maps;
 
 @Repository
 public class Player extends PlayerPo {
@@ -16,10 +13,10 @@ public class Player extends PlayerPo {
 	 */
 	private Map<Integer, Integer> propertieMap;
 	
-	/**
-	 * key:频道号 value: 聊天约束
-	 */
-	private Map<Integer, ChatRule> chatRuleMap;
+//	/**
+//	 * key:频道号 value: 聊天约束
+//	 */
+//	private Map<Integer, ChatRule> chatRuleMap;
 	
 	public Map<Integer, Integer> getPropertieMap() {
 		return propertieMap;
@@ -67,16 +64,16 @@ public class Player extends PlayerPo {
 		return true;
 	}
 	
-	public ChatRule getChatRule(int channel) {
-		if (chatRuleMap == null) {
-			chatRuleMap = Maps.newHashMap();
-		}
-		ChatRule chatRule = chatRuleMap.get(channel);
-		if (chatRule == null) {
-			chatRule = ChatRule.create(channel);
-			chatRuleMap.put(channel, chatRule);
-		}
-		return chatRule;
-	}
+//	public ChatRule getChatRule(int channel) {
+//		if (chatRuleMap == null) {
+//			chatRuleMap = Maps.newHashMap();
+//		}
+//		ChatRule chatRule = chatRuleMap.get(channel);
+//		if (chatRule == null) {
+//			chatRule = ChatRule.create(channel);
+//			chatRuleMap.put(channel, chatRule);
+//		}
+//		return chatRule;
+//	}
 
 }

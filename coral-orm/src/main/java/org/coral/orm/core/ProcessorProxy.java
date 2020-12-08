@@ -1,5 +1,6 @@
 package org.coral.orm.core;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +22,6 @@ import org.coral.orm.core.command.CommandReplace;
 import org.coral.orm.core.command.CommandUpdate;
 import org.coral.orm.core.command.Executable;
 import org.coral.orm.core.db.CommonDao;
-import org.coral.orm.core.db.CommonDaoProxy;
 import org.coral.orm.core.db.IDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,38 +62,39 @@ public class ProcessorProxy implements InitializingBean{
 	private ScheduledExecutorService scheduledThreadPool;
 	
 	/**
+	 * 查询所有
+	 * @date 2020年6月30日
+	 * @param clazz
+	 * @return
+	 */
+	public Collection<BasePo> selectAll(Class<?> clazz) {
+		String name = clazz.getSimpleName().toLowerCase();
+		IDao dao = commonDaoMap.get(name);
+		return dao.selectAll();
+	}
+	
+	/**
+	 * 查询信息
+	 * @date 2020年6月30日
+	 * @param clazz
+	 * @return
+	 */
+	public BasePo selectByPrimaryKey(Class<?> clazz, Object value) {
+		String name = clazz.getSimpleName().toLowerCase();
+		IDao dao = commonDaoMap.get(name);
+		return dao.selectByKey(value);
+	}
+	
+	/**
 	 * 查询玩家信息
 	 * @date 2020年6月30日
 	 * @param clazz
 	 * @return
 	 */
-	public List<BasePo> select(Class<?> clazz) {
+	public Collection<BasePo> selectByIndex(Class<?> clazz, Object[] props, Object[] objs) {
 		String name = clazz.getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		return dao.select();
-		
-	}
-	
-	/**
-	 * 查询玩家信息
-	 * @param clazz
-	 * @return
-	 */
-	public BasePo select(Class<?> clazz, Object[] obj) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
-		return dao.selectByPrimaryKey(obj);
-	}
-	
-	/**
-	 * 查询玩家信息
-	 * @param clazz
-	 * @return
-	 */
-	public BasePo select(Class<?> clazz, Object[] props, Object[] objs) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
-		return dao.select(props, objs);
+		return dao.selectByIndex(props, objs);
 	}
 	
 	/**
@@ -104,7 +105,6 @@ public class ProcessorProxy implements InitializingBean{
 	public void insert(BasePo po) {
 		String name = po.getClass().getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-//		dao.insert(po);
 		syncQueue.add(CommandInsert.create(po, dao));
 	}
 	
@@ -121,7 +121,6 @@ public class ProcessorProxy implements InitializingBean{
 		}
 		String name = po.getClass().getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		//dao.insertBatch(basePos);
 		syncQueue.add(CommandInsertBatch.create(po, dao));
 	}
 	
@@ -133,8 +132,6 @@ public class ProcessorProxy implements InitializingBean{
 	public void replace(BasePo po) {
 		String name = po.getClass().getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-//		int count = dao.replace(po);
-//		System.out.println(count);
 		syncQueue.add(CommandReplace.create(po, dao));
 	}
 	
@@ -146,7 +143,6 @@ public class ProcessorProxy implements InitializingBean{
 	public void update(BasePo po) {
 		String name = po.getClass().getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		//dao.update(po);
 		syncQueue.add(CommandUpdate.create(po, dao));
 	}
 	
@@ -158,7 +154,6 @@ public class ProcessorProxy implements InitializingBean{
 	public void delete(BasePo po) {
 		String name = po.getClass().getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		//dao.delete(po);
 		syncQueue.add(CommandDelete.create(po, dao));
 	}
 	
@@ -170,7 +165,6 @@ public class ProcessorProxy implements InitializingBean{
 	public void deleteAll(Class<?> clazz) {
 		String name = clazz.getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		//dao.deleteAll();
 		syncQueue.add(CommandDeleteAll.create(null, dao));
 	}
 	
@@ -187,7 +181,6 @@ public class ProcessorProxy implements InitializingBean{
 		}
 		String name = po.getClass().getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		//dao.deleteBatch(basePos);
 		syncQueue.add(CommandDeleteBatch.create(basePos, dao));
 	}
 	
@@ -211,7 +204,7 @@ public class ProcessorProxy implements InitializingBean{
 					executor = syncQueue.poll();
 				}
 			}
-		}, 1, 1, TimeUnit.MINUTES);
+		}, 1, 3, TimeUnit.SECONDS);
 		
 		commonDaoMap = new HashMap<String, IDao>();
 		if (ormConfig.isEnable()) {//开启缓存, 使用代理

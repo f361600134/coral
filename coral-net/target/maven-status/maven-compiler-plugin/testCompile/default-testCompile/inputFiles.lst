@@ -1,2 +1,6 @@
-E:\server\jeremy\workspace\coral\coral-net\src\test\java\org\coral\net\AppTest.java
-E:\server\jeremy\workspace\coral\coral-net\src\test\java\org\coral\net\ProtoStuffTest.java
+E:\jeremy\workspace\coral\git\coral-net\src\test\java\org\coral\net\AppTest.java
+E:\jeremy\workspace\coral\git\coral-net\src\test\java\org\coral\net\tcp\EchoServerHandler.java
+E:\jeremy\workspace\coral\git\coral-net\src\test\java\org\coral\net\ProtoStuffTest.java
+E:\jeremy\workspace\coral\git\coral-net\src\test\java\org\coral\net\tcp\EchoClientHandler.java
+E:\jeremy\workspace\coral\git\coral-net\src\test\java\org\coral\net\tcp\EchoServer.java
+E:\jeremy\workspace\coral\git\coral-net\src\test\java\org\coral\net\tcp\EchoClient.java

@@ -1,7 +1,6 @@
 package org.coral.orm.core.command;
 
 import org.coral.orm.core.base.BasePo;
-import org.coral.orm.core.command.AbsCommand.CommandType;
 import org.coral.orm.core.db.IDao;
 
 /**
@@ -24,11 +23,7 @@ public class CommandSelect extends AbsCommand implements Executable<BasePo>{
 
 	@Override
 	public BasePo execute() throws Exception {
-		if (obj instanceof Object[]) {
-			return dao.selectByPrimaryKey(((Object[])obj));
-		}else {
-			throw new RuntimeException("select error, obj can not match Object[]. wrong value:"+obj);
-		}
+		return dao.selectByKey(obj);
 	}
 	
 }
