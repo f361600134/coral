@@ -88,14 +88,14 @@ public abstract class UserPo extends BasePo {
 	}
 
 	@Override
-	public String[] ids() {
+	public String[] indexs() {
 		return new String[] {
 			"`id`",
 		};
 	}
 	
 	@Override
-	public Object[] idValues() {
+	public Object[] indexValues() {
 		return new Object[] {
 			id,
 		};
@@ -118,7 +118,7 @@ public abstract class UserPo extends BasePo {
 	@Override
 	public String keyColumn() {
 		// 第一主键的数据库列名
-		return ids()[0];
+		return indexs()[0];
 	}
 	
 }

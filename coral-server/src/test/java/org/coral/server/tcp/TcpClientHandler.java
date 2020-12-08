@@ -1,14 +1,13 @@
 package org.coral.server.tcp;
 
 import org.coral.net.core.base.Packet;
-import org.coral.server.game.module.player.proto.ReqLogin;
+import org.coral.server.game.module.chat.proto.ReqChat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.CharsetUtil;
 
 /**
  * 客户端处理类
@@ -25,8 +24,8 @@ public class TcpClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("==================server channelActive==================");
-        ReqLogin relogin = ReqLogin.create();
-    	Packet obj = Packet.encode(relogin);
+        ReqChat req = ReqChat.create();
+    	Packet obj = Packet.encode(req);
     	ctx.writeAndFlush(obj);
     }
     

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.coral.orm.core.Processor;
 import org.coral.orm.core.base.BasePo;
+import org.coral.server.game.module.user.Stu;
 import org.coral.server.game.module.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,13 +26,14 @@ public class InitialRunner implements CommandLineRunner {
 //	@Autowired private DataSource ds;
 	
 //	@Autowired private UserDao userDao;
-
+	
 	public void run(String... args) throws Exception {
 		try {
 //			dataSourceFactory.druidDataSource();
 //			System.out.println(dataSourceFactory.druidDataSource());
 //			System.out.println();
-			processor.print();
+//			processor.print();
+//			testInsertBatchDiff();
 //			processor.select(User.class);
 //			testInsert();
 //			testInsertBatch();
@@ -73,6 +75,27 @@ public class InitialRunner implements CommandLineRunner {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//测试批量插入
+	public void testInsertBatchDiff() {
+		List<BasePo> list = Lists.newArrayList();
+		
+		Stu stu = new Stu();
+		stu.setId(1);
+		stu.setName("ccc");
+		stu.setAge(25);
+		stu.setBirthday(new Date().toString());
+		list.add(stu);
+		
+		User user = new User();
+		user.setId(2);
+		user.setName("ccc");
+		user.setAge(25);
+		user.setBirthday(new Date().toString());
+		list.add(user);
+		
+		processor.insertBatch(list);
 	}
 	
 //	public void testSelect() {

@@ -1,7 +1,6 @@
 package org.coral.server.websocket;
 
 import org.coral.net.core.base.Packet;
-import org.coral.server.game.module.player.proto.ReqLogin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -101,10 +100,10 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
 	}
 
 	private void sendTestMessage(ChannelHandlerContext ctx) throws Exception {
-		ReqLogin relogin = ReqLogin.create();
-		Packet obj = Packet.encode(relogin);
-		BinaryWebSocketFrame binaryWebSocketFrame = new BinaryWebSocketFrame(createBuf(obj));
-		ctx.writeAndFlush(binaryWebSocketFrame);
+//		ReqLogin relogin = ReqLogin.create();
+//		Packet obj = Packet.encode(relogin);
+//		BinaryWebSocketFrame binaryWebSocketFrame = new BinaryWebSocketFrame(createBuf(obj));
+//		ctx.writeAndFlush(binaryWebSocketFrame);
 	}
 
 	private ByteBuf createBuf(Packet obj) {
@@ -136,9 +135,9 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
 		/* 心跳处理 */
 		if (evt instanceof IdleStateEvent) {
 			// ctx.channel().writeAndFlush(new ReqHeartbeatMsg());
-			ReqLogin relogin = ReqLogin.create();
-			Object obj = Packet.encode(relogin);
-			ctx.channel().writeAndFlush(obj);
+//			ReqLogin relogin = ReqLogin.create();
+//			Object obj = Packet.encode(relogin);
+//			ctx.channel().writeAndFlush(obj);
 		}
 	}
 }

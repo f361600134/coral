@@ -1,11 +1,12 @@
 package org.coral.net.core.base;
 
-
 import org.coral.net.core.HandlerProcessor;
 import org.coral.net.core.base.executor.DisruptorDispatchTask;
 import org.coral.net.core.base.executor.DisruptorExecutorGroup;
+import org.coral.net.core.base.executor.DisruptorStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,15 +17,16 @@ import io.netty.buffer.ByteBuf;
  */
 @Component
 public class ServerHandler implements IServerHandler {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(ServerHandler.class);
-	
-	@Autowired protected HandlerProcessor processor;
-	
-	@Autowired protected DisruptorExecutorGroup group;
-	
+
+	@Autowired
+	protected HandlerProcessor processor;
+
+	// protected DisruptorExecutorGroup group;
+
 	protected boolean serverRunning; // 服务器状态, true-运行中
-	
+
 	public void onConnect(GameSession session) {
 		log.info("默认分发处理器, 客户端连接游戏服:{}", session.getChannel().remoteAddress());
 	}
@@ -33,21 +35,23 @@ public class ServerHandler implements IServerHandler {
 		Packet packet = null;
 		try {
 			if (!serverRunning) {
-				log.error("默认分发处理器, 服务器不在运行状态, 舍弃消息"); 
+				log.error("默认分发处理器, 服务器不在运行状态, 舍弃消息");
 				return;
-			} 
+			}
 			packet = Packet.decode(message);
 			Commander commander = processor.getCommander(packet.cmd());
 			if (commander == null) {
-				log.info("收到未处理协议, cmd=[{}]",  packet.cmd());
+				log.info("收到未处理协议, cmd=[{}]", packet.cmd());
 				return;
 			}
 			if (commander.isMustLogin()) {
-				//TODO
-				log.info("协议[{}]需要登录成功后才能请求", packet.cmd()); 
+				// TODO
+				log.info("协议[{}]需要登录成功后才能请求", packet.cmd());
+				
 				return;
 			} else {
-				group.execute(session.getId(), new DisruptorDispatchTask(processor, session, packet));
+				DisruptorStrategy.get(DisruptorStrategy.SINGLE)
+				.execute(session.getId(), new DisruptorDispatchTask(processor, session, packet));
 			}
 		} catch (Exception e) {
 			if (packet == null) {
@@ -55,8 +59,8 @@ public class ServerHandler implements IServerHandler {
 			} else {
 				log.error("Packet调用过程出错, cmd={}", packet.cmd(), e);
 			}
-		} 
-		
+		}
+
 	}
 
 	@Override
@@ -73,5 +77,5 @@ public class ServerHandler implements IServerHandler {
 	public void serverStatus(boolean running) {
 		this.serverRunning = running;
 	}
-	
+
 }

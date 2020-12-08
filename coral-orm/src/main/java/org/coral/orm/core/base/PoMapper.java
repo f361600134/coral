@@ -45,12 +45,11 @@ public class PoMapper {
 			this.tbName = po.name();
 			BasePo ins = cls.newInstance();
 			
-			
 			this.selectAll = SQLGenerator.selectAll(tbName);
 			this.deleteAll = SQLGenerator.deleteAll(tbName);
-			this.select = SQLGenerator.select(tbName, ins.ids());
-			this.delete = SQLGenerator.delete(tbName, ins.ids());
-			this.update = SQLGenerator.update(tbName, ins.props(), ins.ids());
+			this.select = SQLGenerator.select(tbName, ins.indexs());
+			this.delete = SQLGenerator.delete(tbName, ins.indexs());
+			this.update = SQLGenerator.update(tbName, ins.props(), ins.indexs());
 			this.insert = SQLGenerator.insert(tbName, ins.props());
 			this.replace = SQLGenerator.replace(tbName, ins.props());
 			

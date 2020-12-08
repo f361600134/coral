@@ -7,7 +7,7 @@ import org.coral.orm.core.base.BasePo;
 * PlayerPo
 * @author Jeremy
 */
-@PO(name = "k_player")
+@PO(name = "k_Player")
 public abstract class PlayerPo extends BasePo {
 
 	public static final String PROP_PLAYERID = "playerId";
@@ -24,28 +24,15 @@ public abstract class PlayerPo extends BasePo {
 	public static final String PROP_GIFTGOLD = "giftGold";
 	public static final String PROP_NATION = "nation";
 	public static final String PROP_UNIONID = "unionId";
-	public static final String PROP_SCENEID = "sceneId";
-	public static final String PROP_POSITIONX = "positionX";
-	public static final String PROP_POSITIONY = "positionY";
-	public static final String PROP_WALKSPEED = "walkSpeed";
+	public static final String PROP_PLAYRATE = "playRate";
 	public static final String PROP_VIP = "vip";
 	public static final String PROP_LASTLOGINTIME = "lastLoginTime";
 	public static final String PROP_PREVOFFLINETIME = "prevOfflineTime";
 	public static final String PROP_REGTIME = "regTime";
 	public static final String PROP_FORBIDENSPEAK = "forbidenSpeak";
 	public static final String PROP_FORBITENDTIME = "forbitEndTime";
-	public static final String PROP_OFFSETX = "offsetX";
-	public static final String PROP_OFFSETY = "offsetY";
-	public static final String PROP_BAGCELLNUM = "bagCellNum";
-	public static final String PROP_DEPOTCELLNUM = "depotCellNum";
+	public static final String PROP_HEROCELLNUM = "heroCellNum";
 	public static final String PROP_PLAYERNOWTITLE = "playerNowTitle";
-	public static final String PROP_REPUTATION = "reputation";
-	public static final String PROP_ZHENYUAN = "zhenYuan";
-	public static final String PROP_SHOUHUN = "shouHun";
-	public static final String PROP_GREENSOUL = "greenSoul";
-	public static final String PROP_BLUESOUL = "blueSoul";
-	public static final String PROP_PURPLESOUL = "purpleSoul";
-	public static final String PROP_ORANGESOUL = "orangeSoul";
 	public static final String PROP_PAYTOTAL = "payTotal";
 	public static final String PROP_SUMMONINTEGRAL = "summonIntegral";
 	public static final String PROP_FRIENDSHIPPOINT = "friendshipPoint";
@@ -55,6 +42,18 @@ public abstract class PlayerPo extends BasePo {
 	public static final String PROP_EXPHERO = "expHero";
 	public static final String PROP_ARENAPRESTIGE = "arenaPrestige";
 	public static final String PROP_ARENAINTEGARL = "arenaIntegarl";
+	public static final String PROP_CHAMPIONCHIP = "championChip";
+	public static final String PROP_GUIDEID = "guideId";
+	public static final String PROP_VIPEXP = "vipExp";
+	public static final String PROP_TREASUREINTEGRAL = "treasureIntegral";
+	public static final String PROP_LEVELUPTIME = "levelUpTime";
+	public static final String PROP_FRIENDCODE = "friendCode";
+	public static final String PROP_GODHOOD = "godhood";
+	public static final String PROP_WARMEDAL = "warMedal";
+	public static final String PROP_HONORMEDAL = "honorMedal";
+	public static final String PROP_GUILDCONTRIBUTION = "guildContribution";
+	public static final String PROP_SKINDEBRIS = "skinDebris";
+	public static final String PROP_PROPERTIESTR = "propertieStr";
 	public static final String PROP_INITSERVERID = "initServerId";
 	public static final String PROP_CURSERVERID = "curServerId";
 	
@@ -72,28 +71,15 @@ public abstract class PlayerPo extends BasePo {
 	protected int giftGold;//点券
 	protected int nation;//国家:1为魏2为蜀3为吴
 	protected long unionId;//帮派ID
-	protected int sceneId;//场景ID,1为新手村
-	protected int positionX;//图地坐标X
-	protected int positionY;//地图坐标Y
-	protected int walkSpeed;//人物行走速度
+	protected int playRate;//播放速度
 	protected int vip;//VIP等级
 	protected int lastLoginTime;//最近一次登录时间
 	protected int prevOfflineTime;//最近一次离线时间
 	protected int regTime;//注册时间
 	protected long forbidenSpeak;//禁言时间
 	protected int forbitEndTime;//封号结束时间
-	protected int offsetX;//地图偏移X
-	protected int offsetY;//地图偏移Y
-	protected int bagCellNum;//背包已开放格子数
-	protected int depotCellNum;//仓库格子数量
+	protected int heroCellNum;//背包已开放格子数
 	protected int playerNowTitle;//玩家选择的称号
-	protected int reputation;//声望
-	protected int zhenYuan;//真元
-	protected int shouHun;//兽魂
-	protected int greenSoul;//绿武魂
-	protected int blueSoul;//蓝武魂
-	protected int purpleSoul;//紫武魂
-	protected int orangeSoul;//橙武魂
 	protected int payTotal;//充值元宝
 	protected int summonIntegral;//召唤积分
 	protected int friendshipPoint;//友情点
@@ -103,12 +89,26 @@ public abstract class PlayerPo extends BasePo {
 	protected int expHero;//英雄经验
 	protected int arenaPrestige;//竞技场声望
 	protected int arenaIntegarl;//竞技场积分
+	protected int championChip;//冠军赛竞猜筹码
+	protected int guideId;//新手引导id
+	protected int vipExp;//vip经验
+	protected int treasureIntegral;//探宝积分
+	protected int levelUpTime;//最近升级时间
+	protected String friendCode;//推荐码
+	protected int godhood;//灵魄
+	protected int warMedal;//征战勋章
+	protected int honorMedal;//荣誉勋章
+	protected int guildContribution;//公会贡献
+	protected int skinDebris;//皮肤碎片
+	protected String propertieStr;//玩家属性字符串
 	protected int initServerId;//初始服务器id
 	protected int curServerId;//当前服务器id
 	
 	public PlayerPo(){
 		this.accountName = "";
 		this.playerName = "";
+		this.friendCode = "";
+		this.propertieStr = "";
 	}
 	
 	/** 玩家ID **/
@@ -237,40 +237,13 @@ public abstract class PlayerPo extends BasePo {
 		this.unionId = unionId;
 	}
 	
-	/** 场景ID,1为新手村 **/
-	public int getSceneId(){
-		return this.sceneId;
+	/** 播放速度 **/
+	public int getPlayRate(){
+		return this.playRate;
 	}
 	
-	public void setSceneId(int sceneId){
-		this.sceneId = sceneId;
-	}
-	
-	/** 图地坐标X **/
-	public int getPositionX(){
-		return this.positionX;
-	}
-	
-	public void setPositionX(int positionX){
-		this.positionX = positionX;
-	}
-	
-	/** 地图坐标Y **/
-	public int getPositionY(){
-		return this.positionY;
-	}
-	
-	public void setPositionY(int positionY){
-		this.positionY = positionY;
-	}
-	
-	/** 人物行走速度 **/
-	public int getWalkSpeed(){
-		return this.walkSpeed;
-	}
-	
-	public void setWalkSpeed(int walkSpeed){
-		this.walkSpeed = walkSpeed;
+	public void setPlayRate(int playRate){
+		this.playRate = playRate;
 	}
 	
 	/** VIP等级 **/
@@ -327,40 +300,13 @@ public abstract class PlayerPo extends BasePo {
 		this.forbitEndTime = forbitEndTime;
 	}
 	
-	/** 地图偏移X **/
-	public int getOffsetX(){
-		return this.offsetX;
-	}
-	
-	public void setOffsetX(int offsetX){
-		this.offsetX = offsetX;
-	}
-	
-	/** 地图偏移Y **/
-	public int getOffsetY(){
-		return this.offsetY;
-	}
-	
-	public void setOffsetY(int offsetY){
-		this.offsetY = offsetY;
-	}
-	
 	/** 背包已开放格子数 **/
-	public int getBagCellNum(){
-		return this.bagCellNum;
+	public int getHeroCellNum(){
+		return this.heroCellNum;
 	}
 	
-	public void setBagCellNum(int bagCellNum){
-		this.bagCellNum = bagCellNum;
-	}
-	
-	/** 仓库格子数量 **/
-	public int getDepotCellNum(){
-		return this.depotCellNum;
-	}
-	
-	public void setDepotCellNum(int depotCellNum){
-		this.depotCellNum = depotCellNum;
+	public void setHeroCellNum(int heroCellNum){
+		this.heroCellNum = heroCellNum;
 	}
 	
 	/** 玩家选择的称号 **/
@@ -370,69 +316,6 @@ public abstract class PlayerPo extends BasePo {
 	
 	public void setPlayerNowTitle(int playerNowTitle){
 		this.playerNowTitle = playerNowTitle;
-	}
-	
-	/** 声望 **/
-	public int getReputation(){
-		return this.reputation;
-	}
-	
-	public void setReputation(int reputation){
-		this.reputation = reputation;
-	}
-	
-	/** 真元 **/
-	public int getZhenYuan(){
-		return this.zhenYuan;
-	}
-	
-	public void setZhenYuan(int zhenYuan){
-		this.zhenYuan = zhenYuan;
-	}
-	
-	/** 兽魂 **/
-	public int getShouHun(){
-		return this.shouHun;
-	}
-	
-	public void setShouHun(int shouHun){
-		this.shouHun = shouHun;
-	}
-	
-	/** 绿武魂 **/
-	public int getGreenSoul(){
-		return this.greenSoul;
-	}
-	
-	public void setGreenSoul(int greenSoul){
-		this.greenSoul = greenSoul;
-	}
-	
-	/** 蓝武魂 **/
-	public int getBlueSoul(){
-		return this.blueSoul;
-	}
-	
-	public void setBlueSoul(int blueSoul){
-		this.blueSoul = blueSoul;
-	}
-	
-	/** 紫武魂 **/
-	public int getPurpleSoul(){
-		return this.purpleSoul;
-	}
-	
-	public void setPurpleSoul(int purpleSoul){
-		this.purpleSoul = purpleSoul;
-	}
-	
-	/** 橙武魂 **/
-	public int getOrangeSoul(){
-		return this.orangeSoul;
-	}
-	
-	public void setOrangeSoul(int orangeSoul){
-		this.orangeSoul = orangeSoul;
 	}
 	
 	/** 充值元宝 **/
@@ -516,6 +399,114 @@ public abstract class PlayerPo extends BasePo {
 		this.arenaIntegarl = arenaIntegarl;
 	}
 	
+	/** 冠军赛竞猜筹码 **/
+	public int getChampionChip(){
+		return this.championChip;
+	}
+	
+	public void setChampionChip(int championChip){
+		this.championChip = championChip;
+	}
+	
+	/** 新手引导id **/
+	public int getGuideId(){
+		return this.guideId;
+	}
+	
+	public void setGuideId(int guideId){
+		this.guideId = guideId;
+	}
+	
+	/** vip经验 **/
+	public int getVipExp(){
+		return this.vipExp;
+	}
+	
+	public void setVipExp(int vipExp){
+		this.vipExp = vipExp;
+	}
+	
+	/** 探宝积分 **/
+	public int getTreasureIntegral(){
+		return this.treasureIntegral;
+	}
+	
+	public void setTreasureIntegral(int treasureIntegral){
+		this.treasureIntegral = treasureIntegral;
+	}
+	
+	/** 最近升级时间 **/
+	public int getLevelUpTime(){
+		return this.levelUpTime;
+	}
+	
+	public void setLevelUpTime(int levelUpTime){
+		this.levelUpTime = levelUpTime;
+	}
+	
+	/** 推荐码 **/
+	public String getFriendCode(){
+		return this.friendCode;
+	}
+	
+	public void setFriendCode(String friendCode){
+		this.friendCode = friendCode;
+	}
+	
+	/** 灵魄 **/
+	public int getGodhood(){
+		return this.godhood;
+	}
+	
+	public void setGodhood(int godhood){
+		this.godhood = godhood;
+	}
+	
+	/** 征战勋章 **/
+	public int getWarMedal(){
+		return this.warMedal;
+	}
+	
+	public void setWarMedal(int warMedal){
+		this.warMedal = warMedal;
+	}
+	
+	/** 荣誉勋章 **/
+	public int getHonorMedal(){
+		return this.honorMedal;
+	}
+	
+	public void setHonorMedal(int honorMedal){
+		this.honorMedal = honorMedal;
+	}
+	
+	/** 公会贡献 **/
+	public int getGuildContribution(){
+		return this.guildContribution;
+	}
+	
+	public void setGuildContribution(int guildContribution){
+		this.guildContribution = guildContribution;
+	}
+	
+	/** 皮肤碎片 **/
+	public int getSkinDebris(){
+		return this.skinDebris;
+	}
+	
+	public void setSkinDebris(int skinDebris){
+		this.skinDebris = skinDebris;
+	}
+	
+	/** 玩家属性字符串 **/
+	public String getPropertieStr(){
+		return this.propertieStr;
+	}
+	
+	public void setPropertieStr(String propertieStr){
+		this.propertieStr = propertieStr;
+	}
+	
 	/** 初始服务器id **/
 	public int getInitServerId(){
 		return this.initServerId;
@@ -537,16 +528,16 @@ public abstract class PlayerPo extends BasePo {
 	
 	@Override
 	public String toString() {
-		return "Player [playerId= "+ playerId +", accountName= "+ accountName +", playerName= "+ playerName +", sex= "+ sex +", level= "+ level
+		return "Player[ playerId= " +getPlayerId()+ "+, playerId= "+ playerId +", accountName= "+ accountName +", playerName= "+ playerName +", sex= "+ sex +", level= "+ level
 				 +", exp= "+ exp +", jobType= "+ jobType +", power= "+ power +", physicalPower= "+ physicalPower +", ingot= "+ ingot
-				 +", copper= "+ copper +", giftGold= "+ giftGold +", nation= "+ nation +", unionId= "+ unionId +", sceneId= "+ sceneId
-				 +", positionX= "+ positionX +", positionY= "+ positionY +", walkSpeed= "+ walkSpeed +", vip= "+ vip +", lastLoginTime= "+ lastLoginTime
-				 +", prevOfflineTime= "+ prevOfflineTime +", regTime= "+ regTime +", forbidenSpeak= "+ forbidenSpeak +", forbitEndTime= "+ forbitEndTime +", offsetX= "+ offsetX
-				 +", offsetY= "+ offsetY +", bagCellNum= "+ bagCellNum +", depotCellNum= "+ depotCellNum +", playerNowTitle= "+ playerNowTitle +", reputation= "+ reputation
-				 +", zhenYuan= "+ zhenYuan +", shouHun= "+ shouHun +", greenSoul= "+ greenSoul +", blueSoul= "+ blueSoul +", purpleSoul= "+ purpleSoul
-				 +", orangeSoul= "+ orangeSoul +", payTotal= "+ payTotal +", summonIntegral= "+ summonIntegral +", friendshipPoint= "+ friendshipPoint +", prophetCrystal= "+ prophetCrystal
-				 +", prophetCard= "+ prophetCard +", information= "+ information +", expHero= "+ expHero +", arenaPrestige= "+ arenaPrestige +", arenaIntegarl= "+ arenaIntegarl
-				 +", initServerId= "+ initServerId +", curServerId= "+ curServerId+"]";
+				 +", copper= "+ copper +", giftGold= "+ giftGold +", nation= "+ nation +", unionId= "+ unionId +", playRate= "+ playRate
+				 +", vip= "+ vip +", lastLoginTime= "+ lastLoginTime +", prevOfflineTime= "+ prevOfflineTime +", regTime= "+ regTime +", forbidenSpeak= "+ forbidenSpeak
+				 +", forbitEndTime= "+ forbitEndTime +", heroCellNum= "+ heroCellNum +", playerNowTitle= "+ playerNowTitle +", payTotal= "+ payTotal +", summonIntegral= "+ summonIntegral
+				 +", friendshipPoint= "+ friendshipPoint +", prophetCrystal= "+ prophetCrystal +", prophetCard= "+ prophetCard +", information= "+ information +", expHero= "+ expHero
+				 +", arenaPrestige= "+ arenaPrestige +", arenaIntegarl= "+ arenaIntegarl +", championChip= "+ championChip +", guideId= "+ guideId +", vipExp= "+ vipExp
+				 +", treasureIntegral= "+ treasureIntegral +", levelUpTime= "+ levelUpTime +", friendCode= "+ friendCode +", godhood= "+ godhood +", warMedal= "+ warMedal
+				 +", honorMedal= "+ honorMedal +", guildContribution= "+ guildContribution +", skinDebris= "+ skinDebris +", propertieStr= "+ propertieStr +", initServerId= "+ initServerId
+				 +", curServerId= "+ curServerId+"]";
 	}
 	
 	@Override
@@ -566,28 +557,15 @@ public abstract class PlayerPo extends BasePo {
 		"`giftGold`",
 		"`nation`",
 		"`unionId`",
-		"`sceneId`",
-		"`positionX`",
-		"`positionY`",
-		"`walkSpeed`",
+		"`playRate`",
 		"`vip`",
 		"`lastLoginTime`",
 		"`prevOfflineTime`",
 		"`regTime`",
 		"`forbidenSpeak`",
 		"`forbitEndTime`",
-		"`offsetX`",
-		"`offsetY`",
-		"`bagCellNum`",
-		"`depotCellNum`",
+		"`heroCellNum`",
 		"`playerNowTitle`",
-		"`reputation`",
-		"`zhenYuan`",
-		"`shouHun`",
-		"`greenSoul`",
-		"`blueSoul`",
-		"`purpleSoul`",
-		"`orangeSoul`",
 		"`payTotal`",
 		"`summonIntegral`",
 		"`friendshipPoint`",
@@ -597,6 +575,18 @@ public abstract class PlayerPo extends BasePo {
 		"`expHero`",
 		"`arenaPrestige`",
 		"`arenaIntegarl`",
+		"`championChip`",
+		"`guideId`",
+		"`vipExp`",
+		"`treasureIntegral`",
+		"`levelUpTime`",
+		"`friendCode`",
+		"`godhood`",
+		"`warMedal`",
+		"`honorMedal`",
+		"`guildContribution`",
+		"`skinDebris`",
+		"`propertieStr`",
 		"`initServerId`",
 		"`curServerId`",
 		};
@@ -619,28 +609,15 @@ public abstract class PlayerPo extends BasePo {
 		getGiftGold(),
 		getNation(),
 		getUnionId(),
-		getSceneId(),
-		getPositionX(),
-		getPositionY(),
-		getWalkSpeed(),
+		getPlayRate(),
 		getVip(),
 		getLastLoginTime(),
 		getPrevOfflineTime(),
 		getRegTime(),
 		getForbidenSpeak(),
 		getForbitEndTime(),
-		getOffsetX(),
-		getOffsetY(),
-		getBagCellNum(),
-		getDepotCellNum(),
+		getHeroCellNum(),
 		getPlayerNowTitle(),
-		getReputation(),
-		getZhenYuan(),
-		getShouHun(),
-		getGreenSoul(),
-		getBlueSoul(),
-		getPurpleSoul(),
-		getOrangeSoul(),
 		getPayTotal(),
 		getSummonIntegral(),
 		getFriendshipPoint(),
@@ -650,20 +627,32 @@ public abstract class PlayerPo extends BasePo {
 		getExpHero(),
 		getArenaPrestige(),
 		getArenaIntegarl(),
+		getChampionChip(),
+		getGuideId(),
+		getVipExp(),
+		getTreasureIntegral(),
+		getLevelUpTime(),
+		getFriendCode(),
+		getGodhood(),
+		getWarMedal(),
+		getHonorMedal(),
+		getGuildContribution(),
+		getSkinDebris(),
+		getPropertieStr(),
 		getInitServerId(),
 		getCurServerId(),
 		};
 	}
 
 	@Override
-	public String[] ids() {
+	public String[] indexs() {
 		return new String[] {
 			"`PlayerId`",
 		};
 	}
 	
 	@Override
-	public Object[] idValues() {
+	public Object[] indexValues() {
 		return new Object[] {
 			playerId,
 		};
@@ -686,7 +675,7 @@ public abstract class PlayerPo extends BasePo {
 	@Override
 	public String keyColumn() {
 		// 第一主键的数据库列名
-		return ids()[0];
+		return indexs()[0];
 	}
 	
 }

@@ -13,10 +13,16 @@ public abstract class BasePo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * primary key, 对应数据库的第一主键(玩家ID)
+	 * primary key, 对应数据库的主键
 	 * @return
 	 */
 	abstract public Object key();
+	
+	/**
+	 * 数据库主键的列名
+	 * @return
+	 */
+	abstract public String keyColumn();
 	
 	/**
 	 * 缓存二级ID, 如果返回空默认使用key()
@@ -25,23 +31,16 @@ public abstract class BasePo implements Serializable {
 	abstract public Object cacheId();
 	
 	/**
-	 * 数据库第一主键的列名
+	 * 索引列, 对应数据库的索引
 	 * @return
 	 */
-	abstract public String keyColumn();
-	
-	
-	/**
-	 * id的列, 对应数据库的主键和索引
-	 * @return
-	 */
-	abstract public String[] ids();
+	abstract public String[] indexs();
 
 	/**
-	 * 所有id列的值
+	 * 索引列的值
 	 * @return
 	 */
-	abstract public Object[] idValues();
+	abstract public Object[] indexValues();
 	
 	/**
 	 * 所有属性列

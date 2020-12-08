@@ -4,7 +4,6 @@ import io.netty.buffer.ByteBuf;
 
 /**
  * 数据包
- * TODO 稳定后把Packet和DataCarrier重构，弃用DataCarrier。
  * 在业务层, 可以选择指定的数据包设定
  */
 public class Packet {

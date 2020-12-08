@@ -3,7 +3,6 @@ package org.coral.server.tcp1;
 import java.nio.charset.Charset;
 
 import org.coral.net.core.base.Packet;
-import org.coral.server.game.module.player.proto.ReqLogin;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
@@ -19,9 +18,9 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
         // 必须存在flush
         // ctx.write(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
         // ctx.flush();
-    	ReqLogin relogin = ReqLogin.create();
-     	Packet obj = Packet.encode(relogin);
-     	ctx.writeAndFlush(obj);
+//    	ReqLogin relogin = ReqLogin.create();
+//     	Packet obj = Packet.encode(relogin);
+//     	ctx.writeAndFlush(obj);
     }
 
     @Override

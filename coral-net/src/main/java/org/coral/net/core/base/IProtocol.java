@@ -5,7 +5,7 @@ import com.google.protobuf.AbstractMessageLite.Builder;
 /**
  * 下发协议接口
  * 
- * @author huachp
+ * @author Jeremy
  */
 public interface IProtocol {
 	

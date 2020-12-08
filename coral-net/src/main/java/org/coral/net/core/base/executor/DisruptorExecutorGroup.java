@@ -2,25 +2,20 @@ package org.coral.net.core.base.executor;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
-
 /**
  * DisruptorExecutor组合.
  *
  */
-@Component
-public class DisruptorExecutorGroup implements InitializingBean{
+public class DisruptorExecutorGroup {
 	
-	private static final Logger log = LoggerFactory.getLogger(DisruptorExecutorGroup.class);
-
 	private final AtomicInteger childIndex = new AtomicInteger();
 	private DisruptorExecutor[] children;
+	//是否是2的幂次方,用于取模运算或位运算
+	private boolean powerOfTow;
 
 	
-	public DisruptorExecutorGroup() {}
+	public DisruptorExecutorGroup() {
+	}
 	
 	/**
 	 * 构造函数.
@@ -33,6 +28,7 @@ public class DisruptorExecutorGroup implements InitializingBean{
 		for (int i = 0; i < size; i++) {
 			children[i] = new DisruptorExecutor(executorName + "-" + i);
 		}
+		powerOfTow = (size & -size) == size;
 	}
 
 	/**
@@ -45,7 +41,6 @@ public class DisruptorExecutorGroup implements InitializingBean{
 		if (index < 0 || index >= children.length) {
 			return null;
 		}
-
 		return children[index];
 	}
 
@@ -82,24 +77,11 @@ public class DisruptorExecutorGroup implements InitializingBean{
 	 * @param index 唯一编号
 	 * @param task 任务
 	 */
-	public void execute(int index, Runnable task) {
-		index = index % size();
+	public void execute(final int sessionId, final Runnable task) {
+		int	index = powerOfTow ?
+				sessionId & children.length - 1 :
+					sessionId % size();
 		getExecutor(index).execute(task);
 	}
-
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		long startTime = System.currentTimeMillis();
-		int size = Runtime.getRuntime().availableProcessors() * 2;
-		String executorName = "Disruptor";
-		startTime = System.currentTimeMillis();
-		this.children = new DisruptorExecutor[size];
-		for (int i = 0; i < size; i++) {
-			children[i] = new DisruptorExecutor(executorName + "-" + i);
-		}
-		startUp();
-		log.info("End to init DisruptorExecutorGroup, initWorkers:{}, cost time:{}", 
-				size, (System.currentTimeMillis() - startTime));
-	}
-
+	
 }

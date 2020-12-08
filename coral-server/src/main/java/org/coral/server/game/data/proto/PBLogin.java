@@ -1262,6 +1262,15 @@ public final class PBLogin {
      * <code>int32 status = 2;</code>
      */
     int getStatus();
+
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    long getTime();
   }
   /**
    * <pre>
@@ -1335,6 +1344,41 @@ public final class PBLogin {
       status_ = 0;
     }
 
+    public static final int TIME_FIELD_NUMBER = 3;
+    private long time_;
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    private void setTime(long value) {
+      
+      time_ = value;
+    }
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    private void clearTime() {
+      
+      time_ = 0L;
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (code_ != 0) {
@@ -1342,6 +1386,9 @@ public final class PBLogin {
       }
       if (status_ != 0) {
         output.writeInt32(2, status_);
+      }
+      if (time_ != 0L) {
+        output.writeInt64(3, time_);
       }
       unknownFields.writeTo(output);
     }
@@ -1358,6 +1405,10 @@ public final class PBLogin {
       if (status_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, status_);
+      }
+      if (time_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, time_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -1521,6 +1572,41 @@ public final class PBLogin {
         return this;
       }
 
+      /**
+       * <pre>
+       *服务器时间戳
+       * </pre>
+       *
+       * <code>int64 time = 3;</code>
+       */
+      public long getTime() {
+        return instance.getTime();
+      }
+      /**
+       * <pre>
+       *服务器时间戳
+       * </pre>
+       *
+       * <code>int64 time = 3;</code>
+       */
+      public Builder setTime(long value) {
+        copyOnWrite();
+        instance.setTime(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *服务器时间戳
+       * </pre>
+       *
+       * <code>int64 time = 3;</code>
+       */
+      public Builder clearTime() {
+        copyOnWrite();
+        instance.clearTime();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:Protocol.AckLogin)
     }
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -1547,6 +1633,8 @@ public final class PBLogin {
               other.code_ != 0, other.code_);
           status_ = visitor.visitInt(status_ != 0, status_,
               other.status_ != 0, other.status_);
+          time_ = visitor.visitLong(time_ != 0L, time_,
+              other.time_ != 0L, other.time_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -1579,6 +1667,11 @@ public final class PBLogin {
                 case 16: {
 
                   status_ = input.readInt32();
+                  break;
+                }
+                case 24: {
+
+                  time_ = input.readInt64();
                   break;
                 }
               }
@@ -2322,6 +2415,24 @@ public final class PBLogin {
      */
     com.google.protobuf.ByteString
         getInputNameBytes();
+
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    java.lang.String getFriendCode();
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getFriendCodeBytes();
   }
   /**
    * <pre>
@@ -2338,6 +2449,7 @@ public final class PBLogin {
     private ReqCreateRole() {
       nickName_ = "";
       inputName_ = "";
+      friendCode_ = "";
     }
     public static final int NICKNAME_FIELD_NUMBER = 1;
     private java.lang.String nickName_;
@@ -2471,6 +2583,72 @@ public final class PBLogin {
       inputName_ = value.toStringUtf8();
     }
 
+    public static final int FRIENDCODE_FIELD_NUMBER = 3;
+    private java.lang.String friendCode_;
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    public java.lang.String getFriendCode() {
+      return friendCode_;
+    }
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFriendCodeBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(friendCode_);
+    }
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    private void setFriendCode(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      friendCode_ = value;
+    }
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    private void clearFriendCode() {
+      
+      friendCode_ = getDefaultInstance().getFriendCode();
+    }
+    /**
+     * <pre>
+     *好友推荐码
+     * </pre>
+     *
+     * <code>string friendCode = 3;</code>
+     */
+    private void setFriendCodeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      friendCode_ = value.toStringUtf8();
+    }
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!nickName_.isEmpty()) {
@@ -2478,6 +2656,9 @@ public final class PBLogin {
       }
       if (!inputName_.isEmpty()) {
         output.writeString(2, getInputName());
+      }
+      if (!friendCode_.isEmpty()) {
+        output.writeString(3, getFriendCode());
       }
       unknownFields.writeTo(output);
     }
@@ -2494,6 +2675,10 @@ public final class PBLogin {
       if (!inputName_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(2, getInputName());
+      }
+      if (!friendCode_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(3, getFriendCode());
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -2719,6 +2904,66 @@ public final class PBLogin {
         return this;
       }
 
+      /**
+       * <pre>
+       *好友推荐码
+       * </pre>
+       *
+       * <code>string friendCode = 3;</code>
+       */
+      public java.lang.String getFriendCode() {
+        return instance.getFriendCode();
+      }
+      /**
+       * <pre>
+       *好友推荐码
+       * </pre>
+       *
+       * <code>string friendCode = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFriendCodeBytes() {
+        return instance.getFriendCodeBytes();
+      }
+      /**
+       * <pre>
+       *好友推荐码
+       * </pre>
+       *
+       * <code>string friendCode = 3;</code>
+       */
+      public Builder setFriendCode(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setFriendCode(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *好友推荐码
+       * </pre>
+       *
+       * <code>string friendCode = 3;</code>
+       */
+      public Builder clearFriendCode() {
+        copyOnWrite();
+        instance.clearFriendCode();
+        return this;
+      }
+      /**
+       * <pre>
+       *好友推荐码
+       * </pre>
+       *
+       * <code>string friendCode = 3;</code>
+       */
+      public Builder setFriendCodeBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setFriendCodeBytes(value);
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:Protocol.ReqCreateRole)
     }
     @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
@@ -2745,6 +2990,8 @@ public final class PBLogin {
               !other.nickName_.isEmpty(), other.nickName_);
           inputName_ = visitor.visitString(!inputName_.isEmpty(), inputName_,
               !other.inputName_.isEmpty(), other.inputName_);
+          friendCode_ = visitor.visitString(!friendCode_.isEmpty(), friendCode_,
+              !other.friendCode_.isEmpty(), other.friendCode_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -2779,6 +3026,12 @@ public final class PBLogin {
                   java.lang.String s = input.readStringRequireUtf8();
 
                   inputName_ = s;
+                  break;
+                }
+                case 26: {
+                  java.lang.String s = input.readStringRequireUtf8();
+
+                  friendCode_ = s;
                   break;
                 }
               }
@@ -3348,25 +3601,45 @@ public final class PBLogin {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     java.lang.String getUserName();
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     com.google.protobuf.ByteString
         getUserNameBytes();
 
     /**
+     * <pre>
+     *渠道
+     * </pre>
+     *
      * <code>int32 channel = 2;</code>
      */
     int getChannel();
 
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     java.lang.String getSessionKey();
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     com.google.protobuf.ByteString
@@ -3374,19 +3647,10 @@ public final class PBLogin {
 
     /**
      * <pre>
-     *客户端收到的服务器流水号
+     *游戏服id
      * </pre>
      *
-     * <code>int32 recvSequenceNo = 4;</code>
-     */
-    int getRecvSequenceNo();
-
-    /**
-     * <pre>
-     *登陆时所选游戏服id
-     * </pre>
-     *
-     * <code>int32 serverId = 5;</code>
+     * <code>int32 serverId = 4;</code>
      */
     int getServerId();
 
@@ -3395,7 +3659,7 @@ public final class PBLogin {
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     java.lang.String getVersion();
     /**
@@ -3403,10 +3667,46 @@ public final class PBLogin {
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     com.google.protobuf.ByteString
         getVersionBytes();
+
+    /**
+     * <pre>
+     *登录服id
+     * </pre>
+     *
+     * <code>int32 loginSid = 6;</code>
+     */
+    int getLoginSid();
+
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    java.lang.String getDevice();
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getDeviceBytes();
+
+    /**
+     * <pre>
+     *纳入防沉迷标识0否1是
+     * </pre>
+     *
+     * <code>int32 al = 8;</code>
+     */
+    int getAl();
   }
   /**
    * <pre>
@@ -3424,16 +3724,25 @@ public final class PBLogin {
       userName_ = "";
       sessionKey_ = "";
       version_ = "";
+      device_ = "";
     }
     public static final int USERNAME_FIELD_NUMBER = 1;
     private java.lang.String userName_;
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     public java.lang.String getUserName() {
       return userName_;
     }
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -3441,6 +3750,10 @@ public final class PBLogin {
       return com.google.protobuf.ByteString.copyFromUtf8(userName_);
     }
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     private void setUserName(
@@ -3452,6 +3765,10 @@ public final class PBLogin {
       userName_ = value;
     }
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     private void clearUserName() {
@@ -3459,6 +3776,10 @@ public final class PBLogin {
       userName_ = getDefaultInstance().getUserName();
     }
     /**
+     * <pre>
+     *游戏唯一账号
+     * </pre>
+     *
      * <code>string userName = 1;</code>
      */
     private void setUserNameBytes(
@@ -3474,12 +3795,20 @@ public final class PBLogin {
     public static final int CHANNEL_FIELD_NUMBER = 2;
     private int channel_;
     /**
+     * <pre>
+     *渠道
+     * </pre>
+     *
      * <code>int32 channel = 2;</code>
      */
     public int getChannel() {
       return channel_;
     }
     /**
+     * <pre>
+     *渠道
+     * </pre>
+     *
      * <code>int32 channel = 2;</code>
      */
     private void setChannel(int value) {
@@ -3487,6 +3816,10 @@ public final class PBLogin {
       channel_ = value;
     }
     /**
+     * <pre>
+     *渠道
+     * </pre>
+     *
      * <code>int32 channel = 2;</code>
      */
     private void clearChannel() {
@@ -3497,12 +3830,20 @@ public final class PBLogin {
     public static final int SESSIONKEY_FIELD_NUMBER = 3;
     private java.lang.String sessionKey_;
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     public java.lang.String getSessionKey() {
       return sessionKey_;
     }
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     public com.google.protobuf.ByteString
@@ -3510,6 +3851,10 @@ public final class PBLogin {
       return com.google.protobuf.ByteString.copyFromUtf8(sessionKey_);
     }
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     private void setSessionKey(
@@ -3521,6 +3866,10 @@ public final class PBLogin {
       sessionKey_ = value;
     }
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     private void clearSessionKey() {
@@ -3528,6 +3877,10 @@ public final class PBLogin {
       sessionKey_ = getDefaultInstance().getSessionKey();
     }
     /**
+     * <pre>
+     *密匙
+     * </pre>
+     *
      * <code>string sessionKey = 3;</code>
      */
     private void setSessionKeyBytes(
@@ -3540,59 +3893,24 @@ public final class PBLogin {
       sessionKey_ = value.toStringUtf8();
     }
 
-    public static final int RECVSEQUENCENO_FIELD_NUMBER = 4;
-    private int recvSequenceNo_;
-    /**
-     * <pre>
-     *客户端收到的服务器流水号
-     * </pre>
-     *
-     * <code>int32 recvSequenceNo = 4;</code>
-     */
-    public int getRecvSequenceNo() {
-      return recvSequenceNo_;
-    }
-    /**
-     * <pre>
-     *客户端收到的服务器流水号
-     * </pre>
-     *
-     * <code>int32 recvSequenceNo = 4;</code>
-     */
-    private void setRecvSequenceNo(int value) {
-      
-      recvSequenceNo_ = value;
-    }
-    /**
-     * <pre>
-     *客户端收到的服务器流水号
-     * </pre>
-     *
-     * <code>int32 recvSequenceNo = 4;</code>
-     */
-    private void clearRecvSequenceNo() {
-      
-      recvSequenceNo_ = 0;
-    }
-
-    public static final int SERVERID_FIELD_NUMBER = 5;
+    public static final int SERVERID_FIELD_NUMBER = 4;
     private int serverId_;
     /**
      * <pre>
-     *登陆时所选游戏服id
+     *游戏服id
      * </pre>
      *
-     * <code>int32 serverId = 5;</code>
+     * <code>int32 serverId = 4;</code>
      */
     public int getServerId() {
       return serverId_;
     }
     /**
      * <pre>
-     *登陆时所选游戏服id
+     *游戏服id
      * </pre>
      *
-     * <code>int32 serverId = 5;</code>
+     * <code>int32 serverId = 4;</code>
      */
     private void setServerId(int value) {
       
@@ -3600,24 +3918,24 @@ public final class PBLogin {
     }
     /**
      * <pre>
-     *登陆时所选游戏服id
+     *游戏服id
      * </pre>
      *
-     * <code>int32 serverId = 5;</code>
+     * <code>int32 serverId = 4;</code>
      */
     private void clearServerId() {
       
       serverId_ = 0;
     }
 
-    public static final int VERSION_FIELD_NUMBER = 6;
+    public static final int VERSION_FIELD_NUMBER = 5;
     private java.lang.String version_;
     /**
      * <pre>
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     public java.lang.String getVersion() {
       return version_;
@@ -3627,7 +3945,7 @@ public final class PBLogin {
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     public com.google.protobuf.ByteString
         getVersionBytes() {
@@ -3638,7 +3956,7 @@ public final class PBLogin {
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     private void setVersion(
         java.lang.String value) {
@@ -3653,7 +3971,7 @@ public final class PBLogin {
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     private void clearVersion() {
       
@@ -3664,7 +3982,7 @@ public final class PBLogin {
      *版本号
      * </pre>
      *
-     * <code>string version = 6;</code>
+     * <code>string version = 5;</code>
      */
     private void setVersionBytes(
         com.google.protobuf.ByteString value) {
@@ -3674,6 +3992,142 @@ public final class PBLogin {
   checkByteStringIsUtf8(value);
       
       version_ = value.toStringUtf8();
+    }
+
+    public static final int LOGINSID_FIELD_NUMBER = 6;
+    private int loginSid_;
+    /**
+     * <pre>
+     *登录服id
+     * </pre>
+     *
+     * <code>int32 loginSid = 6;</code>
+     */
+    public int getLoginSid() {
+      return loginSid_;
+    }
+    /**
+     * <pre>
+     *登录服id
+     * </pre>
+     *
+     * <code>int32 loginSid = 6;</code>
+     */
+    private void setLoginSid(int value) {
+      
+      loginSid_ = value;
+    }
+    /**
+     * <pre>
+     *登录服id
+     * </pre>
+     *
+     * <code>int32 loginSid = 6;</code>
+     */
+    private void clearLoginSid() {
+      
+      loginSid_ = 0;
+    }
+
+    public static final int DEVICE_FIELD_NUMBER = 7;
+    private java.lang.String device_;
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    public java.lang.String getDevice() {
+      return device_;
+    }
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDeviceBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(device_);
+    }
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    private void setDevice(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      device_ = value;
+    }
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    private void clearDevice() {
+      
+      device_ = getDefaultInstance().getDevice();
+    }
+    /**
+     * <pre>
+     *设备码
+     * </pre>
+     *
+     * <code>string device = 7;</code>
+     */
+    private void setDeviceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      device_ = value.toStringUtf8();
+    }
+
+    public static final int AL_FIELD_NUMBER = 8;
+    private int al_;
+    /**
+     * <pre>
+     *纳入防沉迷标识0否1是
+     * </pre>
+     *
+     * <code>int32 al = 8;</code>
+     */
+    public int getAl() {
+      return al_;
+    }
+    /**
+     * <pre>
+     *纳入防沉迷标识0否1是
+     * </pre>
+     *
+     * <code>int32 al = 8;</code>
+     */
+    private void setAl(int value) {
+      
+      al_ = value;
+    }
+    /**
+     * <pre>
+     *纳入防沉迷标识0否1是
+     * </pre>
+     *
+     * <code>int32 al = 8;</code>
+     */
+    private void clearAl() {
+      
+      al_ = 0;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
@@ -3687,14 +4141,20 @@ public final class PBLogin {
       if (!sessionKey_.isEmpty()) {
         output.writeString(3, getSessionKey());
       }
-      if (recvSequenceNo_ != 0) {
-        output.writeInt32(4, recvSequenceNo_);
-      }
       if (serverId_ != 0) {
-        output.writeInt32(5, serverId_);
+        output.writeInt32(4, serverId_);
       }
       if (!version_.isEmpty()) {
-        output.writeString(6, getVersion());
+        output.writeString(5, getVersion());
+      }
+      if (loginSid_ != 0) {
+        output.writeInt32(6, loginSid_);
+      }
+      if (!device_.isEmpty()) {
+        output.writeString(7, getDevice());
+      }
+      if (al_ != 0) {
+        output.writeInt32(8, al_);
       }
       unknownFields.writeTo(output);
     }
@@ -3716,17 +4176,25 @@ public final class PBLogin {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(3, getSessionKey());
       }
-      if (recvSequenceNo_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, recvSequenceNo_);
-      }
       if (serverId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, serverId_);
+          .computeInt32Size(4, serverId_);
       }
       if (!version_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(6, getVersion());
+          .computeStringSize(5, getVersion());
+      }
+      if (loginSid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, loginSid_);
+      }
+      if (!device_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeStringSize(7, getDevice());
+      }
+      if (al_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, al_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -3833,12 +4301,20 @@ public final class PBLogin {
 
 
       /**
+       * <pre>
+       *游戏唯一账号
+       * </pre>
+       *
        * <code>string userName = 1;</code>
        */
       public java.lang.String getUserName() {
         return instance.getUserName();
       }
       /**
+       * <pre>
+       *游戏唯一账号
+       * </pre>
+       *
        * <code>string userName = 1;</code>
        */
       public com.google.protobuf.ByteString
@@ -3846,6 +4322,10 @@ public final class PBLogin {
         return instance.getUserNameBytes();
       }
       /**
+       * <pre>
+       *游戏唯一账号
+       * </pre>
+       *
        * <code>string userName = 1;</code>
        */
       public Builder setUserName(
@@ -3855,6 +4335,10 @@ public final class PBLogin {
         return this;
       }
       /**
+       * <pre>
+       *游戏唯一账号
+       * </pre>
+       *
        * <code>string userName = 1;</code>
        */
       public Builder clearUserName() {
@@ -3863,6 +4347,10 @@ public final class PBLogin {
         return this;
       }
       /**
+       * <pre>
+       *游戏唯一账号
+       * </pre>
+       *
        * <code>string userName = 1;</code>
        */
       public Builder setUserNameBytes(
@@ -3873,12 +4361,20 @@ public final class PBLogin {
       }
 
       /**
+       * <pre>
+       *渠道
+       * </pre>
+       *
        * <code>int32 channel = 2;</code>
        */
       public int getChannel() {
         return instance.getChannel();
       }
       /**
+       * <pre>
+       *渠道
+       * </pre>
+       *
        * <code>int32 channel = 2;</code>
        */
       public Builder setChannel(int value) {
@@ -3887,6 +4383,10 @@ public final class PBLogin {
         return this;
       }
       /**
+       * <pre>
+       *渠道
+       * </pre>
+       *
        * <code>int32 channel = 2;</code>
        */
       public Builder clearChannel() {
@@ -3896,12 +4396,20 @@ public final class PBLogin {
       }
 
       /**
+       * <pre>
+       *密匙
+       * </pre>
+       *
        * <code>string sessionKey = 3;</code>
        */
       public java.lang.String getSessionKey() {
         return instance.getSessionKey();
       }
       /**
+       * <pre>
+       *密匙
+       * </pre>
+       *
        * <code>string sessionKey = 3;</code>
        */
       public com.google.protobuf.ByteString
@@ -3909,6 +4417,10 @@ public final class PBLogin {
         return instance.getSessionKeyBytes();
       }
       /**
+       * <pre>
+       *密匙
+       * </pre>
+       *
        * <code>string sessionKey = 3;</code>
        */
       public Builder setSessionKey(
@@ -3918,6 +4430,10 @@ public final class PBLogin {
         return this;
       }
       /**
+       * <pre>
+       *密匙
+       * </pre>
+       *
        * <code>string sessionKey = 3;</code>
        */
       public Builder clearSessionKey() {
@@ -3926,6 +4442,10 @@ public final class PBLogin {
         return this;
       }
       /**
+       * <pre>
+       *密匙
+       * </pre>
+       *
        * <code>string sessionKey = 3;</code>
        */
       public Builder setSessionKeyBytes(
@@ -3937,55 +4457,20 @@ public final class PBLogin {
 
       /**
        * <pre>
-       *客户端收到的服务器流水号
+       *游戏服id
        * </pre>
        *
-       * <code>int32 recvSequenceNo = 4;</code>
-       */
-      public int getRecvSequenceNo() {
-        return instance.getRecvSequenceNo();
-      }
-      /**
-       * <pre>
-       *客户端收到的服务器流水号
-       * </pre>
-       *
-       * <code>int32 recvSequenceNo = 4;</code>
-       */
-      public Builder setRecvSequenceNo(int value) {
-        copyOnWrite();
-        instance.setRecvSequenceNo(value);
-        return this;
-      }
-      /**
-       * <pre>
-       *客户端收到的服务器流水号
-       * </pre>
-       *
-       * <code>int32 recvSequenceNo = 4;</code>
-       */
-      public Builder clearRecvSequenceNo() {
-        copyOnWrite();
-        instance.clearRecvSequenceNo();
-        return this;
-      }
-
-      /**
-       * <pre>
-       *登陆时所选游戏服id
-       * </pre>
-       *
-       * <code>int32 serverId = 5;</code>
+       * <code>int32 serverId = 4;</code>
        */
       public int getServerId() {
         return instance.getServerId();
       }
       /**
        * <pre>
-       *登陆时所选游戏服id
+       *游戏服id
        * </pre>
        *
-       * <code>int32 serverId = 5;</code>
+       * <code>int32 serverId = 4;</code>
        */
       public Builder setServerId(int value) {
         copyOnWrite();
@@ -3994,10 +4479,10 @@ public final class PBLogin {
       }
       /**
        * <pre>
-       *登陆时所选游戏服id
+       *游戏服id
        * </pre>
        *
-       * <code>int32 serverId = 5;</code>
+       * <code>int32 serverId = 4;</code>
        */
       public Builder clearServerId() {
         copyOnWrite();
@@ -4010,7 +4495,7 @@ public final class PBLogin {
        *版本号
        * </pre>
        *
-       * <code>string version = 6;</code>
+       * <code>string version = 5;</code>
        */
       public java.lang.String getVersion() {
         return instance.getVersion();
@@ -4020,7 +4505,7 @@ public final class PBLogin {
        *版本号
        * </pre>
        *
-       * <code>string version = 6;</code>
+       * <code>string version = 5;</code>
        */
       public com.google.protobuf.ByteString
           getVersionBytes() {
@@ -4031,7 +4516,7 @@ public final class PBLogin {
        *版本号
        * </pre>
        *
-       * <code>string version = 6;</code>
+       * <code>string version = 5;</code>
        */
       public Builder setVersion(
           java.lang.String value) {
@@ -4044,7 +4529,7 @@ public final class PBLogin {
        *版本号
        * </pre>
        *
-       * <code>string version = 6;</code>
+       * <code>string version = 5;</code>
        */
       public Builder clearVersion() {
         copyOnWrite();
@@ -4056,12 +4541,142 @@ public final class PBLogin {
        *版本号
        * </pre>
        *
-       * <code>string version = 6;</code>
+       * <code>string version = 5;</code>
        */
       public Builder setVersionBytes(
           com.google.protobuf.ByteString value) {
         copyOnWrite();
         instance.setVersionBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       *登录服id
+       * </pre>
+       *
+       * <code>int32 loginSid = 6;</code>
+       */
+      public int getLoginSid() {
+        return instance.getLoginSid();
+      }
+      /**
+       * <pre>
+       *登录服id
+       * </pre>
+       *
+       * <code>int32 loginSid = 6;</code>
+       */
+      public Builder setLoginSid(int value) {
+        copyOnWrite();
+        instance.setLoginSid(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *登录服id
+       * </pre>
+       *
+       * <code>int32 loginSid = 6;</code>
+       */
+      public Builder clearLoginSid() {
+        copyOnWrite();
+        instance.clearLoginSid();
+        return this;
+      }
+
+      /**
+       * <pre>
+       *设备码
+       * </pre>
+       *
+       * <code>string device = 7;</code>
+       */
+      public java.lang.String getDevice() {
+        return instance.getDevice();
+      }
+      /**
+       * <pre>
+       *设备码
+       * </pre>
+       *
+       * <code>string device = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDeviceBytes() {
+        return instance.getDeviceBytes();
+      }
+      /**
+       * <pre>
+       *设备码
+       * </pre>
+       *
+       * <code>string device = 7;</code>
+       */
+      public Builder setDevice(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setDevice(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *设备码
+       * </pre>
+       *
+       * <code>string device = 7;</code>
+       */
+      public Builder clearDevice() {
+        copyOnWrite();
+        instance.clearDevice();
+        return this;
+      }
+      /**
+       * <pre>
+       *设备码
+       * </pre>
+       *
+       * <code>string device = 7;</code>
+       */
+      public Builder setDeviceBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDeviceBytes(value);
+        return this;
+      }
+
+      /**
+       * <pre>
+       *纳入防沉迷标识0否1是
+       * </pre>
+       *
+       * <code>int32 al = 8;</code>
+       */
+      public int getAl() {
+        return instance.getAl();
+      }
+      /**
+       * <pre>
+       *纳入防沉迷标识0否1是
+       * </pre>
+       *
+       * <code>int32 al = 8;</code>
+       */
+      public Builder setAl(int value) {
+        copyOnWrite();
+        instance.setAl(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *纳入防沉迷标识0否1是
+       * </pre>
+       *
+       * <code>int32 al = 8;</code>
+       */
+      public Builder clearAl() {
+        copyOnWrite();
+        instance.clearAl();
         return this;
       }
 
@@ -4093,12 +4708,16 @@ public final class PBLogin {
               other.channel_ != 0, other.channel_);
           sessionKey_ = visitor.visitString(!sessionKey_.isEmpty(), sessionKey_,
               !other.sessionKey_.isEmpty(), other.sessionKey_);
-          recvSequenceNo_ = visitor.visitInt(recvSequenceNo_ != 0, recvSequenceNo_,
-              other.recvSequenceNo_ != 0, other.recvSequenceNo_);
           serverId_ = visitor.visitInt(serverId_ != 0, serverId_,
               other.serverId_ != 0, other.serverId_);
           version_ = visitor.visitString(!version_.isEmpty(), version_,
               !other.version_.isEmpty(), other.version_);
+          loginSid_ = visitor.visitInt(loginSid_ != 0, loginSid_,
+              other.loginSid_ != 0, other.loginSid_);
+          device_ = visitor.visitString(!device_.isEmpty(), device_,
+              !other.device_.isEmpty(), other.device_);
+          al_ = visitor.visitInt(al_ != 0, al_,
+              other.al_ != 0, other.al_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -4142,18 +4761,29 @@ public final class PBLogin {
                 }
                 case 32: {
 
-                  recvSequenceNo_ = input.readInt32();
-                  break;
-                }
-                case 40: {
-
                   serverId_ = input.readInt32();
                   break;
                 }
-                case 50: {
+                case 42: {
                   java.lang.String s = input.readStringRequireUtf8();
 
                   version_ = s;
+                  break;
+                }
+                case 48: {
+
+                  loginSid_ = input.readInt32();
+                  break;
+                }
+                case 58: {
+                  java.lang.String s = input.readStringRequireUtf8();
+
+                  device_ = s;
+                  break;
+                }
+                case 64: {
+
+                  al_ = input.readInt32();
                   break;
                 }
               }
@@ -4214,12 +4844,21 @@ public final class PBLogin {
 
     /**
      * <pre>
-     *服务器收到的客户端流水号
+     *是否进入创建角色环节, 0=否,1=是
      * </pre>
      *
-     * <code>int32 recvSequenceNo = 2;</code>
+     * <code>int32 status = 2;</code>
      */
-    int getRecvSequenceNo();
+    int getStatus();
+
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    long getTime();
   }
   /**
    * <pre>
@@ -4258,39 +4897,74 @@ public final class PBLogin {
       code_ = 0;
     }
 
-    public static final int RECVSEQUENCENO_FIELD_NUMBER = 2;
-    private int recvSequenceNo_;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private int status_;
     /**
      * <pre>
-     *服务器收到的客户端流水号
+     *是否进入创建角色环节, 0=否,1=是
      * </pre>
      *
-     * <code>int32 recvSequenceNo = 2;</code>
+     * <code>int32 status = 2;</code>
      */
-    public int getRecvSequenceNo() {
-      return recvSequenceNo_;
+    public int getStatus() {
+      return status_;
     }
     /**
      * <pre>
-     *服务器收到的客户端流水号
+     *是否进入创建角色环节, 0=否,1=是
      * </pre>
      *
-     * <code>int32 recvSequenceNo = 2;</code>
+     * <code>int32 status = 2;</code>
      */
-    private void setRecvSequenceNo(int value) {
+    private void setStatus(int value) {
       
-      recvSequenceNo_ = value;
+      status_ = value;
     }
     /**
      * <pre>
-     *服务器收到的客户端流水号
+     *是否进入创建角色环节, 0=否,1=是
      * </pre>
      *
-     * <code>int32 recvSequenceNo = 2;</code>
+     * <code>int32 status = 2;</code>
      */
-    private void clearRecvSequenceNo() {
+    private void clearStatus() {
       
-      recvSequenceNo_ = 0;
+      status_ = 0;
+    }
+
+    public static final int TIME_FIELD_NUMBER = 3;
+    private long time_;
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    private void setTime(long value) {
+      
+      time_ = value;
+    }
+    /**
+     * <pre>
+     *服务器时间戳
+     * </pre>
+     *
+     * <code>int64 time = 3;</code>
+     */
+    private void clearTime() {
+      
+      time_ = 0L;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
@@ -4298,8 +4972,11 @@ public final class PBLogin {
       if (code_ != 0) {
         output.writeInt32(1, code_);
       }
-      if (recvSequenceNo_ != 0) {
-        output.writeInt32(2, recvSequenceNo_);
+      if (status_ != 0) {
+        output.writeInt32(2, status_);
+      }
+      if (time_ != 0L) {
+        output.writeInt64(3, time_);
       }
       unknownFields.writeTo(output);
     }
@@ -4313,9 +4990,13 @@ public final class PBLogin {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, code_);
       }
-      if (recvSequenceNo_ != 0) {
+      if (status_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, recvSequenceNo_);
+          .computeInt32Size(2, status_);
+      }
+      if (time_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, time_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4446,36 +5127,71 @@ public final class PBLogin {
 
       /**
        * <pre>
-       *服务器收到的客户端流水号
+       *是否进入创建角色环节, 0=否,1=是
        * </pre>
        *
-       * <code>int32 recvSequenceNo = 2;</code>
+       * <code>int32 status = 2;</code>
        */
-      public int getRecvSequenceNo() {
-        return instance.getRecvSequenceNo();
+      public int getStatus() {
+        return instance.getStatus();
       }
       /**
        * <pre>
-       *服务器收到的客户端流水号
+       *是否进入创建角色环节, 0=否,1=是
        * </pre>
        *
-       * <code>int32 recvSequenceNo = 2;</code>
+       * <code>int32 status = 2;</code>
        */
-      public Builder setRecvSequenceNo(int value) {
+      public Builder setStatus(int value) {
         copyOnWrite();
-        instance.setRecvSequenceNo(value);
+        instance.setStatus(value);
         return this;
       }
       /**
        * <pre>
-       *服务器收到的客户端流水号
+       *是否进入创建角色环节, 0=否,1=是
        * </pre>
        *
-       * <code>int32 recvSequenceNo = 2;</code>
+       * <code>int32 status = 2;</code>
        */
-      public Builder clearRecvSequenceNo() {
+      public Builder clearStatus() {
         copyOnWrite();
-        instance.clearRecvSequenceNo();
+        instance.clearStatus();
+        return this;
+      }
+
+      /**
+       * <pre>
+       *服务器时间戳
+       * </pre>
+       *
+       * <code>int64 time = 3;</code>
+       */
+      public long getTime() {
+        return instance.getTime();
+      }
+      /**
+       * <pre>
+       *服务器时间戳
+       * </pre>
+       *
+       * <code>int64 time = 3;</code>
+       */
+      public Builder setTime(long value) {
+        copyOnWrite();
+        instance.setTime(value);
+        return this;
+      }
+      /**
+       * <pre>
+       *服务器时间戳
+       * </pre>
+       *
+       * <code>int64 time = 3;</code>
+       */
+      public Builder clearTime() {
+        copyOnWrite();
+        instance.clearTime();
         return this;
       }
 
@@ -4503,8 +5219,10 @@ public final class PBLogin {
           org.coral.server.game.data.proto.PBLogin.AckReLogin other = (org.coral.server.game.data.proto.PBLogin.AckReLogin) arg1;
           code_ = visitor.visitInt(code_ != 0, code_,
               other.code_ != 0, other.code_);
-          recvSequenceNo_ = visitor.visitInt(recvSequenceNo_ != 0, recvSequenceNo_,
-              other.recvSequenceNo_ != 0, other.recvSequenceNo_);
+          status_ = visitor.visitInt(status_ != 0, status_,
+              other.status_ != 0, other.status_);
+          time_ = visitor.visitLong(time_ != 0L, time_,
+              other.time_ != 0L, other.time_);
           if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
               .INSTANCE) {
           }
@@ -4536,7 +5254,12 @@ public final class PBLogin {
                 }
                 case 16: {
 
-                  recvSequenceNo_ = input.readInt32();
+                  status_ = input.readInt32();
+                  break;
+                }
+                case 24: {
+
+                  time_ = input.readInt64();
                   break;
                 }
               }

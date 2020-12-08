@@ -3,8 +3,9 @@ package org.coral.server;
 import java.util.Date;
 import java.util.List;
 
-import org.coral.orm.core.Processor;
+import org.coral.orm.core.ProcessorProxy;
 import org.coral.orm.core.base.BasePo;
+import org.coral.server.game.module.user.Stu;
 import org.coral.server.game.module.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +18,26 @@ import junit.framework.TestCase;
 @SpringBootTest
 public class DbTest extends TestCase{
 	
-	@Autowired private Processor processor;
+	@Autowired private ProcessorProxy processor;
 	
 	
 	@Test void contextLoads() {
-//		testInsert();
-		testSelect();
+		testInsert();
+//		testSelect();
 //		testSelect();
 //		testReplace();
 //		testUpdate();
 //		testInsertBatch();
+//		testInsertBatchDiff();
 //		delete();
 //		deleteBatch();
 //		deleteAll();
 //		testselectAll();
+		try {
+			Thread.sleep(25000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//测试插入
@@ -76,7 +83,7 @@ public class DbTest extends TestCase{
 	//测试批量插入
 	public void testInsertBatch() {
 		List<BasePo> list = Lists.newArrayList();
-		for (int i = 1000; i < 2000; i++) {
+		for (int i = 1; i < 10; i++) {
 			User user = new User();
 			user.setId(i);
 			user.setName("ccc");
@@ -84,6 +91,27 @@ public class DbTest extends TestCase{
 			user.setBirthday(new Date().toString());
 			list.add(user);
 		}
+		processor.insertBatch(list);
+	}
+	
+	//测试批量插入
+	public void testInsertBatchDiff() {
+		List<BasePo> list = Lists.newArrayList();
+		
+		Stu stu = new Stu();
+		stu.setId(1);
+		stu.setName("ccc");
+		stu.setAge(25);
+		stu.setBirthday(new Date().toString());
+		list.add(stu);
+		
+		User user = new User();
+		user.setId(1);
+		user.setName("ccc");
+		user.setAge(25);
+		user.setBirthday(new Date().toString());
+		list.add(user);
+		
 		processor.insertBatch(list);
 	}
 	
