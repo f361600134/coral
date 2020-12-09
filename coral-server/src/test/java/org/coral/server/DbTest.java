@@ -22,16 +22,16 @@ public class DbTest extends TestCase{
 	
 	
 	@Test void contextLoads() {
-		testInsert();
-//		testSelect();
-//		testSelect();
+//		testInsert();
+//		testSelectByKey();
+//		testSelectAll();
 //		testReplace();
 //		testUpdate();
 //		testInsertBatch();
 //		testInsertBatchDiff();
 //		delete();
 //		deleteBatch();
-//		deleteAll();
+		deleteAll();
 //		testselectAll();
 		try {
 			Thread.sleep(25000);
@@ -70,12 +70,12 @@ public class DbTest extends TestCase{
 		processor.update(user);
 	}
 	
-	public void testselectAll() {
+	public void testSelectAll() {
 		List<BasePo> users = (List<BasePo>) processor.selectAll(User.class);
 		System.out.println("users=============>"+users.size());
 	}
 	//测试查询
-	public void testSelect() {
+	public void testSelectByKey() {
 		User user = (User)processor.selectByPrimaryKey(User.class, 11);
 		System.out.println("user=============>"+user);
 	}

@@ -7,7 +7,7 @@ import org.coral.orm.core.base.BasePo;
 * UserPo
 * @author Jeremy
 */
-@PO(name = "User")
+@PO(name = "user")
 public abstract class UserPo extends BasePo {
 
 	public static final String PROP_ID = "id";
@@ -118,7 +118,7 @@ public abstract class UserPo extends BasePo {
 	@Override
 	public String keyColumn() {
 		// 第一主键的数据库列名
-		return indexs()[0];
+		return PROP_ID;
 	}
 	
 }

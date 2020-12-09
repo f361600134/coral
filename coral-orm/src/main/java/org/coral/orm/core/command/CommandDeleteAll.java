@@ -1,6 +1,5 @@
 package org.coral.orm.core.command;
 
-import org.coral.orm.core.command.AbsCommand.CommandType;
 import org.coral.orm.core.db.IDao;
 
 /**

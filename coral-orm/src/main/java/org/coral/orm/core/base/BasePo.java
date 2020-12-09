@@ -13,7 +13,8 @@ public abstract class BasePo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * primary key, 对应数据库的主键
+	 * primary key, 对应数据库的主键,唯一主键.可以为null.
+	 * 比如排行榜模块, 主键是复合主键.生成的唯一主键就为空
 	 * @return
 	 */
 	abstract public Object key();
@@ -31,7 +32,10 @@ public abstract class BasePo implements Serializable {
 	abstract public Object cacheId();
 	
 	/**
-	 * 索引列, 对应数据库的索引
+	 * 索引列, 对应数据库的索引,仅用于查询,删除
+	 * 索引列  = 主键 + 索引列.
+	 * 比如,排行榜表rank{serverId, rankType, playerId, value1, value2}
+	 * 服务器id,排行榜类型,playerId为复合主键.那么index就为这三个字段.删除数据就需要使用复合主键
 	 * @return
 	 */
 	abstract public String[] indexs();

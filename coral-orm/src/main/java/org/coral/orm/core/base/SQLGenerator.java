@@ -18,7 +18,7 @@ public class SQLGenerator {
 		return "SELECT * FROM ".concat(tbName).concat(";");
 	}
 
-	public static String select(String tbName, String[] idNames){
+	public static String select(String tbName, String ...idNames){
 		StringBuilder sb = new StringBuilder("SELECT * FROM `").append(tbName).append("` WHERE ");
 		sb.append(idNames[0]).append("=?");
 		for (int i = 1; i < idNames.length; i++) {

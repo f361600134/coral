@@ -1,5 +1,6 @@
 package org.coral.orm.core;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -108,21 +109,37 @@ public class ProcessorProxy implements InitializingBean{
 		syncQueue.add(CommandInsert.create(po, dao));
 	}
 	
+//	/**
+//	 * 批量添加
+//	 * @date 2020年6月30日
+//	 * @param basePos
+//	 */
+//	public void insertBatch(List<BasePo> basePos) {
+//		Iterator<BasePo> iter = basePos.iterator();
+//		BasePo po = iter.hasNext() ? iter.next() : null;
+//		if (po == null) {
+//			return;
+//		}
+//		String name = po.getClass().getSimpleName().toLowerCase();
+//		IDao dao = commonDaoMap.get(name);
+//		syncQueue.add(CommandInsertBatch.create(basePos, dao));
+//	}
+	
 	/**
 	 * 批量添加
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
 	public void insertBatch(List<BasePo> basePos) {
-		Iterator<BasePo> iter = basePos.iterator();
-		BasePo po = iter.hasNext() ? iter.next() : null;
-		if (po == null) {
-			return;
+		Map<String, List<BasePo>> map = splitData(basePos);
+		IDao dao = null;
+		for (String name : map.keySet()) {
+			dao = commonDaoMap.get(name);
+			dao.insertBatch(map.get(name));
 		}
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
-		syncQueue.add(CommandInsertBatch.create(po, dao));
+		map = null;
 	}
+	
 	
 	/**
 	 * 添加玩家信息
@@ -168,20 +185,56 @@ public class ProcessorProxy implements InitializingBean{
 		syncQueue.add(CommandDeleteAll.create(null, dao));
 	}
 	
+//	/**
+//	 * 添加玩家信息
+//	 * @date 2020年6月30日
+//	 * @param po
+//	 */
+//	public void deleteBatch(List<BasePo> basePos) {
+//		Iterator<BasePo> iter = basePos.iterator();
+//		BasePo po = iter.hasNext() ? iter.next() : null;
+//		if (po == null) {
+//			return;
+//		}
+//		String name = po.getClass().getSimpleName().toLowerCase();
+//		IDao dao = commonDaoMap.get(name);
+//		syncQueue.add(CommandDeleteBatch.create(basePos, dao));
+//	}
+	
 	/**
-	 * 添加玩家信息
+	 * 批量删除
 	 * @date 2020年6月30日
-	 * @param po
+	 * @param basePos
 	 */
 	public void deleteBatch(List<BasePo> basePos) {
-		Iterator<BasePo> iter = basePos.iterator();
-		BasePo po = iter.hasNext() ? iter.next() : null;
-		if (po == null) {
-			return;
+		Map<String, List<BasePo>> map = splitData(basePos);
+		IDao dao = null;
+		for (String name : map.keySet()) {
+			dao = commonDaoMap.get(name);
+			dao.deleteBatch(map.get(name));
 		}
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
-		syncQueue.add(CommandDeleteBatch.create(basePos, dao));
+		map = null;
+	}
+	
+	/**
+	 * 数据分类
+	 * @date 2020年8月5日
+	 * @param basePos
+	 * @return
+	 */
+	private Map<String, List<BasePo>> splitData(List<BasePo> basePos) {
+		//数据分类
+		Map<String, List<BasePo>> map = new HashMap<String, List<BasePo>>();
+		for (BasePo basePo : basePos) {
+			String name = basePo.getClass().getSimpleName().toLowerCase();
+			List<BasePo> list = map.get(name);
+			if (list == null) {
+				list = new ArrayList<BasePo>();
+				map.put(name, list);
+			}
+			list.add(basePo);
+		}
+		return map;
 	}
 	
 	

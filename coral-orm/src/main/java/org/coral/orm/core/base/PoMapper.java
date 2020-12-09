@@ -49,7 +49,7 @@ public class PoMapper {
 			this.selectAll = SQLGenerator.selectAll(tbName);
 			this.deleteAll = SQLGenerator.deleteAll(tbName);
 			this.selectByIndex = SQLGenerator.select(tbName, ins.indexs());
-			this.selectByKey = SQLGenerator.select(tbName, new String[] {ins.key().toString()});
+			this.selectByKey = SQLGenerator.select(tbName, ins.keyColumn());
 			this.delete = SQLGenerator.delete(tbName, ins.indexs());
 			this.update = SQLGenerator.update(tbName, ins.props(), ins.indexs());
 			this.insert = SQLGenerator.insert(tbName, ins.props());
