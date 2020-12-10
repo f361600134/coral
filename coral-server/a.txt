@@ -1,0 +1,32 @@
+Attaching to process ID 12632, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 25.171-b11
+Deadlock Detection:
+
+No deadlocks found.
+
+Thread 17: (state = BLOCKED)
+
+
+Thread 16: (state = BLOCKED)
+
+
+Thread 15: (state = BLOCKED)
+ - java.lang.Object.wait(long) @bci=0 (Interpreted frame)
+ - java.lang.ref.ReferenceQueue.remove(long) @bci=59 (Interpreted frame)
+ - java.lang.ref.ReferenceQueue.remove() @bci=2 (Interpreted frame)
+ - java.lang.ref.Finalizer$FinalizerThread.run() @bci=36 (Interpreted frame)
+
+
+Thread 14: (state = BLOCKED)
+ - java.lang.Object.wait(long) @bci=0 (Interpreted frame)
+ - java.lang.Object.wait() @bci=2 (Interpreted frame)
+ - java.lang.ref.Reference.tryHandlePending(boolean) @bci=54 (Interpreted frame)
+ - java.lang.ref.Reference$ReferenceHandler.run() @bci=1 (Interpreted frame)
+
+
+Thread 4: (state = BLOCKED)
+ - org.coral.server.localvarGc.DumpOOM.main(java.lang.String[]) @bci=16, line=9 (Interpreted frame)
+
+
