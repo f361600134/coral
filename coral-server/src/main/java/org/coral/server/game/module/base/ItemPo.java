@@ -7,7 +7,7 @@ import org.coral.orm.core.base.BasePo;
 * ItemPo
 * @author Jeremy
 */
-@PO(name = "k_Item")
+@PO(name = "item")
 public abstract class ItemPo extends BasePo {
 
 	public static final String PROP_PLAYERID = "playerId";
@@ -116,14 +116,14 @@ public abstract class ItemPo extends BasePo {
 	@Override
 	public String[] indexs() {
 		return new String[] {
-			"`ItemId`",
+			PROP_PLAYERID,
 		};
 	}
 	
 	@Override
 	public Object[] indexValues() {
 		return new Object[] {
-			itemId,
+			getPlayerId(),
 		};
 	}
 	
@@ -144,7 +144,7 @@ public abstract class ItemPo extends BasePo {
 	@Override
 	public String keyColumn() {
 		// 第一主键的数据库列名
-		return indexs()[0];
+		return PROP_ITEMID;
 	}
 	
 }

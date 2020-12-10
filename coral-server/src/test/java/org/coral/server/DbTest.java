@@ -1,10 +1,13 @@
 package org.coral.server;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import org.coral.orm.core.ProcessorProxy;
 import org.coral.orm.core.base.BasePo;
+import org.coral.server.game.module.base.ItemPo;
+import org.coral.server.game.module.item.domain.Item;
 import org.coral.server.game.module.user.Stu;
 import org.coral.server.game.module.user.User;
 import org.junit.jupiter.api.Test;
@@ -22,8 +25,9 @@ public class DbTest extends TestCase{
 	
 	
 	@Test void contextLoads() {
-		testInsert();
-//		testSelect();
+//		testInsert();
+//		selectByPrimaryKey();
+		testSelectByIndex();
 //		testSelect();
 //		testReplace();
 //		testUpdate();
@@ -75,9 +79,15 @@ public class DbTest extends TestCase{
 		System.out.println("users=============>"+users.size());
 	}
 	//测试查询
-	public void testSelect() {
+	public void selectByPrimaryKey() {
 		User user = (User)processor.selectByPrimaryKey(User.class, 11);
 		System.out.println("user=============>"+user);
+	}
+	
+	//测试查询
+	public void testSelectByIndex() {
+		Collection<BasePo> item = processor.selectByIndex(Item.class, new Object[]{Item.PROP_PLAYERID}, new Object[] {1});
+		System.out.println("user=============>"+item);
 	}
 	
 	//测试批量插入

@@ -5,10 +5,12 @@ import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.module.base.ItemPo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 /**
 * @author Jeremy
 */
+@Repository
 public class Item extends ItemPo implements IItem{
 	private final static Logger log = LoggerFactory.getLogger(Item.class);
 
