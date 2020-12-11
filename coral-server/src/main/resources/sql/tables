@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `item`;
+CREATE TABLE `item` (
+  `playerId` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '玩家ID',
+  `itemId` bigint(20) unsigned NOT NULL COMMENT '道具唯一id',
+  `configId` int(11) NOT NULL COMMENT '道具配置id',
+  `count` int(11) NOT NULL COMMENT '物品数量',
+  `recieveTime` int(11) NOT NULL COMMENT '获得时间',
+  PRIMARY KEY (`itemId`),
+  KEY `player_item` (`playerId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

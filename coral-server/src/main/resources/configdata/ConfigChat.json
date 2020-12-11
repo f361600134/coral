@@ -1,0 +1,7 @@
+[
+{ "ID":1, "channelName":"同省", "unlockLevel":35, "speakNeedLevel":35, "interval":3, "speakLimitTime":15, "cacheNum":30, "broadcastIntervalTime":5, "defaultBroadcastNum":10 },
+{ "ID":2, "channelName":"跨服", "unlockLevel":50, "speakNeedLevel":50, "interval":3, "speakLimitTime":30, "cacheNum":30, "broadcastIntervalTime":5, "defaultBroadcastNum":10 },
+{ "ID":3, "channelName":"世界", "unlockLevel":1, "speakNeedLevel":20, "interval":3, "speakLimitTime":30, "cacheNum":30, "broadcastIntervalTime":5, "defaultBroadcastNum":10 },
+{ "ID":4, "channelName":"公会", "unlockLevel":1, "speakNeedLevel":1, "interval":3, "speakLimitTime":15, "cacheNum":30, "broadcastIntervalTime":5, "defaultBroadcastNum":5 },
+{ "ID":5, "channelName":"私聊", "unlockLevel":1, "speakNeedLevel":1, "interval":3, "speakLimitTime":15, "cacheNum":30, "broadcastIntervalTime":0, "defaultBroadcastNum":0 },
+{ "ID":6, "channelName":"系统", "unlockLevel":1, "speakNeedLevel":1, "interval":1, "speakLimitTime":1, "cacheNum":30, "broadcastIntervalTime":0, "defaultBroadcastNum":0 }]

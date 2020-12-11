@@ -257,7 +257,7 @@ public class ProcessorProxy implements InitializingBean{
 					executor = syncQueue.poll();
 				}
 			}
-		}, 1, 3, TimeUnit.SECONDS);
+		}, 1, 1, TimeUnit.MINUTES);
 		
 		commonDaoMap = new HashMap<String, IDao>();
 		if (ormConfig.isEnable()) {//开启缓存, 使用代理

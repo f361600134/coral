@@ -48,11 +48,16 @@ public class CommonDao implements IDao{
 		return (BasePo)jdbcTemplate.queryForObject(poMapper.selectByKey, new BeanPropertyRowMapper(poMapper.cls), value);
 	}
 
+	/**
+	 * 
+	* TODO 该方法的实现功能
+	* props 暂时没用上，考虑索引组合使用，生成sql
+	 */
 	@Override
 	public Collection<BasePo> selectByIndex(Object[] props, Object[] value) {
 		log.info("select sql:{}, objs:{}, cls:{}", poMapper.selectByIndex, props, poMapper.cls);
 		//return (BasePo) jdbcTemplate.queryForObject(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
-		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
+		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), value);
 	}
 	
 	/**

@@ -55,7 +55,7 @@ public class ItemService {
 //	public ItemBag getItems(long playerId) {
 //		ItemBag itemBag = PLAYER_BAGS.get(playerId);
 //		if (itemBag == null) {
-//			process.select(Item.class, new Object[] {playerId});
+//			process.selectByIndex(Item.class, new Object[] {playerId});
 //			List<Item> items = Item.load(Item.class, "playerId", playerId);
 ////			List<Item> items = initItemsList(itemDAO.getBagByPlayer(playerId));
 //			itemBag = new ItemBag();
