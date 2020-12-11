@@ -246,7 +246,7 @@ public class ProcessorProxy implements InitializingBean{
 			@Override
 			public void run() {
 				Executable<?> executor = syncQueue.poll();
-				log.error("start to executor:{}", executor);
+				//log.error("start to executor:{}", executor);
 				while (executor != null) {
 					try {
 						executor.execute();
