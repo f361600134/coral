@@ -9,8 +9,8 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>coral-orm</module>
-		<module>coral-server</module>
 		<module>coral-net</module>
+		<module>coral-server</module>
 	</modules>
 
 	<dependencyManagement>

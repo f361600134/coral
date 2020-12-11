@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.coral.orm.core.ProcessorProxy;
 import org.coral.orm.core.base.BasePo;
-import org.coral.server.game.module.base.ItemPo;
 import org.coral.server.game.module.item.domain.Item;
 import org.coral.server.game.module.user.Stu;
 import org.coral.server.game.module.user.User;
@@ -19,7 +18,7 @@ import com.google.common.collect.Lists;
 import junit.framework.TestCase;
 
 @SpringBootTest
-public class DbTest extends TestCase{
+public class DbTest extends TestCase{ 
 	
 	@Autowired private ProcessorProxy processor;
 	
@@ -81,13 +80,13 @@ public class DbTest extends TestCase{
 		System.out.println("users=============>"+users.size());
 	}
 	//测试查询
-	public void testSelectByKey() {
+	public void selectByPrimaryKey() {
 		User user = (User)processor.selectByPrimaryKey(User.class, 11);
 		System.out.println("user=============>"+user);
 	}
 	
 	//测试查询
-	public void selectByPrimaryKey() {
+	public void testSelectByIndex() {
 		Collection<BasePo> item = processor.selectByIndex(Item.class, new Object[]{Item.PROP_PLAYERID}, new Object[] {1});
 		System.out.println("user=============>"+item);
 	}
