@@ -35,8 +35,6 @@ public class TaskExecutePool {
 		executor.setThreadNamePrefix("Executor-Service-");
 		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
 		executor.initialize();
-		
-//		executor.getThreadPoolExecutor().getQueue().p
 		return executor;
 	}
 

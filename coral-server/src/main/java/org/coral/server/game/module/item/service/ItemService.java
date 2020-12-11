@@ -1,33 +1,16 @@
 package org.coral.server.game.module.item.service;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.coral.orm.core.Processor;
-import org.coral.server.game.data.proto.PBBag;
-import org.coral.server.game.helper.log.NatureEnum;
-import org.coral.server.game.helper.result.ConfigTipsMgr;
-import org.coral.server.game.module.item.domain.IItem;
+import org.coral.orm.core.DataProcessor;
+import org.coral.orm.core.DataProcessorAsyn;
 import org.coral.server.game.module.item.domain.Item;
 import org.coral.server.game.module.item.domain.ItemBag;
-import org.coral.server.game.module.item.proto.AckBagListResp;
-import org.coral.server.game.module.item.proto.AckDeleteBagResp;
-import org.coral.server.game.module.item.proto.AckQuickSellItemEquipResp;
-import org.coral.server.game.module.item.proto.AckRewardsResp;
-import org.coral.server.game.module.item.proto.AckUpdateBagResp;
-import org.coral.server.game.module.player.helper.PlayerHelper;
-import org.coral.server.utils.CollectionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * 道具服务
@@ -39,7 +22,7 @@ public class ItemService {
 	
 //	private static final Logger log = LoggerFactory.getLogger(ItemService.class);
 //	
-//	@Autowired private Processor process;
+//	@Autowired private ProcessorProxy process;
 //	
 //	/**玩家背包缓存*/
 //	private final static Map<Long, ItemBag> PLAYER_BAGS = new ConcurrentHashMap<Long, ItemBag>();

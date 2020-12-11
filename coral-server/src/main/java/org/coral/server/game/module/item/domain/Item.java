@@ -1,6 +1,6 @@
 package org.coral.server.game.module.item.domain;
 
-import org.coral.orm.core.ProcessorProxy;
+import org.coral.orm.core.DataProcessorAsyn;
 import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.module.base.ItemPo;
 import org.slf4j.Logger;
@@ -12,6 +12,10 @@ import org.springframework.stereotype.Repository;
 */
 @Repository
 public class Item extends ItemPo implements IItem{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9085231092692832763L;
 	private final static Logger log = LoggerFactory.getLogger(Item.class);
 
 	public Item() {
@@ -59,20 +63,20 @@ public class Item extends ItemPo implements IItem{
 
 	@Override
 	public void save0() {
-		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
-		processorProxy.insert(this);
+//		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
+//		processorProxy.insert(this);
 	}
 
 	@Override
 	public void update0() {
-		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
-		processorProxy.update(this);
+//		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
+//		processorProxy.update(this);
 	}
 
 	@Override
 	public void remove0() {
-		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
-		processorProxy.delete(this);
+//		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
+//		processorProxy.delete(this);
 	}
 
 }

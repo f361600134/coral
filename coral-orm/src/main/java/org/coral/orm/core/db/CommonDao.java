@@ -30,10 +30,12 @@ public class CommonDao implements IDao{
 	* TODO 该方法的实现功能
 	* @see org.coral.orm.core.db.IDao#selectAll()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<BasePo> selectAll() {
+		log.debug("selectAll sql:{}", poMapper.selectAll);
+		@SuppressWarnings("rawtypes")
 		List<BasePo> basePoList = jdbcTemplate.query(poMapper.selectAll, new BeanPropertyRowMapper(poMapper.cls));
-		log.debug("select sql:{}", poMapper.selectAll);
 		return basePoList;
 	}
 	
@@ -42,10 +44,20 @@ public class CommonDao implements IDao{
 	 * @date 2020年6月29日
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public BasePo selectByKey(Object value) {
-		log.info("select sql:{}, objs:{}, cls:{}", poMapper.selectByKey, value, poMapper.cls);
-		return (BasePo)jdbcTemplate.queryForObject(poMapper.selectByKey, new BeanPropertyRowMapper(poMapper.cls), value);
+		log.debug("select sql:{}, objs:{}, cls:{}", poMapper.selectByKey, value, poMapper.cls);
+		
+		@SuppressWarnings("rawtypes")
+		List<BasePo> basePoList = jdbcTemplate.query(poMapper.selectByKey, new BeanPropertyRowMapper(poMapper.cls), value);
+		if (basePoList.size() > 1) {
+			log.error("Multiple pieces of data correspond to one primary key.cls:{}, sql:{},", poMapper.cls, poMapper.selectByKey);
+		}
+		if (basePoList.size() == 0) {
+			return null;
+		}
+		return basePoList.get(0) ;
 	}
 
 	/**
@@ -53,9 +65,10 @@ public class CommonDao implements IDao{
 	* TODO 该方法的实现功能
 	* props 暂时没用上，考虑索引组合使用，生成sql
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Collection<BasePo> selectByIndex(Object[] props, Object[] value) {
-		log.info("select sql:{}, objs:{}, cls:{}", poMapper.selectByIndex, props, poMapper.cls);
+		log.debug("select sql:{}, objs:{}, cls:{}", poMapper.selectByIndex, props, poMapper.cls);
 		//return (BasePo) jdbcTemplate.queryForObject(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
 		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), value);
 	}

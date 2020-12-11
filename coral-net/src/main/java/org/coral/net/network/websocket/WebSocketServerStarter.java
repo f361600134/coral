@@ -70,7 +70,7 @@ public class WebSocketServerStarter extends AbstractServer {
 		DefaultThreadFactory bossTf = new DefaultThreadFactory("WEBSOCKET_SERVER_BOSS");
 		bossGroup = new NioEventLoopGroup(1, bossTf);
 		int threadCount = Runtime.getRuntime().availableProcessors() * 2; // CPU核数 * 2
-		threadCount = 1;//先默认使用1个线程
+		threadCount = 1;
 		DefaultThreadFactory workerTf = new DefaultThreadFactory("WEBSOCKET_SERVER_WORKER");
 		workerGroup = new NioEventLoopGroup(threadCount, workerTf);
 

@@ -6,8 +6,7 @@ public class CalTask implements Callable<String>{
 
 	@Override
 	public String call() throws Exception {
-//		return Thread.currentThread().getName() + ": hello!";
-		return null;
+		return Thread.currentThread().getName() + ": hello!";
 	}
 
 }

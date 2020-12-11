@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
-import org.coral.orm.core.Processor;
+import org.coral.orm.core.DataProcessor;
 import org.coral.server.core.event.GameEventBus;
 import org.coral.server.game.data.proto.PBLogin.ReqLogin;
 import org.coral.server.game.helper.PropertiesType;
@@ -29,7 +29,7 @@ public class PlayerService implements IPlayerService{
 	
 	private static final Logger logger = LogManager.getLogger(PlayerService.class);
 	
-	@Autowired private Processor process;
+//	@Autowired private Processor process;
 	
 	/**
 	 * key: 玩家id
@@ -108,8 +108,9 @@ public class PlayerService implements IPlayerService{
 	private Player loadPlayer(String username, int initServerId) {
 		Object[] props = new Object[] {Player.PROP_ACCOUNTNAME, Player.PROP_INITSERVERID};
 		Object[] objs = new Object[] {username, initServerId};
-		Player player = (Player)process.selectByIndex(Player.class, props, objs);
-		return player;
+//		Player player = (Player)process.selectByIndex(Player.class, props, objs);
+//		return player;
+		return null;
 	}
 	
 	/**
@@ -132,7 +133,7 @@ public class PlayerService implements IPlayerService{
 		final PlayerContext playerContext = getPlayerContext(playerId);
 		final Player player = playerContext.getPlayer();
 		PropertiesType.getType(configId).add(player, added);
-		process.update(player);
+//		process.update(player);
 	}
 	
 	/**
