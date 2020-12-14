@@ -10,7 +10,6 @@ import org.coral.server.game.helper.result.ConfigTipsMgr;
 import org.coral.server.game.module.chat.domain.Chat;
 import org.coral.server.game.module.chat.domain.ChatDomain;
 import org.coral.server.game.module.chat.service.ChatServicePlus;
-import org.coral.server.game.module.chat.service.IChatChannel;
 import org.coral.server.game.module.player.domain.Player;
 import org.coral.server.game.module.player.domain.PlayerContext;
 import org.coral.server.game.module.player.service.IPlayerService;
@@ -258,14 +257,6 @@ public enum ChatEnum {
 		domain.addChat(chat, true);
 	}
 
-	public IChatChannel newChannel() {
-		return null;
-	}
-	
-	public IChatChannel getChannel(Long playerId) {
-		return null;
-	}
-	
 	/**
 	 * 获取聊天枚举
 	 * @param ch 频道

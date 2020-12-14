@@ -3,9 +3,6 @@ package org.coral.server.game.module.chat.domain;
 import java.util.Collection;
 import java.util.Map;
 
-import org.coral.server.game.module.chat.assist.ChatEnum;
-import org.coral.server.game.module.chat.service.IChatChannel;
-
 import com.google.common.collect.Maps;
 
 /**
@@ -18,8 +15,6 @@ public class ChatDomainGroup {
 	private int channelType;
 	
 	private Map<Long, ChatDomain> chatDomainMap;
-	
-	private Map<Long, IChatChannel> chatChannelMap;
 	
 	public ChatDomainGroup(int channelType) {
 		this.channelType = channelType;
@@ -60,19 +55,4 @@ public class ChatDomainGroup {
 		return chatDomainMap.values();
 	}
 	
-	/**
-	 * 获取或创建domain
-	 * @param domainId
-	 * @return
-	 */
-	public IChatChannel getOrCreateChannel(long domainId) {
-		IChatChannel channel = chatChannelMap.get(domainId);
-		if (channel == null) {
-			channel = ChatEnum.getEnum(channelType).newChannel();
-			chatChannelMap.put(domainId, channel);
-		}
-		return channel;
-	}
-	
-
 }

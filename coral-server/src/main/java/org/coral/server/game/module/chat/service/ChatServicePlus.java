@@ -78,17 +78,6 @@ public class ChatServicePlus {
 		return domainGroup;
 	}
 	
-	/**
-	 * 获取聊天域, 对于家族聊天不同家族不同聊天域,domainId为家族id作为区分, 对于世界等只有一个聊天域,domainId可以设置为频道号
-	 * @param channelType
-	 * @param domainId
-	 * @return
-	 */
-	public IChatChannel getOrCreateChannel(int channelType, long domainId) {
-		ChatDomainGroup domainGroup = getOrCreateDomainGroup(channelType);
-		return domainGroup.getOrCreateChannel(domainId);
-	}
-	
 	////////////////业务/////////////////////////
 	
 	/**
@@ -214,60 +203,6 @@ public class ChatServicePlus {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	/**
-	 * 聊天业务逻辑入口
-	 * 新增聊天添加到聊天域, 不实时更新, 定时推送到前端
-	 */
-	public int chat2(ReqChat data, long playerId) {
-		int channelId = data.getChatChannel();
-		String content = data.getContent();
-		long recvId = data.getPlayerId();
-		
-		List<Object> retList = checkContent(content);
-		int code = (int)retList.get(0);
-		if (code != 0) {//校验文本
-			return code;
-		}
-		//使用过滤后的文本
-		content = retList.get(1).toString();
-
-		PlayerContext context = playerService.getPlayerContext(playerId);
-		final Player player = context.getPlayer();
-		ChatRule rule = context.getChatRule(channelId);
-		long curTime = System.currentTimeMillis();
-		if (curTime < rule.getNextSpeakTime() && rule.isAgainst()) { //聊天过快
-			//提示玩家剩余x秒后可以聊天, 不允许其聊天
-			int lessTime = (int)((rule.getNextSpeakTime() - curTime)/1000);
-			AckTipsResp resp = AckTipsResp.newInstance();
-			resp.setTipsId(ConfigTipsMgr.Chat_417).addParams(lessTime);
-//			SendMessageUtil.sendResponse(playerId, resp);
-			PlayerHelper.sendMessage(playerId, resp);
-			return ConfigTipsMgr.Chat_411;
-		}
-		//提示聊天过快, 但依旧允许其聊天
-		if (curTime < rule.getNextSpeakTime()) { 
-			//玩家频繁违法
-			rule.onTrigger();
-			AckTipsResp resp = AckTipsResp.newInstance().setTipsId(ConfigTipsMgr.Chat_411);
-			PlayerHelper.sendMessage(playerId, resp);
-		}
-		
-		ChatEnum chatEnum = ChatEnum.getEnum(channelId);
-		if (chatEnum == null) {
-			return ConfigTipsMgr.Chat_410;	//不存在该频道
-		}
-		final Chat chat = Chat.create(player.getPlayerId(), content, channelId, recvId);
-		
-		IChatChannel channel = chatEnum.getChannel(player.getPlayerId());
-		code = channel.check(player, chat);
-		if (code != 0) {
-			return code; 
-		}
-		channel.addChat(chat);
-		rule.onChatSuccess();
-		return 0;
 	}
 	
 	/**
