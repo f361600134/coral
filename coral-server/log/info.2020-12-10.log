@@ -1,0 +1,180 @@
+2020-12-10 23:47:52.104 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 9800 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:47:52.106 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:47:54.552 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:47:56.251 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:47:56.568 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [22] milliseconds.
+2020-12-10 23:47:57.499 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xd483a8a6] REGISTERED
+2020-12-10 23:47:57.503 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xd483a8a6] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:47:57.504 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:47:57.506 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xd483a8a6, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:47:57.509 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc01d326a] REGISTERED
+2020-12-10 23:47:57.510 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc01d326a] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:47:57.510 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc01d326a, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:47:57.510 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:47:57.517 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:47:57.541 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:47:59.593 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:47:59.725 [main] INFO  org.coral.server.DbTest - Started DbTest in 8.264 seconds (JVM running for 10.091)
+2020-12-10 23:48:00.268 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2020-12-10 23:48:00.268 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:48:00.268 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:48:00.295 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-10 23:48:18.633 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 13860 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:48:18.636 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:48:21.602 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:48:23.348 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:48:33.774 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [19] milliseconds.
+2020-12-10 23:48:34.717 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc3690bf0] REGISTERED
+2020-12-10 23:48:34.723 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc3690bf0] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:48:34.726 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:48:34.729 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc3690bf0, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:48:34.735 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x8dcb2d85] REGISTERED
+2020-12-10 23:48:34.735 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x8dcb2d85] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:48:34.736 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x8dcb2d85, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:48:34.736 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:48:34.748 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:48:34.784 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:48:37.502 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:48:37.671 [main] INFO  org.coral.server.DbTest - Started DbTest in 19.825 seconds (JVM running for 22.434)
+2020-12-10 23:49:30.944 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 8968 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:49:30.946 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:49:34.383 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:49:36.040 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:49:36.358 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [25] milliseconds.
+2020-12-10 23:49:37.239 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x4c88b082] REGISTERED
+2020-12-10 23:49:37.245 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x4c88b082] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:49:37.249 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:49:37.252 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x4c88b082, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:49:37.257 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe78102bc] REGISTERED
+2020-12-10 23:49:37.258 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe78102bc] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:49:37.258 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe78102bc, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:49:37.259 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:49:37.268 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:49:37.305 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:49:39.973 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:49:40.143 [main] INFO  org.coral.server.DbTest - Started DbTest in 9.984 seconds (JVM running for 12.483)
+2020-12-10 23:49:44.367 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2020-12-10 23:49:44.369 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:49:44.369 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:49:44.403 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-10 23:50:18.749 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 13836 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:50:18.750 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:50:22.288 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:50:23.990 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:50:24.345 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [24] milliseconds.
+2020-12-10 23:50:25.566 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x16d54798] REGISTERED
+2020-12-10 23:50:25.573 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x16d54798] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:50:25.576 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:50:25.580 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x16d54798, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:50:25.598 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x02259913] REGISTERED
+2020-12-10 23:50:25.600 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x02259913] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:50:25.603 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x02259913, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:50:25.607 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:50:25.626 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:50:25.668 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:50:28.504 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:50:28.667 [main] INFO  org.coral.server.DbTest - Started DbTest in 10.733 seconds (JVM running for 13.143)
+2020-12-10 23:51:47.143 [main] INFO  org.coral.server.App - Starting App on DESKTOP-IDPUN0O with PID 13948 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:51:47.146 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-12-10 23:51:57.356 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 14112 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:51:57.358 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:52:00.805 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:52:02.467 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:52:02.786 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [24] milliseconds.
+2020-12-10 23:52:03.717 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3382ce94] REGISTERED
+2020-12-10 23:52:03.723 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3382ce94] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:52:03.726 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:52:03.729 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3382ce94, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:52:03.735 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x694debec] REGISTERED
+2020-12-10 23:52:03.736 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x694debec] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:52:03.737 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x694debec, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:52:03.737 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:52:03.747 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:52:03.789 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:52:06.444 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:52:06.620 [main] INFO  org.coral.server.DbTest - Started DbTest in 10.072 seconds (JVM running for 12.488)
+2020-12-10 23:52:13.577 [main] INFO  org.coral.orm.core.db.CommonDao - select sql:SELECT * FROM `item` WHERE playerId=?, objs:[playerId], cls:class org.coral.server.game.module.item.domain.Item$$EnhancerBySpringCGLIB$$ef475956
+2020-12-10 23:53:13.874 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 12456 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:53:13.875 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:53:16.074 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:53:17.599 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:53:17.820 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [20] milliseconds.
+2020-12-10 23:53:18.557 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x24ae0af2] REGISTERED
+2020-12-10 23:53:18.561 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x24ae0af2] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:53:18.562 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:53:18.564 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x24ae0af2, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:53:18.568 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x7e2a582f] REGISTERED
+2020-12-10 23:53:18.568 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x7e2a582f] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:53:18.570 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x7e2a582f, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:53:18.570 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:53:18.578 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:53:18.600 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:53:20.773 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:53:20.904 [main] INFO  org.coral.server.DbTest - Started DbTest in 7.562 seconds (JVM running for 9.037)
+2020-12-10 23:53:21.294 [main] INFO  org.coral.orm.core.db.CommonDao - select sql:SELECT * FROM `item` WHERE playerId=?, objs:[playerId], cls:class org.coral.server.game.module.item.domain.Item$$EnhancerBySpringCGLIB$$73a0a764
+2020-12-10 23:53:21.654 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2020-12-10 23:53:21.655 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:53:21.655 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:53:21.680 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-10 23:53:35.251 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 1372 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:53:35.253 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:53:38.368 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:53:40.051 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:53:40.379 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [21] milliseconds.
+2020-12-10 23:53:41.332 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3a360f90] REGISTERED
+2020-12-10 23:53:41.337 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3a360f90] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:53:41.339 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:53:41.342 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3a360f90, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:53:41.346 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc016fed8] REGISTERED
+2020-12-10 23:53:41.346 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc016fed8] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:53:41.347 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc016fed8, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:53:41.347 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:53:41.356 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:53:41.385 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:53:44.297 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:53:44.460 [main] INFO  org.coral.server.DbTest - Started DbTest in 10.248 seconds (JVM running for 12.618)
+2020-12-10 23:53:52.599 [main] INFO  org.coral.orm.core.db.CommonDao - select sql:SELECT * FROM `item` WHERE playerId=?, objs:[playerId], cls:class org.coral.server.game.module.item.domain.Item$$EnhancerBySpringCGLIB$$8e0cd026
+2020-12-10 23:54:17.951 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2020-12-10 23:54:17.952 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:54:17.953 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:54:17.988 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-10 23:55:31.529 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 2828 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:55:31.530 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:55:33.774 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:55:34.569 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:55:34.820 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [20] milliseconds.
+2020-12-10 23:55:35.519 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc84c574c] REGISTERED
+2020-12-10 23:55:35.523 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc84c574c] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:55:35.524 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:55:35.526 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc84c574c, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:55:35.530 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x02f9af13] REGISTERED
+2020-12-10 23:55:35.530 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x02f9af13] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:55:35.531 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x02f9af13, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:55:35.531 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:55:35.537 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:55:35.553 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:55:37.582 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:55:37.716 [main] INFO  org.coral.server.DbTest - Started DbTest in 6.794 seconds (JVM running for 8.281)
+2020-12-10 23:55:38.080 [main] INFO  org.coral.orm.core.db.CommonDao - select sql:SELECT * FROM `item` WHERE playerId=?, objs:[playerId], cls:class org.coral.server.game.module.item.domain.Item$$EnhancerBySpringCGLIB$$f674909a
+2020-12-10 23:55:38.315 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2020-12-10 23:55:38.316 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:55:38.317 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2020-12-10 23:55:38.341 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-12-10 23:57:41.881 [main] INFO  org.coral.server.DbTest - Starting DbTest on DESKTOP-IDPUN0O with PID 13848 (started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-10 23:57:41.882 [main] INFO  org.coral.server.DbTest - The following profiles are active: dev
+2020-12-10 23:57:44.050 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-10 23:57:44.818 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-10 23:57:45.065 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [21] milliseconds.
+2020-12-10 23:57:45.801 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xaaa665d1] REGISTERED
+2020-12-10 23:57:45.805 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xaaa665d1] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-10 23:57:45.807 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-10 23:57:45.809 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xaaa665d1, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-10 23:57:45.814 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x83d4ed2a] REGISTERED
+2020-12-10 23:57:45.814 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x83d4ed2a] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-10 23:57:45.814 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x83d4ed2a, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-10 23:57:45.814 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-10 23:57:45.823 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-10 23:57:45.844 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-10 23:57:47.920 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-10 23:57:48.036 [main] INFO  org.coral.server.DbTest - Started DbTest in 6.718 seconds (JVM running for 8.178)
+2020-12-10 23:57:48.431 [main] INFO  org.coral.orm.core.db.CommonDao - select sql:SELECT * FROM `item` WHERE playerId=?, objs:[playerId], cls:class org.coral.server.game.module.item.domain.Item$$EnhancerBySpringCGLIB$$e446ebec

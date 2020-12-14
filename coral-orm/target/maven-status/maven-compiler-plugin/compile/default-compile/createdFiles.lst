@@ -2,7 +2,6 @@ org\coral\orm\core\command\CommandDelete.class
 org\coral\orm\core\annotation\PO.class
 org\coral\orm\core\db\IDao.class
 org\coral\orm\core\command\CommandSelectAll.class
-org\coral\orm\core\ProcessorProxy$1.class
 org\coral\orm\core\base\SQLGenerator.class
 org\coral\orm\core\base\PoMapper.class
 org\coral\orm\core\command\CommandDeleteAll.class
@@ -20,6 +19,4 @@ org\coral\orm\core\command\CommandUpdate.class
 org\coral\orm\core\command\AbsCommand.class
 org\coral\orm\core\base\BasePo.class
 org\coral\orm\core\command\SyncUpdateJob.class
-org\coral\orm\core\Processor.class
-org\coral\orm\core\ProcessorProxy.class
 org\coral\orm\core\annotation\Dao.class

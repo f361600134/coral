@@ -1,8 +1,11 @@
 package org.coral.server.game.module.player.domain;
 
+import java.util.Map;
+
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
 import org.coral.net.core.base.Packet;
+import org.coral.server.game.module.chat.domain.ChatRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,10 +23,10 @@ public class PlayerContext {
 	/** 玩家会话 */
 	private GameSession session;
 
-//	/**
-//	 * key:频道号 value: 聊天约束
-//	 */
-//	private Map<Integer, ChatRule> chatRuleMap;
+	/**
+	 * key:频道号 value: 聊天约束
+	 */
+	private Map<Integer, ChatRule> chatRuleMap;
 
 	public Player getPlayer() {
 		return player;
@@ -122,21 +125,21 @@ public class PlayerContext {
 //		PlayerLog.obtainReource(player, source, NatureEnum.Unknown.getLogType(), WealthType.Ingot.getSubType(), value, player.getIngot());
 //	}
 
-//	/**
-//	 * 频道号
-//	 * @param channel
-//	 * @return  
-//	 * @return ChatRule  
-//	 * @date 2020年9月8日下午6:45:14
-//	 */
-//	public ChatRule getChatRule(int channel) {
-//		ChatRule chatRule = chatRuleMap.get(channel);
-//		if (chatRule == null) {
-//			chatRule = ChatRule.create(channel);
-//			chatRuleMap.put(channel, chatRule);
-//		}
-//		return chatRule;
-//	}
+	/**
+	 * 频道号
+	 * @param channel
+	 * @return  
+	 * @return ChatRule  
+	 * @date 2020年9月8日下午6:45:14
+	 */
+	public ChatRule getChatRule(int channel) {
+		ChatRule chatRule = chatRuleMap.get(channel);
+		if (chatRule == null) {
+			chatRule = ChatRule.create(channel);
+			chatRuleMap.put(channel, chatRule);
+		}
+		return chatRule;
+	}
 	
 	public void setData() {
 		

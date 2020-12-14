@@ -46,7 +46,6 @@ org\coral\server\game\data\proto\PBBag$ReqBagUsePackage.class
 org\coral\server\game\module\user\User.class
 org\coral\server\game\module\item\proto\AckBagListResp.class
 org\coral\server\InitialRunner.class
-org\coral\server\game\module\chat\service\CommandService.class
 org\coral\server\game\data\proto\PBPlayer$PlayerProfileOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ChatInfoOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ReqOnlineRewardInfo.class
@@ -59,7 +58,6 @@ org\coral\server\game\data\proto\PBBag$ReqBuyCount.class
 org\coral\server\game\data\proto\PBPlayer$AckStrongerHeroGrade.class
 org\coral\server\game\module\item\event\ItemObserver.class
 org\coral\server\game\data\proto\PBPlayer$PBCheckinInfo$Builder.class
-org\coral\server\game\module\chat\proto\AckChatResp.class
 org\coral\server\game\data\proto\PBPlayer$PBStrongerGradeOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ReqRechargeList$Builder.class
 org\coral\server\game\module\item\proto\ItemInfoBuilder.class
@@ -75,7 +73,6 @@ org\coral\server\game\data\proto\PBDefine.class
 org\coral\server\game\data\proto\PBPlayer$AckStrongerHeroGrade$Builder.class
 org\coral\server\game\data\proto\PBPlayer$AckGift$Builder.class
 org\coral\server\game\data\proto\PBPlayer$AckKeyExchangeOrBuilder.class
-org\coral\server\game\module\chat\service\ChatServicePlus.class
 org\coral\server\game\data\proto\PBPlayer$ReqReceiveMonthCard.class
 org\coral\server\game\module\player\service\PlayerService.class
 org\coral\server\game\data\config\pojo\ConfigChatModel.class
@@ -87,7 +84,6 @@ org\coral\server\game\data\proto\PBLogin$AckReLoginOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckDeleteFriend.class
 org\coral\server\game\data\proto\PBPlayer$PlayerAttrTypeAndValue.class
 org\coral\server\game\data\proto\PBPlayer$ReqBuyVipGiftOrBuilder.class
-org\coral\server\game\module\chat\assist\ChatEnum$3.class
 org\coral\server\game\module\item\proto\AttrInfoBuilder.class
 org\coral\server\game\data\proto\PBLogin$AckLoginOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ReqDeleteEmail$Builder.class
@@ -139,7 +135,6 @@ org\coral\server\game\data\proto\PBBag$ReqOperateItemOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$PlayerProfile.class
 org\coral\server\game\data\proto\PBPlayer$ReqStrongerHeroGrade.class
 org\coral\server\game\data\proto\PBPlayer$AckReceiveMonthCard.class
-org\coral\server\game\module\chat\domain\ChatDomain.class
 org\coral\server\game\data\proto\PBPlayer$PlayerAttrTypeAndValueOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$EmailInfo.class
 org\coral\server\game\data\proto\PBPlayer$AckTips$Builder.class
@@ -152,7 +147,6 @@ org\coral\server\game\data\proto\PBPlayer$AckOnlineReward.class
 org\coral\server\game\data\proto\PBPlayer$ReqBuyVipGift.class
 org\coral\server\game\module\item\proto\PBRewardStateInfoBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckRechargeList.class
-org\coral\server\game\module\chat\assist\ChatEnum$1.class
 org\coral\server\game\data\proto\PBPlayer$ReqRechargeList.class
 org\coral\server\game\data\proto\PBPlayer$PlayerInfo.class
 org\coral\server\game\data\proto\PBPlayer$ReqOnlineReward.class
@@ -166,7 +160,6 @@ org\coral\server\game\data\proto\PBPlayer$PlayerAttrTypeAndValue$Builder.class
 org\coral\server\game\data\proto\PBPlayer$AckInitPlayerInfo.class
 org\coral\server\game\data\proto\PBPlayer$AckChat.class
 org\coral\server\core\server\GameServerHandler.class
-org\coral\server\game\module\chat\handler\ChatHandler.class
 org\coral\server\game\data\proto\PBBag$AckOperateItemOrBuilder.class
 org\coral\server\game\data\proto\PBLogin$ReqCreateRole.class
 org\coral\server\game\data\proto\PBBag$AckBagList$Builder.class
@@ -175,7 +168,6 @@ org\coral\server\game\module\item\event\ItemAddEvent.class
 org\coral\server\game\data\proto\PBBag$AckQuickSellItemEquip.class
 org\coral\server\game\data\proto\PBPlayer$AckCheckin.class
 org\coral\server\game\data\proto\PBPlayer$ReqCheckinInfo$Builder.class
-org\coral\server\game\module\chat\assist\ChatEnum$2.class
 org\coral\server\game\data\proto\PBBag$AckRewards.class
 org\coral\server\game\data\proto\PBLogin$AckReLogin.class
 org\coral\server\game\data\proto\PBPlayer$AckReceiveMonthCardOrBuilder.class
@@ -196,7 +188,6 @@ org\coral\server\game\data\proto\PBPlayer$AckReadEmailOrBuilder.class
 org\coral\server\game\data\proto\PBLogin$AckLogin$Builder.class
 org\coral\server\game\data\proto\PBPlayer$AckDeleteFriendOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ReqVipList.class
-org\coral\server\game\module\chat\assist\ChatEnum.class
 org\coral\server\game\data\proto\PBPlayer$AckOnlineRewardOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckUpdateEmail.class
 org\coral\server\game\data\proto\PBPlayer$AckUpdateFriend$Builder.class
@@ -210,13 +201,11 @@ org\coral\server\game\data\proto\PBBag$1.class
 org\coral\server\game\data\proto\PBPlayer$AckFriendList$Builder.class
 org\coral\server\game\data\proto\PBLogin$AckRandName.class
 org\coral\server\game\data\proto\PBLogin$ReqReLogin.class
-org\coral\server\game\module\chat\assist\ChatEnum$4.class
 org\coral\server\game\data\proto\PBBag$AttrInfoOrBuilder.class
 org\coral\server\game\data\proto\PBBag$AckDeleteBagListOrBuilder.class
 org\coral\server\game\data\proto\PBLogin$AckReLogin$Builder.class
 org\coral\server\game\module\item\proto\AckQuickSellItemEquipResp.class
 org\coral\server\game\data\proto\PBBag.class
-org\coral\server\game\module\chat\domain\ChatRule.class
 org\coral\server\game\data\proto\PBLogin$AckEnterGame$Builder.class
 org\coral\server\game\data\proto\PBBag$AckUpdateBagListOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckStrongerHeroGradeOrBuilder.class
@@ -248,7 +237,6 @@ org\coral\server\game\data\proto\PBPlayer$AckUpdateEmailOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckGift.class
 org\coral\server\game\data\proto\PBPlayer$AckOnlineRewardInfoOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ReqFriendListOrBuilder.class
-org\coral\server\game\module\chat\domain\Chat.class
 org\coral\server\game\data\proto\PBPlayer$ReqCheckinInfo.class
 org\coral\server\game\data\proto\PBPlayer$ReqStrongerHeroGradeOrBuilder.class
 org\coral\server\game\data\proto\PBDefine$PBProtocol$1.class
@@ -265,7 +253,6 @@ org\coral\server\game\data\proto\PBPlayer$AckVipListOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$1.class
 org\coral\server\game\data\proto\PBLogin$ReqLogin.class
 org\coral\server\game\data\proto\PBLogin$ReqRandName.class
-org\coral\server\game\module\chat\assist\ChatEnum$5.class
 org\coral\server\game\data\proto\PBBag$AckBagList.class
 org\coral\server\game\data\proto\PBPlayer$AckEmailList.class
 org\coral\server\game\data\proto\PBBag$AckQuickSellItemEquip$Builder.class
@@ -286,7 +273,6 @@ org\coral\server\game\data\proto\PBPlayer$AckBuyVipGiftOrBuilder.class
 org\coral\server\utils\FileUtilitys.class
 org\coral\server\game\data\proto\PBBag$AttrInfo$Builder.class
 org\coral\server\game\helper\context\SpringContextHolder.class
-org\coral\server\game\module\chat\service\CommandAssist.class
 org\coral\server\game\data\proto\PBBag$ReqOperateItem.class
 org\coral\server\game\data\proto\PBPlayer$AckInitPlayerInfo$Builder.class
 org\coral\server\game\module\item\service\ItemService.class
@@ -300,7 +286,6 @@ org\coral\server\game\data\proto\PBPlayer$ReqKeyExchange.class
 org\coral\server\game\data\proto\PBBag$AckQuickSellItemEquipOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$ReqChatOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$PBCheckinInfoOrBuilder.class
-org\coral\server\game\module\chat\assist\ChatEnum$6.class
 org\coral\server\game\module\wealth\annotation\WealthIndex.class
 org\coral\server\game\module\player\domain\Player.class
 org\coral\server\game\data\proto\PBBag$ItemInfoOrBuilder.class
@@ -340,7 +325,6 @@ org\coral\server\game\data\proto\PBLogin$AckDisconnect$Builder.class
 org\coral\server\game\data\proto\PBLogin$AckDisconnectOrBuilder.class
 org\coral\server\game\data\proto\PBBag$PBRewardStateInfo.class
 org\coral\server\game\data\proto\PBLogin$AckCreateRoleOrBuilder.class
-org\coral\server\game\module\chat\proto\ReqChat.class
 org\coral\server\game\data\proto\PBPlayer$ReqRechargeListOrBuilder.class
 org\coral\server\game\data\proto\PBLogin$AckLogin.class
 org\coral\server\game\data\proto\PBPlayer$ReqReadEmailOrBuilder.class
@@ -356,7 +340,6 @@ org\coral\server\game\data\proto\PBPlayer$AckInitPlayerInfoOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$RechargeItem$Builder.class
 org\coral\server\game\data\config\IConfig.class
 org\coral\server\core\event\EventSubscribe.class
-org\coral\server\game\module\chat\proto\PBChatInfoBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckUpdatePlayerAttrsOrBuilder.class
 org\coral\server\game\data\proto\PBPlayer$AckReadEmail.class
 org\coral\server\game\data\proto\PBLogin$ReqHeart$Builder.class
