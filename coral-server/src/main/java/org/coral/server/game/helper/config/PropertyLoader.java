@@ -22,7 +22,7 @@ public class PropertyLoader {
 	
 	public static void load() throws Exception {
 //		initENV();
-//		loadConfigData();
+		loadConfigData();
 //		loadSensitiveWordTxt();
 	}
 	

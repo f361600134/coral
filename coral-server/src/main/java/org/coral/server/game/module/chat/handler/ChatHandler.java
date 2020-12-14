@@ -28,9 +28,6 @@ public class ChatHandler implements IHandler{
     @Autowired
     private ChatServicePlus chatServicePlus;
     
-//    @Autowired
-//    private PlayerService playerService;
-
     @Autowired
     private CommandService commandService;
 

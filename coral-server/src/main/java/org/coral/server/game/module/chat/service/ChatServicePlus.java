@@ -16,6 +16,7 @@ import org.coral.server.game.helper.result.ConfigTipsMgr;
 import org.coral.server.game.module.chat.assist.ChatEnum;
 import org.coral.server.game.module.chat.domain.Chat;
 import org.coral.server.game.module.chat.domain.ChatDomain;
+import org.coral.server.game.module.chat.domain.ChatDomainGroup;
 import org.coral.server.game.module.chat.domain.ChatRule;
 import org.coral.server.game.module.chat.proto.AckChatResp;
 import org.coral.server.game.module.player.domain.Player;
@@ -38,117 +39,55 @@ public class ChatServicePlus {
 	private static final Logger log = LoggerFactory.getLogger(ChatServicePlus.class);
 	
 	@Autowired private PlayerService playerService;
-
-	/**
-	 * key:省id
-	 * value:聊天组
-	 */
-	private static Map<Long, ChatDomain> provinceGroup = Maps.newConcurrentMap();
-	// 跨服频道
-	private static ChatDomain serverGroup = new ChatDomain(ChatEnum.CH_WORLD.getCh());
-	// 世界频道
-	private static ChatDomain worldGroup = new ChatDomain(ChatEnum.CH_WORLD.getCh());
-	/**
-	 * key:工会id
-	 * value: 聊天组 
-	 */
-	private static Map<Long, ChatDomain> familyGroup = Maps.newConcurrentMap();
-	/**
-	 * key:玩家id
-	 * value: 聊天组
-	 */
-	private static Map<Long, ChatDomain> privateChat = Maps.newConcurrentMap();
-	
-	// 系统频道,即时发送不缓存
-	private static ChatDomain systmGroup = new ChatDomain(ChatEnum.CH_SYSTEM.getCh());
 	
 	/**
-	 * 获得同省聊天
-	 * @param provinceId>0
+	 * key: channelId
+	 * value: ChatDomainGroup聊天组
+	 */
+	private Map<Integer, ChatDomainGroup> domainMap = Maps.newConcurrentMap();
+	
+	/**
+	 * key: playerId
+	 * value: ChatRule聊天约束
+	 */
+	private Map<Long, ChatRule> ruleMap = Maps.newConcurrentMap();
+	
+	/**
+	 * 获取聊天域, 对于家族聊天不同家族不同聊天域,domainId为家族id作为区分, 对于世界等只有一个聊天域,domainId可以设置为频道号
+	 * @param channelType
+	 * @param domainId
 	 * @return
 	 */
-	public ChatDomain getProvinceGroup(Long provinceId) {
-		if (provinceId <= 0) {
-			return null;
-		}
-		ChatDomain group = provinceGroup.get(provinceId);
-		if (group == null) {
-			group = new ChatDomain(ChatEnum.CH_PROVINCE.getCh(), provinceId);
-			provinceGroup.put(provinceId, group);
-		}
-		return group;
+	public ChatDomain getOrCreateDomain(int channelType, long domainId) {
+		ChatDomainGroup domainGroup = getOrCreateDomainGroup(channelType);
+		return domainGroup.getOrCreateDomain(domainId);
 	}
-	 
+	
 	/**
-	 * 获得跨服聊天
+	 * 获取聊天域组
+	 * @param channelType
+	 * @param domainId
 	 * @return
 	 */
-	public ChatDomain getServerGroup() {
-		return serverGroup;
+	public ChatDomainGroup getOrCreateDomainGroup(int channelType) {
+		ChatDomainGroup domainGroup = domainMap.get(channelType);
+		if (domainGroup == null) {
+			domainGroup = new ChatDomainGroup(channelType);
+			domainMap.put(channelType, domainGroup);
+		}
+		return domainGroup;
 	}
 	
 	/**
-	 * 获得世界聊天
+	 * 获取聊天域, 对于家族聊天不同家族不同聊天域,domainId为家族id作为区分, 对于世界等只有一个聊天域,domainId可以设置为频道号
+	 * @param channelType
+	 * @param domainId
 	 * @return
 	 */
-	public ChatDomain getWorldGroup() {
-		return worldGroup;
+	public IChatChannel getOrCreateChannel(int channelType, long domainId) {
+		ChatDomainGroup domainGroup = getOrCreateDomainGroup(channelType);
+		return domainGroup.getOrCreateChannel(domainId);
 	}
-	
-	/**
-	 * 获得工会聊天
-	 * @param familyId > 0
-	 */
-	public ChatDomain getFamilyGroup(Long familyId) {
-		if (familyId <= 0) {
-			return null;
-		}
-		ChatDomain group = familyGroup.get(familyId);
-		if (group == null) {
-			group = new ChatDomain(ChatEnum.CH_FAMILY.getCh(), familyId);
-			familyGroup.put(familyId, group);
-		}
-		return group;
-	}
-	
-	/**
-	 * 获得私聊
-	 * @return
-	 */
-	public ChatDomain getPrivateChat(Long playerId) {
-		if (playerId <= 0) {
-			return null;
-		}
-		ChatDomain group = privateChat.get(playerId);
-		if (group == null) {
-			group = new ChatDomain(ChatEnum.CH_PRIVATE.getCh(), playerId);
-			privateChat.put(playerId, group);
-		}
-		return group;
-	}
-	
-	/**
-	 * 获取所有私聊
-	 * @return
-	 */
-	public Collection<ChatDomain> getAllPrivateChat(){
-		return privateChat.values();
-	}
-	
-	/**
-	 * 获得系统频道
-	 * @return
-	 */
-	public ChatDomain getSystmGroup() {
-		return systmGroup;
-	}
-	
-	
-//	@Override
-//	public void gc(long playerId) {
-////		playerChatMap.remove(playerId);
-//		privateChat.remove(playerId);
-//	}
 	
 	////////////////业务/////////////////////////
 	
@@ -201,7 +140,7 @@ public class ChatServicePlus {
 					if (resp == null) {
 						continue;
 					}
-					Collection<Long> playerIds = chatEnum.findPlayerId(chatDomain);
+					Collection<Long> playerIds = chatEnum.findPlayerIds(chatDomain);
 					if(!playerIds.isEmpty()) {
 						PlayerHelper.sendMessage(playerIds, resp);
 					}
@@ -268,7 +207,6 @@ public class ChatServicePlus {
 				//系统频道直接发送消息
 				AckChatResp resp = AckChatResp.newInstance();
 				resp.addChat(chatEnum.getCh(), chat.toProto());
-//				SendMessageUtil.sendResponse(playerId, resp);
 				PlayerHelper.sendMessage(playerId, resp);
 				return;
 			}
@@ -276,6 +214,60 @@ public class ChatServicePlus {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 聊天业务逻辑入口
+	 * 新增聊天添加到聊天域, 不实时更新, 定时推送到前端
+	 */
+	public int chat2(ReqChat data, long playerId) {
+		int channelId = data.getChatChannel();
+		String content = data.getContent();
+		long recvId = data.getPlayerId();
+		
+		List<Object> retList = checkContent(content);
+		int code = (int)retList.get(0);
+		if (code != 0) {//校验文本
+			return code;
+		}
+		//使用过滤后的文本
+		content = retList.get(1).toString();
+
+		PlayerContext context = playerService.getPlayerContext(playerId);
+		final Player player = context.getPlayer();
+		ChatRule rule = context.getChatRule(channelId);
+		long curTime = System.currentTimeMillis();
+		if (curTime < rule.getNextSpeakTime() && rule.isAgainst()) { //聊天过快
+			//提示玩家剩余x秒后可以聊天, 不允许其聊天
+			int lessTime = (int)((rule.getNextSpeakTime() - curTime)/1000);
+			AckTipsResp resp = AckTipsResp.newInstance();
+			resp.setTipsId(ConfigTipsMgr.Chat_417).addParams(lessTime);
+//			SendMessageUtil.sendResponse(playerId, resp);
+			PlayerHelper.sendMessage(playerId, resp);
+			return ConfigTipsMgr.Chat_411;
+		}
+		//提示聊天过快, 但依旧允许其聊天
+		if (curTime < rule.getNextSpeakTime()) { 
+			//玩家频繁违法
+			rule.onTrigger();
+			AckTipsResp resp = AckTipsResp.newInstance().setTipsId(ConfigTipsMgr.Chat_411);
+			PlayerHelper.sendMessage(playerId, resp);
+		}
+		
+		ChatEnum chatEnum = ChatEnum.getEnum(channelId);
+		if (chatEnum == null) {
+			return ConfigTipsMgr.Chat_410;	//不存在该频道
+		}
+		final Chat chat = Chat.create(player.getPlayerId(), content, channelId, recvId);
+		
+		IChatChannel channel = chatEnum.getChannel(player.getPlayerId());
+		code = channel.check(player, chat);
+		if (code != 0) {
+			return code; 
+		}
+		channel.addChat(chat);
+		rule.onChatSuccess();
+		return 0;
 	}
 	
 	/**

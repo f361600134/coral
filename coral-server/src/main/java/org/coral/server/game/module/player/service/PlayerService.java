@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
-import org.coral.orm.core.DataProcessor;
 import org.coral.server.core.event.GameEventBus;
 import org.coral.server.game.data.proto.PBLogin.ReqLogin;
 import org.coral.server.game.helper.PropertiesType;
@@ -17,7 +16,6 @@ import org.coral.server.game.module.player.domain.PlayerContext;
 import org.coral.server.game.module.player.event.PlayerLoadEndEvent;
 import org.coral.server.game.module.player.event.PlayerLoadEvent;
 import org.coral.server.game.module.player.proto.AckLoginResp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.common.cache.Cache;
@@ -65,6 +63,15 @@ public class PlayerService implements IPlayerService{
 	 */
 	public Collection<Long> getPlayerIds(){
 		return playerMap.keySet();
+	}
+	
+	/**
+	 *  获取所有在线玩家id
+	 * @return void  
+	 * @date 2020年8月24日下午2:57:19
+	 */
+	public Collection<PlayerContext> getPlayerContexts(){
+		return playerMap.values();
 	}
 	
 	/**

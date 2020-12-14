@@ -10,8 +10,10 @@ import org.coral.server.game.helper.result.ConfigTipsMgr;
 import org.coral.server.game.module.chat.domain.Chat;
 import org.coral.server.game.module.chat.domain.ChatDomain;
 import org.coral.server.game.module.chat.service.ChatServicePlus;
+import org.coral.server.game.module.chat.service.IChatChannel;
 import org.coral.server.game.module.player.domain.Player;
 import org.coral.server.game.module.player.domain.PlayerContext;
+import org.coral.server.game.module.player.service.IPlayerService;
 import org.coral.server.game.module.player.service.PlayerService;
 
 import com.google.common.collect.Lists;
@@ -26,102 +28,68 @@ public enum ChatEnum {
 	
 	CH_PROVINCE(1){ // 同省聊天
 		@Override
-		public Collection<Long> findPlayerId(ChatDomain domain) {
-			return null;
+		public Collection<Long> findPlayerIds(ChatDomain domain) {
+			//TODO 遍历玩家所在省标识, 复合条件则返回
+			List<Long> ret = Lists.newArrayList();
+//			PlayerService service = SpringContextHolder.getInstance().getBean(PlayerService.class);
+//			PlayerContext context = service.getPlayerContext(domain.getDomainId());
+//			int provinceId = context.getProvinceId();
+//			for (PlayerContext context : service.getPlayerContexts()) {
+//				if (context.getProvinceId() == provinceId) {
+//					ret.add(context.getPlayerId());
+//				}
+//			}
+			return ret;
 		}
 
 		@Override
-		public long getRecId(Player player, long domainId) {
+		public long getDomainId(Player player, long domainId) {
 			//获取玩家的省标识
-			return 0L;
+			int provinceId = 0;
+			//provinceId = player.getProvinceId();
+			return provinceId;
 		}
 		
 		@Override
 		public ChatDomain getDomain(Long playerId) {
-			//获取玩家所在省id
-//			return Context.getChatServicePlus().getProvinceGroup();
-			return null;
+			//TODO 获取玩家所在省id
+			int provinceId = 0;
+			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+			return service.getOrCreateDomain(getCh(), provinceId);
 		}
-		
-		@Override
-		public int check(Player player, Chat chat) {
-//			ConfigChatMgr.getConfig(getCh());
-			return 0;
-		}
-
-		@Override
-		public Collection<ChatDomain> getAllDomain() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
 		
 	},
 	CH_SERVER(2){// 跨服聊天
 		@Override
-		public List<Long> findPlayerId(ChatDomain domain) {
-//			IPlayerService playerService = SpringContextHolder.getInstance().getBean(IPlayerService.class);
-//			return playerService.getAllPlayer();
-			return null;
-		}
-
-		@Override
-		public long getRecId(Player player, long domainId) {
-			//获取玩家的省标识
-			return 0L;
-		}
-		
-		@Override
-		public ChatDomain getDomain(Long playerId) {
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
-			return service.getServerGroup();
-		}
-		
-		@Override
-		public Collection<ChatDomain> getAllDomain() {
-			// TODO Auto-generated method stub
-			return null;
+		public Collection<Long> findPlayerIds(ChatDomain domain) {
+			IPlayerService playerService = SpringContextHolder.getInstance().getBean(IPlayerService.class);
+			return playerService.getPlayerIds();
 		}
 		
 	}, 
 	CH_WORLD(3){// 世界聊天
 		@Override
-		public Collection<Long> findPlayerId(ChatDomain domain) {
-			PlayerService service = SpringContextHolder.getInstance().getBean(PlayerService.class);
+		public Collection<Long> findPlayerIds(ChatDomain domain) {
+			IPlayerService service = SpringContextHolder.getInstance().getBean(IPlayerService.class);
 			return service.getPlayerIds();
 		}
 
-		@Override
-		public long getRecId(Player player, long domainId) {
-			return 0L;
-		}
-		
-		@Override
-		public ChatDomain getDomain(Long playerId) {
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
-			return service.getWorldGroup();
-		}
-		
-		@Override
-		public Collection<ChatDomain> getAllDomain() {
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
-			return Lists.newArrayList(service.getWorldGroup());
-		}
-		
 	}, 
 	CH_FAMILY(4) {// 工会聊天
 
 		@Override
-		public long getRecId(Player player, long domainId) {
+		public long getDomainId(Player player, long domainId) {
 			//获取玩家的工会id
-			return 0L;
+			long familyId = 0L;
+			return familyId;
 		}
 		
 		@Override
 		public ChatDomain getDomain(Long playerId) {
-			//获取工会id
-//			return Context.getChatServicePlus().getFamilyGroup();
-			return null;
+			//获取工会domainId
+			long familyId = 0L;
+			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+			return service.getOrCreateDomain(getCh(), familyId);
 		}
 		
 		@Override
@@ -130,31 +98,33 @@ public enum ChatEnum {
 			if (code != 0) {
 				return code;
 			}
-			//获取公会
+			//获取公会,校验
 			return code;
 		}
 		
 		@Override
-		public Collection<ChatDomain> getAllDomain() {
-			// TODO Auto-generated method stub
+		public Collection<Long> findPlayerIds(ChatDomain domain) {
+			// 1.获取到玩家家族
+			// 2.返回获取到家族在线人员
+			// long familyId = 0L;
 			return null;
 		}
 		
 	},
 	CH_PRIVATE(5) {// 私聊
 		@Override
-		public Collection<Long> findPlayerId(ChatDomain domain) {
+		public Collection<Long> findPlayerIds(ChatDomain domain) {
 			return Lists.newArrayList(domain.getDomainId());
 		}
 
 		@Override
 		public ChatDomain getDomain(Long playerId) {
 			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
-			return service.getPrivateChat(playerId);
+			return service.getOrCreateDomain(getCh(), playerId);
 		}
 
 		@Override
-		public long getRecId(Player player, long domainId) {
+		public long getDomainId(Player player, long domainId) {
 			return domainId;
 		}
 		
@@ -173,12 +143,6 @@ public enum ChatEnum {
 			return code;
 		}
 		
-		@Override
-		public Collection<ChatDomain> getAllDomain() {
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
-			return service.getAllPrivateChat();
-		}
-		
 		/**
 		 * 聊天
 		 */
@@ -190,7 +154,6 @@ public enum ChatEnum {
 			 * 接收者玩家
 			 * 接受者在线, 不缓存. 不在线则缓存.
 			 */
-//			Player player = Context.getPlayerService().getPlayer(chat.getToId());
 			PlayerService service = SpringContextHolder.getInstance().getBean(PlayerService.class);
 			PlayerContext context = service.getPlayerContext(chat.getToId());
 			ChatDomain recDomain = getDomain(chat.getToId());
@@ -199,8 +162,6 @@ public enum ChatEnum {
 			}else {
 				recDomain.addChat(chat, true);
 			}
-			
-			
 		}
 	},
 	CH_SYSTEM(6) {// 系统频道
@@ -208,26 +169,9 @@ public enum ChatEnum {
 		 * 系统频道同步聊天内容到世界
 		 */
 		@Override
-		public Collection<Long> findPlayerId(ChatDomain domain) {
+		public Collection<Long> findPlayerIds(ChatDomain domain) {
 			PlayerService playerService = SpringContextHolder.getInstance().getBean(PlayerService.class);
 			return  playerService.getPlayerIds();
-		}
-		
-		@Override
-		public long getRecId(Player player, long domainId) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public Collection<ChatDomain> getAllDomain() {
-			return null;
-		}
-
-		@Override
-		public ChatDomain getDomain(Long playerId) {
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
-			return service.getSystmGroup();
 		}
 		
 	};
@@ -246,16 +190,30 @@ public enum ChatEnum {
 	}
 
 	/**
-	 * 获取接收id, 玩家id, 省id, 公会id等
+	 * 获取聊天域id
+	 * 有domainId则获取domainId, 无则默认为频道号id, 唯一即可
 	 * @param player 玩家对象
 	 * @param domainId domainId
 	 * @return 接受者玩家ID
 	 */
-	public abstract long getRecId(Player player, long domainId);
+	public long getDomainId(Player player, long domainId) {
+		return getCh();
+	}
 
-	public abstract Collection<ChatDomain> getAllDomain();
+	public Collection<ChatDomain> getAllDomain() {
+		ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+		return service.getOrCreateDomainGroup(getCh()).getAllDomain();
+	}
 	
-	public abstract ChatDomain getDomain(Long playerId);
+	/**
+	 * 获取聊天域
+	 * @param playerId
+	 * @return
+	 */
+	public ChatDomain getDomain(Long playerId) {
+		ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+		return service.getOrCreateDomain(getCh(), getCh());
+	}
 	
 	/**
 	 * 判断是否可以聊天
@@ -277,9 +235,7 @@ public enum ChatEnum {
 		return 0;
 	}
 	
-	public Collection<Long> findPlayerId(ChatDomain domain) {
-		return null;
-	}
+	public abstract Collection<Long> findPlayerIds(ChatDomain domain);
 	
 	/**
 	 * 创建聊天实体
@@ -289,7 +245,7 @@ public enum ChatEnum {
 	 * @return 聊天对象
 	 */
 	public Chat createChat(Player player, String content, long recvId) {
-		recvId = getRecId(player, recvId);
+		recvId = getDomainId(player, recvId);
 		return Chat.create(player.getPlayerId(), content, getCh(), recvId);
 	}
 	
@@ -302,6 +258,14 @@ public enum ChatEnum {
 		domain.addChat(chat, true);
 	}
 
+	public IChatChannel newChannel() {
+		return null;
+	}
+	
+	public IChatChannel getChannel(Long playerId) {
+		return null;
+	}
+	
 	/**
 	 * 获取聊天枚举
 	 * @param ch 频道
