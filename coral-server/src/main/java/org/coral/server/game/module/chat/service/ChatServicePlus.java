@@ -50,8 +50,9 @@ public class ChatServicePlus {
 	 * key: playerId
 	 * value: ChatRule聊天约束
 	 */
-	private Map<Long, ChatRule> ruleMap = Maps.newConcurrentMap();
+	private Map<Long, Map<Integer, ChatRule>> playerRuleMap = Maps.newConcurrentMap();
 	
+		
 	/**
 	 * 获取聊天域, 对于家族聊天不同家族不同聊天域,domainId为家族id作为区分, 对于世界等只有一个聊天域,domainId可以设置为频道号
 	 * @param channelType
@@ -76,6 +77,28 @@ public class ChatServicePlus {
 			domainMap.put(channelType, domainGroup);
 		}
 		return domainGroup;
+	}
+	
+	/**
+	 * 获取玩家指定渠道的渠道规则
+	 * @param playerId
+	 * @param channelType
+	 * @return  
+	 * @return ChatRule  
+	 * @date 2020年12月15日下午11:50:44
+	 */
+	public ChatRule getChatRule(long playerId, int channelType) {
+		Map<Integer, ChatRule> chatRuleMap = playerRuleMap.get(playerId);
+		if (chatRuleMap == null) {
+			chatRuleMap  = Maps.newHashMap();
+			playerRuleMap.put(playerId, chatRuleMap);
+		}
+		ChatRule rule = chatRuleMap.get(channelType);
+		if (rule == null) {
+			rule = ChatRule.create(channelType);
+			chatRuleMap.put(channelType, rule);
+		}
+		return rule;
 	}
 	
 	////////////////业务/////////////////////////
@@ -224,7 +247,8 @@ public class ChatServicePlus {
 
 		PlayerContext context = playerService.getPlayerContext(playerId);
 		final Player player = context.getPlayer();
-		ChatRule rule = context.getChatRule(channelId);
+//		ChatRule rule = context.getChatRule(channelId);
+		ChatRule rule = getChatRule(playerId, channelId);
 		long curTime = System.currentTimeMillis();
 		if (curTime < rule.getNextSpeakTime() && rule.isAgainst()) { //聊天过快
 			//提示玩家剩余x秒后可以聊天, 不允许其聊天
