@@ -36,7 +36,6 @@ public class DataProcessor{
 			IDao dao = new CommonDao(po, jdbcTemplate);
 			commonDaoMap.put(key, dao);
 		}
-		log.info("Processor init===============");
 	}
 	
 	public void print() {

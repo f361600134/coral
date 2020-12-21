@@ -45,7 +45,6 @@ public class DataProcessorAsyn extends DataProcessor{
 	
 	public DataProcessorAsyn(Map<String, BasePo> basePoMap, JdbcTemplate jdbcTemplate){
 		super(basePoMap, jdbcTemplate);
-		log.info("ProcessorProxy init===============");
 		syncQueue = new ConcurrentLinkedQueue<Executable<?>>();
 		this.scheduledThreadPool = Executors.newScheduledThreadPool(1);
 		this.scheduledThreadPool.scheduleWithFixedDelay(new Runnable() {

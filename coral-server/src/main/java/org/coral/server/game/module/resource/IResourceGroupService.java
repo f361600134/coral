@@ -1,3 +1,4 @@
+
 package org.coral.server.game.module.resource;
 
 import java.util.Map;

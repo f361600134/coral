@@ -1,9 +1,13 @@
 package org.coral.server.game.helper;
 
-import java.util.Map;
-
 import org.coral.server.game.module.player.domain.Player;
 
+/**
+ * 资源枚举类型
+ * @auth Jeremy
+ * @date 2020年12月21日下午10:16:32
+ * @deprecated
+ */
 public enum WealthType {
 
 	/** 元宝 */

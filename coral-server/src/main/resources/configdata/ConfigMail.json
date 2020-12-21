@@ -1,0 +1,3 @@
+[
+{ "ID":1, "sender":"系统测试", "mailSubject":"测试邮件", "des":"这是一封测试邮件", "storageTime":7, "mailContent":"这是仅仅是测试邮件", "rewardItem":[[200002,100]] },
+{ "ID":2, "sender":"系统测试", "mailSubject":"好友支援奖励", "des":"好友支援奖励", "storageTime":7, "mailContent":"支援好友，获得友情点", "rewardItem":[[100006,100]] }]
