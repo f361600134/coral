@@ -27,7 +27,6 @@ public class AckBagListResp implements IProtocol {
             PBBag.ItemInfo itemInfo = item.toProto();
 			if (itemInfo == null) 
 				continue;
-			
 			builder.addBags(itemInfo);
 		}
     }

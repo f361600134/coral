@@ -12,7 +12,7 @@ public enum ResourceType {
 	/** 道具 */
 	Item(2),	
 	/** 装备 */
-	Equip(3),
+	Equip(3),	
 	/** 神装 */
 	GodEquip(4),
 	/** 英雄碎片 */

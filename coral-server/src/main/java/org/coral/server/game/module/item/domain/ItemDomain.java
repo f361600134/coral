@@ -9,10 +9,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class ItemBag {
+/**
+ * 物品域
+ * @auth Jeremy
+ * @date 2020年12月17日下午10:02:51
+ */
+public class ItemDomain {
 	
 
-	private static final Logger log = LoggerFactory.getLogger(ItemBag.class);
+	private static final Logger log = LoggerFactory.getLogger(ItemDomain.class);
 	
 	//所有的物品 key:itemId(guid)
 	private final Map<Long, IItem> itemMap;
@@ -21,7 +26,7 @@ public class ItemBag {
 	private List<IItem> updateItemList;
 	private List<IItem> deleteItemList;
 	
-	public ItemBag() {
+	public ItemDomain() {
 		itemMap = Maps.newHashMap();
 		updateItemList = Lists.newArrayList();
 		deleteItemList = Lists.newArrayList();

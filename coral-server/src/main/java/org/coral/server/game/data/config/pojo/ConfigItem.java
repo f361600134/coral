@@ -53,6 +53,9 @@ public class ConfigItem {
     
 
 	////////////////////// 特殊扩展 //////////////
+    
+    public static int COMPOSE = 0;
+    public static int DECOMPOSE = 1;
 	
 	public void parse(){
 		

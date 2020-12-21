@@ -1,6 +1,7 @@
 package org.coral.server.game.module.player.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -8,14 +9,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
+import org.coral.orm.core.DataProcessorAsyn;
 import org.coral.server.core.event.GameEventBus;
 import org.coral.server.game.data.proto.PBLogin.ReqLogin;
 import org.coral.server.game.helper.PropertiesType;
+import org.coral.server.game.helper.ResourceType;
+import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.player.domain.Player;
 import org.coral.server.game.module.player.domain.PlayerContext;
 import org.coral.server.game.module.player.event.PlayerLoadEndEvent;
 import org.coral.server.game.module.player.event.PlayerLoadEvent;
 import org.coral.server.game.module.player.proto.AckLoginResp;
+import org.coral.server.game.module.wealth.service.IWealthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.common.cache.Cache;
@@ -23,11 +29,11 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Maps;
 
 @Component
-public class PlayerService implements IPlayerService{
+public class PlayerService implements IPlayerService, IWealthService{
 	
 	private static final Logger logger = LogManager.getLogger(PlayerService.class);
 	
-//	@Autowired private Processor process;
+	@Autowired private DataProcessorAsyn process;
 	
 	/**
 	 * key: 玩家id
@@ -115,9 +121,8 @@ public class PlayerService implements IPlayerService{
 	private Player loadPlayer(String username, int initServerId) {
 		Object[] props = new Object[] {Player.PROP_ACCOUNTNAME, Player.PROP_INITSERVERID};
 		Object[] objs = new Object[] {username, initServerId};
-//		Player player = (Player)process.selectByIndex(Player.class, props, objs);
-//		return player;
-		return null;
+		List<Player> players = process.selectByIndex(Player.class, props, objs);
+		return players.isEmpty() ? null : players.get(0);
 	}
 	
 	/**
@@ -140,7 +145,7 @@ public class PlayerService implements IPlayerService{
 		final PlayerContext playerContext = getPlayerContext(playerId);
 		final Player player = playerContext.getPlayer();
 		PropertiesType.getType(configId).add(player, added);
-//		process.update(player);
+		process.update(player);
 	}
 	
 	/**
@@ -151,6 +156,43 @@ public class PlayerService implements IPlayerService{
 	public boolean checkProerties(long playerId, int configId, int added){
 		final PlayerContext playerContext = getPlayerContext(playerId);
 		return PropertiesType.getType(configId).check(playerContext.getPlayer(), added);
+	}
+	
+	/**
+	 * 判断属性值
+	 * @return void  
+	 * @date 2020年8月24日下午2:57:19
+	 */
+	public int getProerties(long playerId, int configId){
+		final PlayerContext playerContext = getPlayerContext(playerId);	
+		return PropertiesType.getType(configId).getValue(playerContext.getPlayer());
+	}
+	
+	@Override
+	public int wealthType() {
+		return ResourceType.Property.getType();
+	}
+	
+	@Override
+	public boolean check(long playerId, Map<Integer, Integer> costMap) {
+		final PlayerContext playerContext = getPlayerContext(playerId);
+		Player player = playerContext.getPlayer();
+		for (Integer key : costMap.keySet()) {
+			this.addProerties(playerId, key, costMap.get(key));
+		}
+		return false;
+	}
+
+	@Override
+	public void reward(long playerId, Map<Integer, Integer> rewardMap, NatureEnum nEnum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cost(long playerId, Map<Integer, Integer> costMap, NatureEnum nEnum) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/////////////////////////////////////////////////////////////
@@ -183,6 +225,5 @@ public class PlayerService implements IPlayerService{
 		context.setData();
 		context.send(AckLoginResp.create().setCode(0).setStatus(0));
 	}
-	
-	
+
 }

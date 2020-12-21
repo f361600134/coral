@@ -1,16 +1,34 @@
 package org.coral.server.game.module.item.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.coral.orm.core.DataProcessor;
 import org.coral.orm.core.DataProcessorAsyn;
+import org.coral.server.game.data.config.pojo.ConfigItem;
+import org.coral.server.game.helper.ResourceType;
+import org.coral.server.game.helper.log.NatureEnum;
+import org.coral.server.game.helper.log.PlayerLog;
+import org.coral.server.game.module.item.domain.IItem;
 import org.coral.server.game.module.item.domain.Item;
-import org.coral.server.game.module.item.domain.ItemBag;
+import org.coral.server.game.module.item.domain.ItemDomain;
+import org.coral.server.game.module.item.proto.AckBagListResp;
+import org.coral.server.game.module.item.proto.AckDeleteBagResp;
+import org.coral.server.game.module.item.proto.AckUpdateBagResp;
+import org.coral.server.game.module.player.domain.Player;
+import org.coral.server.game.module.player.service.PlayerService;
+import org.coral.server.game.module.wealth.service.IWealthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * 道具服务
@@ -18,146 +36,141 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class ItemService {
+public class ItemService implements IWealthService{
 	
-//	private static final Logger log = LoggerFactory.getLogger(ItemService.class);
-//	
-//	@Autowired private ProcessorProxy process;
-//	
-//	/**玩家背包缓存*/
-//	private final static Map<Long, ItemBag> PLAYER_BAGS = new ConcurrentHashMap<Long, ItemBag>();
-////
-////	@Override
-////	public void gc(long playerId) {
-////		PLAYER_BAGS.remove(playerId);
-////	}
-//
-//	/**
-//	 * 获取玩家背包
-//	 */
-//	public ItemBag getItems(long playerId) {
-//		ItemBag itemBag = PLAYER_BAGS.get(playerId);
-//		if (itemBag == null) {
-//			process.selectByIndex(Item.class, new Object[] {playerId});
-//			List<Item> items = Item.load(Item.class, "playerId", playerId);
-////			List<Item> items = initItemsList(itemDAO.getBagByPlayer(playerId));
-//			itemBag = new ItemBag();
-//			itemBag.initItemBag(items);
-//			PLAYER_BAGS.put(playerId, itemBag);
-//		}
-////		return itemBag;
-////		List<IItem> result = Lists.newArrayList();
-////		for (Item item : Item.load(Item.class, "playerId", playerId)) {
-////			result.add(item);
-////		}
-//		return result;
-//	}
-//	
-//	/**
-//	 * 初始化道具列表
-//	 * @param itemList
-//	 * @return
-//	 */
-//	public List<Item> initItemsList(List<Item> itemList) {
-//		List<Item> result = new ArrayList<Item>();
-////		List<Item> deleteList = new ArrayList<Item>();
-//		for (Item item : itemList) {
-//			if (item == null)
-//				continue;
-//			Item temp = initItem(item);
-//			if (temp == null) {
-//				continue;
-//			}
-//			result.add(temp);
-//		}
-//		// 删除非法数据
-////		if (!deleteList.isEmpty()) {
-////			itemDAO.setUsage2False(deleteList);
-////		}
-//		return result;
-//	}
-//	
-//	/**
-//	 * 初始化单个道具
-//	 * 
-//	 * @param item
-//	 * @return
-//	 */
-//	public Item initItem(Item item) {
-//		if (item != null) {
-//			//符文随机属性、技能列表初始化
-////			if(ConfigItem.isRune(item.getConfigId())) {
-////				item=Rune.createRune(item);
-////			}
-//			//神装随机属性初始化
-////			if(ConfigItem.isGodEquip(item.getConfigId())) {
-////				item=GodEquip.createGodEquip(item);
-////			}
-////			if (item.getModel() == null) {
-////				log.error(">>>> PropsService:initEquip"
-////						+ item.getPropsId() + " -- 找不到装备模型 : "
-////						+ item.getPropsModelId());
-////				return null;
-////			}
-////			PropsTypeEnum enu=PropsTypeEnum.getEnum(props.getType());
-////			if (enu== null) {
-////				log.error(">>>> PropsService:initEquip"
-////						+ props.getPropsId() + " -- 找不到装备类型 : "
-////						+ props.getPropsModelId()+" "+props.getType());
-////				return null;
-////			}
-////			if (PropsTypeEnum.canEmbed(enu)) {
-////			}
-//		}
-//		return item;
-//	}
-//	
-//	//////////////////////////////////////
-//	/**
-//	 * 当登陆成功,下发物品列表
-//	 */
-//	public void onLogin(long playerId) {
-//		List<IItem> items = getItems(playerId);
-//		//登陆成功,下发背包信息
-//		AckBagListResp ack = AckBagListResp.newInstance();
-//		ack.addItem(items);
-//		PlayerHelper.sendMessage(playerId, ack);
-//	}
-//	
-//	// 推送更新物品列表至前端
-//	public void responseUpdateItemList(long playerId, List<IItem> itemList) {
-//		// 更新物品
-//		if (!itemList.isEmpty()) {
-//			AckUpdateBagResp ack = AckUpdateBagResp.newInstance();
-//			ack.addItem(itemList);
-////			SendMessageUtil.sendResponse(playerId, ack);
-//			PlayerHelper.sendMessage(playerId, ack);
-//		}
-//	}
-//	//推送删除物品列表至前端
-//	public void responseDeleteItemList(long playerId, List<IItem> itemList){
-//		//更新物品
-//		if (!itemList.isEmpty()) {
-//			AckDeleteBagResp ack = AckDeleteBagResp.newInstance();
-//			for (IItem item : itemList) {
-//				ack.addItemId(item.getItemId());
-//			}
-////			SendMessageUtil.sendResponse(playerId, ack);
-//			PlayerHelper.sendMessage(playerId, ack);
-//			itemList.clear();
-//		}
-//	}
-//	
-//	
+	private static final Logger log = LoggerFactory.getLogger(ItemService.class);
+	
+	
+	@Autowired private PlayerService playerService;
+	@Autowired private DataProcessorAsyn process;
+	
+	/**玩家背包缓存*/
+	private final static Map<Long, ItemDomain> PLAYER_DOMAINS = Maps.newConcurrentMap();
+
+	/**
+	 * 获取玩家背包
+	 */
+	public ItemDomain getDomain(long playerId) {
+		ItemDomain domain = PLAYER_DOMAINS.get(playerId);
+		if (domain == null) {
+			List<Item> items = process.selectByIndex(Item.class, new Object[] {playerId}, new Object[] {playerId});
+			domain = new ItemDomain();
+			domain.initItemBag(items);
+			PLAYER_DOMAINS.put(playerId, domain);
+		}
+		return domain;
+	}
+	
+	/**
+	 * 初始化道具列表
+	 * @param itemList
+	 * @return
+	 */
+	public List<Item> initItemsList(List<Item> itemList) {
+		List<Item> result = new ArrayList<Item>();
+		for (Item item : itemList) {
+			if (item == null)
+				continue;
+			Item temp = initItem(item);
+			if (temp == null) {
+				continue;
+			}
+			result.add(temp);
+		}
+		// 删除非法数据
+		return result;
+	}
+	
+	/**
+	 * 初始化单个道具
+	 * 
+	 * @param item
+	 * @return
+	 */
+	public Item initItem(Item item) {
+		if (item != null) {
+			//TODO
+		}
+		return item;
+	}
+	
+	//////////////////////////////////////
+	/**
+	 * 当登陆成功,下发物品列表
+	 */
+	public void onLogin(long playerId) {
+		ItemDomain domain = getDomain(playerId);
+		Collection<IItem> items = domain.getAllItems();
+		//登陆成功,下发背包信息
+		AckBagListResp ack = AckBagListResp.newInstance();
+		ack.addItem(items);
+		playerService.sendMessage(playerId, ack);
+	}
+	
+	// 推送更新物品列表至前端
+	public void responseUpdateItemList(long playerId, List<IItem> itemList) {
+		// 更新物品
+		if (!itemList.isEmpty()) {
+			AckUpdateBagResp ack = AckUpdateBagResp.newInstance();
+			ack.addItem(itemList);
+			playerService.sendMessage(playerId, ack);
+		}
+	}
+	//推送删除物品列表至前端
+	public void responseDeleteItemList(long playerId, List<IItem> itemList){
+		//更新物品
+		if (!itemList.isEmpty()) {
+			AckDeleteBagResp ack = AckDeleteBagResp.newInstance();
+			for (IItem item : itemList) {
+				ack.addItemId(item.getItemId());
+			}
+			playerService.sendMessage(playerId, ack);
+			itemList.clear();
+		}
+	}
+	
+
+	@Override
+	public int wealthType() {
+		return ResourceType.Item.getType();
+	}
+
+	@Override
+	public boolean check(long playerId, Map<Integer, Integer> costMap) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void reward(long playerId, Map<Integer, Integer> rewardMap, NatureEnum nEnum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cost(long playerId, Map<Integer, Integer> costMap, NatureEnum nEnum) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public List<IItem> addNewItem(long playerId, Map<Integer, Integer> items, NatureEnum nEnum, String logDesc) {
+		List<IItem> ret = Lists.newArrayList();
+		for (Entry<Integer, Integer> entry : items.entrySet()) {
+			List<IItem> its = addItem(playerId, entry.getKey(), entry.getValue(), nEnum, logDesc);
+			if (its != null) {
+				ret.addAll(its);
+			}
+		}
+		responseUpdateItemList(playerId, ret);
+		return ret;
+	}
+	
+	
 //	/**
 //	 * 操作物品
 //	 * 
 //	 */
 //	public int operateItem(long playerId, int opType, long itemId, int num) {
-//		List<IItem> items = getItems(playerId);
-//		if (items == null) {
-//			return ConfigTipsMgr.Bag_200;
-//		}
 //		if(opType == ConfigItem.COMPOSE) {//合成操作
 //			return compose(playerId, itemId, num);
 //		}else if(opType == ConfigItem.DECOMPOSE){//分解出售操作
@@ -165,7 +178,7 @@ public class ItemService {
 //		}
 //		return 0;
 //	}
-//
+
 //	private int compose(long playerId, long itemId, int num) {
 //		IItem item = getItem(playerId, itemId);
 //		if(item == null) {
@@ -300,23 +313,27 @@ public class ItemService {
 //		//this.responseDeleteItemList(playerId, bag);
 //		return 0;
 //	}
-//
-//	/**
-//	 * 通过类型获取物品列表
-//	 * @param type 道具类型
-//	 * @return 道具列表
-//	 */
-//	public Collection<IItem> getItemsByType(long playerId, int type) {
-//		List<IItem> result = Lists.newArrayList();
-//		List<IItem> items = getItems(playerId);
-//		for (IItem item : items) {
-//			if (item.isType(type)) {
-//				result.add(item);
-//			}
-//		}
-//		return result;
-//	}
-//
+
+	/**
+	 * 通过类型获取物品列表
+	 * @param type 道具类型
+	 * @return 道具列表
+	 */
+	public Collection<IItem> getItemsByType(long playerId, int type) {
+		ItemDomain domain = getDomain(playerId);
+		if (domain == null) {
+			return null;
+		}
+		List<IItem> result = Lists.newArrayList();
+		Collection<IItem> items = domain.getAllItems();
+		for (IItem item : items) {
+			if (item.isType(type)) {
+				result.add(item);
+			}
+		}
+		return result;
+	}
+
 //	/**
 //	 * 背包使用礼包
 //	 */
@@ -433,10 +450,10 @@ public class ItemService {
 //		SendMessageUtil.sendResponse(playerId, resp);
 //		return 0;
 //	}
-//	
-//	
-//	/////////////////////////////////////////////////////////////////////////////
-//	
+	
+	
+	/////////////////////////////////////////////////////////////////////////////
+	
 //	/**
 //	 * 是否能加入背包
 //	 * @param playerId
@@ -534,28 +551,17 @@ public class ItemService {
 //		return null;
 //	}
 //
-//	public List<IItem> addNewItem(long playerId, Map<Integer, Integer> items, NatureEnum nEnum, String logDesc) {
-//		List<IItem> ret = Lists.newArrayList();
-//		for (Entry<Integer, Integer> entry : items.entrySet()) {
-//			List<IItem> its = addItem(playerId, entry.getKey(), entry.getValue(), nEnum, logDesc);
-//			if (its != null) {
-//				ret.addAll(its);
-//			}
-//		}
-//		responseUpdateItemList(playerId, ret);
-//		return ret;
-//	}
 //
-//	/**
-//	 * 添加属性/道具/装备/神装/英雄碎片/符文
-//	 * @param playerId 玩家id
-//	 * @param configId 配置id
-//	 * @param count 消耗数量
-//	 * @param nEnum 资源消耗枚举
-//	 * @param logDesc 补充信息
-//	 * @return List<IItem> 物品列表
-//	 */
-//	private List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
+	/**
+	 * 添加属性/道具/装备/神装/英雄碎片/符文
+	 * @param playerId 玩家id
+	 * @param configId 配置id
+	 * @param count 消耗数量
+	 * @param nEnum 资源消耗枚举
+	 * @param logDesc 补充信息
+	 * @return List<IItem> 物品列表
+	 */
+	private List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
 //		if (count <= 0) {
 //			return null;
 //		}
@@ -625,12 +631,13 @@ public class ItemService {
 //			}
 //			return items;
 //		}
-//		return null;
-//	}
+		return null;
+	}
 //
 //	public List<IItem> addNewItem(Player player, List<Wealth> wealth, NatureEnum nEnum) {
 //		Map<Integer, Integer> items = wealth.stream().collect(Collectors.toMap(Wealth::getConfigId, Wealth::getNum));
 //		return addNewItem(player.getId(), items, nEnum, nEnum.getDesc());
+//		
 //	}
 //	
 //	/**
@@ -638,6 +645,8 @@ public class ItemService {
 //	 * @param playerId
 //	 * @param items
 //	 * @param nEnum
+//	 * 
+//	 * 
 //	 * @param logDesc
 //	 * @return
 //	 */
@@ -721,7 +730,7 @@ public class ItemService {
 ////				deleteItemList.add(item);
 ////			}
 //			//记录日志
-//			PlayerLog.obtainItem(playerId, nEnum, logDesc, item.getItemId(), item.getConfigId(), count);
+////			PlayerLog.obtainItem(playerId, nEnum, logDesc, item.getItemId(), item.getConfigId(), count);
 //		}
 //		return true;
 //	}
@@ -838,5 +847,4 @@ public class ItemService {
 //	public boolean enoughAndDeductItem(long playerId, Map<Integer,Integer> costMap, NatureEnum nEnum) {
 //		return enoughAndDeductItem(playerId, costMap, nEnum, nEnum.getDesc());
 //	}
-
 }

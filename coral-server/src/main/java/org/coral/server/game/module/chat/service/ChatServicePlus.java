@@ -307,7 +307,7 @@ public class ChatServicePlus {
 		int code = 0;
 		if (StringUtils.isBlank(str)) {
 			code = ConfigTipsMgr.Chat_419;//聊天内容为空
-		}
+		} 
 		if (content.length() > 100) {//总长度大于100超过限制
 			code = ConfigTipsMgr.Chat_415;
 		}

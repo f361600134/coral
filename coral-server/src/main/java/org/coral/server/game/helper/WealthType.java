@@ -99,14 +99,16 @@ public enum WealthType {
 	}
 	
 	public void add(Player player, int added) {
-		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
-		int value = propertiesaMap.getOrDefault(getSubType(), 0);
-		propertiesaMap.put(getSubType(), value+added);
+//		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
+//		int value = propertiesaMap.getOrDefault(getSubType(), 0);
+//		propertiesaMap.put(getSubType(), value+added);
+		player.addProperties(getSubType(), added);
 	}
 	
 	public boolean check(Player player, int value) {
-		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
-		return propertiesaMap.getOrDefault(getSubType(), 0) >= value;
+//		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
+//		return propertiesaMap.getOrDefault(getSubType(), 0) >= value;
+		return player.checkProperties(getSubType(), value);
 	}
 	
 }

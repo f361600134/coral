@@ -4,9 +4,14 @@ import java.util.Map;
 
 import org.coral.server.game.module.player.domain.Player;
 
+/**
+ * 属性类型枚举，所有属性先在此处定义，获取属性则直接通过枚举调用
+ * @auth Jeremy
+ * @date 2020年12月19日下午11:17:26
+ */
 public enum PropertiesType {
 
-	/** 为止物品 */
+	/** 未知物品 */
 	NONE(0),
 	/** 元宝 */
 	Ingot(100001),
@@ -92,9 +97,10 @@ public enum PropertiesType {
 	 * @date 2020年9月7日下午2:59:24
 	 */
 	public void add(Player player, int added) {
-		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
-		int value = propertiesaMap.getOrDefault(getType(), 0);
-		propertiesaMap.put(getType(), value+added);
+//		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
+//		int value = propertiesaMap.getOrDefault(getType(), 0);
+//		propertiesaMap.put(getType(), value+added);
+		player.addProperties(getType(), added);
 	}
 	
 	/**
@@ -106,8 +112,18 @@ public enum PropertiesType {
 	 * @date 2020年9月7日下午2:59:51
 	 */
 	public boolean check(Player player, int value) {
-		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
-		return propertiesaMap.getOrDefault(getType(), 0) >= value;
+		return player.getProperties(getType())>= value;
+	}
+	
+	/**
+	 * 获取属性值，通过枚举获取
+	 * @return  
+	 * @return int  
+	 * @date 2020年12月19日下午11:19:54
+	 */
+	public int getValue(Player player) {
+		return player.getProperties(getType());
+		//player.getPropertieMap().getOrDefault(getType(), 0);
 	}
 	
 	/**
