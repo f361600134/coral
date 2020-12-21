@@ -2,6 +2,7 @@ package org.coral.server.game.module.player.service;
 
 import java.util.Collection;
 
+import org.coral.net.core.base.IProtocol;
 import org.coral.server.game.module.player.domain.PlayerContext;
 
 public interface IPlayerService {
@@ -24,5 +25,18 @@ public interface IPlayerService {
 	 */
 	public Collection<PlayerContext> getPlayerContexts();
 	
+	/**
+	 * 发送消息
+	 * @param playerId
+	 * @param protocol
+	 */
+	public void sendMessage(long playerId, IProtocol protocol);
+	
+	/**
+	 * 群发送消息
+	 * @param playerId
+	 * @param protocol
+	 */
+	public void sendMessage(Collection<Long> playerIds, IProtocol protocol);
 
 }

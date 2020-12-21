@@ -72,10 +72,10 @@ public interface IItem {
 		return builder.build();
 	}
 	
-	void save0();
+	void save();
 
-	void update0();
+	void update();
 
-	void remove0();
+	void remove();
 
 }

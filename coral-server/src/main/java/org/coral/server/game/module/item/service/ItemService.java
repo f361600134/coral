@@ -4,24 +4,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 
-import org.coral.orm.core.DataProcessor;
 import org.coral.orm.core.DataProcessorAsyn;
-import org.coral.server.game.data.config.pojo.ConfigItem;
 import org.coral.server.game.helper.ResourceType;
 import org.coral.server.game.helper.log.NatureEnum;
-import org.coral.server.game.helper.log.PlayerLog;
 import org.coral.server.game.module.item.domain.IItem;
 import org.coral.server.game.module.item.domain.Item;
 import org.coral.server.game.module.item.domain.ItemDomain;
 import org.coral.server.game.module.item.proto.AckBagListResp;
 import org.coral.server.game.module.item.proto.AckDeleteBagResp;
 import org.coral.server.game.module.item.proto.AckUpdateBagResp;
-import org.coral.server.game.module.player.domain.Player;
-import org.coral.server.game.module.player.service.PlayerService;
-import org.coral.server.game.module.wealth.service.IWealthService;
+import org.coral.server.game.module.player.service.IPlayerService;
+import org.coral.server.game.module.resource.IResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +25,16 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
- * 道具服务
+ * 资源服务
  * @author Jeremy
- *
  */
 @Service
-public class ItemService implements IWealthService{
+public class ItemService implements IItemService, IResourceService{
 	
 	private static final Logger log = LoggerFactory.getLogger(ItemService.class);
 	
 	
-	@Autowired private PlayerService playerService;
+	@Autowired private IPlayerService playerService;
 	@Autowired private DataProcessorAsyn process;
 	
 	/**玩家背包缓存*/
@@ -131,41 +124,49 @@ public class ItemService implements IWealthService{
 	
 
 	@Override
-	public int wealthType() {
+	public int resType() {
 		return ResourceType.Item.getType();
 	}
-
+	
 	@Override
-	public boolean check(long playerId, Map<Integer, Integer> costMap) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void reward(long playerId, Map<Integer, Integer> rewardMap, NatureEnum nEnum) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cost(long playerId, Map<Integer, Integer> costMap, NatureEnum nEnum) {
-		// TODO Auto-generated method stub
-		
+	public boolean checkAdd(long playerId, Integer configId, Integer value) {
+		ItemDomain domain = getDomain(playerId);
+		if (domain == null) return false;
+		return domain.checkAdd(playerId, configId, value);
 	}
 	
-	public List<IItem> addNewItem(long playerId, Map<Integer, Integer> items, NatureEnum nEnum, String logDesc) {
-		List<IItem> ret = Lists.newArrayList();
-		for (Entry<Integer, Integer> entry : items.entrySet()) {
-			List<IItem> its = addItem(playerId, entry.getKey(), entry.getValue(), nEnum, logDesc);
-			if (its != null) {
-				ret.addAll(its);
-			}
-		}
-		responseUpdateItemList(playerId, ret);
-		return ret;
+	@Override
+	public boolean checkEnough(long playerId, Integer configId, Integer value) {
+		ItemDomain domain = getDomain(playerId);
+		if (domain == null) return false;
+		return domain.checkEnough(playerId, configId, value);
 	}
-	
-	
+
+	@Override
+	public void reward(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
+		ItemDomain domain = getDomain(playerId);
+		if (domain == null)	return;
+		domain.addItem(playerId, configId, value, nEnum);
+	}
+
+	@Override
+	public void cost(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
+		ItemDomain domain = getDomain(playerId);
+		if (domain == null)	return;
+		domain.deductItem(playerId, configId, value, nEnum);
+	}
+
+//	public List<IItem> addNewItem(long playerId, Map<Integer, Integer> items, NatureEnum nEnum, String logDesc) {
+//		List<IItem> ret = Lists.newArrayList();
+//		for (Entry<Integer, Integer> entry : items.entrySet()) {
+//			List<IItem> its = addItem(playerId, entry.getKey(), entry.getValue(), nEnum, logDesc);
+//			if (its != null) {
+//				ret.addAll(its);
+//			}
+//		}
+//		responseUpdateItemList(playerId, ret);
+//		return ret;
+//	}
 //	/**
 //	 * 操作物品
 //	 * 
@@ -552,16 +553,16 @@ public class ItemService implements IWealthService{
 //	}
 //
 //
-	/**
-	 * 添加属性/道具/装备/神装/英雄碎片/符文
-	 * @param playerId 玩家id
-	 * @param configId 配置id
-	 * @param count 消耗数量
-	 * @param nEnum 资源消耗枚举
-	 * @param logDesc 补充信息
-	 * @return List<IItem> 物品列表
-	 */
-	private List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
+//	/**
+//	 * 添加属性/道具/装备/神装/英雄碎片/符文
+//	 * @param playerId 玩家id
+//	 * @param configId 配置id
+//	 * @param count 消耗数量
+//	 * @param nEnum 资源消耗枚举
+//	 * @param logDesc 补充信息
+//	 * @return List<IItem> 物品列表
+//	 */
+//	private List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
 //		if (count <= 0) {
 //			return null;
 //		}
@@ -631,8 +632,8 @@ public class ItemService implements IWealthService{
 //			}
 //			return items;
 //		}
-		return null;
-	}
+//		return null;
+//	}
 //
 //	public List<IItem> addNewItem(Player player, List<Wealth> wealth, NatureEnum nEnum) {
 //		Map<Integer, Integer> items = wealth.stream().collect(Collectors.toMap(Wealth::getConfigId, Wealth::getNum));
@@ -847,4 +848,5 @@ public class ItemService implements IWealthService{
 //	public boolean enoughAndDeductItem(long playerId, Map<Integer,Integer> costMap, NatureEnum nEnum) {
 //		return enoughAndDeductItem(playerId, costMap, nEnum, nEnum.getDesc());
 //	}
+	
 }

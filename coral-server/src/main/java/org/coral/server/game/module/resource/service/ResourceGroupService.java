@@ -1,12 +1,11 @@
-package org.coral.server.game.module.wealth.service;
+package org.coral.server.game.module.resource.service;
 
-import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Map;
 
-import org.coral.server.core.reflect.MethodInvoker;
 import org.coral.server.game.helper.log.NatureEnum;
-import org.coral.server.game.module.wealth.annotation.WealthIndex;
-import org.coral.server.game.module.wealth.handler.WealthHandler;
+import org.coral.server.game.module.resource.IResourceGroupService;
+import org.coral.server.game.module.resource.IResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -16,27 +15,13 @@ import org.springframework.stereotype.Service;
 import com.google.common.collect.Maps;
 
 @Service
-public class WealthService implements InitializingBean {
+public class ResourceGroupService implements IResourceGroupService, InitializingBean {
 
-	private static final Logger log = LoggerFactory.getLogger(WealthService.class);
+	private static final Logger log = LoggerFactory.getLogger(ResourceGroupService.class);
 
-	@Autowired
-	private WealthHandler playerWealthHandler;
-
-	/**
-	 * 奖励方法
-	 */
-	private Map<Byte, MethodInvoker> rewardMethods = Maps.newHashMap();
-
-	/**
-	 * 消耗方法
-	 */
-	private Map<Byte, MethodInvoker> costMethods = Maps.newHashMap();
-
-	/**
-	 * 检查方法
-	 */
-	private Map<Byte, MethodInvoker> checkMethods = Maps.newHashMap();
+	@Autowired private List<IResourceService> resourceServices;
+	
+	private Map<Integer, IResourceService> serviceMap;
 
 	/**
 	 * 奖励
@@ -52,9 +37,9 @@ public class WealthService implements InitializingBean {
 	 */
 	public void reward(long playerId, Map<Integer, Integer> rewardMap, NatureEnum nEnum) {
 		for (Integer key : rewardMap.keySet()) {
-			byte perp = (byte) (key / 10000);
-			MethodInvoker rewardInvoker = rewardMethods.get(perp);
-			if (rewardInvoker == null) {
+			int perp = key / 10000;
+			IResourceService service = serviceMap.get(perp);
+			if (service == null) {
 				throw new IllegalArgumentException(String.format("No such type:%s", perp));
 			}
 			int value = rewardMap.get(key);
@@ -62,7 +47,7 @@ public class WealthService implements InitializingBean {
 				log.info("Negative item reward, playerId:{}, value:{}, nEnum:{}", playerId, value, nEnum);
 				value = Math.abs(value);
 			}
-			rewardInvoker.invoke(playerId, key, value);
+			service.reward(playerId, key, value, nEnum);
 		}
 	}
 
@@ -80,9 +65,9 @@ public class WealthService implements InitializingBean {
 	 */
 	public void cost(long playerId, Map<Integer, Integer> costMap, NatureEnum nEnum) {
 		for (Integer key : costMap.keySet()) {
-			byte perp = (byte) (key / 10000);
-			MethodInvoker costInvoker = costMethods.get(perp);
-			if (costInvoker == null) {
+			int perp = key / 10000;
+			IResourceService service = serviceMap.get(perp);
+			if (service == null) {
 				throw new IllegalArgumentException(String.format("No such type:%s", perp));
 			}
 			int value = costMap.get(key);
@@ -90,7 +75,7 @@ public class WealthService implements InitializingBean {
 				log.info("Negative item cost, playerId:{}, value:{}, nEnum:{}", playerId, value, nEnum);
 				value = Math.abs(value);
 			}
-			costInvoker.invoke(playerId, key, value);
+			service.cost(playerId, key, value, nEnum);
 		}
 	}
 
@@ -104,9 +89,9 @@ public class WealthService implements InitializingBean {
 	 */
 	public boolean check(long playerId, Map<Integer, Integer> costMap) {
 		for (Integer key : costMap.keySet()) {
-			byte perp = (byte) (key / 10000);
-			MethodInvoker invoker = checkMethods.get(perp);
-			if (invoker == null) {
+			int perp = key / 10000;
+			IResourceService service = serviceMap.get(perp);
+			if (service == null) {
 				throw new IllegalArgumentException(String.format("No such type:%s", perp));
 			}
 			int value = costMap.get(key);
@@ -114,29 +99,17 @@ public class WealthService implements InitializingBean {
 				log.info("Invalid value when check item, playerId:{}, value:{}", playerId, value);
 				value = Math.abs(value);
 			}
-			Boolean obj = (Boolean) invoker.invoke(playerId, key, value);
-			if (!obj)
-				return false;
+			boolean obj = service.checkEnough(playerId, key, value);
+			if (!obj) return false;
 		}
 		return true;
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		Method[] methods = playerWealthHandler.getClass().getDeclaredMethods();
-		for (Method method : methods) {
-			WealthIndex annotation = method.getAnnotation(WealthIndex.class);
-			if (annotation == null) {
-				continue;
-			}
-			MethodInvoker invoker = MethodInvoker.create(playerWealthHandler, method);
-			if (annotation.type() == WealthIndex.CHECK) {
-				this.checkMethods.put((byte) annotation.value().getType(), invoker);
-			} else if (annotation.type() == WealthIndex.REWARD) {
-				this.rewardMethods.put((byte) annotation.value().getType(), invoker);
-			} else if (annotation.type() == WealthIndex.COST) {
-				this.costMethods.put((byte) annotation.value().getType(), invoker);
-			}
+		this.serviceMap = Maps.newConcurrentMap();
+		for (IResourceService service : resourceServices) {
+			this.serviceMap.put(service.resType(), service);
 		}
 	}
 

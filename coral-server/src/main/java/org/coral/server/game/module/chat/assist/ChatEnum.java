@@ -9,7 +9,7 @@ import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.helper.result.ConfigTipsMgr;
 import org.coral.server.game.module.chat.domain.Chat;
 import org.coral.server.game.module.chat.domain.ChatDomain;
-import org.coral.server.game.module.chat.service.ChatServicePlus;
+import org.coral.server.game.module.chat.service.ChatService;
 import org.coral.server.game.module.player.domain.Player;
 import org.coral.server.game.module.player.domain.PlayerContext;
 import org.coral.server.game.module.player.service.IPlayerService;
@@ -53,7 +53,7 @@ public enum ChatEnum {
 		public ChatDomain getDomain(Long playerId) {
 			//TODO 获取玩家所在省id
 			int provinceId = 0;
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+			ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
 			return service.getOrCreateDomain(getCh(), provinceId);
 		}
 		
@@ -87,7 +87,7 @@ public enum ChatEnum {
 		public ChatDomain getDomain(Long playerId) {
 			//获取工会domainId
 			long familyId = 0L;
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+			ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
 			return service.getOrCreateDomain(getCh(), familyId);
 		}
 		
@@ -118,7 +118,7 @@ public enum ChatEnum {
 
 		@Override
 		public ChatDomain getDomain(Long playerId) {
-			ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+			ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
 			return service.getOrCreateDomain(getCh(), playerId);
 		}
 
@@ -200,7 +200,7 @@ public enum ChatEnum {
 	}
 
 	public Collection<ChatDomain> getAllDomain() {
-		ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+		ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
 		return service.getOrCreateDomainGroup(getCh()).getAllDomain();
 	}
 	
@@ -210,7 +210,7 @@ public enum ChatEnum {
 	 * @return
 	 */
 	public ChatDomain getDomain(Long playerId) {
-		ChatServicePlus service = SpringContextHolder.getInstance().getBean(ChatServicePlus.class);
+		ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
 		return service.getOrCreateDomain(getCh(), getCh());
 	}
 	

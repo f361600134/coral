@@ -43,6 +43,7 @@ public class Item extends ItemPo implements IItem{
 			return getCount();
 		}
 		int expect = getCount() + value;
+		expect = expect > Integer.MAX_VALUE ? Integer.MAX_VALUE : expect;
 		this.setCount(expect);
 		return expect;
 	}
@@ -57,26 +58,27 @@ public class Item extends ItemPo implements IItem{
 			return getCount();
 		}
 		int expect = getCount() - value;
+		expect = expect < 0 ? 0 : expect;
 		this.setCount(expect);
 		return expect;
 	}
 
 	@Override
-	public void save0() {
-//		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
-//		processorProxy.insert(this);
+	public void save() {
+		DataProcessorAsyn processor = SpringContextHolder.getInstance().getBean(DataProcessorAsyn.class);
+		processor.insert(this);
 	}
 
 	@Override
-	public void update0() {
-//		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
-//		processorProxy.update(this);
+	public void update() {
+		DataProcessorAsyn processor = SpringContextHolder.getInstance().getBean(DataProcessorAsyn.class);
+		processor.update(this);
 	}
 
 	@Override
-	public void remove0() {
-//		ProcessorProxy processorProxy = SpringContextHolder.getInstance().getBean(ProcessorProxy.class);
-//		processorProxy.delete(this);
+	public void remove() {
+		DataProcessorAsyn processor = SpringContextHolder.getInstance().getBean(DataProcessorAsyn.class);
+		processor.delete(this);
 	}
 
 }

@@ -21,7 +21,6 @@ import org.coral.server.game.module.chat.domain.ChatRule;
 import org.coral.server.game.module.chat.proto.AckChatResp;
 import org.coral.server.game.module.player.domain.Player;
 import org.coral.server.game.module.player.domain.PlayerContext;
-import org.coral.server.game.module.player.helper.PlayerHelper;
 import org.coral.server.game.module.player.proto.AckTipsResp;
 import org.coral.server.game.module.player.service.PlayerService;
 import org.coral.server.utils.StringUtilitys;
@@ -34,9 +33,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 @Service
-public class ChatServicePlus {
+public class ChatService {
 	
-	private static final Logger log = LoggerFactory.getLogger(ChatServicePlus.class);
+	private static final Logger log = LoggerFactory.getLogger(ChatService.class);
 	
 	@Autowired private PlayerService playerService;
 	
@@ -114,7 +113,7 @@ public class ChatServicePlus {
 					continue;
 				}
 				AckChatResp ack = chatDomain.toAllProto();
-				PlayerHelper.sendMessage(playerId, ack);
+				playerService.sendMessage(playerId, ack);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -154,7 +153,7 @@ public class ChatServicePlus {
 					}
 					Collection<Long> playerIds = chatEnum.findPlayerIds(chatDomain);
 					if(!playerIds.isEmpty()) {
-						PlayerHelper.sendMessage(playerIds, resp);
+						playerService.sendMessage(playerIds, resp);
 					}
 				}
 			}
@@ -176,9 +175,6 @@ public class ChatServicePlus {
 				return;
 			}
 			String text = config.getModelDesc();
-//			List<Object> textArgs = Lists.newArrayList();
-//			for(Object arg : args)
-//				textArgs.add(arg);
 			String content = StringUtilitys.formatString(text, Arrays.asList(args));
 			Chat chat = Chat.createSystemChat(content, chatEnum.getCh());
 			chatEnum.addChat(chat);
@@ -219,7 +215,7 @@ public class ChatServicePlus {
 				//系统频道直接发送消息
 				AckChatResp resp = AckChatResp.newInstance();
 				resp.addChat(chatEnum.getCh(), chat.toProto());
-				PlayerHelper.sendMessage(playerId, resp);
+				playerService.sendMessage(playerId, resp);
 				return;
 			}
 			chatEnum.addChat(chat);
@@ -247,7 +243,6 @@ public class ChatServicePlus {
 
 		PlayerContext context = playerService.getPlayerContext(playerId);
 		final Player player = context.getPlayer();
-//		ChatRule rule = context.getChatRule(channelId);
 		ChatRule rule = getChatRule(playerId, channelId);
 		long curTime = System.currentTimeMillis();
 		if (curTime < rule.getNextSpeakTime() && rule.isAgainst()) { //聊天过快
@@ -255,8 +250,7 @@ public class ChatServicePlus {
 			int lessTime = (int)((rule.getNextSpeakTime() - curTime)/1000);
 			AckTipsResp resp = AckTipsResp.newInstance();
 			resp.setTipsId(ConfigTipsMgr.Chat_417).addParams(lessTime);
-//			SendMessageUtil.sendResponse(playerId, resp);
-			PlayerHelper.sendMessage(playerId, resp);
+			playerService.sendMessage(playerId, resp);
 			return ConfigTipsMgr.Chat_411;
 		}
 		//提示聊天过快, 但依旧允许其聊天
@@ -264,8 +258,7 @@ public class ChatServicePlus {
 			//玩家频繁违法
 			rule.onTrigger();
 			AckTipsResp resp = AckTipsResp.newInstance().setTipsId(ConfigTipsMgr.Chat_411);
-//			SendMessageUtil.sendResponse(playerId, resp);
-			PlayerHelper.sendMessage(playerId, resp);
+			playerService.sendMessage(playerId, resp);
 		}
 		
 		ChatEnum chatEnum = ChatEnum.getEnum(channelId);

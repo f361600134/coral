@@ -1,7 +1,5 @@
 package org.coral.server.game.helper;
 
-import java.util.Map;
-
 import org.coral.server.game.module.player.domain.Player;
 
 /**
@@ -97,10 +95,18 @@ public enum PropertiesType {
 	 * @date 2020年9月7日下午2:59:24
 	 */
 	public void add(Player player, int added) {
-//		Map<Integer, Integer> propertiesaMap = player.getPropertieMap();
-//		int value = propertiesaMap.getOrDefault(getType(), 0);
-//		propertiesaMap.put(getType(), value+added);
 		player.addProperties(getType(), added);
+	}
+	
+	/**
+	 * 增加属性, 可正可负
+	 * @param player
+	 * @param added  
+	 * @return void  
+	 * @date 2020年9月7日下午2:59:24
+	 */
+	public void reduce(Player player, int added) {
+		player.reduceProperties(getType(), added);
 	}
 	
 	/**
@@ -123,7 +129,6 @@ public enum PropertiesType {
 	 */
 	public int getValue(Player player) {
 		return player.getProperties(getType());
-		//player.getPropertieMap().getOrDefault(getType(), 0);
 	}
 	
 	/**

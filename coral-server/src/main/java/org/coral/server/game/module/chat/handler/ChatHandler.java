@@ -7,10 +7,10 @@ import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IHandler;
 import org.coral.server.game.data.proto.PBDefine.PBProtocol;
 import org.coral.server.game.data.proto.PBPlayer.ReqChat;
-import org.coral.server.game.module.chat.service.ChatServicePlus;
+import org.coral.server.game.module.chat.service.ChatService;
 import org.coral.server.game.module.chat.service.CommandService;
-import org.coral.server.game.module.player.helper.PlayerHelper;
 import org.coral.server.game.module.player.proto.AckTipsResp;
+import org.coral.server.game.module.player.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -26,10 +26,13 @@ public class ChatHandler implements IHandler{
     private static final Log log = LogFactory.getLog(ChatHandler.class);
 
     @Autowired
-    private ChatServicePlus chatServicePlus;
+    private ChatService chatServicePlus;
     
     @Autowired
     private CommandService commandService;
+    
+    @Autowired
+    private PlayerService playerService;
 
     @Cmd(id = PBProtocol.ReqChat_VALUE, mustLogin = false)
     public void chat(GameSession session, ReqChat req) {
@@ -42,7 +45,7 @@ public class ChatHandler implements IHandler{
             //聊天
             int code = this.chatServicePlus.chat(req, playerId);
             AckTipsResp ack = AckTipsResp.newInstance().setTipsId(code);
-            PlayerHelper.sendMessage(playerId, ack);
+            playerService.sendMessage(playerId, ack);
         }
     }
 
