@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
  * 物品控制器
  */
 @Controller
-public class ItemController {
+public class ItemHandler {
 	
 //	@Autowired
 //	private ItemService itemService;

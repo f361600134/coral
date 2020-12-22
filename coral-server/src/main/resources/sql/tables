@@ -8,3 +8,20 @@ CREATE TABLE `item` (
   PRIMARY KEY (`itemId`),
   KEY `player_item` (`playerId`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `artifact`;
+CREATE TABLE `artifact` (
+  `playerId` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '玩家ID',
+  `configId` int(11) NOT NULL COMMENT '神器配置id',
+  `level` int(11) NOT NULL COMMENT '神器等级',
+  `exp` int(11) NOT NULL COMMENT '经验',
+  `refineLv` int(11) NOT NULL COMMENT '精炼等级',
+  `skillLv` int(11) NOT NULL COMMENT '技能等级',
+  `state` int(11) NOT NULL COMMENT '状态',
+  `holySealLv` int(11) NOT NULL COMMENT '圣印等级',
+  `skinId` int(11) NOT NULL COMMENT '皮肤id',
+  `missionStr` int(11) NOT NULL COMMENT '已完成任务列表',
+  `usedMaterialStr` int(11) NOT NULL COMMENT '累计使用材料',
+  PRIMARY KEY (`playerId`, `configId`),
+  KEY `player_artifact` (`playerId`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
