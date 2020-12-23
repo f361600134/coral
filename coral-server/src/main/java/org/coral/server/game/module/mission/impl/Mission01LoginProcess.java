@@ -1,12 +1,10 @@
 package org.coral.server.game.module.mission.impl;
 
-import java.util.List;
-
-import org.coral.server.game.module.mission.EntityMission;
-import org.coral.server.game.module.mission.IMissionProcess;
+import org.coral.server.game.module.mission.IMission;
 import org.coral.server.game.module.mission.MissionEnum;
 
-public class Mission01LoginProcess implements IMissionProcess{
+public class Mission01LoginProcess {
+//implements IMissionProcess{
 	
 	/**
 	 * 处理类型
@@ -15,8 +13,7 @@ public class Mission01LoginProcess implements IMissionProcess{
 		return MissionEnum.TYPE_LOGIN.getType();
 	}
 
-	@Override
-	public boolean doProcess(long playerId, int value, List<Integer> configs) {
+	public boolean doProcess(int value, IMission mission) {
 		try {
 			//计算活动第几天
 			boolean chg = false;
@@ -34,7 +31,6 @@ public class Mission01LoginProcess implements IMissionProcess{
 			return chg;
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("onLogin error, e:", e);
 			return false;
 		}
 	}

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 
  * 邮件系统服务
  * @author kdiller
  */
@@ -35,7 +36,6 @@ public class MailService {
 
 	/**玩家邮件缓存*/
 //	private final static Map<Long, MailBox> PLAYER_MAILBOX = new ConcurrentHashMap<Long, MailBox>();
-
 
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(MailService.class);

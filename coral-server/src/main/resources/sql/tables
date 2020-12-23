@@ -25,3 +25,98 @@ CREATE TABLE `artifact` (
   PRIMARY KEY (`playerId`, `configId`),
   KEY `player_artifact` (`playerId`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for mail
+-- ----------------------------
+DROP TABLE IF EXISTS `mail`;
+CREATE TABLE `mail`  (
+  `id` bigint(20) NOT NULL,
+  `receiver` bigint(20) NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `state` int(11) NULL DEFAULT NULL,
+  `type` int(11) NULL DEFAULT NULL,
+  `create_at` int(11) NULL DEFAULT NULL,
+  `end_time` int(11) NULL DEFAULT NULL,
+  `reward_map` json NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `receiver`(`receiver`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for player
+-- ----------------------------
+DROP TABLE IF EXISTS `player`;
+CREATE TABLE `player`  (
+  `id` bigint(20) NOT NULL,
+  `open_id` char(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `player_name` char(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `sex` tinyint(4) NULL DEFAULT NULL,
+  `level` int(11) NULL DEFAULT NULL,
+  `exp` int(11) NULL DEFAULT NULL,
+  `job_type` tinyint(4) NULL DEFAULT NULL,
+  `power` int(11) NULL DEFAULT NULL,
+  `history_top_power` int(11) NULL DEFAULT NULL,
+  `physical_power` int(11) NULL DEFAULT NULL,
+  `last_login_time` bigint(20) NULL DEFAULT NULL,
+  `ingot` int(11) NULL DEFAULT NULL,
+  `copper` int(11) NULL DEFAULT NULL,
+  `gift_gold` int(11) NULL DEFAULT NULL,
+  `forbiden_speak` int(11) NULL DEFAULT NULL,
+  `nation` tinyint(4) NULL DEFAULT NULL,
+  `guild_id` bigint(20) NULL DEFAULT NULL,
+  `play_rate` int(11) NULL DEFAULT NULL,
+  `vip` tinyint(4) NULL DEFAULT NULL,
+  `prev_offline_time` int(11) NULL DEFAULT NULL,
+  `reg_time` int(11) NULL DEFAULT NULL,
+  `level_up_time` int(11) NULL DEFAULT NULL,
+  `friend_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `forbit_end_time` int(11) NULL DEFAULT NULL,
+  `hero_cell_num` int(11) NULL DEFAULT NULL,
+  `hero_cell_buy_count` int(11) NULL DEFAULT NULL,
+  `pay_total` int(11) NULL DEFAULT NULL,
+  `summon_integral` int(11) NULL DEFAULT NULL,
+  `friendship_point` int(11) NULL DEFAULT NULL,
+  `prophet_crystal` int(11) NULL DEFAULT NULL,
+  `prophet_card` int(11) NULL DEFAULT NULL,
+  `information` int(11) NULL DEFAULT NULL,
+  `exp_hero` bigint(20) NULL DEFAULT NULL,
+  `rune_smelt` int(11) NULL DEFAULT NULL,
+  `arena_prestige` int(11) NULL DEFAULT NULL,
+  `arena_integarl` int(11) NULL DEFAULT NULL,
+  `champion_chip` int(11) NULL DEFAULT NULL,
+  `guide_id` int(11) NULL DEFAULT NULL,
+  `vip_exp` int(11) NULL DEFAULT NULL,
+  `treasure_integral` int(11) NULL DEFAULT NULL,
+  `godhood` int(11) NULL DEFAULT NULL,
+  `war_medal` int(11) NULL DEFAULT NULL,
+  `honor_medal` int(11) NULL DEFAULT NULL,
+  `guild_contribution` int(11) NULL DEFAULT NULL,
+  `skin_debris` int(11) NULL DEFAULT NULL,
+  `pyroxene` int(11) NULL DEFAULT NULL,
+  `guild_medal` int(11) NULL DEFAULT NULL,
+  `head_image_id` int(11) NULL DEFAULT NULL,
+  `head_frame_id` int(11) NULL DEFAULT NULL,
+  `image_id` int(11) NULL DEFAULT NULL,
+  `title_id` int(11) NULL DEFAULT NULL,
+  `fans` int(11) NULL DEFAULT NULL,
+  `province_id` int(11) NULL DEFAULT NULL,
+  `city_id` int(11) NULL DEFAULT NULL,
+  `al` tinyint(4) NULL DEFAULT NULL,
+  `team_id` int(11) NULL DEFAULT NULL,
+  `lander` tinyint(4) NULL DEFAULT NULL,
+  `q_type` int(11) NULL DEFAULT NULL,
+  `q_level` int(11) NULL DEFAULT NULL,
+  `grow_level` int(11) NULL DEFAULT NULL,
+  `all_pk_coll` int(11) NULL DEFAULT NULL,
+  `app_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `open_id_idx`(`open_id`) USING BTREE,
+  INDEX `player_name_idx`(`player_name`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+

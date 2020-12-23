@@ -1,5 +1,8 @@
 package org.coral.server.game.module.mission;
 
+import java.util.List;
+import java.util.Map;
+
 public interface IMissionProcess {
 	
 	/**
@@ -14,6 +17,6 @@ public interface IMissionProcess {
 	 * @param loginDays 当前登陆天数
 	 * @return
 	 */
-	public boolean doProcess(long playerId, int value);
+	public boolean doProcess(int value, List<Integer> configs, Map<Integer, IMission> missions);
 
 }

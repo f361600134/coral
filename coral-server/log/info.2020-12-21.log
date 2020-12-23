@@ -1,0 +1,56 @@
+2020-12-21 22:17:50.345 [main] INFO  org.coral.server.App - Starting App on DESKTOP-IDPUN0O with PID 9064 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-21 22:17:50.346 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-12-21 22:17:52.946 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2020-12-21 22:17:52.962 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2020-12-21 22:17:52.963 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-21 22:17:52.963 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-12-21 22:17:53.084 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-12-21 22:17:53.084 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2684 ms
+2020-12-21 22:17:53.529 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-21 22:18:09.908 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-21 22:18:10.050 [main] INFO  org.coral.server.common.BeanComponent - BeanComponent loading...
+2020-12-21 22:18:10.055 [main] INFO  org.coral.orm.core.DataProcessor - Processor init===============
+2020-12-21 22:18:10.056 [main] INFO  org.coral.orm.core.DataProcessorAsyn - ProcessorProxy init===============
+2020-12-21 22:18:10.084 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [15] milliseconds.
+2020-12-21 22:18:11.295 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xd6c14d73] REGISTERED
+2020-12-21 22:18:11.298 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xd6c14d73] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-21 22:18:11.299 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-21 22:18:11.300 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xd6c14d73, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-21 22:18:11.305 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa157189b] REGISTERED
+2020-12-21 22:18:11.305 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa157189b] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-21 22:18:11.306 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xa157189b, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-21 22:18:11.306 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-21 22:18:11.312 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-21 22:18:11.313 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-21 22:18:11.858 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-21 22:18:11.898 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2020-12-21 22:18:11.917 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2020-12-21 22:18:11.938 [main] INFO  org.coral.server.App - Started App in 22.146 seconds (JVM running for 23.163)
+2020-12-21 22:19:40.936 [main] INFO  org.coral.server.App - Starting App on DESKTOP-IDPUN0O with PID 15232 (E:\server\jeremy\workspace\coral\coral-server\target\classes started by Jeremy in E:\server\jeremy\workspace\coral\coral-server)
+2020-12-21 22:19:40.937 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2020-12-21 22:19:43.146 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2020-12-21 22:19:43.158 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2020-12-21 22:19:43.159 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-12-21 22:19:43.159 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-12-21 22:19:43.261 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-12-21 22:19:43.261 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2260 ms
+2020-12-21 22:19:43.638 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2020-12-21 22:19:45.438 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-12-21 22:19:45.523 [main] INFO  org.coral.server.common.BeanComponent - BeanComponent loading...
+2020-12-21 22:19:45.526 [main] INFO  org.coral.orm.core.DataProcessor - Processor init===============
+2020-12-21 22:19:45.527 [main] INFO  org.coral.orm.core.DataProcessorAsyn - ProcessorProxy init===============
+2020-12-21 22:19:45.546 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [9] milliseconds.
+2020-12-21 22:19:46.620 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc47cf250] REGISTERED
+2020-12-21 22:19:46.622 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc47cf250] BIND: 0.0.0.0/0.0.0.0:5001
+2020-12-21 22:19:46.622 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2020-12-21 22:19:46.623 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xc47cf250, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2020-12-21 22:19:46.627 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x54294ef1] REGISTERED
+2020-12-21 22:19:46.627 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x54294ef1] BIND: 0.0.0.0/0.0.0.0:6001
+2020-12-21 22:19:46.628 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2020-12-21 22:19:46.628 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x54294ef1, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2020-12-21 22:19:46.633 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2020-12-21 22:19:46.634 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2020-12-21 22:19:47.117 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-12-21 22:19:47.162 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2020-12-21 22:19:47.190 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2020-12-21 22:19:47.215 [main] INFO  org.coral.server.App - Started App in 6.85 seconds (JVM running for 7.672)
