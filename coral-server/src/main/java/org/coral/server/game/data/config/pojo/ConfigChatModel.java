@@ -1,6 +1,8 @@
 package org.coral.server.game.data.config.pojo;
 
-public class ConfigChatModel {
+import org.coral.server.game.data.config.IConfig;
+
+public class ConfigChatModel implements IConfig{
 
 	private int ID;//ID
 	private String modelDesc;//模板内容

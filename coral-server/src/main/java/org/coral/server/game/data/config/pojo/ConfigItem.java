@@ -1,6 +1,8 @@
 package org.coral.server.game.data.config.pojo;
 
-public class ConfigItem {
+import org.coral.server.game.data.config.IConfig;
+
+public class ConfigItem implements IConfig{
 
 	private int ID;//ID
 	private String name;//物品名称

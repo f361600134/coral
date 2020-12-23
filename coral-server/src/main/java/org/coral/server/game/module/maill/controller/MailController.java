@@ -9,6 +9,7 @@ import java.util.Collection;
  * 邮件控制器
  * @author Jeremy
  *
+ *
  */
 @Controller
 public class MailController {
