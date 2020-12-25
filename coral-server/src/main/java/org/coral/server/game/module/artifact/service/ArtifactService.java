@@ -63,7 +63,8 @@ public class ArtifactService {
 	 * 登陆
 	 */
 	public void onLogin(long playerId) {
-		this.responseArtifactInfo(playerId);
+		this.responseArtif
+		actInfo(playerId);
 	}
 	
 	/**

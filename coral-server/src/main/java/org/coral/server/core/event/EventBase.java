@@ -14,5 +14,10 @@ public abstract class EventBase implements IEvent{
 	public long getPlayerId() {
 		return playerId;
 	}
+	
+	@Override
+	public String name() {
+		return this.getClass().getSimpleName();
+	}
 
 }

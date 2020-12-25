@@ -33,4 +33,10 @@ public class ItemAddEvent extends EventBase {
     public int getQuality() {
         return quality;
     }
+    
+    public static void main(String[] args) {
+    	ItemAddEvent event = ItemAddEvent.create(1, 1, 1, 1);
+    	System.out.println(event.name());
+    	System.out.println(event.name);
+	}
 }
