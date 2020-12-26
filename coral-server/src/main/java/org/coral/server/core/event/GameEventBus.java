@@ -9,6 +9,9 @@ import com.google.common.eventbus.EventBus;
 
 /**
  * 游戏事件总线
+ *支持两种事件机制
+ *发布订阅,默认注册. 不能移除掉
+ *监听机制,像活动类任务, 只有活动开启时才注册, 活动结束取消注册.
  */
 public class GameEventBus {
 	
