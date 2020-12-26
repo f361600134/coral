@@ -101,6 +101,7 @@ public class LocalNetService implements InitializingBean{
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		
 		if (config.isTcpEnable()) {
 			tcpServer = new TcpServerStarter(serverHandler, config.getServerIp(), config.getTcpPort());
 //			tcpServer.startServer();

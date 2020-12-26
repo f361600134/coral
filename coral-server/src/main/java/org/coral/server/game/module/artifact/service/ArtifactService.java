@@ -1,14 +1,11 @@
 package org.coral.server.game.module.artifact.service;
 
-import com.google.common.collect.Maps;
+import java.util.Collection;
 
 import org.coral.server.game.module.artifact.domain.Artifact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.Map;
 
 
 /**
@@ -59,13 +56,13 @@ public class ArtifactService {
 		return null;
 	}
 	
-	/**
-	 * 登陆
-	 */
-	public void onLogin(long playerId) {
-		this.responseArtif
-		actInfo(playerId);
-	}
+//	/**
+//	 * 登陆
+//	 */
+//	public void onLogin(long playerId) {
+//		this.responseArtif
+//		actInfo(playerId);
+//	}
 	
 	/**
 	 * 当通关时
@@ -87,7 +84,7 @@ public class ArtifactService {
 			e.printStackTrace();
 			log.info("onChapterPass error, playerId:{}", playerId);
 			log.error("onChapterPass error, e:", e);
-		}
+		} 
 	}
 	
 	/**

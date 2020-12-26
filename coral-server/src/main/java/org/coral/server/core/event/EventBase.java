@@ -19,5 +19,5 @@ public abstract class EventBase implements IEvent{
 	public String name() {
 		return this.getClass().getSimpleName();
 	}
-
+	
 }

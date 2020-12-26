@@ -5,8 +5,8 @@ import org.coral.net.core.base.Commander;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.Packet;
 import org.coral.net.core.base.ServerHandler;
-import org.coral.net.core.base.executor.DisruptorDispatchTask;
-import org.coral.net.core.base.executor.DisruptorStrategy;
+import org.coral.net.core.executor.DisruptorDispatchTask;
+import org.coral.net.core.executor.DisruptorStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
@@ -36,7 +36,6 @@ public class GameServerHandler extends ServerHandler {
 				return;
 			} 
 			packet = Packet.decode(message);
-			log.info("收到未处理协议, processor:{}",  packet.cmd());
 			Commander commander = processor.getCommander(packet.cmd());
 			if (commander == null) {
 				log.info("收到未处理协议, cmd=[{}]",  packet.cmd());
@@ -57,6 +56,7 @@ public class GameServerHandler extends ServerHandler {
 				DisruptorStrategy.get(DisruptorStrategy.SINGLE)
 				.execute(session.getId(), new DisruptorDispatchTask(processor, session, packet));
 				//group.execute(session.getId(), new DisruptorDispatchTask(processor, session, packet));
+				log.info("====> GameServerHandler onReceive, threadName:{}", Thread.currentThread().getName());
 			}
 		} catch (Exception e) {
 			if (packet == null) {

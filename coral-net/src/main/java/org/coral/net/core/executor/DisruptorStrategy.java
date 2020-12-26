@@ -1,10 +1,11 @@
-package org.coral.net.core.base.executor;
+package org.coral.net.core.executor;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Disruptor线程策略
+ * 线程策略不集成在spring中
  */
 public enum DisruptorStrategy {
 	

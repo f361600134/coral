@@ -4,6 +4,8 @@ import org.coral.server.core.event.EventSubscribe;
 import org.coral.server.game.module.artifact.service.ArtifactService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.common.eventbus.Subscribe;
+
 @EventSubscribe
 public class ArtifactObserver {
 

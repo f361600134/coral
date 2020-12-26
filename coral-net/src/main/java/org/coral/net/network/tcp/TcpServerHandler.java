@@ -14,7 +14,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 /**
  * 游戏服务器消息处理器 注意: 
  * 1. 一条连接对应一个TcpServerHandler 
- * 2. 一条连接对应一个GameSession 3.
+ * 2. 一条连接对应一个GameSession
  * 3. 所有TcpServerHandler持有的IServerHandler都是同一个引用
  */
 public class TcpServerHandler extends SimpleChannelInboundHandler<ByteBuf> {

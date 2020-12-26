@@ -45,7 +45,8 @@ public class ChatHandler implements IHandler{
             //聊天
             int code = this.chatServicePlus.chat(req, playerId);
             AckTipsResp ack = AckTipsResp.newInstance().setTipsId(code);
-            playerService.sendMessage(playerId, ack);
+//            playerService.sendMessage(playerId, ack);
+            session.send(ack);
         }
     }
 

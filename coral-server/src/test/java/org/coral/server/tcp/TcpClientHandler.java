@@ -1,6 +1,7 @@
 package org.coral.server.tcp;
 
 import org.coral.net.core.base.Packet;
+import org.coral.server.game.module.chat.proto.ReqChat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,9 +24,9 @@ public class TcpClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("==================server channelActive==================");
-//        ReqChat req = ReqChat.create();
-//    	Packet obj = Packet.encode(req);
-//    	ctx.writeAndFlush(obj);
+        ReqChat req = ReqChat.create();
+    	Packet obj = Packet.encode(req);
+    	ctx.writeAndFlush(obj);
     }
     
     /**
