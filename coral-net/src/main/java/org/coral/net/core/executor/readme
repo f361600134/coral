@@ -1,0 +1,5 @@
+基于disruptor实现的线程安全模型, 
+借鉴netty的线程模型实现
+DisruptorExecutorGroup包含指定数量的DisruptorExecutor
+每个DisruptorExecutor都是单线程线程池,
+

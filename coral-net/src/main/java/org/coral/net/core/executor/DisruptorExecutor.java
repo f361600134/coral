@@ -1,10 +1,12 @@
-package org.coral.net.core.base.executor;
+package org.coral.net.core.executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import com.lmax.disruptor.BlockingWaitStrategy;
+import com.lmax.disruptor.EventTranslator;
+import com.lmax.disruptor.EventTranslatorOneArg;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
@@ -119,7 +121,14 @@ public class DisruptorExecutor {
 	 * @param task . 任务.
 	 */
 	public void execute(Runnable task) {
-		disruptor.getRingBuffer().publishEvent((event, sequence, buffer) -> event.setTask(task), task);
+//		disruptor.getRingBuffer().publishEvent((event, sequence, buffer) -> event.setTask(task), task);
+		disruptor.getRingBuffer().publishEvent((event, sequence) -> event.setTask(task));
+//		disruptor.getRingBuffer().publishEvent(new EventTranslator<TaskEvent>() {
+//			@Override
+//			public void translateTo(TaskEvent event, long sequence) {
+//				event.setTask(task);
+//			}
+//		});
 	}
 
 //	/**

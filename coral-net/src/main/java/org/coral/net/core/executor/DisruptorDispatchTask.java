@@ -1,4 +1,4 @@
-package org.coral.net.core.base.executor;
+package org.coral.net.core.executor;
 
 import org.coral.net.core.HandlerProcessor;
 import org.coral.net.core.base.GameSession;
@@ -24,6 +24,7 @@ public class DisruptorDispatchTask implements Runnable {
 	public void run() {
 		try {
 			processor.invoke(session, packet);
+			log.info("====> DisruptorDispatchTask run, threadName:{}", Thread.currentThread().getName());
 		} catch (Exception e) {
 			log.error("DisruptorDispatchTask error", e);
 		}

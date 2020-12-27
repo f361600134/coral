@@ -1,12 +1,17 @@
-package org.coral.net.core.base.executor;
+package org.coral.net.core.executor;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * DisruptorExecutor组合.
  *
  */
 public class DisruptorExecutorGroup {
+	
+	private static final Logger log = LoggerFactory.getLogger(DisruptorDispatchTask.class);
 	
 	private final AtomicInteger childIndex = new AtomicInteger();
 	private DisruptorExecutor[] children;
@@ -29,6 +34,7 @@ public class DisruptorExecutorGroup {
 			children[i] = new DisruptorExecutor(executorName + "-" + i);
 		}
 		powerOfTow = (size & -size) == size;
+		this.startUp();
 	}
 
 	/**
@@ -68,6 +74,7 @@ public class DisruptorExecutorGroup {
 	public void startUp() {
 		for (DisruptorExecutor executor : children) {
 			executor.startUp();
+			log.info("====startUp======");
 		}
 	}
 	

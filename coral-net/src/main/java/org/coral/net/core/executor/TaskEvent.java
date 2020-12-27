@@ -1,4 +1,4 @@
-package org.coral.net.core.base.executor;
+package org.coral.net.core.executor;
 
 public class TaskEvent {
   private Runnable task;

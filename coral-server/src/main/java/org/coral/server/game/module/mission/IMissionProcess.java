@@ -2,6 +2,8 @@ package org.coral.server.game.module.mission;
 
 import java.util.List;
 import java.util.Map;
+
+public interface IMissionProcess{
 	
 	/**
 	 * 处理类型

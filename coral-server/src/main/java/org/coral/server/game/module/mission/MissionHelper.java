@@ -1,10 +1,6 @@
 package org.coral.server.game.module.mission;
 
-import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 抽象任务域, 实现任务业务

@@ -4,8 +4,7 @@ public class ArtifactMissionHelper extends MissionHelper {
 	
 	public ArtifactMissionHelper() {}
 	
-	@Override
-	public boolean progressMission(int progressDelta, EntityMission mission) {
+	public boolean progressMission(int progressDelta) {
 		
 //		if(playerId ==0) {
 //			return false;
