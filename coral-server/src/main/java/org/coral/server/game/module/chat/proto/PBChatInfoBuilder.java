@@ -1,16 +1,16 @@
 package org.coral.server.game.module.chat.proto;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.coral.net.core.base.IProtocol;
 import org.coral.server.game.data.proto.PBPlayer.ChatInfo;
 import org.coral.server.game.module.chat.domain.Chat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.AbstractMessageLite.Builder;
 
 public class PBChatInfoBuilder implements IProtocol{
 	
-	private static final Log log = LogFactory.getLog(PBChatInfoBuilder.class);
+	private static final Logger log = LoggerFactory.getLogger(PBChatInfoBuilder.class);
 
 	private ChatInfo.Builder builder;
 

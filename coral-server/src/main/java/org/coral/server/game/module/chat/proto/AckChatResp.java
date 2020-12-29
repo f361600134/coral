@@ -1,17 +1,17 @@
 package org.coral.server.game.module.chat.proto;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.coral.net.core.base.IProtocol;
 import org.coral.server.game.data.proto.PBDefine.PBProtocol;
 import org.coral.server.game.data.proto.PBPlayer.AckChat;
 import org.coral.server.game.data.proto.PBPlayer.ChatInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.AbstractMessageLite.Builder;
 
 public class AckChatResp implements IProtocol {
 
-	private static final Log log = LogFactory.getLog(AckChatResp.class);
+	private static final Logger log = LoggerFactory.getLogger(AckChatResp.class);
 	
 	private AckChat.Builder builder;
 

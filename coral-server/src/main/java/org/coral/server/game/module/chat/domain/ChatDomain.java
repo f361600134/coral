@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.coral.server.game.data.config.ConfigChatMgr;
@@ -13,9 +12,6 @@ import org.coral.server.game.data.config.pojo.ConfigChat;
 import org.coral.server.game.data.proto.PBPlayer.ChatInfo;
 import org.coral.server.game.module.chat.proto.AckChatResp;
 import org.coral.server.utils.ConcurrentFixSizeArrayList;
-
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
 
 /**
  * 聊天域
@@ -53,8 +49,6 @@ public class ChatDomain {
 	 */
 	private AtomicInteger queueSize;
 	
-	private Cache<Integer, Integer> cache;
-	
 	
 	public ChatDomain(int channel) {
 		this.channel = channel;
@@ -62,30 +56,6 @@ public class ChatDomain {
 		this.chatCache = new ConcurrentFixSizeArrayList<ChatInfo>(config.getCacheNum());
 		this.chatQueue = new ConcurrentLinkedQueue<ChatInfo>();
 		this.queueSize = new AtomicInteger(0);
-		this.cache =  CacheBuilder.newBuilder()
-				.expireAfterAccess(1, TimeUnit.MINUTES)// 在给定时间内没有被读/写访问,则清除
-				.maximumSize(3)// 最大容量
-				//.removalListener(listener) //移除监听器
-				.initialCapacity(1)// 初始容量
-				.build();
-	}
-	
-	public static void main(String[] args) {
-//		Cache<Integer, Integer> cache = 
-		Cache<Integer, Integer> cache =  CacheBuilder.newBuilder()
-				.expireAfterAccess(1, TimeUnit.MINUTES)// 在给定时间内没有被读/写访问,则清除
-				.maximumSize(3)// 最大容量
-				//.removalListener(listener) //移除监听器
-				.initialCapacity(1)// 初始容量
-				.build();
-		cache.put(1, 1);
-		cache.put(30, 30);
-		cache.put(10, 10);
-		cache.put(50, 10);
-		cache.put(15, 15);
-		for (Integer key : cache.asMap().keySet()) {
-			System.out.println(key+", "+cache.getIfPresent(key));
-		}
 	}
 	
 	public ChatDomain(int channel, long domainId) {
