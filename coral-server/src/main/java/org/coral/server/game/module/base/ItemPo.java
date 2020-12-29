@@ -117,6 +117,7 @@ public abstract class ItemPo extends BasePo {
 	public String[] indexs() {
 		return new String[] {
 			PROP_PLAYERID,
+			PROP_ITEMID,
 		};
 	}
 	
@@ -124,6 +125,7 @@ public abstract class ItemPo extends BasePo {
 	public Object[] indexValues() {
 		return new Object[] {
 			getPlayerId(),
+			getItemId(),
 		};
 	}
 	

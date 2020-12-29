@@ -1,29 +1,37 @@
-package org.coral.server.game.module.mission.type;
+package org.coral.server.game.module.mission.handler;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.coral.server.core.event.IEvent;
 import org.coral.server.game.data.proto.PBBag;
-import org.coral.server.game.module.mission.AbstractMission.MissionState;
-import org.coral.server.game.module.mission.IMission;
-import org.coral.server.game.module.mission.MissionEnum;
-import org.coral.server.game.module.mission.MissionHelper;
+import org.coral.server.game.module.mission.domain.IMission;
+import org.coral.server.game.module.mission.manager.MissionProcessManager;
+import org.coral.server.game.module.mission.process.IMissionProcess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
 public class MissionHandler {
 	
-	private static final Logger log = LoggerFactory.getLogger(MissionHelper.class);
+	private static final Logger log = LoggerFactory.getLogger(MissionProcessManager.class);
 
 	protected long playerId;
+	/**
+	 * key:任务id
+	 * value:任务对象
+	 */
 	private Map<Integer, IMission> missions;
+	
+	/**
+	 * key:任务类型
+	 * value: 任务id集合
+	 */
 	private transient Multimap<Integer, Integer> missionConfigs;
 
 	public MissionHandler() {
@@ -51,41 +59,6 @@ public class MissionHandler {
 			this.missionConfigs.put(mission.getCompleteType(), mission.getConfigId());
 		}
 	}
-
-	/**
-	 * 任务进度
-	 */
-	public boolean progressMission(int progressDelta, IMission mission) {
-		if(mission==null || mission.isActived() || mission.isRewarded())
-			return false;
-
-		int progress = mission.getProgress();
-		progress += progressDelta;
-		progress = Math.min(progress, mission.getCompleteValue());
-		mission.setProgress(progress);
-
-		if(mission.isNone() && this.isMissionCanComplete(mission.getConfigId()))
-		{//状态为未完成且当前可以完成
-			mission.setState(MissionState.STATE_ACTIVED);
-		}
-		return true;
-	}
-	/**
-	 * 任务是否满足完成条件
-	 */
-	@JSONField(serialize=false)
-	private boolean isMissionCanComplete(int missionId)
-	{
-		IMission mission = this.missions.get(missionId);
-		if(mission==null)
-			return false;
-		if(mission.getCompleteType()== MissionEnum.TYPE_DEFAULT.getType()
-				&& mission.getProgress()<mission.getCompleteValue())
-			mission.setProgress(mission.getCompleteValue());	//无完成条件的,直接完成
-
-		return mission.getProgress()>=mission.getCompleteValue();
-	}
-
 
 	/**
 	 * 判断全部是否领取, 全部领取则可以激活
@@ -129,29 +102,32 @@ public class MissionHandler {
 	}
 	
 	/**
-	 * 登陆
+	 * 当处理任务
+	 * @return
 	 */
-	public boolean onLogin(int loginDays) {
-		try {
-			//计算活动第几天
-			boolean chg = false;
-			//获取登陆任务
-			Collection<Integer> configs = missionConfigs.get(MissionEnum.TYPE_LOGIN.getType());
-			if(configs != null && !configs.isEmpty())
-			{//有任务可以判断完成或记录进度
-				for(Integer configId : configs){
-					IMission mission = missions.get(configId);
-					if(mission==null || mission.getCompleteValue() != loginDays)
-						continue;
-					chg = progressMission(1, mission) || chg;
-				}
+	public boolean onProcess(IEvent event, int value) {
+		//TODO
+		MissionProcessManager manager =  new MissionProcessManager();
+		//获取到任务类型
+		Collection<Integer> missionTypes = manager.getMissionTypes(event.getEventId());
+		for (Integer missionType : missionTypes) {
+			IMissionProcess missionProcess = manager.getProcess(missionType);
+			Collection<Integer> configIds = missionConfigs.get(missionType);
+			for (Integer configId : configIds) {
+				IMission mission = missions.get(configId);
+				boolean bool = missionProcess.process(value, mission, event);
+				if (!bool) break;
 			}
-			return chg;
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.error("onLogin error, e:", e);
-			return false;
 		}
+		return false;
 	}
-
+	
+	/**
+	 * 当处理任务
+	 * @return
+	 */
+	public boolean onProcess(int value, int value2) {
+		return false;
+	}
+	
 }

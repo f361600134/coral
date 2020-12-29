@@ -1,4 +1,4 @@
-package org.coral.server.game.module.chat.handler;
+package org.coral.server.game.module.chat.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,10 +20,10 @@ import org.springframework.stereotype.Controller;
  * @author Jeremy
  */
 @Controller
-public class ChatHandler implements IHandler{
+public class ChatController implements IHandler{
 
 
-    private static final Log log = LogFactory.getLog(ChatHandler.class);
+    private static final Log log = LogFactory.getLog(ChatController.class);
 
     @Autowired
     private ChatService chatServicePlus;

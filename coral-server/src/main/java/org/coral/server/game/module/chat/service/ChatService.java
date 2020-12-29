@@ -183,9 +183,7 @@ public class ChatService {
 		}
 	}
 	/**
-	 * 支持自定义系统聊天,譬如GM内容
-	 * 1. 系统聊天
-	 * 2. 功能分享
+	 * 系统聊天
 	 */
 	public void onChat(ChatEnum chatEnum, String content) {
 		try {

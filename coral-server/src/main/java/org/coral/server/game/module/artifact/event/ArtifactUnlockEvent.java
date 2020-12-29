@@ -1,8 +1,8 @@
 package org.coral.server.game.module.artifact.event;
 
-import org.coral.server.core.event.EventBase;
+import org.coral.server.core.event.PlayerEventBase;
 
-public class ArtifactUnlockEvent extends EventBase {
+public class ArtifactUnlockEvent extends PlayerEventBase {
 
     private final int configId; //神器配置id
 

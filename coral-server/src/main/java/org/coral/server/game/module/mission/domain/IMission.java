@@ -1,7 +1,6 @@
-package org.coral.server.game.module.mission;
+package org.coral.server.game.module.mission.domain;
 
 import org.coral.server.game.data.proto.PBBag;
-import org.coral.server.game.module.mission.AbstractMission.MissionState;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -17,11 +16,11 @@ public interface IMission {
 	/** 进度*/
 	public int getProgress();
 	/** 状态*/
-	public MissionState getState();
+	public int getState();
 	/** 设置进度*/
 	public void setProgress(int progress);
 	/** 设置状态*/
-	public void setState(MissionState state);
+	public void setState(int state);
 	/** 达成类型*/
 	@JSONField(serialize=false)
 	public int getCompleteType();
@@ -31,24 +30,40 @@ public interface IMission {
 	/** 达成值*/
 	@JSONField(serialize=false)
 	public int getCompleteValue();
-	/**转协议*/
-	public PBBag.PBMissionInfo toProto();
 	
 	/**是否未激活*/
 	@JSONField(serialize = false)
 	default public boolean isNone() {
-		return getState() == MissionState.STATE_NONE;
+		return getState() == MissionState.STATE_NONE.getValue();
 	}
 	
 	/**是否激活*/
 	@JSONField(serialize = false)
 	default public boolean isActived() {
-		return getState() == MissionState.STATE_ACTIVED;
+		return getState() == MissionState.STATE_ACTIVED.getValue();
 	}
 	/**是否已领奖*/
 	@JSONField(serialize = false)
 	default public boolean isRewarded() {
-		return getState() == MissionState.STATE_REWARDED;
+		return getState() == MissionState.STATE_REWARDED.getValue();
+	}
+	
+	/**
+	 * 处理任务
+	 * @param processData 完成次数
+	 */
+	public boolean progressMission(int processData);
+	
+	/**
+	 * 转协议
+	 * @return
+	 */
+	default public PBBag.PBMissionInfo toProto() {
+		PBBag.PBMissionInfo.Builder builder = PBBag.PBMissionInfo.newBuilder();
+		builder.setConfigId(getConfigId());
+		builder.setProgress(getProgress());
+		builder.setState(getState());
+		return builder.build();
 	}
 	
 }

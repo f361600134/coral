@@ -1,3 +1,13 @@
+DROP TABLE IF EXISTS `mission`;
+CREATE TABLE IF NOT EXISTS `mission` (
+  `configId` int(11) NOT NULL COMMENT '任务ID',
+  `playerId` int(11) NOT NULL COMMENT '角色ID',
+  `state` tinyint(4) NOT NULL COMMENT '任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取',
+  `progress` smallint(6) NOT NULL COMMENT '任务进度',
+  `recvTime` bigint(20) NOT NULL COMMENT '任务接取时间',
+  PRIMARY KEY (`playerId`, `configId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务表';
+
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `playerId` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '玩家ID',

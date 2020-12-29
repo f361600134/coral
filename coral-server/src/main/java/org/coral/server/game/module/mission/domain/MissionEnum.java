@@ -1,4 +1,4 @@
-package org.coral.server.game.module.mission;
+package org.coral.server.game.module.mission.domain;
 
 public enum MissionEnum {
 	//默认实现

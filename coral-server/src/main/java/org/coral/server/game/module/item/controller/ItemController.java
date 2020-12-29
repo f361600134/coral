@@ -1,4 +1,4 @@
-package org.coral.server.game.module.item.handler;
+package org.coral.server.game.module.item.controller;
 
 import org.springframework.stereotype.Controller;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
  * 物品控制器
  */
 @Controller
-public class ItemHandler {
+public class ItemController {
 	
 //	@Autowired
 //	private ItemService itemService;

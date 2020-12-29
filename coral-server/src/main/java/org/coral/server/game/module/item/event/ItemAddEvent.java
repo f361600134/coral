@@ -1,13 +1,13 @@
 package org.coral.server.game.module.item.event;
 
-import org.coral.server.core.event.EventBase;
+import org.coral.server.core.event.PlayerEventBase;
 
 /**
  * 新增物品事件
  */
-public class ItemAddEvent extends EventBase {
+public class ItemAddEvent extends PlayerEventBase {
 	
-	public static String NAME = ItemAddEvent.class.getSimpleName();
+	public static String ID = ItemAddEvent.class.getSimpleName();
 
     private final int configId; //物品id
     private int count;    //物品数量

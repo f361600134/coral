@@ -1,9 +1,6 @@
 package org.coral.server;
 
-import java.util.Date;
-
-import org.coral.orm.core.DataProcessorAsyn;
-import org.coral.server.game.module.user.User;
+import org.coral.server.core.event.GameEventBus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,8 @@ import org.springframework.stereotype.Component;
 public class InitialRunner implements CommandLineRunner {
 	
 	private static final Logger log = LoggerFactory.getLogger(InitialRunner.class);
+	
+	@Autowired private GameEventBus eventBus;
 	
 //	private Processor processor;
 //	

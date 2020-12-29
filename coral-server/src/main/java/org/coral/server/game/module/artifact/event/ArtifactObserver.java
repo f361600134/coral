@@ -1,13 +1,12 @@
 package org.coral.server.game.module.artifact.event;
 
-import org.coral.server.core.event.EventSubscribe;
+import org.coral.server.core.event.IObserver;
 import org.coral.server.game.module.artifact.service.ArtifactService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.google.common.eventbus.Subscribe;
-
-@EventSubscribe
-public class ArtifactObserver {
+@Component
+public class ArtifactObserver implements IObserver{
 
     @Autowired private ArtifactService service;
 

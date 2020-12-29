@@ -4,7 +4,7 @@ import org.coral.net.common.NetConfig;
 import org.coral.net.common.TaskThreadPoolConfig;
 import org.coral.orm.common.OrmConfig;
 import org.coral.server.core.event.GameEventBus;
-import org.coral.server.core.event.GameEventSubscribe;
+import org.coral.server.core.event.IObserver;
 import org.coral.server.game.helper.config.PropertyLoader;
 import org.coral.server.utils.RuntimeClassManager;
 import org.springframework.boot.SpringApplication;
@@ -31,7 +31,7 @@ public class App
 			PropertyLoader.load();
 			
 			//注册事件
-			GameEventBus.instance().register(classManager.getClassByType(GameEventSubscribe.class));
+			//GameEventBus.instance().register(classManager.getClassByType(GameEventSubscribe.class));
 			
 			//启动程序
 			SpringApplication.run(App.class, args);

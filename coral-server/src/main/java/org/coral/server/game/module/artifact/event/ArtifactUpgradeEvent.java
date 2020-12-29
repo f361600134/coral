@@ -1,8 +1,8 @@
 package org.coral.server.game.module.artifact.event;
 
-import org.coral.server.core.event.EventBase;
+import org.coral.server.core.event.PlayerEventBase;
 
-public class ArtifactUpgradeEvent extends EventBase {
+public class ArtifactUpgradeEvent extends PlayerEventBase {
 
     private final int configId; //神器配置id
     private final int level; //等级

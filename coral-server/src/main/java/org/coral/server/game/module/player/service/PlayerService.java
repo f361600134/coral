@@ -116,8 +116,8 @@ public class PlayerService implements IPlayerService, IResourceService {
 			Player player = this.loadPlayer(username, initServerId);
 			context.setPlayer(player);
 			// 加载其它模块数据
-			GameEventBus.instance().post(PlayerLoadEvent.create(context.getPlayerId()));
-			GameEventBus.instance().post(PlayerLoadEndEvent.create(context.getPlayerId()));
+//			GameEventBus.instance().post(PlayerLoadEvent.create(context.getPlayerId()));
+//			GameEventBus.instance().post(PlayerLoadEndEvent.create(context.getPlayerId()));
 		}
 		if (context.isLogined()) {// 旧角色挤掉
 			//context.clearResponseCache();
