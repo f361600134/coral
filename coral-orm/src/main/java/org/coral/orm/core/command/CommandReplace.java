@@ -1,7 +1,6 @@
 package org.coral.orm.core.command;
 
 import org.coral.orm.core.base.BasePo;
-import org.coral.orm.core.command.AbsCommand.CommandType;
 import org.coral.orm.core.db.IDao;
 
 /**

@@ -38,9 +38,6 @@ public class DataProcessor{
 		}
 	}
 	
-	public void print() {
-	}
-	
 	/**
 	 * 查询信息
 	 * @date 2020年6月30日

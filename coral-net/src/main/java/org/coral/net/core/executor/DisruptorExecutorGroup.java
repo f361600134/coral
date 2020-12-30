@@ -16,7 +16,7 @@ public class DisruptorExecutorGroup {
 	private final AtomicInteger childIndex = new AtomicInteger();
 	private DisruptorExecutor[] children;
 	//是否是2的幂次方,用于取模运算或位运算
-	private boolean powerOfTow;
+	//private boolean powerOfTow;
 
 	
 	public DisruptorExecutorGroup() {
@@ -33,7 +33,7 @@ public class DisruptorExecutorGroup {
 		for (int i = 0; i < size; i++) {
 			children[i] = new DisruptorExecutor(executorName + "-" + i);
 		}
-		powerOfTow = (size & -size) == size;
+		//powerOfTow = (size & -size) == size;
 		this.startUp();
 	}
 
@@ -52,7 +52,7 @@ public class DisruptorExecutorGroup {
 
 	/**
 	 * 获取Executor.
-	 * 
+	 * TODO 验证一下, 如果使用next获取到的Executor是否能保证同一个线程处理的任务
 	 * @return executor.
 	 */
 	public DisruptorExecutor next() {
@@ -74,7 +74,6 @@ public class DisruptorExecutorGroup {
 	public void startUp() {
 		for (DisruptorExecutor executor : children) {
 			executor.startUp();
-			log.info("====startUp======");
 		}
 	}
 	
@@ -85,9 +84,18 @@ public class DisruptorExecutorGroup {
 	 * @param task 任务
 	 */
 	public void execute(final int sessionId, final Runnable task) {
-		int	index = powerOfTow ?
-				sessionId & children.length - 1 :
-					sessionId % size();
+		int	index = sessionId % size();
+		getExecutor(index).execute(task);
+	}
+	
+	/**
+	 * 执行
+	 * @date 2020年7月7日
+	 * @param index 唯一编号
+	 * @param task 任务
+	 */
+	public void execute(ExecutorSelector selector, final Runnable task) {
+		int	index = selector.selectorId() % size();
 		getExecutor(index).execute(task);
 	}
 	

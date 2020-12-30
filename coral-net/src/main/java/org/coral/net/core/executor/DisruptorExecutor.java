@@ -121,14 +121,8 @@ public class DisruptorExecutor {
 	 * @param task . 任务.
 	 */
 	public void execute(Runnable task) {
-//		disruptor.getRingBuffer().publishEvent((event, sequence, buffer) -> event.setTask(task), task);
-		disruptor.getRingBuffer().publishEvent((event, sequence) -> event.setTask(task));
-//		disruptor.getRingBuffer().publishEvent(new EventTranslator<TaskEvent>() {
-//			@Override
-//			public void translateTo(TaskEvent event, long sequence) {
-//				event.setTask(task);
-//			}
-//		});
+		disruptor.getRingBuffer().publishEvent((event, sequence, buffer) -> event.setTask(task), task);
+//		disruptor.getRingBuffer().publishEvent((event, sequence) -> event.setTask(task));
 	}
 
 //	/**

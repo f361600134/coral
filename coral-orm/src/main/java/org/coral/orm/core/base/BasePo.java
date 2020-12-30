@@ -58,5 +58,14 @@ public abstract class BasePo implements Serializable {
 	 */
 	abstract public Object[] propValues();
 	
+	/**
+	 * 存储前操作
+	 */
+	public void beforeSave() {}
+	
+	/**
+	 * 加载后操作
+	 */
+	public void afterLoad() {}
 	
 }
