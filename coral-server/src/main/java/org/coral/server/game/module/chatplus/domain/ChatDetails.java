@@ -126,5 +126,11 @@ public class ChatDetails {
 		builder.setInfo(this);
 		return builder;
 	}
+
+	@Override
+	public String toString() {
+		return "ChatDetails [sendId=" + sendId + ", content=" + content + ", channel=" + channel + ", targetId="
+				+ targetId + ", delPlayerSet=" + delPlayerSet + "]";
+	}
 	
 }

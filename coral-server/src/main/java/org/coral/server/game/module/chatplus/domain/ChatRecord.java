@@ -1,39 +1,46 @@
 package org.coral.server.game.module.chatplus.domain;
 
 import java.util.Iterator;
-import java.util.List;
+import java.util.Queue;
 
 import org.apache.commons.lang3.StringUtils;
-import org.coral.server.game.data.config.ConfigChatMgr;
-import org.coral.server.game.data.config.pojo.ConfigChat;
 import org.coral.server.game.module.base.ChatRecordPo;
 import org.coral.server.game.module.chatplus.proto.AckChatResp;
-import org.coral.server.utils.ConcurrentFixSizeArrayList;
+import org.coral.server.utils.ConcurrentFixSizeQueue;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 /**
+ * 为了保证chatCache的线程安全, 对同一个ChatRecord的操作, 只能由一条线程串行执行.
+ *  所以,两种方式实现ChatRecord的线程安全
+ *  1. 读写锁
+ *  2. 队列
+ * 
 * @author Jeremy
 */
 public class ChatRecord extends ChatRecordPo {
+	
+	private static final long serialVersionUID = 1453628263729756108L;
 	/**
 	 * chat cache base on FIFO.
 	 */
-	private List<ChatDetails> chatCache;
+	private Queue<ChatDetails> chatCache;
 	
 	public ChatRecord(int channel) {
 		this.channel = channel;
-		ConfigChat config = ConfigChatMgr.getConfig(channel);
-		this.chatCache = new ConcurrentFixSizeArrayList<ChatDetails>(config.getCacheNum());
+		//ConfigChat config = ConfigChatMgr.getConfig(channel);
+		//this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(config.getCacheNum());
+		this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(20);
 	}
 	
 	public ChatRecord(int channel, long uniqueId) {
 		this.channel = channel;
 		this.uniqueId = uniqueId;
-		ConfigChat config = ConfigChatMgr.getConfig(channel);
-		this.chatCache = new ConcurrentFixSizeArrayList<ChatDetails>(config.getCacheNum());
+		//ConfigChat config = ConfigChatMgr.getConfig(channel);
+		//this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(config.getCacheNum());
+		this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(20);
 	}
 	
 	public void beforeSave() {
@@ -42,7 +49,7 @@ public class ChatRecord extends ChatRecordPo {
 	
 	public void afterLoad() {
 		if (!StringUtils.isBlank(getData())) {
-			this.chatCache = JSONObject.parseObject(getData(), new TypeReference<ConcurrentFixSizeArrayList<ChatDetails>>() {});
+			this.chatCache = JSONObject.parseObject(getData(), new TypeReference<ConcurrentFixSizeQueue<ChatDetails>>() {});
 		}
 	}
 	
@@ -59,9 +66,13 @@ public class ChatRecord extends ChatRecordPo {
 	 * 玩家删除此聊天,记录
 	 * @param chat
 	 * @param isCache 是否缓存, true:缓存, false, 不缓存
+	 * @TODO 这里会存在线程安全问题,
+	 * 多线程环境下, 会出现并发修改问题.因为一条线程在处理修改, 另一条线程有可能会把这条数据移除掉,
 	 */
 	public void addDelPlayer(long playerId) {
-		for (ChatDetails chatDetails : chatCache) {
+		Iterator<ChatDetails> iter = chatCache.iterator();
+		while (iter.hasNext()) {
+			ChatDetails chatDetails = (ChatDetails) iter.next();
 			chatDetails.addDelPlayer(playerId);
 		}
 	}
@@ -83,6 +94,11 @@ public class ChatRecord extends ChatRecordPo {
 	
 	public long getUniqueId() {
 		return uniqueId;
+	}
+
+	@Override
+	public String toString() {
+		return "ChatRecord [chatCache=" + chatCache + "]";
 	}
 	
 }

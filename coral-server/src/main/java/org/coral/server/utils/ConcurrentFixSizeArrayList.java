@@ -5,12 +5,14 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 /**
  * 1. 固定列表数据, 溢出则移除 
  * 2. 线程安全
- * 
+ * 3. 拥有List的特性, 这里仅只能保证每个方法原子性的安全, 无法保证多线程方法组合安全
  * @auth Jeremy
  * @date 2019年5月16日下午7:49:39
  */
@@ -264,68 +266,82 @@ public class ConcurrentFixSizeArrayList<E> implements List<E> {
 		}
 	}
 	
+	/**
+	 *写任务, 修改长度
+	 * @author Administrator
+	 *
+	 */
+	public static class writeJob implements Runnable {
+		
+		private int max;
+		private List<Integer> list;
+		
+		public writeJob(int max, List<Integer> list) {
+			this.max = max;
+			this.list = list;
+		}
+
+		@Override
+		public void run() {
+			for (int i = 0; i < max; i++) {
+				list.add(i);
+			}
+		}
+		
+	}
 	
-//	public static class writeJob implements Runnable {
-//		
-//		private int max;
-//		private List<Integer> list;
-//		
-//		public writeJob(int max, List<Integer> list) {
-//			this.max = max;
-//			this.list = list;
-//		}
-//
-//		@Override
-//		public void run() {
-//			for (int i = 0; i < max; i++) {
-//				list.add(i);
+	/**
+	 * 读任务,循环内容
+	 * @author Administrator
+	 *
+	 */
+	public static class readJob implements Runnable {
+		
+		private int max;
+		private List<Integer> list;
+		
+		public readJob(int max, List<Integer> list) {
+			this.max = max;
+			this.list = list;
+		}
+
+		@Override
+		public void run() {
+			Iterator<Integer> iter = list.iterator();
+			while (iter.hasNext()) {
+				System.out.println("val:");
+			}
+//			for (Integer val : list) {
+//				//TODO
+//				System.out.println("用于测试并发修改异常:"+val);
 //			}
-//		}
-//		
-//	}
-//	
-//	public static class readJob implements Runnable {
-//		
-//		private int max;
-//		private List<Integer> list;
-//		
-//		public readJob(int max, List<Integer> list) {
-//			this.max = max;
-//			this.list = list;
-//		}
-//
-//		@Override
-//		public void run() {
-//			for (int i = 0; i < max; i++) {
-//				list.contains((Integer)i);
-//			}
-//		}
-//		
-//	}
-//
-//	public static void main(String[] args) {
-//		int max = 1000000;
-//		ExecutorService cachedThreadPool = Executors.newFixedThreadPool(10);
-//		long startTime = System.currentTimeMillis();
-//		List<Integer> list = new ConcurrentFixSizeArrayList<Integer>(20);
-//		writeJob job = null;
-//		readJob rjob = null;
-//		for (int i = 1; i <= 5; i++) {
-//			job = new writeJob(max, list);
-//			cachedThreadPool.execute(job);
-//		}
-//		for (int i = 1; i <= 5; i++) {
-//			rjob = new readJob(max, list);
-//			cachedThreadPool.execute(rjob);
-//		}
-//		cachedThreadPool.shutdown();
-//		while (true) {
-//			if (cachedThreadPool.isTerminated()) {
-//				System.out.println(list);
-//				break;
-//			}
-//		}
-//		System.out.println("cost time:" + (System.currentTimeMillis() - startTime));
-//	}
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		int max = 1000000;
+		ExecutorService cachedThreadPool = Executors.newFixedThreadPool(10);
+		long startTime = System.currentTimeMillis();
+		List<Integer> list = new ConcurrentFixSizeArrayList<Integer>(20);
+		writeJob job = null;
+		readJob rjob = null;
+		for (int i = 1; i <= 5; i++) {
+			job = new writeJob(max, list);
+			cachedThreadPool.execute(job);
+		}
+		for (int i = 1; i <= 5; i++) {
+			rjob = new readJob(max, list);
+			cachedThreadPool.execute(rjob);
+		}
+		cachedThreadPool.shutdown();
+		while (true) {
+			if (cachedThreadPool.isTerminated()) {
+				System.out.println(list);
+				break;
+			}
+		}
+		System.out.println("cost time:" + (System.currentTimeMillis() - startTime));
+	}
 
 }

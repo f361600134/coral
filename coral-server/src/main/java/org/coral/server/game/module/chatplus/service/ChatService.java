@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.coral.net.core.executor.DisruptorStrategy;
-import org.coral.net.core.executor.ExecutorSelector;
 import org.coral.server.game.data.config.pojo.ConfigConstantPlus;
 import org.coral.server.game.data.proto.PBPlayer.ReqChat;
 import org.coral.server.game.helper.config.BadWordFilter;

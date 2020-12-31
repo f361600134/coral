@@ -1,9 +1,12 @@
 package org.coral.server.game.module.chatplus.assist;
 
+import java.math.BigInteger;
+
 import org.coral.server.game.module.chatplus.impl.AbstractChat;
 import org.coral.server.game.module.chatplus.impl.FamilyChat;
 import org.coral.server.game.module.chatplus.impl.PrivateChat;
 import org.coral.server.game.module.chatplus.impl.WorldChat;
+import org.coral.server.utils.Pair;
 
 /**
  * 聊天类枚举,不同频道,要区别处理
@@ -41,7 +44,23 @@ public enum ChatEnum {
 	CH_PRIVATE(5) {// 私聊
 		@Override
 		public long getUniqueId(long playerId, long targetId) {
-			return super.getUniqueId(playerId, targetId);
+			//私聊,通过发送方的玩家id,和目标玩家id,组装成唯一id
+	        if (playerId < targetId) {
+	        	playerId ^= targetId;
+	            targetId ^= playerId;
+	            playerId ^= targetId;
+	        }
+	        BigInteger bigInteger = BigInteger.valueOf(playerId).shiftLeft(64).add(BigInteger.valueOf(targetId));
+	        return bigInteger.longValue();
+		}
+		
+		@Override
+		public Pair<Long, Long> getSpecialId(long uniqueId) {
+			BigInteger key = BigInteger.valueOf(uniqueId);
+			BigInteger left = key.shiftRight(64);
+	        long playerId = left.longValue();
+	        long targetId = left.shiftLeft(64).xor(key).longValue();
+			return Pair.of(playerId, targetId);
 		}
 		
 		@Override
@@ -74,79 +93,17 @@ public enum ChatEnum {
 		return getCh();
 	}
 	
+	/**
+	 * 通过唯一标识,返回指定标识
+	 */
+	public Pair<Long, Long> getSpecialId(long uniqueId) {
+		return Pair.of(Integer.valueOf(getCh()).longValue(), 0L);
+	}
+	
 	public AbstractChat newInstance(long uniquId) {
 		return null;
 	}
 	
-//	/**
-//	 * 获取聊天域id
-//	 * 有domainId则获取domainId, 无则默认为频道号id, 唯一即可
-//	 * @param player 玩家对象
-//	 * @param domainId domainId
-//	 * @return 接受者玩家ID
-//	 */
-//	public long getDomainId(Player player, long domainId) {
-//		return getCh();
-//	}
-
-//	public Collection<ChatDomain> getAllDomain() {
-//		ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
-//		return service.getOrCreateDomainGroup(getCh()).getAllDomain();
-//	}
-	
-//	/**
-//	 * 获取聊天域
-//	 * @param playerId
-//	 * @return
-//	 */
-//	public ChatDomain getDomain(Long playerId) {
-//		ChatService service = SpringContextHolder.getInstance().getBean(ChatService.class);
-//		return service.getOrCreateDomain(getCh(), getCh());
-//	}
-	
-//	/**
-//	 * 判断是否可以聊天
-//	 * @param player 玩家对象
-//	 * @param chat 聊天内容
-//	 * @return 错误码
-//	 */
-//	public int check(Player player, Chat chat) {
-//		ConfigChat config = ConfigChatMgr.getConfig(getCh());
-//		if (config == null) {
-//			return ConfigTipsMgr.Chat_410;  //不存在该频道
-//		}
-//		if (getDomain(player.getPlayerId()) == null) {
-//			return ConfigTipsMgr.Chat_410;  //不存在该频道
-//		}
-//		if (player.getLevel() <= config.getUnlockLevel()) {
-//			return ConfigTipsMgr.Chat_414;	//等级限制
-//		}
-//		return 0;
-//	}
-	
-//	public abstract Collection<Long> findPlayerIds(ChatDomain domain);
-	
-//	/**
-//	 * 创建聊天实体
-//	 * @param player 玩家对象
-//	 * @param content 文本
-//	 * @param recvId 接受玩家
-//	 * @return 聊天对象
-//	 */
-//	public Chat createChat(Player player, String content, long recvId) {
-//		recvId = getDomainId(player, recvId);
-//		return Chat.create(player.getPlayerId(), content, getCh(), recvId);
-//	}
-	
-//	/**
-//	 * 聊天, 默认缓存, 根据需求确认是否缓存
-//	 * @param chat 聊天对象
-//	 */
-//	public void addChat(Chat chat) {
-//		ChatDomain domain = getDomain(chat.getSendId());
-//		domain.addChat(chat);
-//	}
-
 	/**
 	 * 获取聊天枚举
 	 * @param ch 频道

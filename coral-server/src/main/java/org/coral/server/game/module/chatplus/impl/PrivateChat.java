@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.coral.net.core.executor.DisruptorStrategy;
 import org.coral.server.game.module.chatplus.assist.ChatEnum;
+import org.coral.server.utils.Pair;
 
 import com.google.common.collect.Lists;
 
@@ -28,19 +29,13 @@ public class PrivateChat extends AbstractChat{
 	 */
 	@Override
 	public Collection<Long> findPlayerIds() {
-		//通过uniqueId生成发送玩家id以及目标玩家id
-		//getUniqueId()
-		return Lists.newArrayList();
+		Pair<Long, Long> pair = ChatEnum.CH_PRIVATE.getSpecialId(getUniqueId());
+		return Lists.newArrayList(pair.getKey(), pair.getValue());
 	}
 	
-	/**
-	 * 删除行为是一个并发修改的过程, 此处加入公共线程内,所有玩家串行执行
-	 */
 	@Override
 	public void delChat(long playerId) {
-		DisruptorStrategy.get(DisruptorStrategy.COMMON).execute(() -> {return 0;}, () -> {
-			getRecord().addDelPlayer(playerId);
-		});
+		getRecord().addDelPlayer(playerId);
 	}
 	
 }
