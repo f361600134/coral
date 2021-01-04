@@ -64,5 +64,6 @@ public abstract class AbstractChat implements IChatChannel{
 	 */
 	@Override
 	public void delChat(long playerId) {
+		//默认不支持删除记录
 	}
 }

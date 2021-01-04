@@ -65,9 +65,6 @@ public class ChatRecord extends ChatRecordPo {
 	/**
 	 * 玩家删除此聊天,记录
 	 * @param chat
-	 * @param isCache 是否缓存, true:缓存, false, 不缓存
-	 * @TODO 这里会存在线程安全问题,
-	 * 多线程环境下, 会出现并发修改问题.因为一条线程在处理修改, 另一条线程有可能会把这条数据移除掉,
 	 */
 	public void addDelPlayer(long playerId) {
 		Iterator<ChatDetails> iter = chatCache.iterator();
@@ -87,10 +84,12 @@ public class ChatRecord extends ChatRecordPo {
 		AckChatResp resp = AckChatResp.newInstance();
 		while (iter.hasNext()) {
 			ChatDetails chat = (ChatDetails) iter.next();
-			resp.addChat(channel, chat.toProto().build());
+			resp.addChat(channel, chat.toProto().build
+					());
 		}
 		return resp;
 	}
+	
 	
 	public long getUniqueId() {
 		return uniqueId;

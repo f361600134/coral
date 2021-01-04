@@ -1,4 +1,4 @@
-package org.coral.server.game.module.chatplus.controller;
+package org.coral.server.game.module.chatfinal.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

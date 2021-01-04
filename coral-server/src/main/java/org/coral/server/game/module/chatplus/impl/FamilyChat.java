@@ -2,12 +2,7 @@ package org.coral.server.game.module.chatplus.impl;
 
 import java.util.Collection;
 
-import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.module.chatplus.assist.ChatEnum;
-import org.coral.server.game.module.chatplus.domain.ChatDetails;
-import org.coral.server.game.module.chatplus.proto.PBChatInfoBuilder;
-import org.coral.server.game.module.player.domain.Player;
-import org.coral.server.game.module.player.service.IPlayerService;
 
 public class FamilyChat extends AbstractChat {
 
