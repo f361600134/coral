@@ -647,14 +647,16 @@ public abstract class PlayerPo extends BasePo {
 	@Override
 	public String[] indexs() {
 		return new String[] {
-			"`PlayerId`",
+			PROP_ACCOUNTNAME,
+			PROP_INITSERVERID
 		};
 	}
 	
 	@Override
 	public Object[] indexValues() {
 		return new Object[] {
-			playerId,
+			accountName,
+			initServerId
 		};
 	}
 	

@@ -41,7 +41,7 @@ public interface IDao {
 	 * @return List<BasePo>  
 	 * @date 2020年9月7日下午4:53:48
 	 */
-	Collection<BasePo> selectByIndex(Object[] indexs, Object[] values);
+	Collection<BasePo> selectByIndex(Object[] values);
 	
 //	/**
 //	 * 通过指定条件, 以及值进行查询

@@ -1,10 +1,5 @@
 package org.coral.server.game.helper.result;
 
-import java.util.Iterator;
-import java.util.Map;
-
-import org.coral.server.game.helper.ResourceType;
-
 public class ConfigTipsMgr {
 
 	public static final int DEFAULT = -1;

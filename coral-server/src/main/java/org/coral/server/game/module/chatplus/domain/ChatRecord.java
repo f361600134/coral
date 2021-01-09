@@ -1,11 +1,12 @@
 package org.coral.server.game.module.chatplus.domain;
 
+import java.util.Deque;
 import java.util.Iterator;
-import java.util.Queue;
 
 import org.apache.commons.lang3.StringUtils;
 import org.coral.server.game.module.base.ChatRecordPo;
 import org.coral.server.game.module.chatplus.proto.AckChatResp;
+import org.coral.server.utils.ConcurrentFixSizeDeque;
 import org.coral.server.utils.ConcurrentFixSizeQueue;
 
 import com.alibaba.fastjson.JSON;
@@ -26,13 +27,13 @@ public class ChatRecord extends ChatRecordPo {
 	/**
 	 * chat cache base on FIFO.
 	 */
-	private Queue<ChatDetails> chatCache;
+	private Deque<ChatDetails> chatCache;
 	
 	public ChatRecord(int channel) {
 		this.channel = channel;
 		//ConfigChat config = ConfigChatMgr.getConfig(channel);
 		//this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(config.getCacheNum());
-		this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(20);
+		this.chatCache = new ConcurrentFixSizeDeque<ChatDetails>(20);
 	}
 	
 	public ChatRecord(int channel, long uniqueId) {
@@ -40,7 +41,7 @@ public class ChatRecord extends ChatRecordPo {
 		this.uniqueId = uniqueId;
 		//ConfigChat config = ConfigChatMgr.getConfig(channel);
 		//this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(config.getCacheNum());
-		this.chatCache = new ConcurrentFixSizeQueue<ChatDetails>(20);
+		this.chatCache = new ConcurrentFixSizeDeque<ChatDetails>(20);
 	}
 	
 	public void beforeSave() {
@@ -49,7 +50,7 @@ public class ChatRecord extends ChatRecordPo {
 	
 	public void afterLoad() {
 		if (!StringUtils.isBlank(getData())) {
-			this.chatCache = JSONObject.parseObject(getData(), new TypeReference<ConcurrentFixSizeQueue<ChatDetails>>() {});
+			this.chatCache = JSONObject.parseObject(getData(), new TypeReference<ConcurrentFixSizeDeque<ChatDetails>>() {});
 		}
 	}
 	
@@ -97,7 +98,7 @@ public class ChatRecord extends ChatRecordPo {
 
 	@Override
 	public String toString() {
-		return "ChatRecord [chatCache=" + chatCache + "]";
+		return "ChatRecord [channel="+channel+", chatCache=" + chatCache + "]";
 	}
 	
 }

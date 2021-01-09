@@ -3,6 +3,7 @@ package org.coral.server.game.module.player.proto;
 import org.coral.net.core.base.IProtocol;
 import org.coral.server.game.data.proto.PBDefine.PBProtocol;
 import org.coral.server.game.data.proto.PBPlayer.AckTips;
+import org.coral.server.game.helper.result.ErrorCode;
 
 import com.google.protobuf.AbstractMessageLite.Builder;
 
@@ -23,6 +24,14 @@ public class AckTipsResp implements IProtocol {
 	 */
 	public AckTipsResp setTipsId(int value) {
 		this.builder.setTipsId(value);
+		return this;
+	}
+	
+	/*
+	 * 错误码id
+	 */
+	public AckTipsResp setTipsId(ErrorCode value) {
+		this.builder.setTipsId(value.getCode());
 		return this;
 	}
 	

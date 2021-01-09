@@ -46,7 +46,7 @@ public class ItemService implements IItemService, IResourceService{
 	public ItemDomain getDomain(long playerId) {
 		ItemDomain domain = PLAYER_DOMAINS.get(playerId);
 		if (domain == null) {
-			List<Item> items = process.selectByIndex(Item.class, new Object[] {playerId}, new Object[] {playerId});
+			List<Item> items = process.selectByIndex(Item.class, new Object[] {playerId});
 			domain = new ItemDomain();
 			domain.initItemBag(items);
 			PLAYER_DOMAINS.put(playerId, domain);

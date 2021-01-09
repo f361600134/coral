@@ -67,8 +67,8 @@ public class CommonDao implements IDao{
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public Collection<BasePo> selectByIndex(Object[] props, Object[] value) {
-		log.debug("select sql:{}, objs:{}, cls:{}", poMapper.selectByIndex, props, poMapper.cls);
+	public Collection<BasePo> selectByIndex(Object[] value) {
+		log.debug("select sql:{}, cls:{}", poMapper.selectByIndex, poMapper.cls);
 		//return (BasePo) jdbcTemplate.queryForObject(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
 		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), value);
 	}

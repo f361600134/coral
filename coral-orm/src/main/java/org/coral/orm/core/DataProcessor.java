@@ -68,16 +68,27 @@ public class DataProcessor{
 	}
 	
 	/**
-	 * 查询玩家信息
+	 * 查询玩家信息, 通过默认索引,这种方式直接获取缓存的sql进行查询
 	 * @date 2020年6月30日
 	 * @param clazz
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> List<T> selectByIndex(Class<?> clazz, Object[] props, Object[] objs) {
+	public <T> List<T> selectByIndex(Class<?> clazz, Object[] objs) {
 		String name = clazz.getSimpleName().toLowerCase();
 		IDao dao = commonDaoMap.get(name);
-		return (List<T>)dao.selectByIndex(props, objs);
+		return (List<T>)dao.selectByIndex(objs);
+	}
+	
+	/**
+	 * 查询玩家信息, 通过制定字段,这种方式只能通过sql组装进行查询
+	 * @date 2020年6月30日
+	 * @param clazz
+	 * @return
+	 */
+	public <T> List<T> selectByIndex(Class<?> clazz, Object[] props, Object[] objs) {
+		//TODO
+		return null;
 	}
 	
 	/**

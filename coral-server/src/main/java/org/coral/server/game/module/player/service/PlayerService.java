@@ -92,9 +92,9 @@ public class PlayerService implements IPlayerService, IResourceService {
 	 * @return
 	 */
 	private Player loadPlayer(String username, int initServerId) {
-		Object[] props = new Object[] { Player.PROP_ACCOUNTNAME, Player.PROP_INITSERVERID };
+//		Object[] props = new Object[] { Player.PROP_ACCOUNTNAME, Player.PROP_INITSERVERID };
 		Object[] objs = new Object[] { username, initServerId };
-		List<Player> players = process.selectByIndex(Player.class, props, objs);
+		List<Player> players = process.selectByIndex(Player.class,objs);
 		return players.isEmpty() ? null : players.get(0);
 	}
 
@@ -171,14 +171,14 @@ public class PlayerService implements IPlayerService, IResourceService {
 	 */
 	public void sendMessage(long playerId, IProtocol protocol) {
 		final PlayerContext context = getPlayerContext(playerId);
-		context.send(protocol);
+		if (context != null) {
+			context.send(protocol);
+		}
 	}
 	
 	@Override
 	public void sendMessage(Collection<Long> playerIds, IProtocol protocol) {
-		for (Long playerId : playerIds) {
-			sendMessage(playerId, protocol);
-		}
+		playerIds.forEach(playerId -> sendMessage(playerId, protocol) );
 	}
 
 	@Override

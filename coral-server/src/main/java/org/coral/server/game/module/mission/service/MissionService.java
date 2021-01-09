@@ -34,7 +34,7 @@ public class MissionService implements IMissionService{
 	public MissionDomain getDomain(long playerId) {
 		MissionDomain domain = PLAYER_DOMAINS.get(playerId);
 		if (domain == null) {
-			List<MainMission> mission = process.selectByIndex(MainMission.class, new Object[] {playerId}, new Object[] {playerId});
+			List<MainMission> mission = process.selectByIndex(MainMission.class, new Object[] {playerId});
 			domain = new MissionDomain();
 			PLAYER_DOMAINS.put(playerId, domain);
 		}
