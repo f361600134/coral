@@ -11,6 +11,7 @@ import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.item.domain.IItem;
 import org.coral.server.game.module.item.domain.Item;
 import org.coral.server.game.module.item.domain.ItemDomain;
+import org.coral.server.game.module.item.manager.ItemManager;
 import org.coral.server.game.module.item.proto.AckBagListResp;
 import org.coral.server.game.module.item.proto.AckDeleteBagResp;
 import org.coral.server.game.module.item.proto.AckUpdateBagResp;
@@ -35,24 +36,10 @@ public class ItemService implements IItemService, IResourceService{
 	
 	
 	@Autowired private IPlayerService playerService;
-	@Autowired private DataProcessorAsyn process;
 	
-	/**玩家背包缓存*/
-	private final static Map<Long, ItemDomain> PLAYER_DOMAINS = Maps.newConcurrentMap();
+	@Autowired private ItemManager itemManager;
 
-	/**
-	 * 获取玩家背包
-	 */
-	public ItemDomain getDomain(long playerId) {
-		ItemDomain domain = PLAYER_DOMAINS.get(playerId);
-		if (domain == null) {
-			List<Item> items = process.selectByIndex(Item.class, new Object[] {playerId});
-			domain = new ItemDomain();
-			domain.initItemBag(items);
-			PLAYER_DOMAINS.put(playerId, domain);
-		}
-		return domain;
-	}
+	
 	
 	/**
 	 * 初始化道具列表
@@ -92,7 +79,7 @@ public class ItemService implements IItemService, IResourceService{
 	 * 当登陆成功,下发物品列表
 	 */
 	public void onLogin(long playerId) {
-		ItemDomain domain = getDomain(playerId);
+		ItemDomain domain = itemManager.getDomain(playerId);
 		Collection<IItem> items = domain.getAllItems();
 		//登陆成功,下发背包信息
 		AckBagListResp ack = AckBagListResp.newInstance();
@@ -130,28 +117,28 @@ public class ItemService implements IItemService, IResourceService{
 	
 	@Override
 	public boolean checkAdd(long playerId, Integer configId, Integer value) {
-		ItemDomain domain = getDomain(playerId);
+		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null) return false;
 		return domain.checkAdd(playerId, configId, value);
 	}
 	
 	@Override
 	public boolean checkEnough(long playerId, Integer configId, Integer value) {
-		ItemDomain domain = getDomain(playerId);
+		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null) return false;
 		return domain.checkEnough(playerId, configId, value);
 	}
 
 	@Override
 	public void reward(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
-		ItemDomain domain = getDomain(playerId);
+		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null)	return;
 		domain.addItem(playerId, configId, value, nEnum);
 	}
 
 	@Override
 	public void cost(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
-		ItemDomain domain = getDomain(playerId);
+		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null)	return;
 		domain.deductItem(playerId, configId, value, nEnum);
 	}
@@ -321,7 +308,7 @@ public class ItemService implements IItemService, IResourceService{
 	 * @return 道具列表
 	 */
 	public Collection<IItem> getItemsByType(long playerId, int type) {
-		ItemDomain domain = getDomain(playerId);
+		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null) {
 			return null;
 		}

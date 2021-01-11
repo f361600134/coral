@@ -11,16 +11,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class CommonDao implements IDao{
+public class CommonDao<T extends BasePo> implements IDao<T>{
 	
 	private static final Logger log = LoggerFactory.getLogger(CommonDao.class);
 	
 	private JdbcTemplate jdbcTemplate;
 	
-	//posql映射
-	private PoMapper poMapper;
+	/**
+	 * posql映射
+	 */
+	private final PoMapper<T> poMapper;
 	
-	public CommonDao(BasePo po, JdbcTemplate jdbcTemplate) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public CommonDao(T po, JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.poMapper = new PoMapper(po.getClass());
 	}
@@ -30,12 +33,10 @@ public class CommonDao implements IDao{
 	* TODO 该方法的实现功能
 	* @see org.coral.orm.core.db.IDao#selectAll()
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public Collection<BasePo> selectAll() {
+	public Collection<T> selectAll() {
 		log.debug("selectAll sql:{}", poMapper.selectAll);
-		@SuppressWarnings("rawtypes")
-		List<BasePo> basePoList = jdbcTemplate.query(poMapper.selectAll, new BeanPropertyRowMapper(poMapper.cls));
+		List<T> basePoList = jdbcTemplate.query(poMapper.selectAll, new BeanPropertyRowMapper<T>(poMapper.cls));
 		return basePoList;
 	}
 	
@@ -44,13 +45,10 @@ public class CommonDao implements IDao{
 	 * @date 2020年6月29日
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public BasePo selectByKey(Object value) {
+	public T selectByKey(Object value) {
 		log.debug("select sql:{}, objs:{}, cls:{}", poMapper.selectByKey, value, poMapper.cls);
-		
-		@SuppressWarnings("rawtypes")
-		List<BasePo> basePoList = jdbcTemplate.query(poMapper.selectByKey, new BeanPropertyRowMapper(poMapper.cls), value);
+		List<T> basePoList = jdbcTemplate.query(poMapper.selectByKey, new BeanPropertyRowMapper<T>(poMapper.cls), value);
 		if (basePoList.size() > 1) {
 			log.error("Multiple pieces of data correspond to one primary key.cls:{}, sql:{},", poMapper.cls, poMapper.selectByKey);
 		}
@@ -65,12 +63,11 @@ public class CommonDao implements IDao{
 	* TODO 该方法的实现功能
 	* props 暂时没用上，考虑索引组合使用，生成sql
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public Collection<BasePo> selectByIndex(Object[] value) {
+	public Collection<T> selectByIndex(Object[] value) {
 		log.debug("select sql:{}, cls:{}", poMapper.selectByIndex, poMapper.cls);
 		//return (BasePo) jdbcTemplate.queryForObject(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), props);
-		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper(poMapper.cls), value);
+		return jdbcTemplate.query(poMapper.selectByIndex, new BeanPropertyRowMapper<T>(poMapper.cls), value);
 	}
 	
 	/**
@@ -79,17 +76,17 @@ public class CommonDao implements IDao{
 	 * @param po
 	 * @return
 	 */
-	public int insert(BasePo po) {
+	public int insert(T po) {
 		log.debug("insert sql:{}", poMapper.insert);
 		return jdbcTemplate.update(poMapper.insert, po.propValues());
 	}
 
-	public int replace(BasePo po) {
+	public int replace(T po) {
 		log.debug("replace sql:{}", poMapper.replace);
 		return jdbcTemplate.update(poMapper.replace, po.propValues());
 	}
 
-	public int update(BasePo po) {
+	public int update(T po) {
 		log.debug("update sql:{}", poMapper.update);
 		Object[] props = po.propValues();
 		Object[] ids = po.indexValues();
@@ -102,7 +99,7 @@ public class CommonDao implements IDao{
 	/**
 	 * 根据主键, 索引删除
 	 */
-	public int delete(BasePo po) {
+	public int delete(T po) {
 		log.debug("delete sql:{}, idValues:{}", poMapper.delete, po.indexValues());
 		return jdbcTemplate.update(poMapper.delete, po.indexValues());
 	}
@@ -118,9 +115,9 @@ public class CommonDao implements IDao{
 	/**
 	 * 批量添加
 	 */
-	public int[] insertBatch(Collection<BasePo> basePos) {
+	public int[] insertBatch(Collection<T> basePos) {
 		List<Object[]> calValues = new ArrayList<Object[]>();
-		for (BasePo basePo : basePos) {
+		for (T basePo : basePos) {
 			calValues.add(basePo.propValues());
 		}
 		log.debug("insertBatch sql:{}", poMapper.insert);
@@ -130,9 +127,9 @@ public class CommonDao implements IDao{
 	/**
 	 * 批量删除
 	 */
-	public int[] deleteBatch(Collection<BasePo> basePos) {
+	public int[] deleteBatch(Collection<T> basePos) {
 		List<Object[]> calValues = new ArrayList<Object[]>();
-		for (BasePo basePo : basePos) {
+		for (T basePo : basePos) {
 			calValues.add(basePo.indexValues());
 		}
 		log.debug("deleteBatch sql:{}", poMapper.delete);

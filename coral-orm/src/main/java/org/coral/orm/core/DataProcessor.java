@@ -1,27 +1,46 @@
 package org.coral.orm.core;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.coral.orm.core.base.BasePo;
 import org.coral.orm.core.db.CommonDao;
 import org.coral.orm.core.db.IDao;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.google.common.collect.Maps;
 
 public class DataProcessor{
 	
-	private static final Logger log = LoggerFactory.getLogger(DataProcessor.class);
+//	private static final Logger log = LoggerFactory.getLogger(DataProcessor.class);
 	
-	private Map<String, IDao> commonDaoMap;
+	private Map<String, IDao<?>> commonDaoMap;
 	
-	public IDao getCommonDao(String name) {
-		return commonDaoMap.get(name);
+	@SuppressWarnings("unchecked")
+	public <T extends BasePo> IDao<T> getCommonDao(String name) {
+		if (StringUtils.isBlank(name)) {
+			throw new NullPointerException("name is can not be null:"+name);
+		}
+		return (IDao<T>)commonDaoMap.get(name);
+	}
+	
+	public <T extends BasePo> IDao<T> getCommonDao(Class<T> clazz) {
+		if (clazz == null) {
+			throw new NullPointerException("clazz is can not be null:"+clazz);
+		}
+		String name = clazz.getSimpleName().toLowerCase();
+		return getCommonDao(name);
+	}
+	
+	public <T extends BasePo> IDao<T> getCommonDao(T clazz) {
+		if (clazz == null) {
+			throw new NullPointerException("clazz is can not be null:"+clazz);
+		}
+		return getCommonDao(clazz.getName());
 	}
 	
 	/**
@@ -33,7 +52,7 @@ public class DataProcessor{
 		this.commonDaoMap = Maps.newHashMap();
 		for (String key : basePoMap.keySet()) {
 			BasePo po = basePoMap.get(key);
-			IDao dao = new CommonDao(po, jdbcTemplate);
+			IDao<?> dao = new CommonDao<>(po, jdbcTemplate);
 			commonDaoMap.put(key, dao);
 		}
 	}
@@ -44,10 +63,11 @@ public class DataProcessor{
 	 * @param clazz
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public <T> List<T> selectAll(Class<?> clazz) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> List<T> selectAll(Class<T> clazz) {
+		IDao<T> dao = getCommonDao(clazz);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
+		}
 		return (List<T>) dao.selectAll();
 	}
 	
@@ -57,14 +77,12 @@ public class DataProcessor{
 	 * @param clazz
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public <T> T selectByPrimaryKey(Class<?> clazz, Object value) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> T selectByPrimaryKey(Class<T> clazz, Object value) {
+		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
-			throw new NullPointerException("Can not find dao by the name:"+name);
+			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
 		}
-		return (T)dao.selectByKey(value);
+		return dao.selectByKey(value);
 	}
 	
 	/**
@@ -73,11 +91,26 @@ public class DataProcessor{
 	 * @param clazz
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public <T> List<T> selectByIndex(Class<?> clazz, Object[] objs) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> List<T> selectByIndex(Class<T> clazz, Object[] objs) {
+		IDao<T> dao = getCommonDao(clazz);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
+		}
 		return (List<T>)dao.selectByIndex(objs);
+	}
+	
+	/**
+	 * 查询玩家信息, 通过默认索引,这种方式直接获取缓存的sql进行查询
+	 * @date 2020年6月30日
+	 * @param clazz
+	 * @return
+	 */
+	public <T extends BasePo> T selectOneByIndex(Class<T> clazz, Object[] objs) {
+		List<T> ret = this.selectByIndex(clazz, objs);
+		if (ret == null || ret.size() <= 0) {
+			return null;
+		}
+		return ret.get(0);
 	}
 	
 	/**
@@ -86,7 +119,7 @@ public class DataProcessor{
 	 * @param clazz
 	 * @return
 	 */
-	public <T> List<T> selectByIndex(Class<?> clazz, Object[] props, Object[] objs) {
+	public <T> List<T> selectByIndex(Class<T> clazz, Object[] props, Object[] objs) {
 		//TODO
 		return null;
 	}
@@ -96,9 +129,11 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int insert(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> int insert(T po) {
+		IDao<T> dao = getCommonDao(po);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the Pojo:"+po);
+		}
 		return dao.insert(po);
 	}
 	
@@ -107,11 +142,11 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public void insertBatch(List<BasePo> basePos) {
-		Map<String, List<BasePo>> map = splitData(basePos);
-		IDao dao = null;
+	public <T extends BasePo> void insertBatch(Collection<T> basePos) {
+		Map<String, List<T>> map = splitData(basePos);
+		IDao<T> dao = null;
 		for (String name : map.keySet()) {
-			dao = commonDaoMap.get(name);
+			dao = getCommonDao(name);
 			dao.insertBatch(map.get(name));
 		}
 		map = null;
@@ -122,9 +157,11 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int replace(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> int replace(T po) {
+		IDao<T> dao = getCommonDao(po);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the Pojo:"+po);
+		}
 		return dao.replace(po);
 	}
 	
@@ -133,10 +170,24 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int update(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo>  int update(T po) {
+		IDao<T> dao = getCommonDao(po);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the Pojo:"+po);
+		}
 		return dao.update(po);
+	}
+	
+	/**
+	 * 批量修改玩家信息
+	 * @date 2020年6月30日
+	 * @param po
+	 */
+	public <T extends BasePo> int updateBatch(Collection<T> pos) {
+		pos.forEach(po -> {
+			getCommonDao(po).update(po);
+		});
+		return 0;
 	}
 	
 	/**
@@ -144,9 +195,11 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int delete(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> int delete(T po) {
+		IDao<T> dao = getCommonDao(po);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the Pojo:"+po);
+		}
 		return dao.delete(po);
 	}
 	
@@ -155,9 +208,11 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public void deleteAll(Class<?> clazz) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = commonDaoMap.get(name);
+	public <T extends BasePo> void deleteAll(Class<T> clazz) {
+		IDao<T> dao = getCommonDao(clazz);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
+		}
 		dao.deleteAll();
 	}
 	
@@ -166,11 +221,11 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public void deleteBatch(List<BasePo> basePos) {
-		Map<String, List<BasePo>> map = splitData(basePos);
-		IDao dao = null;
+	public <T extends BasePo> void deleteBatch(List<T> basePos) {
+		Map<String, List<T>> map = splitData(basePos);
+		IDao<T> dao = null;
 		for (String name : map.keySet()) {
-			dao = commonDaoMap.get(name);
+			dao = getCommonDao(name);
 			dao.deleteBatch(map.get(name));
 		}
 		map = null;
@@ -182,17 +237,17 @@ public class DataProcessor{
 	 * @param basePos
 	 * @return
 	 */
-	protected Map<String, List<BasePo>> splitData(List<BasePo> basePos) {
+	protected <T extends BasePo> Map<String, List<T>> splitData(Collection<T> basePos) {
 		//数据分类
-		Map<String, List<BasePo>> map = new HashMap<String, List<BasePo>>();
-		for (BasePo basePo : basePos) {
-			String name = basePo.getClass().getSimpleName().toLowerCase();
-			List<BasePo> list = map.get(name);
+		Map<String, List<T>> map = new HashMap<String, List<T>>();
+		for (T po : basePos) {
+			String name = po.getName();
+			List<T> list = map.get(name);
 			if (list == null) {
-				list = new ArrayList<BasePo>();
+				list = new ArrayList<T>();
 				map.put(name, list);
 			}
-			list.add(basePo);
+			list.add(po);
 		}
 		return map;
 	}

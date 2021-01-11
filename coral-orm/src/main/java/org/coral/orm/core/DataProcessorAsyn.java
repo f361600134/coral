@@ -70,9 +70,8 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int insert(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = super.getCommonDao(name);
+	public <T extends BasePo> int insert(T po) {
+		IDao<T> dao = super.getCommonDao(po);
 		syncQueue.add(CommandInsert.create(po, dao));
 		return 0;
 	}
@@ -82,9 +81,9 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public void insertBatch(List<BasePo> basePos) {
-		Map<String, List<BasePo>> map = splitData(basePos);
-		IDao dao = null;
+	public<T extends BasePo> void insertBatch(List<T> basePos) {
+		Map<String, List<T>> map = splitData(basePos);
+		IDao<T> dao = null;
 		for (String name : map.keySet()) {
 			dao = super.getCommonDao(name);
 			syncQueue.add(CommandInsertBatch.create(map.get(name), dao));
@@ -98,9 +97,8 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int replace(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = super.getCommonDao(name);
+	public <T extends BasePo> int replace(T po) {
+		IDao<T> dao = super.getCommonDao(po);
 		syncQueue.add(CommandReplace.create(po, dao));
 		return 0;
 	}
@@ -110,9 +108,8 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int update(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = super.getCommonDao(name);
+	public <T extends BasePo> int update(T po) {
+		IDao<T> dao = super.getCommonDao(po);
 		syncQueue.add(CommandUpdate.create(po, dao));
 		return 0;
 	}
@@ -122,9 +119,8 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public int delete(BasePo po) {
-		String name = po.getClass().getSimpleName().toLowerCase();
-		IDao dao = super.getCommonDao(name);
+	public <T extends BasePo> int delete(T po) {
+		IDao<T> dao = super.getCommonDao(po);
 		syncQueue.add(CommandDelete.create(po, dao));
 		return 0;
 	}
@@ -134,9 +130,8 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public void deleteAll(Class<?> clazz) {
-		String name = clazz.getSimpleName().toLowerCase();
-		IDao dao = super.getCommonDao(name);
+	public <T extends BasePo> void deleteAll(Class<T> clazz) {
+		IDao<T> dao = super.getCommonDao(clazz);
 		syncQueue.add(CommandDeleteAll.create(null, dao));
 	}
 	
@@ -145,9 +140,9 @@ public class DataProcessorAsyn extends DataProcessor{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public void deleteBatch(List<BasePo> basePos) {
-		Map<String, List<BasePo>> map = super.splitData(basePos);
-		IDao dao = null;
+	public <T extends BasePo> void deleteBatch(List<T> basePos) {
+		Map<String, List<T>> map = super.splitData(basePos);
+		IDao<T> dao = null;
 		for (String name : map.keySet()) {
 			dao = super.getCommonDao(name);
 			syncQueue.add(CommandDeleteBatch.create(map.get(name), dao));

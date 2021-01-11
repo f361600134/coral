@@ -12,6 +12,10 @@ public abstract class BasePo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public String getName() {
+		return this.getClass().getSimpleName().toLowerCase();
+	}
+	
 	/**
 	 * primary key, 对应数据库的主键,唯一主键.可以为null.
 	 * 比如排行榜模块, 主键是复合主键.生成的唯一主键就为空

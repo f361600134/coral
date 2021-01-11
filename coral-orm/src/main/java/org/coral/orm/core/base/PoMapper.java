@@ -9,11 +9,11 @@ import org.slf4j.LoggerFactory;
  * 默认缓存单表操作,批量操作数据动态生成
  * 此方法仅只能生成单表操作的数据, 不能生成批量操作数据,
  */
-public class PoMapper {
+public class PoMapper<T extends BasePo> {
 	
 	private static final Logger log = LoggerFactory.getLogger(PoMapper.class);
 
-	public final Class<?> cls;
+	public final Class<T> cls;
 	public String tbName;
 	public String selectAll;
 	public String selectByIndex;
@@ -35,7 +35,7 @@ public class PoMapper {
 	 * @date 2020年6月22日
 	 * @param cls
 	 */
-	public PoMapper(Class<? extends BasePo> cls) {
+	public PoMapper(Class<T> cls) {
 		this.cls = cls;
 		try {
 			Class<?> superCls = cls.getSuperclass().getSuperclass();

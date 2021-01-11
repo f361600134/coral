@@ -15,15 +15,7 @@ import org.coral.orm.core.base.BasePo;
  * @date 2020年6月29日
  *
  */
-public interface IDao {
-	
-	/**
-	 * 查询所有
-	 * @return  
-	 * @return List<BasePo>  
-	 * @date 2020年9月7日下午4:53:48
-	 */
-	Collection<BasePo> selectAll();
+public interface IDao<T extends BasePo> {
 	
 	/**
 	 * 通过默认主键查询出所有数据
@@ -32,8 +24,15 @@ public interface IDao {
 	 * @return BasePo  
 	 * @date 2020年9月7日下午4:53:28
 	 */
-	BasePo selectByKey(Object value);
+	T selectByKey(Object value);
 	
+	/**
+	 * 查询所有
+	 * @return  
+	 * @return List<BasePo>  
+	 * @date 2020年9月7日下午4:53:48
+	 */
+	Collection<T> selectAll();
 	
 	/**
 	 * 通过指定索引条件, 查询指定数据.
@@ -41,7 +40,7 @@ public interface IDao {
 	 * @return List<BasePo>  
 	 * @date 2020年9月7日下午4:53:48
 	 */
-	Collection<BasePo> selectByIndex(Object[] values);
+	Collection<T> selectByIndex(Object[] values);
 	
 //	/**
 //	 * 通过指定条件, 以及值进行查询
@@ -60,7 +59,7 @@ public interface IDao {
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:28
 	 */
-	int insert(BasePo po);
+	int insert(T po);
 	
 	/**
 	 * 替换一个对象
@@ -69,7 +68,7 @@ public interface IDao {
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:35
 	 */
-	int replace(BasePo po);
+	int replace(T po);
 	
 	/**
 	 * 更新一个对象
@@ -78,7 +77,7 @@ public interface IDao {
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:45
 	 */
-	int update(BasePo po);
+	int update(T po);
 	
 	/**
 	 * 删除一个对象
@@ -87,7 +86,7 @@ public interface IDao {
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:52
 	 */
-	int delete(BasePo po);
+	int delete(T po);
 	
 	/**
 	 * 删除所有
@@ -104,7 +103,7 @@ public interface IDao {
 	 * @return int[]  
 	 * @date 2020年11月7日上午9:14:04
 	 */
-	int[] insertBatch(Collection<BasePo> basePos);
+	int[] insertBatch(Collection<T> basePos);
 	
 	/**
 	 * 批量删除
@@ -113,6 +112,6 @@ public interface IDao {
 	 * @return int[]  
 	 * @date 2020年11月7日上午9:14:14
 	 */
-	int[] deleteBatch(Collection<BasePo> basePos);
+	int[] deleteBatch(Collection<T> basePos);
 
 }
