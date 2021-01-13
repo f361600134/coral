@@ -10,15 +10,12 @@ import org.apache.logging.log4j.Logger;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
 import org.coral.orm.core.DataProcessorAsyn;
-import org.coral.server.core.event.GameEventBus;
 import org.coral.server.game.data.proto.PBLogin.ReqLogin;
 import org.coral.server.game.helper.PropertiesType;
 import org.coral.server.game.helper.ResourceType;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.player.domain.Player;
 import org.coral.server.game.module.player.domain.PlayerContext;
-import org.coral.server.game.module.player.event.PlayerLoadEndEvent;
-import org.coral.server.game.module.player.event.PlayerLoadEvent;
 import org.coral.server.game.module.player.proto.AckLoginResp;
 import org.coral.server.game.module.resource.IResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +39,7 @@ public class PlayerService implements IPlayerService, IResourceService {
 	private Map<Long, PlayerContext> playerMap = Maps.newConcurrentMap();
 
 	/**
-	 * 玩家登陆缓存信息 key: 玩家账号 username value: true
+	 * 玩家登陆缓存信息 key: 玩家账号 username value: PlayerContext
 	 */
 	private Cache<String, PlayerContext> cache = CacheBuilder.newBuilder()
 			.expireAfterAccess(10, TimeUnit.MINUTES)// 在给定时间内没有被读/写访问,则清除

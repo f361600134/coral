@@ -14,10 +14,21 @@ public class SQLGenerator {
 //		return sb.toString();
 //	}
 	
+	/**
+	 * 查询所有
+	 * @param tbName
+	 * @return
+	 */
 	public static String selectAll(String tbName){
 		return "SELECT * FROM ".concat(tbName).concat(";");
 	}
 
+	/**
+	 * 根据主键, 索引查询.
+	 * @param tbName
+	 * @param idNames
+	 * @return
+	 */
 	public static String select(String tbName, String ...idNames){
 		StringBuilder sb = new StringBuilder("SELECT * FROM `").append(tbName).append("` WHERE ");
 		sb.append(idNames[0]).append("=?");
@@ -26,7 +37,7 @@ public class SQLGenerator {
 		}
 		return sb.toString();
 	}
-
+	
 	public static String deleteAll(String tbName){
 		return "DELETE FROM ".concat(tbName).concat(";");
 	}

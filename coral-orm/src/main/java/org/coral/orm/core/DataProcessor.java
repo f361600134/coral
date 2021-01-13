@@ -119,7 +119,12 @@ public class DataProcessor{
 	 * @param clazz
 	 * @return
 	 */
-	public <T> List<T> selectByIndex(Class<T> clazz, Object[] props, Object[] objs) {
+	public <T extends BasePo> List<T> selectByIndex(Class<T> clazz, Object[] props, Object[] objs) {
+//		IDao<T> dao = getCommonDao(clazz);
+//		if (dao == null) {
+//			throw new NullPointerException("Can not find dao by the Pojo:"+po);
+//		}
+//		dao.selectByKey(value)
 		//TODO
 		return null;
 	}

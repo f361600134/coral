@@ -3,9 +3,7 @@ package org.coral.server.game.module.item.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-import org.coral.orm.core.DataProcessorAsyn;
 import org.coral.server.game.helper.ResourceType;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.item.domain.IItem;
@@ -23,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 /**
  * 资源服务
@@ -34,13 +31,10 @@ public class ItemService implements IItemService, IResourceService{
 	
 	private static final Logger log = LoggerFactory.getLogger(ItemService.class);
 	
-	
 	@Autowired private IPlayerService playerService;
 	
 	@Autowired private ItemManager itemManager;
 
-	
-	
 	/**
 	 * 初始化道具列表
 	 * @param itemList
@@ -108,7 +102,6 @@ public class ItemService implements IItemService, IResourceService{
 			itemList.clear();
 		}
 	}
-	
 
 	@Override
 	public int resType() {

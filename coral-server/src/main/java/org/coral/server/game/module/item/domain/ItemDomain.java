@@ -19,7 +19,6 @@ import java.util.Map;
  * @date 2020年12月17日下午10:02:51
  */
 public class ItemDomain {
-	
 
 	private static final Logger log = LoggerFactory.getLogger(ItemDomain.class);
 	
@@ -129,16 +128,36 @@ public class ItemDomain {
 		return true;
 	}
 	
-//	/**
-//	 * 添加属性/道具/装备/神装/英雄碎片/符文
-//	 * @param playerId 玩家id
-//	 * @param configId 配置id
-//	 * @param count 消耗数量
-//	 * @param nEnum 资源消耗枚举
-//	 * @param logDesc 补充信息
-//	 * @return List<IItem> 物品列表
-//	 */
-//	public List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
+	/**
+	 * 通过配置id获取到物品
+	 * @return IItem 道具实体, 无则返回null
+	 */
+	private IItem getItemByConfigId(int configId) {
+		for (IItem item : itemMap.values()) {
+			if (item.getConfigId() == configId) {
+				return item;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * 获得玩家所有道具
+	 */
+	public Collection<IItem> getAllItems(){
+		return itemMap.values();
+	}
+	
+	///**
+	//* 添加属性/道具/装备/神装/英雄碎片/符文
+	//* @param playerId 玩家id
+	//* @param configId 配置id
+	//* @param count 消耗数量
+	//* @param nEnum 资源消耗枚举
+	//* @param logDesc 补充信息
+	//* @return List<IItem> 物品列表
+	//*/
+	//public List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
 //		if (count <= 0) {
 //			return null;
 //		}
@@ -197,22 +216,22 @@ public class ItemDomain {
 //			return items;
 //		}
 //		return null;
-//	}
-	
-//	/**
-//	 * 根据唯一id, 减少 属性/道具/装备/神装/英雄碎片/符文
-//	 * @param playerId 玩家id
-//	 * @param configId 配置id
-//	 * @param count 消耗数量
-//	 * @param nEnum 资源消耗枚举
-//	 * @param logDesc 补充信息
-//	 * @return 执行结果
-//	 */
-//	public boolean deductItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
+	//}
+
+	///**
+	//* 根据唯一id, 减少 属性/道具/装备/神装/英雄碎片/符文
+	//* @param playerId 玩家id
+	//* @param configId 配置id
+	//* @param count 消耗数量
+	//* @param nEnum 资源消耗枚举
+	//* @param logDesc 补充信息
+	//* @return 执行结果
+	//*/
+	//public boolean deductItem(long playerId, int configId, int count, NatureEnum nEnum, String logDesc) {
 //		if(count<=0) return false;
 //		if (ConfigItem.isPlayerProperty(configId)) {
 //			//return Context.getPlayerService().deductProperty(playerId, configId, count, nEnum, logDesc);
-//            return Context.getResourceAssist().cost(playerId, configId, count, nEnum, logDesc);
+//	       return Context.getResourceAssist().cost(playerId, configId, count, nEnum, logDesc);
 //		}else if (ConfigItem.isItem(configId) || ConfigItem.isHeroPatch(configId) || ConfigItem.isEquip(configId)) {
 //			//背包减少普通道具
 //			IItem item = getItemByConfigId(configId);
@@ -225,17 +244,17 @@ public class ItemDomain {
 //			//TODO somthing...
 //		}
 //		return true;
-//	}
-//	/**
-//	 * 背包减少普通道具
-//	 * @param playerId 玩家id
-//	 * @param item     扣除物品
-//	 * @param count    扣除数量
-//	 * @param nEnum    使用来源
-//	 * @param logDesc  其他描述
-//	 * @return 扣除结果
-//	 */
-//	public boolean deductItem(long playerId,IItem item,int count, NatureEnum nEnum, String logDesc) {
+	//}
+	///**
+	//* 背包减少普通道具
+	//* @param playerId 玩家id
+	//* @param item     扣除物品
+	//* @param count    扣除数量
+	//* @param nEnum    使用来源
+	//* @param logDesc  其他描述
+	//* @return 扣除结果
+	//*/
+	//public boolean deductItem(long playerId,IItem item,int count, NatureEnum nEnum, String logDesc) {
 //		try {
 //			if (item != null) {
 //				int curCount = item.deductCount(count);
@@ -256,34 +275,22 @@ public class ItemDomain {
 //			return false;
 //		}
 //		return true;
-//	}
-//	/**
-//	 * 通过唯一id获取物品
-//	 * @param itemId 道具唯一id
-//	 * @return 获取道具
-//	 */
-//	public IItem getItem(long itemId) {
+	//}
+	///**
+	//* 通过唯一id获取物品
+	//* @param itemId 道具唯一id
+	//* @return 获取道具
+	//*/
+	//public IItem getItem(long itemId) {
 //		return itemMap.get(itemId);
-//	}
-	
-	/**
-	 * 通过配置id获取到物品
-	 * @return IItem 道具实体, 无则返回null
-	 */
-	private IItem getItemByConfigId(int configId) {
-		for (IItem item : itemMap.values()) {
-			if (item.getConfigId() == configId) {
-				return item;
-			}
-		}
-		return null;
-	}
-//	/**
-//	 * 通过配置id获取到物品
-//     * @param configId 道具配置id
-//	 * @return 道具列表
-//	 */
-//    private List<IItem> getItemsByConfigId(int configId) {
+	//}
+
+	///**
+	//* 通过配置id获取到物品
+	//* @param configId 道具配置id
+	//* @return 道具列表
+	//*/
+	//private List<IItem> getItemsByConfigId(int configId) {
 //		List<IItem> items = Lists.newArrayList();
 //		for (IItem item : itemMap.values()) {
 //			if (item.getConfigId() == configId) {
@@ -291,13 +298,13 @@ public class ItemDomain {
 //			}
 //		}
 //		return items;
-//	}
-//	/**
-//	 * 通过类型获取物品列表
-//	 * @param type 道具类型
-//	 * @return 道具列表
-//	 */
-//	public Collection<IItem> getItemsByType(int type) {
+	//}
+	///**
+	//* 通过类型获取物品列表
+	//* @param type 道具类型
+	//* @return 道具列表
+	//*/
+	//public Collection<IItem> getItemsByType(int type) {
 //		List<IItem> items = Lists.newArrayList();
 //		for (IItem item : itemMap.values()) {
 //			if (item.isType(type)) {
@@ -305,13 +312,10 @@ public class ItemDomain {
 //			}
 //		}
 //		return items;
-//	}
-	
-	/**
-	 * 获得玩家所有道具
-	 */
-	public Collection<IItem> getAllItems(){
-		return itemMap.values();
-	}
+	//}
 
 }
+
+
+
+

@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Maps;
 
+/**
+ * 数据管理类, 之所以放在Manager内,是以后如果增加缓存机制, 直接实现缓存接口即可
+ * @author Jeremy
+ *
+ */
 @Component
 public class ItemManager {
 	

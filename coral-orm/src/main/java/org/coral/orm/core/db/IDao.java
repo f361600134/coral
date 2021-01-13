@@ -35,12 +35,20 @@ public interface IDao<T extends BasePo> {
 	Collection<T> selectAll();
 	
 	/**
-	 * 通过指定索引条件, 查询指定数据.
+	 * 通过指定索引条件, 查询指定数据.此方法默认使用所有索引
 	 * @return  
 	 * @return List<BasePo>  
 	 * @date 2020年9月7日下午4:53:48
 	 */
 	Collection<T> selectByIndex(Object[] values);
+	
+	/**
+	 * 通过指定索引条件, 查询指定数据.此方法通过组装索引,值实现
+	 * @return  
+	 * @return List<BasePo>  
+	 * @date 2020年9月7日下午4:53:48
+	 */
+	Collection<T> selectByIndex(String[] props, Object[] values);
 	
 //	/**
 //	 * 通过指定条件, 以及值进行查询
@@ -113,5 +121,14 @@ public interface IDao<T extends BasePo> {
 	 * @date 2020年11月7日上午9:14:14
 	 */
 	int[] deleteBatch(Collection<T> basePos);
+	
+//	/**
+//	 * 通过sql语句查询
+//	 * @param obj
+//	 * @return  
+//	 * @return BasePo  
+//	 * @date 2020年9月7日下午4:53:28
+//	 */
+//	T selectBySql(String sql);
 
 }
