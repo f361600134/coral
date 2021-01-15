@@ -4,6 +4,7 @@ import org.coral.server.game.module.player.domain.Player;
 
 /**
  * 属性类型枚举，所有属性先在此处定义，获取属性则直接通过枚举调用
+ * 比如策划会配置一个单独属性, 通过属性去增减值,就可以使用此枚举
  * @auth Jeremy
  * @date 2020年12月19日下午11:17:26
  */

@@ -126,6 +126,7 @@ public class ItemService implements IItemService, IResourceService{
 	public void reward(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
 		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null)	return;
+		//背包加入普通道具
 		domain.addItem(playerId, configId, value, nEnum);
 	}
 
