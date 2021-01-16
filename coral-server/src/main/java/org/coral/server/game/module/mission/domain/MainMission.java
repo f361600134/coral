@@ -19,10 +19,11 @@ public class MainMission extends AbstractMission{
 	@Override
 	public int getCompleteCondition() {
 		return 0;
+		
 	}
 
 	@Override
-	public int getCompleteValue() {
+	public int getCompleteValue() { 
 		return 0;
 	}
 

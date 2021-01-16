@@ -16,7 +16,7 @@ public class ArtifactMission extends AbstractMission{
 		//return ConfigMissionMgr.getConfig(getConfigId()).getCompleteType();
 		return 0;
 	}
-
+ 
 	@Override
 	public int getCompleteCondition() {
 		//return ConfigMissionMgr.getConfig(getConfigId()).getCompleteCondition();
