@@ -19,8 +19,13 @@ import java.util.Map;
  * @date 2020年12月17日下午10:02:51
  */
 public class ItemDomain {
-
+	
 	private static final Logger log = LoggerFactory.getLogger(ItemDomain.class);
+	
+	/**
+	 * 物品占用数量最大限制, 一般来说不用限制, 但是限制一下避免出现意外情况导致的数据问题
+	 */
+	private static final int LIMIT = 9999;
 	
 	//所有的物品 key:itemId(guid)
 	private final Map<Long, IItem> itemMap;
@@ -61,7 +66,8 @@ public class ItemDomain {
 	 * @return
 	 */
 	public boolean checkAdd(long playerId, int configId, int count) {
-		return true;//默认不做限制
+		IItem item = getItemByConfigId(configId);
+		return (item.getCount() + count) >= LIMIT;
 	}
 	
 	/**

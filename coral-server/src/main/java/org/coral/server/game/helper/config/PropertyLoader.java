@@ -11,6 +11,7 @@ import java.util.Set;
 import org.coral.server.common.ServerConstant;
 import org.coral.server.game.data.config.AnnotationConfig;
 import org.coral.server.utils.RuntimeClassManager;
+import org.coral.server.utils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,7 +55,7 @@ public class PropertyLoader {
 	 */
 	private static void loadConfigData() throws Exception
 	{
-		logger.info("初始化策划配置数据");
+		long startTime = TimeUtil.now();
         Collection<Class<?>> configMgrClasses = RuntimeClassManager.instance().getClassByAnnotationClass(AnnotationConfig.class);
         for (Class<?> cls : configMgrClasses)
         {//load
@@ -83,6 +84,7 @@ public class PropertyLoader {
 				logger.error("Complete策划配置数据出现异常", e);
 			}
 		}
+        logger.info("The initialization configs is complete and takes [{}] milliseconds.", (System.currentTimeMillis() - startTime));
 	}
 	
 	private static void loadSensitiveWordTxt()throws Exception

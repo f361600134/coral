@@ -1,5 +1,8 @@
 package org.coral.server.game.helper.context;
 
+import java.lang.annotation.Annotation;
+import java.util.Collection;
+
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -33,5 +36,15 @@ public class SpringContextHolder implements ApplicationContextAware{
 	
 	public <T> T getBean(Class<T> tClass) {
 		return this.springContext.getBean(tClass);
+	}
+	
+	/**
+	 * 根据注解类型获取实体集合
+	 * 
+	 * @param classType
+	 * @return
+	 */
+	public Collection<Object> getBeansWithAnnotation(Class<? extends Annotation> classType) {
+		return this.springContext.getBeansWithAnnotation(classType).values();
 	}
 }

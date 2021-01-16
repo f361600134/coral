@@ -48,7 +48,7 @@ public class HandlerProcessor implements InitializingBean{
 				commanderMap.put(cmd.id(), new Commander(handler, cmd.mustLogin(), method));
 			}
 		}
-		log.info("=========commanderMap==========={}", commanderMap.keySet());
+		//log.info("=========commanderMap==========={}", commanderMap.keySet());
 		log.info("The initialization message is complete and takes [{}] milliseconds.", (System.currentTimeMillis() - startTime));
 	}
 	

@@ -3,8 +3,6 @@ package org.coral.server;
 import org.coral.net.common.NetConfig;
 import org.coral.net.common.TaskThreadPoolConfig;
 import org.coral.orm.common.OrmConfig;
-import org.coral.server.core.event.GameEventBus;
-import org.coral.server.core.event.IObserver;
 import org.coral.server.game.helper.config.PropertyLoader;
 import org.coral.server.utils.RuntimeClassManager;
 import org.springframework.boot.SpringApplication;

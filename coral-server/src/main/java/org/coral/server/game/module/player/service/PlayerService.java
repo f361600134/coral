@@ -198,7 +198,8 @@ public class PlayerService implements IPlayerService, IResourceService {
 	public void reward(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
 		final PlayerContext playerContext = getPlayerContext(playerId);
 		final Player player = playerContext.getPlayer();
-		PropertiesType.getType(configId).add(player, value);
+		player.addProperties(configId, value);
+		//PropertiesType.getType(configId).add(player, value);
 		process.update(player);
 	}
 
