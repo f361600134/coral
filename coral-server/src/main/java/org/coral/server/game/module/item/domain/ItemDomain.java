@@ -112,9 +112,35 @@ public class ItemDomain {
 	 * @param nEnum
 	 * @return
 	 */
-	public boolean deductItem(long playerId, int configId, int count, NatureEnum nEnum) {
+	public boolean deductItemByConfigId(long playerId, int configId, int count, NatureEnum nEnum) {
 		//背包减少普通道具
 		IItem item = getItemByConfigId(configId);
+		return deductItem(item, count);
+	}
+	
+	/**
+	 * 背包减少普通道具
+	 * @param playerId
+	 * @param configId
+	 * @param count
+	 * @param nEnum
+	 * @return
+	 */
+	public boolean deductItemById(long playerId, long id, int count, NatureEnum nEnum) {
+		//背包减少普通道具
+		IItem item = itemMap.get(id);
+		return deductItem(item, count);
+	}
+	
+	/**
+	 * 减少物品数量,物品数量小于等于0时,删掉此物品
+	 * @param item
+	 * @param count
+	 * @return  
+	 * @return boolean  
+	 * @date 2021年1月16日下午5:48:46
+	 */
+	private boolean deductItem(IItem item, int count) {
 		try {
 			if (item != null) {
 				int curCount = item.deductCount(count);
@@ -127,11 +153,11 @@ public class ItemDomain {
 					deleteItemList.add(item);
 				}
 			}
+			return true;
 		} catch (Exception e) {
 			log.error("deductItem error", e);
 			return false;
 		}
-		return true;
 	}
 	
 	/**

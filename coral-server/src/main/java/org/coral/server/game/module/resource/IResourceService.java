@@ -3,7 +3,7 @@ package org.coral.server.game.module.resource;
 import org.coral.server.game.helper.log.NatureEnum;
 
 /**
- *  单个资源相关接口， 独立判断单类型资源是否满足条件的接口。
+ *  单个资源[消耗]相关接口， 独立判断单类型资源是否满足条件的接口。
  * @auth Jeremy
  * @date 2020年12月20日下午1:22:43
  */
@@ -53,4 +53,14 @@ public interface IResourceService {
 	 */
 	public void cost(long playerId, Integer configId, Integer value, NatureEnum nEnum);
 	
+	/**
+	 * 根据唯一id扣除, 通常来说, 唯一的东西, 数量不应该重复.所以 这里没有数量需求
+	 * @param playerId
+	 * @param uniqueId
+	 * @param value
+	 * @param nEnum  
+	 * @return void  
+	 * @date 2021年1月16日下午5:43:08
+	 */
+	public void cost(long playerId, Long uniqueId, NatureEnum nEnum);
 }

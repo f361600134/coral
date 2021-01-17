@@ -207,8 +207,14 @@ public class PlayerService implements IPlayerService, IResourceService {
 	public void cost(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
 		final PlayerContext playerContext = getPlayerContext(playerId);
 		final Player player = playerContext.getPlayer();
-		PropertiesType.getType(configId).reduce(player, value);
+		//PropertiesType.getType(configId).reduce(player, value);
+		player.reduceProperties(configId, value);
 		process.update(player);
+	}
+
+	@Override
+	public void cost(long playerId, Long uniqueId, NatureEnum nEnum) {
+		throw new UnsupportedOperationException("玩家属性不支持该操作");
 	}
 	
 }

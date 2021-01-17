@@ -9,15 +9,15 @@ import org.coral.orm.core.db.IDao;
  * @date 2020年8月13日
  *
  */
-public class CommandSelect extends AbsCommand implements Executable<BasePo>{
+public class CommandSelect extends AbsCommand<BasePo> implements Executable<BasePo>{
 	
 //	private Object[] props;
 	
-	private CommandSelect(Object obj, IDao dao) {
+	private CommandSelect(Object obj, IDao<BasePo> dao) {
 		super(obj, dao, CommandType.READ);
 	}
 	
-	public static CommandSelect create(Object obj, IDao dao) {
+	public static CommandSelect create(Object obj, IDao<BasePo> dao) {
 		return new CommandSelect(obj, dao);
 	}
 

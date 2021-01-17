@@ -16,10 +16,14 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 	
 	private static final Logger log = LoggerFactory.getLogger(CommonDao.class);
 	
-	private JdbcTemplate jdbcTemplate;
+	/**
+	 * 	基于spring提供的JdbcTemplate实现.
+	 *	仅仅需要关注业务本身 不需要关注事务,连接释放等操作
+	 */
+	private final JdbcTemplate jdbcTemplate;
 	
 	/**
-	 * po.sql映射
+	 * po.sql映射, 对注册的POJO生成sql隐射,操作时直接通过映射的sql进行操作
 	 */
 	private final PoMapper<T> poMapper;
 	
@@ -39,6 +43,7 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 		final Class<T> clazz = poMapper.getCls();
 		log.debug("selectAll sql:{}", sql);
 		List<T> basePoList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz));
+		basePoList.forEach(t -> t.afterLoad());
 		return basePoList;
 	}
 	
@@ -60,7 +65,9 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 		if (basePoList.size() == 0) {
 			return null;
 		}
-		return basePoList.get(0) ;
+		T t = basePoList.get(0);
+		t.afterLoad();
+		return  t;
 	}
 
 	/**
@@ -73,7 +80,9 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 		final Class<T> clazz = poMapper.getCls();
 		
 		log.debug("select sql:{}, cls:{}", sql, clazz);
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz), value);
+		Collection<T> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz), value);
+		list.forEach(t -> t.afterLoad());
+		return list;
 	}
 	
 	/**
@@ -83,18 +92,21 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 	 * @return
 	 */
 	public int insert(T po) {
+		po.beforeSave();
 		final String sql = poMapper.getInsert();
-		log.debug("insert sql:{}", sql);
+		log.debug("insert sql:{}, po:{}", sql, po);
 		return jdbcTemplate.update(sql, po.propValues());
 	}
 
 	public int replace(T po) {
+		po.beforeSave();
 		final String sql = poMapper.getReplace();
 		log.debug("replace sql:{}", sql);
 		return jdbcTemplate.update(sql, po.propValues());
 	}
 
 	public int update(T po) {
+		po.beforeSave();
 		final String sql = poMapper.getUpdate();
 		log.debug("update sql:{}", sql);
 		Object[] props = po.propValues();
@@ -131,6 +143,7 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 		final String sql = poMapper.getInsert();
 		List<Object[]> calValues = new ArrayList<Object[]>();
 		for (T basePo : basePos) {
+			basePo.beforeSave();
 			calValues.add(basePo.propValues());
 		}
 		log.debug("insertBatch sql:{}", sql);
@@ -163,7 +176,22 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 		final Class<T> clazz = poMapper.getCls();
 		String sql = SQLGenerator.select(tbName, props);
 		List<T> basePoList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz), values);
+		basePoList.forEach(t -> t.afterLoad());
 		return basePoList;
+	}
+
+	/**
+	 * 通过sql语句查询,在以上所有语句不能处理业务时, 使用此方法.
+	 * 因为默认sql不缓存, 所以效率比以上操作相比略低.
+	 * @param obj
+	 * @return  
+	 * @return BasePo  
+	 * @date 2020年9月7日下午4:53:28
+	 */
+	@Override
+	public Collection<T> selectBySql(String sql) {
+		final Class<T> clazz = poMapper.getCls();
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz));
 	}
 
 }

@@ -134,7 +134,41 @@ public class ItemService implements IItemService, IResourceService{
 	public void cost(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
 		ItemDomain domain = itemManager.getDomain(playerId);
 		if (domain == null)	return;
-		domain.deductItem(playerId, configId, value, nEnum);
+		domain.deductItemByConfigId(playerId, configId, value, nEnum);
+	}
+	
+	@Override
+	public void cost(long playerId, Long id, NatureEnum nEnum) {
+		ItemDomain domain = itemManager.getDomain(playerId);
+		if (domain == null) {
+			return;
+		}
+		/*
+		 * 道具默认有数量概念, 唯一的物品数量默认为1.
+		 * 所以唯一道具,跟普通道具在扣除上面,逻辑相同,当数量为0则清除.
+		 * 这里参数就默认扣除未1
+		 */
+		domain.deductItemById(playerId, id, 1, nEnum);
+	}
+	
+	/**
+	 * 通过类型获取物品列表
+	 * @param type 道具类型
+	 * @return 道具列表
+	 */
+	public Collection<IItem> getItemsByType(long playerId, int type) {
+		ItemDomain domain = itemManager.getDomain(playerId);
+		if (domain == null) {
+			return null;
+		}
+		List<IItem> result = Lists.newArrayList();
+		Collection<IItem> items = domain.getAllItems();
+		for (IItem item : items) {
+			if (item.isType(type)) {
+				result.add(item);
+			}
+		}
+		return result;
 	}
 
 //	public List<IItem> addNewItem(long playerId, Map<Integer, Integer> items, NatureEnum nEnum, String logDesc) {
@@ -295,26 +329,6 @@ public class ItemService implements IItemService, IResourceService{
 //		//this.responseDeleteItemList(playerId, bag);
 //		return 0;
 //	}
-
-	/**
-	 * 通过类型获取物品列表
-	 * @param type 道具类型
-	 * @return 道具列表
-	 */
-	public Collection<IItem> getItemsByType(long playerId, int type) {
-		ItemDomain domain = itemManager.getDomain(playerId);
-		if (domain == null) {
-			return null;
-		}
-		List<IItem> result = Lists.newArrayList();
-		Collection<IItem> items = domain.getAllItems();
-		for (IItem item : items) {
-			if (item.isType(type)) {
-				result.add(item);
-			}
-		}
-		return result;
-	}
 
 //	/**
 //	 * 背包使用礼包

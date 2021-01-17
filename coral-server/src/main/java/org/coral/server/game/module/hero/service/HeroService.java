@@ -1,20 +1,22 @@
 package org.coral.server.game.module.hero.service;
 
+import java.util.Collection;
+
 import org.coral.server.game.helper.ResourceType;
 import org.coral.server.game.helper.log.NatureEnum;
+import org.coral.server.game.module.hero.domain.Hero;
 import org.coral.server.game.module.hero.domain.HeroDomain;
 import org.coral.server.game.module.hero.manager.HeroManager;
 import org.coral.server.game.module.resource.IResourceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-<<<<<<< HEAD
-public class HeroService {
-	
-	
-=======
 public class HeroService implements IHeroService, IResourceService{
+	
+	private static final Logger log = LoggerFactory.getLogger(HeroService.class);
 	
 	@Autowired private HeroManager heroManager;
 
@@ -48,13 +50,26 @@ public class HeroService implements IHeroService, IResourceService{
 			return;
 		}
 		domain.reward(playerId, configId, count);
+		Collection<Hero> heros = domain.getHerosByConfigId(configId);
+		log.info("=======>heros:{}", heros);
 	}
 
 	@Override
-	public void cost(long playerId, Integer configId, Integer value, NatureEnum nEnum) {
-		// TODO Auto-generated method stub
-		
+	public void cost(long playerId, Integer configId, Integer count, NatureEnum nEnum) {
+		HeroDomain domain = heroManager.getDomain(playerId);
+		if (domain == null) {
+			return;
+		}
+		domain.cost(configId, count);
 	}
->>>>>>> refs/remotes/origin/master
+
+	@Override
+	public void cost(long playerId, Long uniqueId, NatureEnum nEnum) {
+		HeroDomain domain = heroManager.getDomain(playerId);
+		if (domain == null) {
+			return;
+		}
+		domain.cost(uniqueId);
+	}
 
 }

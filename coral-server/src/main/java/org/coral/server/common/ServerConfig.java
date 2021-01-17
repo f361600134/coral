@@ -11,6 +11,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "coral.game.server") 
 public class ServerConfig {
 	
+	//服务器ip
+	private int serverId;
+
+	public int getServerId() {
+		return serverId;
+	}
+
+	public void setServerId(int serverId) {
+		this.serverId = serverId;
+	}
 	
 	
 }

@@ -5,15 +5,6 @@ package org.coral.orm.core.base;
  */
 public class SQLGenerator {
 	
-//	public static String select(String tbName, String[] idNames){
-//		StringBuilder sb = new StringBuilder("DELETE FROM `").append(tbName).append("` WHERE ");
-//		sb.append(idNames[0]).append("=?");
-//		for (int i = 1; i < idNames.length; i++) {
-//			sb.append(" and ").append(idNames[i]).append("=?");
-//		}
-//		return sb.toString();
-//	}
-	
 	/**
 	 * 查询所有
 	 * @param tbName

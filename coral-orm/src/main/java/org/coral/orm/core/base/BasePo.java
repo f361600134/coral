@@ -107,7 +107,6 @@ public abstract class BasePo implements Serializable {
 				e.printStackTrace();
 			} 
 		}
-		System.out.println(this);
 	}
 	
 	/**
@@ -147,7 +146,6 @@ public abstract class BasePo implements Serializable {
 				e.printStackTrace();
 			} 
 		}
-		System.out.println(this);
 	}
 	
 }

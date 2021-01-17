@@ -2,8 +2,6 @@ package org.coral.orm.core.db;
 
 import java.util.Collection;
 
-import org.coral.orm.core.base.BasePo;
-
 /**
  * 支持的基础操作接口
  * 
@@ -15,7 +13,7 @@ import org.coral.orm.core.base.BasePo;
  * @date 2020年6月29日
  *
  */
-public interface IDao<T extends BasePo> {
+public interface IDao<T> {
 	
 	/**
 	 * 通过默认主键查询出所有数据
@@ -50,16 +48,6 @@ public interface IDao<T extends BasePo> {
 	 */
 	Collection<T> selectByIndex(String[] props, Object[] values);
 	
-//	/**
-//	 * 通过指定条件, 以及值进行查询
-//	 * @param objs
-//	 * @param values
-//	 * @return  
-//	 * @return BasePo  
-//	 * @date 2020年9月7日下午4:54:12
-//	 */
-//	Collection<BasePo> select(Object[] objs, Object[] values);
-	
 	/**
 	 * 插入一个对象
 	 * @param po
@@ -67,34 +55,34 @@ public interface IDao<T extends BasePo> {
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:28
 	 */
-	int insert(T po);
+	int insert(T t);
 	
 	/**
 	 * 替换一个对象
-	 * @param po
+	 * @param t
 	 * @return  
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:35
 	 */
-	int replace(T po);
+	int replace(T t);
 	
 	/**
 	 * 更新一个对象
-	 * @param po
+	 * @param t
 	 * @return  
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:45
 	 */
-	int update(T po);
+	int update(T t);
 	
 	/**
 	 * 删除一个对象
-	 * @param po
+	 * @param t
 	 * @return  
 	 * @return int  返回成功个数
 	 * @date 2020年11月7日上午9:13:52
 	 */
-	int delete(T po);
+	int delete(T t);
 	
 	/**
 	 * 删除所有
@@ -111,7 +99,7 @@ public interface IDao<T extends BasePo> {
 	 * @return int[]  
 	 * @date 2020年11月7日上午9:14:04
 	 */
-	int[] insertBatch(Collection<T> basePos);
+	int[] insertBatch(Collection<T> ts);
 	
 	/**
 	 * 批量删除
@@ -120,15 +108,16 @@ public interface IDao<T extends BasePo> {
 	 * @return int[]  
 	 * @date 2020年11月7日上午9:14:14
 	 */
-	int[] deleteBatch(Collection<T> basePos);
+	int[] deleteBatch(Collection<T> ts);
 	
-//	/**
-//	 * 通过sql语句查询
-//	 * @param obj
-//	 * @return  
-//	 * @return BasePo  
-//	 * @date 2020年9月7日下午4:53:28
-//	 */
-//	T selectBySql(String sql);
-
+	/**
+	 * 通过sql语句查询,在以上所有语句不能处理业务时, 使用此方法.
+	 * 因为默认sql不缓存, 所以效率比以上操作相比略低.
+	 * @param obj
+	 * @return  
+	 * @return BasePo  
+	 * @date 2020年9月7日下午4:53:28
+	 */
+	Collection<T> selectBySql(String sql);
+	
 }

@@ -1,11 +1,20 @@
 package org.coral.server;
 
+import java.util.Map;
+
+import org.coral.server.common.ServerConfig;
+import org.coral.server.common.UniqueIdGenerater;
 import org.coral.server.core.event.GameEventBus;
+import org.coral.server.game.helper.log.NatureEnum;
+import org.coral.server.game.helper.uuid.SnowflakeGenerator;
+import org.coral.server.game.module.resource.IResourceGroupService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.google.common.collect.Maps;
 
 
 @Component
@@ -13,7 +22,13 @@ public class InitialRunner implements CommandLineRunner {
 	
 	private static final Logger log = LoggerFactory.getLogger(InitialRunner.class);
 	
-	@Autowired private GameEventBus eventBus;
+//	@Autowired private GameEventBus eventBus;
+	
+	@Autowired 
+	private SnowflakeGenerator generater;
+	
+	@Autowired 
+	private IResourceGroupService resourceService;
 	
 //	private Processor processor;
 //	
@@ -24,7 +39,12 @@ public class InitialRunner implements CommandLineRunner {
 //	@Autowired private DataProcessorAsyn processor;
 	
 	public void run(String... args) throws Exception {
-//		try {
+		try {
+			log.info("generater:{}", generater.nextId());
+			Map<Integer, Integer> rewardMap = Maps.newHashMap(); 
+			rewardMap.put(90001, 1);
+			resourceService.reward(1, rewardMap, NatureEnum.GM);
+			
 ////			dataSourceFactory.druidDataSource();
 ////			System.out.println(dataSourceFactory.druidDataSource());
 ////			System.out.println();
@@ -35,9 +55,9 @@ public class InitialRunner implements CommandLineRunner {
 ////			testInsertBatch();
 ////			testSelect();
 ////			System.out.println(userDao.getById(5));
-//		} catch (Exception e) {
-//			log.error("服务器初始化过程出现异常, 启动失败", e);
-//		}
+		} catch (Exception e) {
+			log.error("服务器初始化过程出现异常, 启动失败", e);
+		}
 	}
 //	
 //	public void testInsert() {

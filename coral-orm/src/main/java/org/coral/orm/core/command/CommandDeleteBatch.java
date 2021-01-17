@@ -3,7 +3,6 @@ package org.coral.orm.core.command;
 import java.util.Collection;
 
 import org.coral.orm.core.base.BasePo;
-import org.coral.orm.core.command.AbsCommand.CommandType;
 import org.coral.orm.core.db.IDao;
 
 /**

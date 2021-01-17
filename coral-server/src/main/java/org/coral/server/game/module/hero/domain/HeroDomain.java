@@ -1,7 +1,9 @@
 package org.coral.server.game.module.hero.domain;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -58,9 +60,41 @@ public class HeroDomain {
 	 * @param count
 	 */
 	public void reward(long playerId, int configId, int count) {
+		Hero hero = null;
 		//	生成一个武将,需要唯一id
-		Hero hero = Hero.create(playerId, configId);
-		heroMap.put(hero.getId(), hero);
+		for (int i = 0; i < count; i++) {
+			hero = Hero.create(playerId, configId);
+			heroMap.put(hero.getId(), hero);
+		}
+	}
+	
+	/**
+	 *	 根据配置消耗指定数量的武将
+	 * @param configId
+	 * @param count
+	 */
+	public void cost(int configId, int count) {
+		Iterator<Entry<Long, Hero>> iterator = heroMap.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Entry<Long, Hero> entry = iterator.next();
+			if (entry.getValue().getConfigId() != configId) {
+				continue;
+			}
+			iterator.remove();
+			count --;
+			if (count == 0) {
+				break;
+			}
+		}
+	}
+	
+	/**
+	 *	消耗消耗指定id的武将
+	 * @param configId
+	 * @param count
+	 */
+	public void cost(long id) {
+		heroMap.remove(id);
 	}
 	
 }

@@ -10,14 +10,20 @@ import org.apache.commons.lang3.StringUtils;
 import org.coral.orm.core.base.BasePo;
 import org.coral.orm.core.db.CommonDao;
 import org.coral.orm.core.db.IDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.google.common.collect.Maps;
 
-public class DataProcessor{
+public class DataProcessor implements IDataProcess{
 	
-//	private static final Logger log = LoggerFactory.getLogger(DataProcessor.class);
+	private static final Logger log = LoggerFactory.getLogger(DataProcessor.class);
 	
+	/**
+	 * key: class name, 类名
+	 * value: dao 存储dao
+	 */
 	private Map<String, IDao<?>> commonDaoMap;
 	
 	@SuppressWarnings("unchecked")
@@ -119,14 +125,12 @@ public class DataProcessor{
 	 * @param clazz
 	 * @return
 	 */
-	public <T extends BasePo> List<T> selectByIndex(Class<T> clazz, Object[] props, Object[] objs) {
-//		IDao<T> dao = getCommonDao(clazz);
-//		if (dao == null) {
-//			throw new NullPointerException("Can not find dao by the Pojo:"+po);
-//		}
-//		dao.selectByKey(value)
-		//TODO
-		return null;
+	public <T extends BasePo> List<T> selectByIndex(Class<T> clazz, String[] props, Object[] objs) {
+		IDao<T> dao = getCommonDao(clazz);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the props:"+props);
+		}
+		return (List<T>)dao.selectByIndex(props, objs);
 	}
 	
 	/**
@@ -175,7 +179,7 @@ public class DataProcessor{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo>  int update(T po) {
+	public <T extends BasePo> int update(T po) {
 		IDao<T> dao = getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the Pojo:"+po);
@@ -234,6 +238,19 @@ public class DataProcessor{
 			dao.deleteBatch(map.get(name));
 		}
 		map = null;
+	}
+	
+	/**
+	 * 	通过指定sql查询. 虽说指定了sql语句,但需要通过clazz获取处理dao
+	 * @date 2020年6月30日
+	 * @param basePos
+	 */
+	public <T extends BasePo> List<T> selectBySql(Class<T> clazz, String sql) {
+		IDao<T> dao = getCommonDao(clazz);
+		if (dao == null) {
+			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
+		}
+		return (List<T>)dao.selectBySql(sql);
 	}
 	
 	/**
