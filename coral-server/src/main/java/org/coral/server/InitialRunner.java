@@ -1,20 +1,16 @@
 package org.coral.server;
 
-import java.util.Map;
+import java.util.Date;
 
-import org.coral.server.common.ServerConfig;
-import org.coral.server.common.UniqueIdGenerater;
-import org.coral.server.core.event.GameEventBus;
-import org.coral.server.game.helper.log.NatureEnum;
+import org.coral.orm.core.DataProcessorAsyn;
 import org.coral.server.game.helper.uuid.SnowflakeGenerator;
 import org.coral.server.game.module.resource.IResourceGroupService;
+import org.coral.server.game.module.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import com.google.common.collect.Maps;
 
 
 @Component
@@ -36,14 +32,14 @@ public class InitialRunner implements CommandLineRunner {
 //	
 ////	@Autowired private UserDao userDao;
 	
-//	@Autowired private DataProcessorAsyn processor;
+	@Autowired private DataProcessorAsyn processor;
 	
 	public void run(String... args) throws Exception {
 		try {
-			log.info("generater:{}", generater.nextId());
-			Map<Integer, Integer> rewardMap = Maps.newHashMap(); 
-			rewardMap.put(90001, 1);
-			resourceService.reward(1, rewardMap, NatureEnum.GM);
+//			log.info("generater:{}", generater.nextId());
+//			Map<Integer, Integer> rewardMap = Maps.newHashMap(); 
+//			rewardMap.put(90001, 1);
+//			resourceService.reward(1, rewardMap, NatureEnum.GM);
 			
 ////			dataSourceFactory.druidDataSource();
 ////			System.out.println(dataSourceFactory.druidDataSource());
@@ -51,7 +47,7 @@ public class InitialRunner implements CommandLineRunner {
 ////			processor.print();
 ////			testInsertBatchDiff();
 ////			processor.select(User.class);
-////			testInsert();
+//				testInsert();
 ////			testInsertBatch();
 ////			testSelect();
 ////			System.out.println(userDao.getById(5));
@@ -60,21 +56,39 @@ public class InitialRunner implements CommandLineRunner {
 		}
 	}
 //	
-//	public void testInsert() {
-//		for (int i = 0; i < 1000; i++) {
-//			User user = new User();
-//			user.setId(i);
-//			user.setName("ccc");
-//			user.setAge(25);
-//			user.setBirthday(new Date().toString());
-//			try {
-////				dao.insert(ds, user);
-//				processor.insert(user);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
+	public void testInsert() {
+		for (int i = 1; i < 1000; i++) {
+			User user = new User();
+			user.setId(i);
+			user.setName("ccc");
+			user.setAge(25);
+			user.setBirthday(new Date().toString());
+			try {
+				processor.insert(user);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		try {//10后,新数据
+			System.out.println("开始进入等待中....");
+			Thread.sleep(50000);
+			System.out.println("等待结束中....");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} 
+		for (int i = 2001; i < 3000; i++) {
+			User user = new User();
+			user.setId(i);
+			user.setName("ccc");
+			user.setAge(25);
+			user.setBirthday(new Date().toString());
+			try {
+				processor.insert(user);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 //	
 //	public void testInsertBatch() {
 //		List<BasePo> list = Lists.newArrayList();

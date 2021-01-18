@@ -47,6 +47,7 @@ public class PoMapper<T extends BasePo> {
 			PO po = superCls.getAnnotation(PO.class);
 			if (po == null) {
 				log.error("BasePo未找到PO注解, className:{}", superCls.getName());
+				return;
 			}
 			this.tbName = po.name();
 			BasePo ins = cls.newInstance();

@@ -46,7 +46,7 @@ public class DataProcessor implements IDataProcess{
 		if (clazz == null) {
 			throw new NullPointerException("clazz is can not be null:"+clazz);
 		}
-		return getCommonDao(clazz.getName());
+		return getCommonDao(clazz.poName());
 	}
 	
 	/**
@@ -263,7 +263,7 @@ public class DataProcessor implements IDataProcess{
 		//数据分类
 		Map<String, List<T>> map = new HashMap<String, List<T>>();
 		for (T po : basePos) {
-			String name = po.getName();
+			String name = po.poName();
 			List<T> list = map.get(name);
 			if (list == null) {
 				list = new ArrayList<T>();

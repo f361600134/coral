@@ -1,4 +1,4 @@
-package org.coral.orm.core.command;
+package org.coral.server.stream;
 
 /**
  * 可执行接口
@@ -9,5 +9,5 @@ package org.coral.orm.core.command;
  */
 @FunctionalInterface
 public interface Executable<V> {
-    V execute() throws Exception;
+	public V execute() throws Exception;
 }

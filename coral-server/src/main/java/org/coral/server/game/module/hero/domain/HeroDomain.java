@@ -1,9 +1,7 @@
 package org.coral.server.game.module.hero.domain;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -69,23 +67,25 @@ public class HeroDomain {
 	}
 	
 	/**
-	 *	 根据配置消耗指定数量的武将
+	 *	根据配置消耗指定数量的武将, 一般来说不建议直接通过配置id直接扣除指定数量武将
+	 *	所有扣除操作, 必须由玩家选择指定武将去做扣除, 为了兼容
 	 * @param configId
 	 * @param count
 	 */
 	public void cost(int configId, int count) {
-		Iterator<Entry<Long, Hero>> iterator = heroMap.entrySet().iterator();
-		while(iterator.hasNext()) {
-			Entry<Long, Hero> entry = iterator.next();
-			if (entry.getValue().getConfigId() != configId) {
-				continue;
-			}
-			iterator.remove();
-			count --;
-			if (count == 0) {
-				break;
-			}
-		}
+//		Iterator<Entry<Long, Hero>> iterator = heroMap.entrySet().iterator();
+//		while(iterator.hasNext()) {
+//			Entry<Long, Hero> entry = iterator.next();
+//			if (entry.getValue().getConfigId() != configId) {
+//				continue;
+//			}
+//			iterator.remove();
+//			count --;
+//			if (count == 0) {
+//				break;
+//			}
+//		}
+		throw new UnsupportedOperationException("武将删除操作, 必须由玩家指定id的武将, 才支持删除");
 	}
 	
 	/**

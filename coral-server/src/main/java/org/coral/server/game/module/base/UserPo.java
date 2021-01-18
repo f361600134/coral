@@ -81,7 +81,7 @@ public abstract class UserPo extends BasePo {
 	public Object[] propValues() {
 		return new Object[] { 
 		getId(),
-		getName(),
+		poName(),
 		getAge(),
 		getBirthday(),
 		};

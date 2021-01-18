@@ -1,8 +1,8 @@
 package org.coral.server.core.event;
 
-import java.util.Collection;
 import java.util.List;
 
+import org.coral.server.game.helper.context.SpringContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,11 @@ import com.google.common.eventbus.EventBus;
 public class GameEventBus {
 	
 	private static final Logger logger = LoggerFactory.getLogger(GameEventBus.class);
+	
+	/**
+	 * 伪单例, 获取事件处理器
+	 */
+	private static GameEventBus gameEventBus;
 	
 	@Autowired(required = false)
 	private List<IObserver> observers;
@@ -55,5 +60,16 @@ public class GameEventBus {
 			}
 			post(event);
 		}
+	}
+	
+	/**
+	 * 	发布事件
+	 * @param event
+	 */
+	public static void publishEvent(IEvent event) {
+		if (gameEventBus == null) {
+			gameEventBus = SpringContextHolder.getInstance().getBean(GameEventBus.class);
+		}
+		gameEventBus.post(event);
 	}
 }

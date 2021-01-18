@@ -35,7 +35,7 @@ public abstract class StuPo extends BasePo {
 	}
 	
 	/** 名字 **/
-	public String getName(){
+	public String poName(){
 		return this.name;
 	}
 	
@@ -81,7 +81,7 @@ public abstract class StuPo extends BasePo {
 	public Object[] propValues() {
 		return new Object[] { 
 		getId(),
-		getName(),
+		poName(),
 		getAge(),
 		getBirthday(),
 		};

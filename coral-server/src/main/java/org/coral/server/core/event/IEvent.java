@@ -8,7 +8,9 @@ public interface IEvent {
 	 * 获取事件唯一标识
 	 * @return
 	 */
-	public String getEventId();
+	default public String getEventId() {
+		return this.getClass().getSimpleName();
+	}
 	
 	/**
 	 * 获取事件发送时间, 可以从外部设置值, 如果不设置则默认为发送时间

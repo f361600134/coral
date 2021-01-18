@@ -20,9 +20,4 @@ public abstract class PlayerEventBase extends BaseEvent{
 		return playerId;
 	}
 	
-	@Override
-	public String getEventId() {
-		return this.getClass().getSimpleName();
-	}
-	
 }

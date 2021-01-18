@@ -189,7 +189,7 @@ public class AttributeDictionary {
         int id = attrType.getId();
         return getRateAttr(id);
     }
-
+    
     /**
      * 	百分比值计算
      * @param attrType
