@@ -35,7 +35,7 @@ public abstract class StuPo extends BasePo {
 	}
 	
 	/** 名字 **/
-	public String poName(){
+	public String getName(){
 		return this.name;
 	}
 	

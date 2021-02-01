@@ -72,4 +72,13 @@ public class HeroService implements IHeroService, IResourceService{
 		domain.cost(uniqueId);
 	}
 
+	@Override
+	public Hero getHero(long playerId, long heroId) {
+		HeroDomain domain = heroManager.getDomain(playerId);
+		if (domain == null) {
+			return null;
+		}
+		return domain.getHero(heroId);
+	}
+
 }

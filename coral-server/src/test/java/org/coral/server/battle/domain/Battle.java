@@ -158,19 +158,19 @@ public class Battle {
     private void executeRound() {
     	long startTime = TimeUtil.now();
         List<BattleEntity> allEntities = getAliveEntities();
-        logger.info("==1==> executeRound cost time:{}", (TimeUtil.now() - startTime));
+        //logger.info("==1==> executeRound cost time:{}", (TimeUtil.now() - startTime));
         List<BattleEntity> entities = BattleSorter.sortBySpeed(allEntities);
-        logger.info("==2==> executeRound cost time:{}", (TimeUtil.now() - startTime));
+        //logger.info("==2==> executeRound cost time:{}", (TimeUtil.now() - startTime));
         battleRound = new BattleRound(round);
         for (BattleEntity entity : entities) {
             entity.action(battleRound);
         }
-        logger.info("==3==> executeRound cost time:{}", (TimeUtil.now() - startTime));
+        //logger.info("==3==> executeRound cost time:{}", (TimeUtil.now() - startTime));
         report.addBattleRound(battleRound);
-        logger.info("==4==> executeRound cost time:{}", (TimeUtil.now() - startTime));
+        //logger.info("==4==> executeRound cost time:{}", (TimeUtil.now() - startTime));
         round++;
         checkFinish();
-        logger.info("==5==> executeRound cost time:{}", (TimeUtil.now() - startTime));
+        //logger.info("==5==> executeRound cost time:{}", (TimeUtil.now() - startTime));
     }
 
     /**
@@ -225,7 +225,7 @@ public class Battle {
     /**
      * 检查战斗是否结束
      */
-    private void checkFinish() {
+	private void checkFinish() {
         finish = round > maxRounds
                 || attackTeam.isAllDead()
                 || defenceTeam.isAllDead();

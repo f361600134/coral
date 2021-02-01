@@ -66,4 +66,12 @@ public class BattleTeam {
 //                .filter(BattleEntity::isCanBaAttacked)
 //                .collect(Collectors.toList());
     }
+    
+    /**
+     *	 新增一个武将战斗对象
+     * @param entity
+     */
+    public void addBattleEntity(BattleEntity entity) {
+    	this.entities.add(entity);
+    }
 }

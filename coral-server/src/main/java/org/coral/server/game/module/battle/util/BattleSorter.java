@@ -31,11 +31,17 @@ public class BattleSorter {
      * @return
      */
     public static List<BattleEntity> sortBySpeed(List<BattleEntity> entities) {
-    	Collections.sort(entities, comparator);
-        return entities;
-//    	 List<BattleEntity> result = Lists.newArrayList(entities);
-//         result.sort(((o1, o2) -> o2.getSpeed() - o1.getSpeed()));
-//         return result;
+    	//way 1
+//    	Collections.sort(entities, comparator);
+//        return entities;
+    	//way 2
+    	 List<BattleEntity> result = Lists.newArrayList(entities);
+         result.sort(((o1, o2) -> o2.getSpeed() - o1.getSpeed()));
+         return result;
+    	//way3
+//    	entities.stream().sorted(comparator);
+//    	entities.stream().sorted(Comparator.comparing(BattleEntity::getSpeed));
+//    	return entities;
     }
 
     /**

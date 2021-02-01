@@ -97,4 +97,13 @@ public class HeroDomain {
 		heroMap.remove(id);
 	}
 	
+	/**
+	 *	消耗消耗指定id的武将
+	 * @param configId
+	 * @param count
+	 */
+	public Hero getHero(long id) {
+		return heroMap.get(id);
+	}
+	
 }

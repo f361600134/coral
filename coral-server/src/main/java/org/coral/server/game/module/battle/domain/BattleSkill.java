@@ -2,8 +2,7 @@ package org.coral.server.game.module.battle.domain;
 
 import java.util.List;
 
-import org.coral.server.game.data.config.ConfigSkillMgr;
-import org.coral.server.game.data.config.pojo.ConfigSkill;
+import org.coral.server.game.module.battle.report.BattleRound;
 
 import com.google.common.collect.Lists;
 
@@ -53,17 +52,17 @@ public class BattleSkill {
 	public BattleSkill(int configId, BattleEntity owner) {
 		this.configId = configId;
 		this.owner = owner;
-		ConfigSkill config = ConfigSkillMgr.getConfig(configId);
+//		ConfigSkill config = ConfigSkillMgr.getConfig(configId);
 //		this.coolDownRound = config.getCoolDownRound();
 //		this.maxTimesInBattle = config.getMaxTimesInBattle();
 	}
 
-//	/**
-//	 * 使用技能
-//	 *
-//	 */
-//	public void use(BattleRound battleRound) {
-//		times++;
+	/**
+	 * 使用技能
+	 *
+	 */
+	public void use(BattleRound battleRound) {
+		times++;
 //		SkillConfig config = SkillConfig.get(configId);
 //		BattleAction.Builder builder = BattleAction.newBuilder()
 //				.id(configId)
@@ -80,7 +79,7 @@ public class BattleSkill {
 //		EventPublisher.publishEvent0(new AfterCastSkillEvent(this));
 //		allTargets.clear();
 //		this.maxTimesInBattle--;
-//	}
+	}
 //
 //	private void handleSkillEffect(List<Integer> skillEffectIds, BattleAction useSkillAction) {
 //		List<BattleEntity> oldTargets = Lists.newArrayList();

@@ -2,11 +2,10 @@ package org.coral.server.game.module.battle.domain;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
-import org.apache.commons.lang3.RandomUtils;
 import org.coral.server.game.module.attribute.domain.AttributeDictionary;
-import org.coral.server.game.module.attribute.domain.AttributeType;
+import org.coral.server.game.module.attribute.domain.IAttributeEntity;
+import org.coral.server.game.module.attribute.domain.IAttributeNode;
 import org.coral.server.game.module.battle.attr.BattleEntityAttrNode;
 import org.coral.server.game.module.battle.report.BattleRound;
 
@@ -18,7 +17,7 @@ import com.google.common.collect.Lists;
  * @author Klass
  * @date 2020/8/12 11:24
  */
-public abstract class BattleEntity {
+public abstract class BattleEntity implements IAttributeEntity {
 
 	/**
 	 *	将领id/怪物id<br>
@@ -52,19 +51,22 @@ public abstract class BattleEntity {
     
     /**
      * 	该战斗对象战斗前的原始属性<br>
+     * 	初始化战斗对象对此值对此属性进行初始化, 
+     *	FSC 不单单指武将初始属性, 
+     * 	战斗前的原始属性包含, 战斗开始前计算阵营属性加成.
      */
-    protected final AttributeDictionary originalAttrDic = new AttributeDictionary();
+    protected final AttributeDictionary originalAttrDic;
 
     /**
      * 
      */
-    protected final BattleEntityAttrNode attrNode = new BattleEntityAttrNode(this);
+    protected final BattleEntityAttrNode attrNode;
 
     private BattleTeam selfTeam;
 
-//    private BattleSkillHolder skillHolder;
-//
-//    private BattleBuffHolder buffHolder;
+    private BattleSkillHolder skillHolder;
+
+    private BattleBuffHolder buffHolder;
 
     /**
      * 已经死亡多少回合
@@ -125,7 +127,8 @@ public abstract class BattleEntity {
     };
 
     public BattleEntity() {
-
+    	this.originalAttrDic = new AttributeDictionary();
+    	this.attrNode = new BattleEntityAttrNode(this);
     }
 
     public BattleEntity(List<Integer> skillIds, BattleTeam selfTeam) {
@@ -134,6 +137,8 @@ public abstract class BattleEntity {
 //        this.skillHolder = new BattleSkillHolder();
 //        this.buffHolder = new BattleBuffHolder(this);
 //        addBattleSkills(skillIds);
+    	this.originalAttrDic  = new AttributeDictionary();
+    	this.attrNode = new BattleEntityAttrNode(this);
     }
 
     public void resetAfterAction() {
@@ -172,13 +177,13 @@ public abstract class BattleEntity {
 //        }
 //    }
 
-//    public void initBattleAttributes() {
+    public void initBattleAttributes() {
 //        BattleTeam team = getSelfTeam();
 //        team.getState(getPosition()).ifPresent(e -> {
 //            this.setHp(e.getHp());
 //            this.setMaxHp(e.getMaxHp());
 //        });
-//    }
+    }
 
     /**
      * 回合开始之前处理
@@ -202,7 +207,7 @@ public abstract class BattleEntity {
         if (!isActionable()) {
             return;
         }
-//        BattleSkill normalAttack = skillHolder.getNormalAttack();
+        BattleSkill normalAttack = skillHolder.getNormalAttack();
 //        if (buffHolder.hasStatus(BattleConstant.CHAOS)) {
 //            // 选择除自身外任意1个存活单位作为普通攻击目标
 //            List<BattleEntity> aliveEntities = getBattle().getEntitiesExcludeSelf(this);
@@ -429,11 +434,10 @@ public abstract class BattleEntity {
     public boolean isDead() {
         return this.hp <= 0;
     }
-//
-//    public int getRace() {
-//        return 0;
-//    }
-//
+    
+    public int getRace() {
+        return 0;
+    }
     public abstract byte getType();
 
     /**
@@ -462,9 +466,9 @@ public abstract class BattleEntity {
 //        return id;
 //    }
 //
-//    public byte getPosition() {
-//        return position;
-//    }
+    public byte getPosition() {
+        return position;
+    }
 //
     public int getHp() {
         return hp;
@@ -482,9 +486,9 @@ public abstract class BattleEntity {
 //        return configId;
 //    }
 //
-//    public BattleTeam getSelfTeam() {
-//        return selfTeam;
-//    }
+    public BattleTeam getSelfTeam() {
+        return selfTeam;
+    }
 //
 //    public BattleTeam getEnemyTeam() {
 //        return selfTeam.getEnemyTeam();
@@ -502,13 +506,13 @@ public abstract class BattleEntity {
 //        this.selfTeam = selfTeam;
 //    }
 //
-//    public BattleSkillHolder getSkillHolder() {
-//        return skillHolder;
-//    }
-//
-//    public void setSkillHolder(BattleSkillHolder skillHolder) {
-//        this.skillHolder = skillHolder;
-//    }
+    public BattleSkillHolder getSkillHolder() {
+        return skillHolder;
+    }
+
+    public void setSkillHolder(BattleSkillHolder skillHolder) {
+        this.skillHolder = skillHolder;
+    }
 //
 //    public BattleBuffHolder getBuffHolder() {
 //        return buffHolder;
@@ -518,21 +522,21 @@ public abstract class BattleEntity {
 //        this.buffHolder = buffHolder;
 //    }
 //
-//    public short getLevel() {
-//        return level;
-//    }
-//
-//    public void setLevel(short level) {
-//        this.level = level;
-//    }
+    public short getLevel() {
+        return level;
+    }
+
+    public void setLevel(short level) {
+        this.level = level;
+    }
 //
 //    public Battle getBattle() {
 //        return selfTeam.getBattle();
 //    }
 //
-//    public int getMaxHp() {
-//        return maxHp;
-//    }
+    public int getMaxHp() {
+        return maxHp;
+    }
 //
 //    public int getAttack() {
 //        return attributes.get(BattleAttributeType.AtkFinal);
@@ -622,13 +626,13 @@ public abstract class BattleEntity {
 //        this.lastCaster = lastCaster;
 //    }
 //
-//    public void setHp(int hp) {
-//        this.hp = hp;
-//    }
-//
-//    public void setMaxHp(int maxHp) {
-//        this.maxHp = maxHp;
-//    }
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -642,5 +646,30 @@ public abstract class BattleEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
+    
+    @Override
+    public IAttributeNode getAttributeNode() {
+        return attrNode;
+    }
+    
+//    /**
+//     * 获取初始属性, 理论上不应该开放这个接口
+//     * @return
+//     */
+//    public AttributeDictionary getOriginalAttrDic() {
+//		return originalAttrDic;
+//	}
+    
+    /**
+     * 	增加原始属性, 只能通过本类及子类修改, 不对外
+     * @param otherAttrDic
+     * @return
+     */
+    protected AttributeDictionary addOriginalAttrDic(AttributeDictionary otherAttrDic) {
+    	originalAttrDic.addAttr(otherAttrDic);
+		return originalAttrDic;
+	}
+    
+
 
 }
