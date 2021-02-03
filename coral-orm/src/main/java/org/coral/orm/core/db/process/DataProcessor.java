@@ -1,4 +1,4 @@
-package org.coral.orm.core;
+package org.coral.orm.core.db.process;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,8 +8,8 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.coral.orm.core.base.BasePo;
-import org.coral.orm.core.db.CommonDao;
-import org.coral.orm.core.db.IDao;
+import org.coral.orm.core.db.dao.CommonDao;
+import org.coral.orm.core.db.dao.IDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +21,8 @@ public class DataProcessor implements IDataProcess{
 	private static final Logger log = LoggerFactory.getLogger(DataProcessor.class);
 	
 	/**
+	 * 由DataProcessor代理的Dao, 只能从DataProcessor内获取
+	 * 可以由spring管理, 通过注解去获取
 	 * key: class name, 类名
 	 * value: dao 存储dao
 	 */

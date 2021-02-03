@@ -1,4 +1,4 @@
-package org.coral.orm.core;
+package org.coral.orm.core.db.process;
 
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.coral.orm.core.base.BasePo;
-import org.coral.orm.core.db.IDao;
+import org.coral.orm.core.db.dao.IDao;
 import org.coral.orm.core.task.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +32,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class DataProcessorAsyn extends DataProcessor {
 	
 	private static final Logger log = LoggerFactory.getLogger(DataProcessorAsyn.class);
-	
 	
 	private ScheduledExecutorService executor;
 	private Queue<Task> queue;
@@ -73,7 +72,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	public <T extends BasePo> int insert(T po) {
 		IDao<T> dao = super.getCommonDao(po);
 		if (dao == null) {
-			throw new NullPointerException("Can not find dao by the Pojo:"+po);
+			throw new NullPointerException("Can not found dao by the Pojo:"+po);
 		}
 		this.execute(() -> {dao.insert(po);});
 		return 0;

@@ -1,4 +1,4 @@
-package org.coral.orm.core.db;
+package org.coral.orm.core.db.dao;
 
 //通用dao代理
 /**

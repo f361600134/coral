@@ -1,9 +1,8 @@
-package org.coral.orm.core.db;
+package org.coral.orm.core.db.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.coral.orm.core.base.BasePo;
 import org.coral.orm.core.base.PoMapper;
@@ -12,10 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 public class CommonDao<T extends BasePo> implements IDao<T>{
 	
@@ -40,7 +35,7 @@ public class CommonDao<T extends BasePo> implements IDao<T>{
 	
 	/**
 	 * 查询所有
-	* @see org.coral.orm.core.db.IDao#selectAll()
+	* @see org.coral.orm.core.db.dao.IDao#selectAll()
 	 */
 	@Override
 	public Collection<T> selectAll() {

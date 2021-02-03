@@ -54,10 +54,12 @@ public <T extends UserBase> List<T> bbb(Class<? extends UserBase> cls) {
 20200624
 有点麻烦, 还是切换成mybaits吧!!
 
-
 20200702
 orm框架, 没有做异步处理, 异步处理开率如下
 1, 批量插入是否分类, 是否需要区分到每个模块下. 即: 每个模块缓存数据, 最终批量插入或更新
+
+2021.02.01
+
 
 
 

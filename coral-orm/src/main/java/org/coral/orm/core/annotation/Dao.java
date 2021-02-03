@@ -5,6 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.coral.orm.core.db.dao.CommonDao;
+
 /**
  * Dao持久化对象注解
  */
@@ -12,5 +14,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Dao {
 	/**Dao name*/
-	String name() default "";
+	Class value() default CommonDao.class;
 }
