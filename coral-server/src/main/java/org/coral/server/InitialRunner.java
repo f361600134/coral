@@ -2,7 +2,7 @@ package org.coral.server;
 
 import java.util.Date;
 
-import org.coral.orm.core.DataProcessorAsyn;
+import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.helper.uuid.SnowflakeGenerator;
 import org.coral.server.game.module.resource.IResourceGroupService;
 import org.coral.server.game.module.user.User;

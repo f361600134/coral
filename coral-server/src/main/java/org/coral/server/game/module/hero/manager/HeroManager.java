@@ -3,7 +3,7 @@ package org.coral.server.game.module.hero.manager;
 import java.util.List;
 import java.util.Map;
 
-import org.coral.orm.core.DataProcessorAsyn;
+import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.module.hero.domain.Hero;
 import org.coral.server.game.module.hero.domain.HeroDomain;
 import org.springframework.beans.factory.annotation.Autowired;

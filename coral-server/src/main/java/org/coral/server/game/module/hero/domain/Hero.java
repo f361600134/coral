@@ -3,8 +3,8 @@ package org.coral.server.game.module.hero.domain;
 import java.util.List;
 import java.util.Map;
 
-import org.coral.orm.core.DataProcessorAsyn;
 import org.coral.orm.core.annotation.Column;
+import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.helper.uuid.SnowflakeGenerator;
 import org.coral.server.game.module.attribute.domain.IAttributeEntity;

@@ -3,7 +3,7 @@ package org.coral.server.game.module.item.manager;
 import java.util.List;
 import java.util.Map;
 
-import org.coral.orm.core.DataProcessorAsyn;
+import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.module.item.domain.Item;
 import org.coral.server.game.module.item.domain.ItemDomain;
 import org.springframework.beans.factory.annotation.Autowired;

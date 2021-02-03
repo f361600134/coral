@@ -73,29 +73,15 @@ public class AttributeDictionary {
      * @param attrType
      * @param value
      */
-    public <T extends Map<?, ?>> void addAttr(T dictionary) {
+    public <T extends Map<Integer, Integer>> void addAttr(T dictionary) {
         if (dictionary == null) {
             return;
         }
         dictionary.forEach((key, value)->{
-        	addAttr((int)key, (long)value);
+        	addAttr(key, (long)value);
         });
     }
     
-//    /**
-//     * 	根据给定的类型, 值增加属性
-//     * @param attrType
-//     * @param value
-//     */
-//    public void addAttr(Map<Integer, Long> dictionary) {
-//        if (dictionary == null) {
-//            return;
-//        }
-//        dictionary.forEach((key, value)->{
-//        	addAttr(key, value);
-//        });
-//    }
-
     /**
      * 	根据给定的类型, 值增加属性
      * @param attrType
@@ -144,12 +130,12 @@ public class AttributeDictionary {
      * @param attrType
      * @param value
      */
-    public <T extends Map<?, ?>> void subAttr(T dictionary) {
+    public <T extends Map<Integer, Integer>> void subAttr(T dictionary) {
         if (dictionary == null) {
             return;
         }
         dictionary.forEach((key, value)->{
-        	subAttr((int)key, (long)value);
+        	subAttr(key, (long)value);
         });
     }
 

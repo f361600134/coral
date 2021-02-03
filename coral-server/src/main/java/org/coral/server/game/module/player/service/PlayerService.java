@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
-import org.coral.orm.core.DataProcessorAsyn;
+import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.data.proto.PBLogin.ReqLogin;
 import org.coral.server.game.helper.PropertiesType;
 import org.coral.server.game.helper.ResourceType;
