@@ -1,7 +1,5 @@
 package org.coral.server.game.module.hero.service;
 
-import java.util.Collection;
-
 import org.coral.server.game.helper.ResourceType;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.hero.domain.Hero;
@@ -50,8 +48,6 @@ public class HeroService implements IHeroService, IResourceService{
 			return;
 		}
 		domain.reward(playerId, configId, count);
-		Collection<Hero> heros = domain.getHerosByConfigId(configId);
-		log.info("=======>heros:{}", heros);
 	}
 
 	@Override

@@ -67,7 +67,10 @@ public class ItemDomain {
 	 */
 	public boolean checkAdd(long playerId, int configId, int count) {
 		IItem item = getItemByConfigId(configId);
-		return (item.getCount() + count) >= LIMIT;
+		if(item == null) {
+			return true; //	表示背包没有此物品,可以添加
+		}
+		return (item.getCount() + count) > LIMIT;
 	}
 	
 	/**
@@ -82,6 +85,16 @@ public class ItemDomain {
 		return item != null && (item.getCount() >= count);
 	}
 	
+	/**
+	 * 	新增物品,返回所有物品
+	 * @param playerId 玩家id
+	 * @param configId 道具id
+	 * @param count 数量
+	 * @param nEnum 途径
+	 * @return  
+	 * @return List<IItem>  
+	 * @date 2021年2月5日上午12:04:08
+	 */
 	public List<IItem> addItem(long playerId, int configId, int count, NatureEnum nEnum){
 		//背包加入普通道具
 		try {
@@ -119,7 +132,7 @@ public class ItemDomain {
 	}
 	
 	/**
-	 * 背包减少普通道具
+	 * 背包减少普通道具, 扣除钱都应判断物品是否存在
 	 * @param playerId
 	 * @param configId
 	 * @param count
