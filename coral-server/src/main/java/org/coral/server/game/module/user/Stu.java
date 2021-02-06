@@ -1,6 +1,5 @@
 package org.coral.server.game.module.user;
 
-import org.coral.orm.core.annotation.Dao;
 import org.coral.server.game.module.base.StuPo;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +11,11 @@ public class Stu extends StuPo {
 	
 	public Stu() {
 
+	}
+	
+	public Stu(int id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 	
 	public static Stu create(String name) {
