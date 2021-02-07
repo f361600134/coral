@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.coral.server.game.module.user.Stu;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.GeoOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -44,7 +45,6 @@ public class RedisObjTest {
 	public void test() {
 		Stu stu = new Stu(1, "aa");
 		redisTemplate.opsForValue().set("Account_Test", stu);
-		
 	}
 	
 	@org.junit.After

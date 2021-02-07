@@ -13,6 +13,7 @@ import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.lettuce.core.pubsub.api.reactive.RedisPubSubReactiveCommands;
+import io.reactivex.rxjava3.core.Observable;
 
 public class LettuceReactiveTest {
 	
@@ -77,7 +78,8 @@ public class LettuceReactiveTest {
 		    });
 		    reactive.exec().subscribe();
 		});
-
+		
+		
 //		  final List<MockSpan> spans = tracer.finishedSpans();
 //		  assertEquals(2, spans.size());
 
