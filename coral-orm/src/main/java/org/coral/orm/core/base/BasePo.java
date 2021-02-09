@@ -22,7 +22,7 @@ public abstract class BasePo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public String poName() {
-		return this.getClass().getSimpleName().toLowerCase();
+		return this.getClass().getSimpleName();
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public abstract class BasePo implements Serializable {
 	 * 缓存二级ID, 如果返回空默认使用key()
 	 * @return
 	 */
-	abstract public Object cacheId();
+	abstract public String cacheId();
 	
 	/**
 	 * 索引列, 对应数据库的索引,仅用于查询,删除

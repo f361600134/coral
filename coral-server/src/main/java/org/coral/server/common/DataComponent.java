@@ -30,5 +30,5 @@ public class DataComponent {
 		log.info("BeanComponent loading...");
 		return new DataProcessorAsyn(basePoMap, jdbcTemplate);
 	}
-
+	
 }

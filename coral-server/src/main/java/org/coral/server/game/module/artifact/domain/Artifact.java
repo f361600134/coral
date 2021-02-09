@@ -338,7 +338,7 @@ public class Artifact extends BasePo {
 	}
 
 	@Override
-	public Object cacheId() {
+	public String cacheId() {
 		// TODO Auto-generated method stub
 		return null;
 	}

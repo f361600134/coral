@@ -48,7 +48,7 @@ public class DataProcessor implements IDataProcess{
 		if (clazz == null) {
 			throw new NullPointerException("clazz is can not be null:"+clazz);
 		}
-		return getCommonDao(clazz.poName());
+		return getCommonDao(clazz.poName().toLowerCase());
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class DataProcessor implements IDataProcess{
 		for (String key : basePoMap.keySet()) {
 			BasePo po = basePoMap.get(key);
 			IDao<?> dao = new CommonDao<>(po, jdbcTemplate);
-			commonDaoMap.put(key, dao);
+			commonDaoMap.put(key, dao);//注意,通过spring注入进来的Map, key默认全部小写
 		}
 	}
 	
@@ -265,7 +265,7 @@ public class DataProcessor implements IDataProcess{
 		//数据分类
 		Map<String, List<T>> map = new HashMap<String, List<T>>();
 		for (T po : basePos) {
-			String name = po.poName();
+			String name = po.poName().toLowerCase();
 			List<T> list = map.get(name);
 			if (list == null) {
 				list = new ArrayList<T>();

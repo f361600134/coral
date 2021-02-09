@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class Stu extends StuPo {
 	
+	public static final String ID = Stu.class.getSimpleName();
+	
 	public Stu() {
 
 	}

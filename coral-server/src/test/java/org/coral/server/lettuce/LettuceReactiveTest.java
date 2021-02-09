@@ -1,10 +1,6 @@
 package org.coral.server.lettuce;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +9,6 @@ import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.lettuce.core.pubsub.api.reactive.RedisPubSubReactiveCommands;
-import io.reactivex.rxjava3.core.Observable;
 
 public class LettuceReactiveTest {
 	

@@ -42,11 +42,11 @@ public class PoMapper<T extends BasePo> {
 	public PoMapper(Class<T> cls) {
 		this.cls = cls;
 		try {
-			Class<?> superCls = cls.getSuperclass().getSuperclass();
+			//Class<?> superCls = cls.getSuperclass().getSuperclass();
 			this.realCls = cls.getSuperclass().getSuperclass();
-			PO po = superCls.getAnnotation(PO.class);
+			PO po = realCls.getAnnotation(PO.class);
 			if (po == null) {
-				log.error("BasePo未找到PO注解, className:{}", superCls.getName());
+				log.error("BasePo未找到PO注解, className:{}", realCls.getName());
 				return;
 			}
 			this.tbName = po.name();

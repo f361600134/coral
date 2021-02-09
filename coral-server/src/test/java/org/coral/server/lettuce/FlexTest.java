@@ -99,7 +99,8 @@ public class FlexTest {
 		    System.out.println("Map 2: " + value + " (" + Thread.currentThread().getName() + ")");
 		    return Flux.just(value);
 		})
-		.subscribeOn(Schedulers.parallel()).subscribe();
+		.subscribeOn(Schedulers.parallel())
+		.subscribe();
 		
 		try {
 			System.out.println("Thread:"+Thread.currentThread().getName());

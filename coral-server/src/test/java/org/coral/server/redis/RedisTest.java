@@ -48,8 +48,10 @@ public class RedisTest {
 				new StringCodec(), LocalCachedMapOptions.defaults());
 		
 		System.out.println(map.get(aa));
-//		Stu stua = Stu.create(aa);
-//		map.put(key, value);
+		Stu stua = Stu.create(aa);
+		stua.setName("bb");
+		map.put(key, stua);
+		
 		/*
 		 * key->old key, value->new value, apply->compare oldValue and 
 		 * new value, and return the new value after modify..
