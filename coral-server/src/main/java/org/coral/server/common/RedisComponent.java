@@ -17,7 +17,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import com.alibaba.fastjson.support.spring.GenericFastJsonRedisSerializer;
 
-@Configuration
+//默认不开启redis
+//@Configuration
 public class RedisComponent {
 
 	private static final Logger log = LoggerFactory.getLogger(RedisComponent.class);
@@ -28,25 +29,22 @@ public class RedisComponent {
 	@Autowired
 	private RedisTemplate<String, Serializable> redisTemplate;
 	
-	
-	@Order(1)
 	@Bean
+	@Order(1)
     public RedisTemplate<String, Serializable> redisTemplate(LettuceConnectionFactory connectionFactory) {
 		log.info("RedisComponent loading...host:{}, port:{}", connectionFactory.getHostName(), connectionFactory.getPort());
         RedisTemplate<String, Serializable> redisTemplate = new RedisTemplate<>();
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new GenericFastJsonRedisSerializer());
-//        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
         
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashValueSerializer(new GenericFastJsonRedisSerializer());
-//        redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
         redisTemplate.setConnectionFactory(connectionFactory);
         return redisTemplate;
     }
 	
-	@Order(10)
 	@Bean
+	@Order(10)
     public RedisProcessor redisProcessor() {
 		log.info("=======>RedisProcessor loading...");
         return new RedisProcessor(basePoMap, redisTemplate);

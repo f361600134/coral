@@ -12,6 +12,7 @@ public interface IMissionProcess{
 	public int type();
 	
 	/**
+	 * 	处理逻辑
 	 * @param playerId
 	 * @param 校验值,
 	 * @return

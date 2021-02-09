@@ -1,5 +1,11 @@
-package org.coral.server.game.module.mission.domain;
+package org.coral.server.game.module.mission.type;
 
+import org.coral.server.game.module.mission.domain.AbstractMission;
+
+/**
+ * 	任务类型-神器任务
+ * @author Jeremy
+ */
 public class ArtifactMission extends AbstractMission{
 
 	/**

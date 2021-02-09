@@ -1,17 +1,22 @@
 package org.coral.server.game.module.mission.domain;
 
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MissionDomain {
+public class MainMissionDomain {
 	
-	private static final Logger log = LogManager.getLogger(MissionDomain.class);
+	private static final Logger log = LogManager.getLogger(MainMissionDomain.class);
+
+	//主线任务
+	private Map<Integer, IMission> missions;
 	
-		
+	
+	
+	
 //	private DbMissionTotal dbInfo;
-//	
-//	//普通任务
-//	private Map<Integer, Mission> normalMissions;
+	
 //	private List<Mission> updateMissions;
 //	
 //	//锦囊任务

@@ -6,8 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * 任务接口类
- * @author Jereme
- *
+ * @author Jeremy
  */
 public interface IMission {
 	

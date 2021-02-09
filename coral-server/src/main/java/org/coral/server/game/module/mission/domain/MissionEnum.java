@@ -1,5 +1,10 @@
 package org.coral.server.game.module.mission.domain;
 
+/**
+ * 所有任务类型
+ * @author Jeremy
+ *
+ */
 public enum MissionEnum {
 	//默认实现
 	TYPE_DEFAULT(0),
