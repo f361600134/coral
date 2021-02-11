@@ -1,6 +1,7 @@
-package org.coral.server.game.module.mission.domain;
+package org.coral.server.game.module.mission.type;
 
 import org.coral.server.game.data.proto.PBBag;
+import org.coral.server.game.module.mission.domain.MissionState;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -20,6 +21,10 @@ public interface IMission {
 	public void setProgress(int progress);
 	/** 设置状态*/
 	public void setState(int state);
+	
+	//此项仅支持单条件达成值
+	//达成类型, 达成条件, 达成值如果为多条件, 则用数组表示
+	//对于任务执行, 则通过完成类型,多个任务执行代理同一条任务
 	/** 达成类型*/
 	@JSONField(serialize=false)
 	public int getCompleteType();

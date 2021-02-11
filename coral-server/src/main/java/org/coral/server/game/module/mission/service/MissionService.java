@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.module.mission.domain.MainMissionDomain;
-import org.coral.server.game.module.mission.type.MainMission;
+import org.coral.server.game.module.mission.type.MainMissionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

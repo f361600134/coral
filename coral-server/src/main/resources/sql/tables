@@ -48,6 +48,16 @@ CREATE TABLE `artifact` (
   KEY `player_artifact` (`playerId`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `main_mission`;
+CREATE TABLE IF NOT EXISTS `main_mission` (
+  `playerId` int(11) NOT NULL COMMENT '角色ID',
+  `mission_str` varchar(65535) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '任务数据',
+  PRIMARY KEY (`playerId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务表';
+
+
+
+
 
 -- ----------------------------
 -- Table structure for mail

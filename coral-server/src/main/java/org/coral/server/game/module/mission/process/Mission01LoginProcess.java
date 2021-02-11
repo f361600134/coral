@@ -1,8 +1,8 @@
 package org.coral.server.game.module.mission.process;
 
 import org.coral.server.core.event.IEvent;
-import org.coral.server.game.module.mission.domain.IMission;
 import org.coral.server.game.module.mission.domain.MissionEnum;
+import org.coral.server.game.module.mission.type.IMission;
 import org.coral.server.game.module.player.event.PlayerAfterLoginEvent;
 import org.springframework.stereotype.Component;
 

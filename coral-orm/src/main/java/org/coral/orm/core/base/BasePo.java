@@ -10,6 +10,7 @@ import org.coral.orm.core.annotation.Column;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 /**
  * 基础持久化对象父类

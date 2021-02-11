@@ -1,7 +1,7 @@
 package org.coral.server.game.module.mission.process;
 
 import org.coral.server.core.event.IEvent;
-import org.coral.server.game.module.mission.domain.IMission;
+import org.coral.server.game.module.mission.type.IMission;
 
 public interface IMissionProcess{
 	

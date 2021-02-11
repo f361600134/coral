@@ -7,9 +7,9 @@ import java.util.Map;
 
 import org.coral.server.core.event.IEvent;
 import org.coral.server.game.data.proto.PBBag;
-import org.coral.server.game.module.mission.domain.IMission;
 import org.coral.server.game.module.mission.manager.MissionProcessManager;
 import org.coral.server.game.module.mission.process.IMissionProcess;
+import org.coral.server.game.module.mission.type.IMission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,6 +55,7 @@ public class MissionHandler {
 	
 	public void setMissions(Map<Integer,IMission> missions) {
 		this.missions = missions;
+		this.missionConfigs.clear();
 		for (IMission mission : missions.values()) {
 			this.missionConfigs.put(mission.getCompleteType(), mission.getConfigId());
 		}

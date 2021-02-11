@@ -1,13 +1,16 @@
-package org.coral.server.game.module.mission.domain;
+package org.coral.server.game.module.mission.type;
+
+import org.coral.server.game.module.mission.domain.MissionEnum;
+import org.coral.server.game.module.mission.domain.MissionState;
 
 /**
  * 	任务对象, 默认任务抽象类
- * @author Administrator
+ * @author Jeremy
  */
 public abstract class AbstractMission implements IMission {
 
 	protected int configId;//任务ID
-	protected int playerId;//角色ID
+//	protected int playerId;//角色ID
 	protected int state;//任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取
 	protected int progress;//任务进度
 	protected long recvTime;//任务接取时间
@@ -27,14 +30,14 @@ public abstract class AbstractMission implements IMission {
 		this.configId = configId;
 	}
 	
-	/** 角色ID **/
-	public int getPlayerId(){
-		return this.playerId;
-	}
-	
-	public void setPlayerId(int playerId){
-		this.playerId = playerId;
-	}
+//	/** 角色ID **/
+//	public int getPlayerId(){
+//		return this.playerId;
+//	}
+//	
+//	public void setPlayerId(int playerId){
+//		this.playerId = playerId;
+//	}
 	
 	/** 任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取 **/
 	public int getState(){
@@ -65,7 +68,7 @@ public abstract class AbstractMission implements IMission {
 	
 	@Override
 	public String toString() {
-		return "Mission[ playerId= " +getPlayerId()+ "+, configId= "+ configId +", playerId= "+ playerId +", state= "+ state +", progress= "+ progress +", recvTime= "+ recvTime +"]";
+		return "Mission[ configId= "+ configId +", state= "+ state +", progress= "+ progress +", recvTime= "+ recvTime +"]";
 	}
 	
 	

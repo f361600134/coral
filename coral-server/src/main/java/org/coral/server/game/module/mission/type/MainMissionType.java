@@ -1,16 +1,14 @@
 package org.coral.server.game.module.mission.type;
 
-import org.coral.orm.core.annotation.PO;
 import org.coral.server.game.data.config.ConfigMissionMgr;
-import org.coral.server.game.module.mission.domain.AbstractMission;
 
 /**
  * 	任务类型-主线任务类, 单体任务类
  * @author Jeremy
  */
-public class MainMission extends AbstractMission{
+public class MainMissionType extends AbstractMission{
 
-	public MainMission(int configId) {
+	public MainMissionType(int configId) {
 		super(configId);
 	}
 
@@ -28,5 +26,12 @@ public class MainMission extends AbstractMission{
 	public int getCompleteValue() { 
 		return ConfigMissionMgr.getConfig(configId).getCompleteTotal();
 	}
+
+	@Override
+	public String toString() {
+		return "MainMissionType [configId=" + configId + ", state=" + state + "]";
+	}
+	
+	
 	
 }
