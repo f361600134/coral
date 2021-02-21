@@ -21,16 +21,16 @@ import com.google.common.collect.Multimap;
  * 任务处理器,应该是一个通用的处理器
  * @author Jeremy
  */
-public class MissionHandler {
+public abstract class MissionHandler {
 	
 	private static final Logger log = LoggerFactory.getLogger(MissionProcessManager.class);
 
 	protected long playerId;
-	/**
-	 * key:任务id
-	 * value:任务对象
-	 */
-	private Map<Integer, IMission> missions;
+//	/**
+//	 * key:任务id
+//	 * value:任务对象
+//	 */
+//	private Map<Integer, IMission> missions;
 	
 	/**
 	 * key:任务类型
@@ -39,38 +39,36 @@ public class MissionHandler {
 	private transient Multimap<Integer, Integer> missionConfigs;
 
 	public MissionHandler() {
-		this.missions = Maps.newHashMap();
+//		this.missions = Maps.newHashMap();
 		this.missionConfigs = ArrayListMultimap.create();
 	}
 
 	public MissionHandler(long playerId) {
 		this.playerId = playerId;
-		this.missions = Maps.newHashMap();
+//		this.missions = Maps.newHashMap();
 		this.missionConfigs = ArrayListMultimap.create();
 	}
 	
 	public IMission getMission(int configId) {
-		return missions.get(configId);
+		return getMissions().get(configId);
 	}
 
-	public Map<Integer, IMission> getMissions() {
-		return missions;
-	}
+	public abstract Map<Integer, IMission> getMissions();
 	
-	public void setMissions(Map<Integer,IMission> missions) {
-		this.missions = missions;
-		this.missionConfigs.clear();
-		for (IMission mission : missions.values()) {
-			this.missionConfigs.put(mission.getCompleteType(), mission.getConfigId());
-		}
-	}
+//	public void setMissions(Map<Integer,IMission> missions) {
+//		this.missions = missions;
+//		this.missionConfigs.clear();
+//		for (IMission mission : missions.values()) {
+//			this.missionConfigs.put(mission.getCompleteType(), mission.getConfigId());
+//		}
+//	}
 
 	/**
 	 * 判断全部是否领取, 全部领取则可以激活
 	 * @return
 	 */
 	public boolean isAllReward() {
-		for (IMission mission : missions.values()) {
+		for (IMission mission : getMissions().values()) {
 			if (!mission.isRewarded()) {
 				return false;
 			}
@@ -100,7 +98,7 @@ public class MissionHandler {
 
 	public Collection<PBBag.PBMissionInfo> toProto() {
 		List<PBBag.PBMissionInfo> colls = new ArrayList<PBBag.PBMissionInfo>();
-		for (IMission mission : missions.values()) {
+		for (IMission mission : getMissions().values()) {
 			colls.add(mission.toProto());
 		}
 		return colls;
@@ -122,7 +120,7 @@ public class MissionHandler {
 			IMissionProcess missionProcess = manager.getProcess(missionType);
 			Collection<Integer> configIds = missionConfigs.get(missionType);
 			for (Integer configId : configIds) {
-				IMission mission = missions.get(configId);
+				IMission mission = getMissions().get(configId);
 				boolean bool = missionProcess.process(value, mission, event);
 				if (!bool) break;
 			}

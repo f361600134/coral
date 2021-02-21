@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.coral.server.game.module.mission.handler.MissionHandler;
 import org.coral.server.game.module.mission.type.MainMissionType;
 
 public class MainMissionDomain {
@@ -13,10 +14,11 @@ public class MainMissionDomain {
 	//主线任务
 	private MainMission mainMission;
 //	private Map<Integer, IMission> missions;
-//	private MissionHandler handler;
+	private MissionHandler handler;
 
 	public MainMissionDomain() {
 //		this.handler = new MissionHandler();
+		this.mainMission = new MainMission();
 	}
 	
 	/**
