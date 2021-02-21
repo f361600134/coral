@@ -36,40 +36,6 @@ public class ItemService implements IItemService, IResourceService{
 	@Autowired private ItemManager itemManager;
 
 	/**
-	 * 初始化道具列表
-	 * @param itemList
-	 * @return
-	 */
-	public List<Item> initItemsList(List<Item> itemList) {
-		List<Item> result = new ArrayList<Item>();
-		for (Item item : itemList) {
-			if (item == null)
-				continue;
-			Item temp = initItem(item);
-			if (temp == null) {
-				continue;
-			}
-			result.add(temp);
-		}
-		// 删除非法数据
-		return result;
-	}
-	
-	/**
-	 * 初始化单个道具
-	 * 
-	 * @param item
-	 * @return
-	 */
-	public Item initItem(Item item) {
-		if (item != null) {
-			//TODO
-		}
-		return item;
-	}
-	
-	//////////////////////////////////////
-	/**
 	 * 当登陆成功,下发物品列表
 	 */
 	public void onLogin(long playerId) {
@@ -79,6 +45,14 @@ public class ItemService implements IItemService, IResourceService{
 		AckBagListResp ack = AckBagListResp.newInstance();
 		ack.addItem(items);
 		playerService.sendMessage(playerId, ack);
+	}
+	
+	/**
+	 * 当玩家离线,移除掉道具模块数据
+	 * @param playerId
+	 */
+	public void onLogout(long playerId) {
+		itemManager.remove(playerId);
 	}
 	
 	// 推送更新物品列表至前端

@@ -14,7 +14,7 @@ public abstract class AbstractMissionProcess implements IMissionProcess{
 		if (mission == null || !mission.isNone()) {
 			return false;
 		}
-		//如果条件不为0,则判断条件是否与达成条件一致.
+		//	如果条件不为0,则判断条件是否与达成条件一致.
 		int condition = getCondition(event);
 		if (condition != 0 && mission.getCompleteCondition() != condition) {
 			return false;

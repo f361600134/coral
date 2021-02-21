@@ -10,7 +10,6 @@ import org.coral.server.game.module.mission.domain.MissionState;
 public abstract class AbstractMission implements IMission {
 
 	protected int configId;//任务ID
-//	protected int playerId;//角色ID
 	protected int state;//任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取
 	protected int progress;//任务进度
 	protected long recvTime;//任务接取时间
@@ -29,15 +28,6 @@ public abstract class AbstractMission implements IMission {
 	public void setConfigId(int configId){
 		this.configId = configId;
 	}
-	
-//	/** 角色ID **/
-//	public int getPlayerId(){
-//		return this.playerId;
-//	}
-//	
-//	public void setPlayerId(int playerId){
-//		this.playerId = playerId;
-//	}
 	
 	/** 任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取 **/
 	public int getState(){
@@ -70,7 +60,6 @@ public abstract class AbstractMission implements IMission {
 	public String toString() {
 		return "Mission[ configId= "+ configId +", state= "+ state +", progress= "+ progress +", recvTime= "+ recvTime +"]";
 	}
-	
 	
 	/**
 	 * 任务进度

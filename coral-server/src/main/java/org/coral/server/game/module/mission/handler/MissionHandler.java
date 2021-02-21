@@ -17,6 +17,10 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 
+/**
+ * 任务处理器,应该是一个通用的处理器
+ * @author Jeremy
+ */
 public class MissionHandler {
 	
 	private static final Logger log = LoggerFactory.getLogger(MissionProcessManager.class);
@@ -103,7 +107,10 @@ public class MissionHandler {
 	}
 	
 	/**
-	 * 当处理任务
+	 * 处理任务
+	 * 1.任务处理管理器通过任务类型获取到处理类,
+	 * 2.通过任务类型获取到任务列表
+	 * 3.当前任务集合,通过任务列表获取到任务对象, 被任务处理类去处理任务
 	 * @return
 	 */
 	public boolean onProcess(IEvent event, int value) {

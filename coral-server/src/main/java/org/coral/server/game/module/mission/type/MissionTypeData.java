@@ -11,15 +11,16 @@ import com.google.common.collect.Maps;
  * @auth Jeremy
  * @date 2021年2月11日下午4:06:54
  */
-public class MissionTypeData {
+public class MissionTypeData<T extends AbstractMission> {
 
 	/**
-	 * 当前已接取具体任务类
+	 * 当前已接取具体任务类, 完成以后从任务列表中移除, 
+	 * 如无特殊情况, 不允许初始化时加载玩家所有任务数据,
 	 */
-	private Map<Integer, IMission> missionPojos;
+	private Map<Integer, T> missionPojos;
 
 	/**
-	 * 已完成任务Id列表
+	 * 已完成任务Id列表, 对已经完成的任务, 在此记录
 	 */
 	private List<Integer> finishIds;
 
@@ -28,11 +29,11 @@ public class MissionTypeData {
 		this.finishIds = Lists.newArrayList();
 	}
 
-	public Map<Integer, IMission> getMissionPojos() {
+	public Map<Integer, T> getMissionPojos() {
 		return missionPojos;
 	}
 
-	public void setMissionPojos(Map<Integer, IMission> missionPojos) {
+	public void setMissionPojos(Map<Integer, T> missionPojos) {
 		this.missionPojos = missionPojos;
 	}
 

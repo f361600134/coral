@@ -63,9 +63,10 @@ public class MissionProcessManager implements InitializingBean{
 	}
 	
 	public void addProcessMap(IMissionProcess missionProcess) {
-		this.processMap.put(missionProcess.type(), missionProcess);
+		final int missionType = missionProcess.type();
+		this.processMap.put(missionType, missionProcess);
 		for (String eventId : missionProcess.focusEvents()) {
-			this.missionTypes.put(eventId, missionProcess.type());
+			this.missionTypes.put(eventId, missionType);
 		}
 	}
 	
@@ -89,7 +90,6 @@ public class MissionProcessManager implements InitializingBean{
 		 */
 		log.info("初始化任务处理器:{}", processList);
 		processList.forEach(e->addProcessMap(e));
-		
 	}
 
 	

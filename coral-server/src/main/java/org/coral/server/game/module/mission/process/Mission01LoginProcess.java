@@ -7,7 +7,7 @@ import org.coral.server.game.module.player.event.PlayerAfterLoginEvent;
 import org.springframework.stereotype.Component;
 
 /**
- * 这里增加事件，表示某一个事件触发。
+ * 登录任务处理器
  * @auth Jeremy
  * @date 2020年12月28日上午12:17:25
  */
@@ -25,7 +25,7 @@ public class Mission01LoginProcess extends AbstractMissionProcess{
 	public String[] focusEvents() {
 		return new String[] {PlayerAfterLoginEvent.ID};
 	}
-
+	
 	@Override
 	public boolean doProcess(int value, IMission mission, IEvent event) {
 		if (mission.getCompleteValue() == value) {

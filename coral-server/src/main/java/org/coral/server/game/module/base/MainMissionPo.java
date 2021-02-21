@@ -7,7 +7,7 @@ import org.coral.orm.core.base.BasePo;
 * MainMissionPo
 * @author Jeremy
 */
-@PO(name = "k_MainMission")
+@PO(name = "main_mission")
 public abstract class MainMissionPo extends BasePo {
 
 	public static final String PROP_PLAYERID = "playerId";

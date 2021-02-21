@@ -32,6 +32,4 @@ public class MainMissionType extends AbstractMission{
 		return "MainMissionType [configId=" + configId + ", state=" + state + "]";
 	}
 	
-	
-	
 }
