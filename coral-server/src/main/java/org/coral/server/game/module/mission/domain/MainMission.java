@@ -1,15 +1,12 @@
 package org.coral.server.game.module.mission.domain;
 
-import org.apache.commons.lang3.StringUtils;
+import org.coral.orm.core.annotation.Column;
 import org.coral.server.game.module.base.MainMissionPo;
-import org.coral.server.game.module.mission.type.ArtifactMissionType;
 import org.coral.server.game.module.mission.type.MainMissionType;
 import org.coral.server.game.module.mission.type.MissionTypeData;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-
 /**
+ * 主线任务对象, 所有主线任务存储在此
 * @author Jeremy
 */
 public class MainMission extends MainMissionPo {
@@ -19,14 +16,26 @@ public class MainMission extends MainMissionPo {
 	 */ 
 	private static final long serialVersionUID = 1L;
 	
-	private MissionTypeData missionData;
+	/**
+	 * 	任务对象
+	 */
+	@Column(PROP_MISSIONSTR)
+	private MissionTypeData<MainMissionType> missionData;
 	
 	public MainMission() {
 
 	}
+	
+	public MainMission(long playerId) {
+		this.playerId = playerId;
+	}
 
-	public MissionTypeData getMissionData() {
+	public MissionTypeData<MainMissionType> getMissionData() {
 		return missionData;
+	}
+	
+	public static MainMission create(long playerId) {
+		return new MainMission(playerId);
 	}
 	
 	@Override
@@ -34,37 +43,31 @@ public class MainMission extends MainMissionPo {
 		return "MainMission [missionData=" + missionData + "]";
 	}
 
-	@Override
-	public void beforeSave() {
-		this.setMissionStr(JSON.toJSONString(this.missionData, SerializerFeature.WriteClassName));
-	}
-	 
-	/**
-	 * 重写afterLoad, 不使用默认加载
-	 */
-	@Override
-	public void afterLoad() {
-		if (StringUtils.isBlank(getMissionStr())) {
-			this.missionData = JSON.parseObject(getMissionStr(), MissionTypeData.class);
-		}
-	}
-	
-	
-	public static void main(String[] args) {
-		MissionTypeData data = new MissionTypeData();
-		data.getMissionPojos().put(1, new MainMissionType(1));
-		data.getMissionPojos().put(2, new MainMissionType(2));
-		data.getMissionPojos().put(3, new MainMissionType(3));
-		
-		data.getMissionPojos().put(1001, new ArtifactMissionType(1001));
-		data.getMissionPojos().put(1002, new ArtifactMissionType(1002));
-		
-		String str = JSON.toJSONString(data, SerializerFeature.WriteClassName);
-		System.out.println(str);
-		
-		MissionTypeData missionData = JSON.parseObject(str, MissionTypeData.class);
-		System.out.println(missionData);
-		
-	}
+//	public static void main(String[] args) {
+//		MissionTypeData<MainMissionType> data = new MissionTypeData<MainMissionType>();
+//		data.getMissionPojos().put(1, new MainMissionType(1));
+//		data.getMissionPojos().put(2, new MainMissionType(2));
+//		data.getMissionPojos().put(3, new MainMissionType(3));
+//		
+////		data.getMissionPojos().put(1001, new ArtifactMissionType(1001, 1));
+////		data.getMissionPojos().put(1002, new ArtifactMissionType(1002, 2));
+//
+//		data.getFinishIds().add(1);
+//		data.getFinishIds().add(1001);
+//		
+//		String str = JSON.toJSONString(data);
+//		System.out.println(str);
+//		
+//		MissionTypeData<MainMissionType> missionData = JSON.parseObject(str, new TypeReference<MissionTypeData<MainMissionType>>() {});
+//		System.out.println(missionData);
+//		
+//		TypeReference<MissionTypeData<MainMissionType>> type = new TypeReference<MissionTypeData<MainMissionType>>() {};
+//		System.out.println(type.getType());
+//		
+//		ParameterizedTypeReference ref = new ParameterizedTypeReference<MissionTypeData<MainMissionType>>() {
+//		};
+//		System.out.println(ref.getType());
+//		
+//	}
 	
 }

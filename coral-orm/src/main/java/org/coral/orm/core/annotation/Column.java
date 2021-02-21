@@ -14,4 +14,5 @@ public @interface Column {
 	/**Column name*/
 	String value() default "";
 	
+	
 }
