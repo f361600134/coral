@@ -23,15 +23,15 @@ public class MainMissionType extends AbstractMission{
 	}
 
 	@Override
+	
 	public int getCompleteValue() { 
 		return ConfigMissionMgr.getConfig(configId).getCompleteTotal();
-	}
+	}	
 
+	
 	@Override
 	public String toString() {
 		return "MainMissionType [configId=" + configId + ", state=" + state + "]";
 	}
-	
-	
 	
 }
