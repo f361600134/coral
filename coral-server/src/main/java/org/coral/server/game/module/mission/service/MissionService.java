@@ -43,6 +43,7 @@ public class MissionService implements IMissionService{
 			log.info("onEvent error, playerId:{}", playerId);
 			return;
 		}
+		domain.
 	}
 
 }
