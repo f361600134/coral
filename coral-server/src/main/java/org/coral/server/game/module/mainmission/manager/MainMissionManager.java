@@ -1,8 +1,8 @@
-package org.coral.server.game.module.mission.manager;
+package org.coral.server.game.module.mainmission.manager;
 
 import org.coral.server.core.server.AbstractModuleManager;
-import org.coral.server.game.module.mission.domain.MainMission;
-import org.coral.server.game.module.mission.domain.MainMissionDomain;
+import org.coral.server.game.module.mainmission.domain.MainMission;
+import org.coral.server.game.module.mainmission.domain.MainMissionDomain;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,11 +1,11 @@
-package org.coral.server.game.module.mission.service;
+package org.coral.server.game.module.mainmission.service;
 
 import java.util.List;
 
 import org.coral.server.core.event.PlayerEventBase;
 import org.coral.server.game.helper.result.ErrorCode;
-import org.coral.server.game.module.mission.domain.MainMissionDomain;
-import org.coral.server.game.module.mission.manager.MainMissionManager;
+import org.coral.server.game.module.mainmission.domain.MainMissionDomain;
+import org.coral.server.game.module.mainmission.manager.MainMissionManager;
 import org.coral.server.game.module.mission.type.IMission;
 import org.coral.server.game.module.player.service.PlayerService;
 import org.slf4j.Logger;

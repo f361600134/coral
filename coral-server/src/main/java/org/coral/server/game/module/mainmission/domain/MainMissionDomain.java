@@ -1,4 +1,4 @@
-package org.coral.server.game.module.mission.domain;
+package org.coral.server.game.module.mainmission.domain;
 
 import java.util.Collection;
 

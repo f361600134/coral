@@ -1,4 +1,4 @@
-package org.coral.server.game.module.mission.domain;
+package org.coral.server.game.module.mainmission.domain;
 
 import org.coral.orm.core.annotation.Column;
 import org.coral.server.core.server.IPersistence;
@@ -44,44 +44,9 @@ public class MainMission extends MainMissionPo implements IPersistence{
 		return missionData;
 	}
 	
-//	public MainMissionType getMission(int configId) {
-//		return missionData.getMission(configId);
-//	}
-//	
-//	public Collection<MainMissionType> getMissions(){
-//		return missionData.getMissionPojos().values();
-//	}
-	
 	@Override
 	public String toString() {
 		return "MainMission [missionData=" + missionData + "]";
 	}
 
-//	public static void main(String[] args) {
-//		MissionTypeData<MainMissionType> data = new MissionTypeData<MainMissionType>();
-//		data.getMissionPojos().put(1, new MainMissionType(1));
-//		data.getMissionPojos().put(2, new MainMissionType(2));
-//		data.getMissionPojos().put(3, new MainMissionType(3));
-//		
-////		data.getMissionPojos().put(1001, new ArtifactMissionType(1001, 1));
-////		data.getMissionPojos().put(1002, new ArtifactMissionType(1002, 2));
-//
-//		data.getFinishIds().add(1);
-//		data.getFinishIds().add(1001);
-//		
-//		String str = JSON.toJSONString(data);
-//		System.out.println(str);
-//		
-//		MissionTypeData<MainMissionType> missionData = JSON.parseObject(str, new TypeReference<MissionTypeData<MainMissionType>>() {});
-//		System.out.println(missionData);
-//		
-//		TypeReference<MissionTypeData<MainMissionType>> type = new TypeReference<MissionTypeData<MainMissionType>>() {};
-//		System.out.println(type.getType());
-//		
-//		ParameterizedTypeReference ref = new ParameterizedTypeReference<MissionTypeData<MainMissionType>>() {
-//		};
-//		System.out.println(ref.getType());
-//		
-//	}
-	
 }
