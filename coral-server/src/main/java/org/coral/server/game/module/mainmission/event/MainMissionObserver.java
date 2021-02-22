@@ -1,13 +1,13 @@
-package org.coral.server.game.module.mission.event;
+package org.coral.server.game.module.mainmission.event;
 
 import org.coral.server.core.event.IObserver;
 import org.coral.server.core.event.PlayerEventBase;
-import org.coral.server.game.module.mission.service.MainMissionService;
+import org.coral.server.game.module.mainmission.service.MainMissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MissionObserver implements IObserver {
+public class MainMissionObserver implements IObserver {
 	
 	@Autowired private MainMissionService missionService;
 	
