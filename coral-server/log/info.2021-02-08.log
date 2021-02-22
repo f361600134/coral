@@ -1,0 +1,634 @@
+2021-02-08 16:58:21.245 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 4032 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 16:58:21.246 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 16:58:24.243 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 16:58:24.246 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 16:58:24.389 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 127ms. Found 0 Redis repository interfaces.
+2021-02-08 16:58:25.243 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 16:58:25.253 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 16:58:25.253 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 16:58:25.253 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 16:58:25.356 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 16:58:25.356 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4079 ms
+2021-02-08 16:58:25.528 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 16:58:25.595 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 16:58:26.480 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 16:58:26.505 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 16:58:26.567 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [11] milliseconds.
+2021-02-08 16:58:26.575 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@64deb58f]
+2021-02-08 16:58:26.915 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x4161cf98] REGISTERED
+2021-02-08 16:58:26.918 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x4161cf98] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 16:58:26.919 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 16:58:26.921 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x4161cf98, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 16:58:26.924 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe6f579c2] REGISTERED
+2021-02-08 16:58:26.924 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe6f579c2] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 16:58:26.925 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe6f579c2, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 16:58:26.925 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 16:58:26.929 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 16:58:26.930 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 16:58:27.229 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisConnectionFactory' defined in class path resource [org/springframework/boot/autoconfigure/data/redis/LettuceConnectionConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory]: Factory method 'redisConnectionFactory' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/commons/pool2/impl/GenericObjectPoolConfig
+2021-02-08 16:58:27.235 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2021-02-08 16:58:27.235 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 16:58:27.235 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 16:58:27.243 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 16:58:27.246 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-02-08 16:58:27.259 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-02-08 16:58:27.261 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisConnectionFactory' defined in class path resource [org/springframework/boot/autoconfigure/data/redis/LettuceConnectionConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory]: Factory method 'redisConnectionFactory' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/commons/pool2/impl/GenericObjectPoolConfig
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:635)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.coral.server.App.main(App.java:38)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory]: Factory method 'redisConnectionFactory' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/commons/pool2/impl/GenericObjectPoolConfig
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:650)
+	... 20 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/apache/commons/pool2/impl/GenericObjectPoolConfig
+	at org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration$LettucePoolingClientConfigurationBuilder.<init>(LettucePoolingClientConfiguration.java:94)
+	at org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration.builder(LettucePoolingClientConfiguration.java:51)
+	at org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$PoolBuilderFactory.createBuilder(LettuceConnectionConfiguration.java:159)
+	at org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration.createBuilder(LettuceConnectionConfiguration.java:107)
+	at org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration.getLettuceClientConfiguration(LettuceConnectionConfiguration.java:92)
+	at org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration.redisConnectionFactory(LettuceConnectionConfiguration.java:74)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 21 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.pool2.impl.GenericObjectPoolConfig
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	... 32 common frames omitted
+2021-02-08 16:59:32.552 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 4472 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 16:59:32.553 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 16:59:33.656 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 16:59:33.662 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 16:59:33.817 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 127ms. Found 0 Redis repository interfaces.
+2021-02-08 16:59:34.661 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 16:59:34.674 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 16:59:34.674 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 16:59:34.674 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 16:59:34.933 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 16:59:34.933 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2342 ms
+2021-02-08 16:59:35.243 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 16:59:35.321 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 16:59:36.204 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 16:59:36.226 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 16:59:36.283 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [10] milliseconds.
+2021-02-08 16:59:36.292 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@45adc393]
+2021-02-08 16:59:36.628 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08843700] REGISTERED
+2021-02-08 16:59:36.630 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08843700] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 16:59:36.631 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08843700] CLOSE
+2021-02-08 16:59:36.632 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - 
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:225)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:134)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:550)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1334)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:506)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:491)
+	at io.netty.handler.logging.LoggingHandler.bind(LoggingHandler.java:221)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:506)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:491)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:973)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:248)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:356)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2021-02-08 16:59:36.632 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x08843700] UNREGISTERED
+2021-02-08 16:59:36.632 [main] ERROR org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server start up Error!
+2021-02-08 16:59:36.633 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'localNetService' defined in file [E:\jeremy\workspace\coral\git\coral-net\target\classes\org\coral\net\network\LocalNetService.class]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Netty TCP启动出现异常, 服务器关闭, 请检查
+2021-02-08 16:59:36.639 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 16:59:36.643 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-02-08 16:59:36.655 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-02-08 16:59:36.656 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'localNetService' defined in file [E:\jeremy\workspace\coral\git\coral-net\target\classes\org\coral\net\network\LocalNetService.class]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Netty TCP启动出现异常, 服务器关闭, 请检查
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.coral.server.App.main(App.java:38)
+Caused by: java.lang.RuntimeException: Netty TCP启动出现异常, 服务器关闭, 请检查
+	at org.coral.net.network.tcp.TcpServerStarter.startServer(TcpServerStarter.java:100)
+	at org.coral.net.network.LocalNetService.startup(LocalNetService.java:40)
+	at org.coral.net.network.LocalNetService.afterPropertiesSet(LocalNetService.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 17 common frames omitted
+2021-02-08 16:59:48.626 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 11632 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 16:59:48.627 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 16:59:49.640 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 16:59:49.643 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 16:59:49.777 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 121ms. Found 0 Redis repository interfaces.
+2021-02-08 16:59:50.639 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 16:59:50.652 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 16:59:50.653 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 16:59:50.654 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 16:59:50.763 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 16:59:50.764 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2106 ms
+2021-02-08 16:59:50.935 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 16:59:51.006 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 16:59:51.833 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 16:59:51.856 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 16:59:51.917 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [10] milliseconds.
+2021-02-08 16:59:51.924 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@5f1483fd]
+2021-02-08 16:59:52.247 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x29bccd24] REGISTERED
+2021-02-08 16:59:52.249 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x29bccd24] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 16:59:52.249 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 16:59:52.250 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x29bccd24, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 16:59:52.254 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0926ba0a] REGISTERED
+2021-02-08 16:59:52.254 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0926ba0a] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 16:59:52.254 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0926ba0a, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 16:59:52.254 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 16:59:52.258 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 16:59:52.259 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 16:59:53.009 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-02-08 16:59:53.030 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2021-02-08 16:59:53.044 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-02-08 16:59:53.057 [main] INFO  org.coral.server.App - Started App in 4.877 seconds (JVM running for 5.737)
+2021-02-08 17:13:46.519 [main] INFO  org.coral.server.lettuce.RedisObjTest - Starting RedisObjTest on DESKTOP-201116G with PID 6632 (started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 17:13:46.520 [main] INFO  org.coral.server.lettuce.RedisObjTest - The following profiles are active: dev
+2021-02-08 17:13:47.565 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 17:13:47.567 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 17:13:47.718 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 130ms. Found 0 Redis repository interfaces.
+2021-02-08 17:13:48.252 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 17:13:48.414 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 17:13:49.430 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 17:13:49.475 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 17:13:49.633 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [11] milliseconds.
+2021-02-08 17:13:49.655 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@3c66b7d8]
+2021-02-08 17:13:50.141 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x1b41125e] REGISTERED
+2021-02-08 17:13:50.143 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x1b41125e] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 17:13:50.144 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 17:13:50.145 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x1b41125e, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 17:13:50.147 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x536bf2e3] REGISTERED
+2021-02-08 17:13:50.148 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x536bf2e3] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 17:13:50.148 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x536bf2e3, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 17:13:50.148 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 17:13:50.355 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
+2021-02-08 17:13:50.495 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 17:13:50.517 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 17:13:51.833 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-02-08 17:13:51.896 [main] INFO  org.coral.server.lettuce.RedisObjTest - Started RedisObjTest in 5.69 seconds (JVM running for 6.645)
+2021-02-08 17:13:51.938 [main] ERROR o.springframework.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@69e1dd28] to prepare test instance [org.coral.server.lettuce.RedisObjTest@c472300]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.coral.server.lettuce.RedisObjTest': Unsatisfied dependency expressed through field 'redisTemplate'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, org.coral.server.game.module.user.Stu>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:393)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:43)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.Iterator.forEachRemaining(Iterator.java:116)
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:82)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:73)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:141)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, org.coral.server.game.module.user.Stu>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1714)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1270)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 50 common frames omitted
+2021-02-08 17:13:51.958 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2021-02-08 17:13:52.003 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:13:52.003 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:13:52.017 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 17:14:18.764 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 15984 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 17:14:18.765 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 17:14:19.686 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 17:14:19.688 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 17:14:19.811 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110ms. Found 0 Redis repository interfaces.
+2021-02-08 17:14:20.652 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 17:14:20.664 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 17:14:20.664 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 17:14:20.664 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 17:14:20.769 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 17:14:20.770 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1971 ms
+2021-02-08 17:14:20.937 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 17:14:21.005 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 17:14:21.889 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 17:14:21.914 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 17:14:21.980 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [11] milliseconds.
+2021-02-08 17:14:21.990 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@35c4e864]
+2021-02-08 17:14:22.353 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe1910791] REGISTERED
+2021-02-08 17:14:22.355 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe1910791] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 17:14:22.356 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 17:14:22.356 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe1910791, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 17:14:22.360 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe9ecad4a] REGISTERED
+2021-02-08 17:14:22.360 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe9ecad4a] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 17:14:22.361 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xe9ecad4a, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 17:14:22.361 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 17:14:22.523 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
+2021-02-08 17:14:22.594 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 17:14:22.595 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 17:14:23.054 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-02-08 17:14:23.074 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2021-02-08 17:14:23.087 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2021-02-08 17:14:23.098 [main] INFO  org.coral.server.App - Started App in 4.722 seconds (JVM running for 5.52)
+2021-02-08 17:15:42.848 [main] INFO  org.coral.server.lettuce.RedisObjTest - Starting RedisObjTest on DESKTOP-201116G with PID 14264 (started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 17:15:42.849 [main] INFO  org.coral.server.lettuce.RedisObjTest - The following profiles are active: dev
+2021-02-08 17:15:43.840 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 17:15:43.843 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 17:15:43.987 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 132ms. Found 0 Redis repository interfaces.
+2021-02-08 17:15:44.522 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 17:15:44.705 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 17:15:45.684 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 17:15:45.732 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 17:15:45.940 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [10] milliseconds.
+2021-02-08 17:15:45.963 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@2dbfcf7]
+2021-02-08 17:15:46.443 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x30290756] REGISTERED
+2021-02-08 17:15:46.445 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x30290756] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 17:15:46.446 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 17:15:46.447 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x30290756, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 17:15:46.450 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x449dfbdf] REGISTERED
+2021-02-08 17:15:46.450 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x449dfbdf] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 17:15:46.450 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x449dfbdf, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 17:15:46.450 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 17:15:46.615 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
+2021-02-08 17:15:46.702 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 17:15:46.717 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 17:15:48.010 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-02-08 17:15:48.072 [main] INFO  org.coral.server.lettuce.RedisObjTest - Started RedisObjTest in 5.536 seconds (JVM running for 6.459)
+2021-02-08 17:15:48.111 [main] ERROR o.springframework.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@44821a96] to prepare test instance [null(org.coral.server.lettuce.RedisObjTest)]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.coral.server.lettuce.RedisObjTest': Unsatisfied dependency expressed through field 'redisTemplate'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, org.coral.server.game.module.user.Stu>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:393)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:43)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.Iterator.forEachRemaining(Iterator.java:116)
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:82)
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:73)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:141)
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, org.coral.server.game.module.user.Stu>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1714)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1270)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1224)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 50 common frames omitted
+2021-02-08 17:15:48.132 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2021-02-08 17:15:48.155 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:15:48.156 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:15:48.171 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 17:17:12.313 [main] INFO  org.coral.server.lettuce.RedisObjTest - Starting RedisObjTest on DESKTOP-201116G with PID 17112 (started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 17:17:12.314 [main] INFO  org.coral.server.lettuce.RedisObjTest - The following profiles are active: dev
+2021-02-08 17:17:13.362 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 17:17:13.365 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 17:17:13.519 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 140ms. Found 0 Redis repository interfaces.
+2021-02-08 17:17:14.080 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 17:17:14.290 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 17:17:15.370 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 17:17:15.404 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 17:17:15.554 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [10] milliseconds.
+2021-02-08 17:17:15.583 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@56476c16]
+2021-02-08 17:17:16.066 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xbfc693af] REGISTERED
+2021-02-08 17:17:16.068 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xbfc693af] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 17:17:16.069 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 17:17:16.070 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xbfc693af, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 17:17:16.074 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x7513c4e3] REGISTERED
+2021-02-08 17:17:16.074 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x7513c4e3] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 17:17:16.074 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x7513c4e3, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 17:17:16.074 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 17:17:16.270 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
+2021-02-08 17:17:16.363 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 17:17:16.376 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 17:17:17.891 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-02-08 17:17:17.957 [main] INFO  org.coral.server.lettuce.RedisObjTest - Started RedisObjTest in 5.999 seconds (JVM running for 7.067)
+2021-02-08 17:17:18.602 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2021-02-08 17:17:18.948 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:17:18.949 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:17:18.963 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 17:19:49.618 [main] INFO  org.coral.server.lettuce.RedisObjTest - Starting RedisObjTest on DESKTOP-201116G with PID 20536 (started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 17:19:49.619 [main] INFO  org.coral.server.lettuce.RedisObjTest - The following profiles are active: dev
+2021-02-08 17:19:50.843 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 17:19:50.846 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 17:19:50.996 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135ms. Found 0 Redis repository interfaces.
+2021-02-08 17:19:51.576 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 17:19:51.731 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 17:19:52.649 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 17:19:52.689 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 17:19:52.858 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [9] milliseconds.
+2021-02-08 17:19:52.881 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@2dbfcf7]
+2021-02-08 17:19:53.354 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x2fd87a35] REGISTERED
+2021-02-08 17:19:53.356 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x2fd87a35] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 17:19:53.356 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 17:19:53.357 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x2fd87a35, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 17:19:53.360 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3fee347a] REGISTERED
+2021-02-08 17:19:53.360 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3fee347a] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 17:19:53.360 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x3fee347a, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 17:19:53.360 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 17:19:53.547 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
+2021-02-08 17:19:53.647 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService
+2021-02-08 17:19:53.661 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'taskAsyncPool'
+2021-02-08 17:19:54.941 [main] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-02-08 17:19:55.001 [main] INFO  org.coral.server.lettuce.RedisObjTest - Started RedisObjTest in 5.74 seconds (JVM running for 6.732)
+2021-02-08 17:19:55.669 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'taskAsyncPool'
+2021-02-08 17:19:55.889 [SpringContextShutdownHook] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:19:55.890 [SpringContextShutdownHook] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 17:19:55.901 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 18:31:37.547 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 15136 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 18:31:37.548 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 18:31:38.477 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 18:31:38.480 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 18:31:38.606 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 114ms. Found 0 Redis repository interfaces.
+2021-02-08 18:31:39.486 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 18:31:39.502 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 18:31:39.503 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 18:31:39.503 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 18:31:39.636 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 18:31:39.636 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2054 ms
+2021-02-08 18:31:39.817 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 18:31:39.891 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 18:31:42.298 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 18:31:42.320 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 18:31:42.379 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [9] milliseconds.
+2021-02-08 18:31:42.387 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@3bb5ceb]
+2021-02-08 18:31:42.725 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x627cb822] REGISTERED
+2021-02-08 18:31:42.727 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x627cb822] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 18:31:42.728 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 18:31:42.728 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x627cb822, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 18:31:42.731 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcebdf0bc] REGISTERED
+2021-02-08 18:31:42.731 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcebdf0bc] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 18:31:42.732 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xcebdf0bc, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 18:31:42.732 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 18:31:42.863 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
+2021-02-08 18:31:42.916 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisTemplate' defined in class path resource [org/coral/server/common/RedisComponent.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.core.RedisTemplate]: Factory method 'redisTemplate' threw exception; nested exception is java.lang.IllegalArgumentException: TypeReference constructed without actual type information
+2021-02-08 18:31:42.930 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 18:31:42.930 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - 网络服务未在运行状态， 停止失败
+2021-02-08 18:31:42.938 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 18:31:42.942 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-02-08 18:31:42.953 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-02-08 18:31:42.956 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisTemplate' defined in class path resource [org/coral/server/common/RedisComponent.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.core.RedisTemplate]: Factory method 'redisTemplate' threw exception; nested exception is java.lang.IllegalArgumentException: TypeReference constructed without actual type information
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:635)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.coral.server.App.main(App.java:38)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.core.RedisTemplate]: Factory method 'redisTemplate' threw exception; nested exception is java.lang.IllegalArgumentException: TypeReference constructed without actual type information
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:650)
+	... 20 common frames omitted
+Caused by: java.lang.IllegalArgumentException: TypeReference constructed without actual type information
+	at org.coral.orm.core.redis.codec.DefaultSerializer.<init>(DefaultSerializer.java:24)
+	at org.coral.server.common.RedisComponent.redisTemplate(RedisComponent.java:23)
+	at org.coral.server.common.RedisComponent$$EnhancerBySpringCGLIB$$3a461e3f.CGLIB$redisTemplate$0(<generated>)
+	at org.coral.server.common.RedisComponent$$EnhancerBySpringCGLIB$$3a461e3f$$FastClassBySpringCGLIB$$7702620f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+	at org.coral.server.common.RedisComponent$$EnhancerBySpringCGLIB$$3a461e3f.redisTemplate(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 21 common frames omitted
+2021-02-08 18:32:20.492 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 15828 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 18:32:20.494 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 18:32:22.262 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 18:32:22.265 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 18:32:22.399 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 117ms. Found 0 Redis repository interfaces.
+2021-02-08 18:32:24.865 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 18:32:24.880 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 18:32:24.880 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 18:32:24.881 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 18:32:25.011 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 18:32:25.011 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4468 ms
+2021-02-08 18:32:25.266 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 18:32:25.355 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 18:32:26.286 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 18:32:26.315 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 18:32:26.399 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [15] milliseconds.
+2021-02-08 18:32:26.414 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@28367da7]
+2021-02-08 18:32:26.806 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0b6d681d] REGISTERED
+2021-02-08 18:32:26.808 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0b6d681d] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 18:32:26.810 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0b6d681d] CLOSE
+2021-02-08 18:32:26.811 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - 
+java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:225)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:134)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:550)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1334)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:506)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:491)
+	at io.netty.handler.logging.LoggingHandler.bind(LoggingHandler.java:221)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:506)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:491)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:973)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:248)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:356)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2021-02-08 18:32:26.811 [main] ERROR org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server start up Error!
+2021-02-08 18:32:26.811 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x0b6d681d] UNREGISTERED
+2021-02-08 18:32:26.811 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'localNetService' defined in file [E:\jeremy\workspace\coral\git\coral-net\target\classes\org\coral\net\network\LocalNetService.class]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Netty TCP启动出现异常, 服务器关闭, 请检查
+2021-02-08 18:32:26.823 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2021-02-08 18:32:26.829 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-02-08 18:32:26.845 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-02-08 18:32:26.847 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'localNetService' defined in file [E:\jeremy\workspace\coral\git\coral-net\target\classes\org\coral\net\network\LocalNetService.class]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Netty TCP启动出现异常, 服务器关闭, 请检查
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.coral.server.App.main(App.java:38)
+Caused by: java.lang.RuntimeException: Netty TCP启动出现异常, 服务器关闭, 请检查
+	at org.coral.net.network.tcp.TcpServerStarter.startServer(TcpServerStarter.java:100)
+	at org.coral.net.network.LocalNetService.startup(LocalNetService.java:40)
+	at org.coral.net.network.LocalNetService.afterPropertiesSet(LocalNetService.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+	... 17 common frames omitted
+2021-02-08 18:32:35.512 [main] INFO  org.coral.server.App - Starting App on DESKTOP-201116G with PID 19472 (E:\jeremy\workspace\coral\git\coral-server\target\classes started by Administrator in E:\jeremy\workspace\coral\git\coral-server)
+2021-02-08 18:32:35.514 [main] INFO  org.coral.server.App - The following profiles are active: dev
+2021-02-08 18:32:37.175 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-08 18:32:37.182 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-02-08 18:32:37.327 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 119ms. Found 0 Redis repository interfaces.
+2021-02-08 18:32:50.194 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2021-02-08 18:32:50.210 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2021-02-08 18:32:50.211 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-02-08 18:32:50.211 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2021-02-08 18:32:50.338 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-02-08 18:32:50.338 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 14779 ms
+2021-02-08 18:32:50.580 [main] INFO  org.coral.server.common.UniqueIdGenerater - UniqueIdGenerater loading...1
+2021-02-08 18:32:50.661 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-02-08 18:32:51.608 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-02-08 18:32:51.644 [main] INFO  org.coral.server.common.DataComponent - BeanComponent loading...
+2021-02-08 18:32:51.741 [main] INFO  org.coral.net.core.HandlerProcessor - The initialization message is complete and takes [14] milliseconds.
+2021-02-08 18:32:51.750 [main] INFO  o.c.s.g.m.mission.manager.MissionProcessManager - 初始化任务处理器:[org.coral.server.game.module.mission.process.Mission01LoginProcess@766b6d02]
+2021-02-08 18:32:52.185 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xb48b79dd] REGISTERED
+2021-02-08 18:32:52.187 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xb48b79dd] BIND: 0.0.0.0/0.0.0.0:5001
+2021-02-08 18:32:52.189 [main] INFO  org.coral.net.network.tcp.TcpServerStarter - Netty [TCP] server listening 127.0.0.1 on port 5001 and ready for connections...
+2021-02-08 18:32:52.190 [TCP_SERVER_BOSS-1-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0xb48b79dd, L:/0:0:0:0:0:0:0:0:5001] ACTIVE
+2021-02-08 18:32:52.195 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x974c839c] REGISTERED
+2021-02-08 18:32:52.196 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x974c839c] BIND: 0.0.0.0/0.0.0.0:6001
+2021-02-08 18:32:52.197 [WEBSOCKET_SERVER_BOSS-4-1] INFO  io.netty.handler.logging.LoggingHandler - [id: 0x974c839c, L:/0:0:0:0:0:0:0:0:6001] ACTIVE
+2021-02-08 18:32:52.198 [main] INFO  o.c.net.network.websocket.WebSocketServerStarter - Netty [WEBSOCKET] server listening 127.0.0.1 on port 6001 and ready for connections...
+2021-02-08 18:32:58.455 [main] INFO  org.coral.server.common.RedisComponent - RedisComponent loading...host:139.9.44.104, port:6379
