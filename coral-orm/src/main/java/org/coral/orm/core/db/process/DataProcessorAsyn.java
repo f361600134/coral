@@ -10,6 +10,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.coral.orm.core.base.BasePo;
+import org.coral.orm.core.base.IBasePo;
 import org.coral.orm.core.db.dao.IDao;
 import org.coral.orm.core.task.Task;
 import org.slf4j.Logger;
@@ -69,7 +70,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int insert(T po) {
+	public <T extends IBasePo> int insert(T po) {
 		IDao<T> dao = super.getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not found dao by the Pojo:"+po);
@@ -83,7 +84,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public<T extends BasePo> void insertBatch(List<T> basePos) {
+	public<T extends IBasePo> void insertBatch(List<T> basePos) {
 		Map<String, List<T>> map = splitData(basePos);
 		for (String name : map.keySet()) {
 			IDao<T> dao = super.getCommonDao(name);
@@ -101,7 +102,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int replace(T po) {
+	public <T extends IBasePo> int replace(T po) {
 		IDao<T> dao = super.getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the po:"+po);
@@ -115,7 +116,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int update(T po) {
+	public <T extends IBasePo> int update(T po) {
 		IDao<T> dao = super.getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the po:"+po);
@@ -129,7 +130,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int delete(T po) {
+	public <T extends IBasePo> int delete(T po) {
 		IDao<T> dao = super.getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the po:"+po);
@@ -143,7 +144,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> void deleteAll(Class<T> clazz) {
+	public <T extends IBasePo> void deleteAll(Class<T> clazz) {
 		IDao<T> dao = super.getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
@@ -156,7 +157,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public <T extends BasePo> void deleteBatch(List<T> basePos) {
+	public <T extends IBasePo> void deleteBatch(List<T> basePos) {
 		Map<String, List<T>> map = super.splitData(basePos);
 		for (String name : map.keySet()) {
 			IDao<T> dao = super.getCommonDao(name);
@@ -170,7 +171,7 @@ public class DataProcessorAsyn extends DataProcessor {
 	}
 	
 	@Override
-	public <T extends BasePo> int updateBatch(Collection<T> pos) {
+	public <T extends IBasePo> int updateBatch(Collection<T> pos) {
 		pos.forEach(po -> {
 			this.execute(() -> {super.update(po);});
 		});

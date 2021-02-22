@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.coral.orm.core.base.BasePo;
+import org.coral.orm.core.base.IBasePo;
 import org.coral.orm.core.db.dao.CommonDao;
 import org.coral.orm.core.db.dao.IDao;
 import org.slf4j.Logger;
@@ -29,14 +30,14 @@ public class DataProcessor implements IDataProcess{
 	private Map<String, IDao<?>> commonDaoMap;
 	
 	@SuppressWarnings("unchecked")
-	public <T extends BasePo> IDao<T> getCommonDao(String name) {
+	public <T extends IBasePo> IDao<T> getCommonDao(String name) {
 		if (StringUtils.isBlank(name)) {
 			throw new NullPointerException("name is can not be null:"+name);
 		}
 		return (IDao<T>)commonDaoMap.get(name);
 	}
 	
-	public <T extends BasePo> IDao<T> getCommonDao(Class<T> clazz) {
+	public <T extends IBasePo> IDao<T> getCommonDao(Class<T> clazz) {
 		if (clazz == null) {
 			throw new NullPointerException("clazz is can not be null:"+clazz);
 		}
@@ -44,7 +45,7 @@ public class DataProcessor implements IDataProcess{
 		return getCommonDao(name);
 	}
 	
-	public <T extends BasePo> IDao<T> getCommonDao(T clazz) {
+	public <T extends IBasePo> IDao<T> getCommonDao(T clazz) {
 		if (clazz == null) {
 			throw new NullPointerException("clazz is can not be null:"+clazz);
 		}
@@ -71,7 +72,7 @@ public class DataProcessor implements IDataProcess{
 	 * @param clazz
 	 * @return
 	 */
-	public <T extends BasePo> List<T> selectAll(Class<T> clazz) {
+	public <T extends IBasePo> List<T> selectAll(Class<T> clazz) {
 		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
@@ -85,7 +86,7 @@ public class DataProcessor implements IDataProcess{
 	 * @param clazz
 	 * @return
 	 */
-	public <T extends BasePo> T selectByPrimaryKey(Class<T> clazz, Object value) {
+	public <T extends IBasePo> T selectByPrimaryKey(Class<T> clazz, Object value) {
 		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
@@ -99,7 +100,7 @@ public class DataProcessor implements IDataProcess{
 	 * @param clazz
 	 * @return
 	 */
-	public <T extends BasePo> List<T> selectByIndex(Class<T> clazz, Object[] objs) {
+	public <T extends IBasePo> List<T> selectByIndex(Class<T> clazz, Object[] objs) {
 		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
@@ -113,7 +114,7 @@ public class DataProcessor implements IDataProcess{
 	 * @param clazz
 	 * @return
 	 */
-	public <T extends BasePo> T selectOneByIndex(Class<T> clazz, Object[] objs) {
+	public <T extends IBasePo> T selectOneByIndex(Class<T> clazz, Object[] objs) {
 		List<T> ret = this.selectByIndex(clazz, objs);
 		if (ret == null || ret.size() <= 0) {
 			return null;
@@ -127,7 +128,7 @@ public class DataProcessor implements IDataProcess{
 	 * @param clazz
 	 * @return
 	 */
-	public <T extends BasePo> List<T> selectByIndex(Class<T> clazz, String[] props, Object[] objs) {
+	public <T extends IBasePo> List<T> selectByIndex(Class<T> clazz, String[] props, Object[] objs) {
 		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the props:"+props);
@@ -140,7 +141,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int insert(T po) {
+	public <T extends IBasePo> int insert(T po) {
 		IDao<T> dao = getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the Pojo:"+po);
@@ -153,7 +154,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public <T extends BasePo> void insertBatch(Collection<T> basePos) {
+	public <T extends IBasePo> void insertBatch(Collection<T> basePos) {
 		Map<String, List<T>> map = splitData(basePos);
 		IDao<T> dao = null;
 		for (String name : map.keySet()) {
@@ -168,7 +169,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int replace(T po) {
+	public <T extends IBasePo> int replace(T po) {
 		IDao<T> dao = getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the Pojo:"+po);
@@ -181,7 +182,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int update(T po) {
+	public <T extends IBasePo> int update(T po) {
 		IDao<T> dao = getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the Pojo:"+po);
@@ -194,7 +195,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int updateBatch(Collection<T> pos) {
+	public <T extends IBasePo> int updateBatch(Collection<T> pos) {
 		pos.forEach(po -> {
 			getCommonDao(po).update(po);
 		});
@@ -206,7 +207,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> int delete(T po) {
+	public <T extends IBasePo> int delete(T po) {
 		IDao<T> dao = getCommonDao(po);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the Pojo:"+po);
@@ -219,7 +220,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param po
 	 */
-	public <T extends BasePo> void deleteAll(Class<T> clazz) {
+	public <T extends IBasePo> void deleteAll(Class<T> clazz) {
 		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
@@ -232,7 +233,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public <T extends BasePo> void deleteBatch(List<T> basePos) {
+	public <T extends IBasePo> void deleteBatch(List<T> basePos) {
 		Map<String, List<T>> map = splitData(basePos);
 		IDao<T> dao = null;
 		for (String name : map.keySet()) {
@@ -247,7 +248,7 @@ public class DataProcessor implements IDataProcess{
 	 * @date 2020年6月30日
 	 * @param basePos
 	 */
-	public <T extends BasePo> List<T> selectBySql(Class<T> clazz, String sql) {
+	public <T extends IBasePo> List<T> selectBySql(Class<T> clazz, String sql) {
 		IDao<T> dao = getCommonDao(clazz);
 		if (dao == null) {
 			throw new NullPointerException("Can not find dao by the clazz:"+clazz);
@@ -261,7 +262,7 @@ public class DataProcessor implements IDataProcess{
 	 * @param basePos
 	 * @return
 	 */
-	protected <T extends BasePo> Map<String, List<T>> splitData(Collection<T> basePos) {
+	protected <T extends IBasePo> Map<String, List<T>> splitData(Collection<T> basePos) {
 		//数据分类
 		Map<String, List<T>> map = new HashMap<String, List<T>>();
 		for (T po : basePos) {
