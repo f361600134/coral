@@ -2,11 +2,8 @@ package org.coral.server.game.helper.result;
 
 /**
  * 错误码(返回码)<br>
- * <p>
- * 错误码需要同步到网页上
- *
- * @author hdh
- * @see http://doc.inner.guangka.com/docs/huashen/gskz
+ * 需要生成excel提供给客户端读取
+ * @author Jeremy
  */
 public enum ErrorCode implements ModuleDefines {
     /**
@@ -61,7 +58,17 @@ public enum ErrorCode implements ModuleDefines {
     CHAT_SYSTEM_NOT_ALLOWED(CHAT, 12, "该频道禁止聊天"),
     CHAT_TIME_LIMIT(CHAT, 13, "剩余x秒后可聊天"),
     CHAT_TARGET_IS_SELF(CHAT, 14, "聊天目标不能是自己"),
+    
+    
+    
+    // -----------------任务---------------------
+    MISSION_NOT_COMPLATE(MISSION, 1, "任务未完成"),
+    MISSION_REWARDES(MISSION, 2, "任务奖励已领取"),
+    
     ;
+	
+	
+	
     private final int code;
     private final String desc;
     

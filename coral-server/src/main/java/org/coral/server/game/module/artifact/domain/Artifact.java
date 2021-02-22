@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.coral.orm.core.annotation.PO;
 import org.coral.orm.core.base.BasePo;
+import org.coral.server.core.server.IPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +13,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 @PO(name = "artifact")
-public class Artifact extends BasePo {
+public class Artifact extends BasePo implements IPersistence {
 	
 	private static final Logger log = LoggerFactory.getLogger(Artifact.class);
 	

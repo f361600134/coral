@@ -1,10 +1,13 @@
 package org.coral.server.game.module.mission.type;
 
+import org.coral.server.core.annotation.NotUse;
+
 /**
  * 	任务目标
  * @author Jeremy
  *
  */
+@NotUse
 public class Goal {
 	
 	/**

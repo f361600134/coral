@@ -47,7 +47,7 @@ public interface ModuleDefines {
 //    int BUILD = 132;
 //
 //    // ------------社交---------------------
-//    /** 聊天 */
+    /** 聊天 */
     int CHAT = 135;
 //    /** 好友 */
 //    int FRIEND = 136;
@@ -58,8 +58,8 @@ public interface ModuleDefines {
 //    int ACTIVITY = 141;
 //    /** 排行榜 */
 //    int RANK = 142;
-//    /** 任务 */
-//    int QUEST = 143;
+    /** 任务 */
+    int MISSION = 143;
 //    /** 战斗 */
 //    int BATTLE = 144;
 //    // --------------玩法模块---------------------

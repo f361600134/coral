@@ -28,6 +28,9 @@ public class MainMissionType extends AbstractMission{
 		return ConfigMissionMgr.getConfig(configId).getCompleteTotal();
 	}	
 
+	public static MainMissionType create(int configId) {
+		return new MainMissionType(configId);
+	}
 	
 	@Override
 	public String toString() {

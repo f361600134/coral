@@ -14,7 +14,7 @@ import com.google.common.collect.Maps;
 public class MissionTypeData<T extends AbstractMission> {
 
 	/**
-	 * 当前已接取具体任务类, 完成以后从任务列表中移除, 
+	 * 当前已接取具体任务类, 领取奖励以后从任务列表中移除, 
 	 * 如无特殊情况, 不允许初始化时加载玩家所有任务数据,
 	 */
 	private Map<Integer, T> missionPojos;
@@ -36,6 +36,10 @@ public class MissionTypeData<T extends AbstractMission> {
 	public void setMissionPojos(Map<Integer, T> missionPojos) {
 		this.missionPojos = missionPojos;
 	}
+	
+	public void addMissionPojo(T mission) {
+		this.missionPojos.put(mission.getConfigId(), mission);
+	}
 
 	public List<Integer> getFinishIds() {
 		return finishIds;
@@ -43,6 +47,30 @@ public class MissionTypeData<T extends AbstractMission> {
 
 	public void setFinishIds(List<Integer> finishIds) {
 		this.finishIds = finishIds;
+	}
+	
+	public T getMission(int configId) {
+		return missionPojos.get(configId);
+	}
+	
+	/**
+	 * 任务是否完成
+	 * @param configId
+	 */
+	public boolean isFinished(int configId) {
+		return finishIds.contains(configId);
+	}
+	
+	/**
+	 * 当完成任务
+	 */
+	public void onFinished(int configId) {
+		T t = getMission(configId);
+		if (t.isRewarded()) {
+			finishIds.add(configId);
+			missionPojos.remove(configId);
+		}
+
 	}
 
 	@Override
