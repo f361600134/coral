@@ -1,7 +1,5 @@
 package org.coral.server.game.module.item.domain;
 
-import org.coral.orm.core.db.process.DataProcessorAsyn;
-import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.module.base.ItemPo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,24 +59,6 @@ public class Item extends ItemPo implements IItem{
 		expect = expect < 0 ? 0 : expect;
 		this.setCount(expect);
 		return expect;
-	}
-
-	@Override
-	public void save() {
-		DataProcessorAsyn processor = SpringContextHolder.getInstance().getBean(DataProcessorAsyn.class);
-		processor.insert(this);
-	}
-
-	@Override
-	public void update() {
-		DataProcessorAsyn processor = SpringContextHolder.getInstance().getBean(DataProcessorAsyn.class);
-		processor.update(this);
-	}
-
-	@Override
-	public void remove() {
-		DataProcessorAsyn processor = SpringContextHolder.getInstance().getBean(DataProcessorAsyn.class);
-		processor.delete(this);
 	}
 
 }

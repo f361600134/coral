@@ -9,10 +9,11 @@ import org.coral.server.game.module.mission.domain.MissionState;
  */
 public abstract class AbstractMission implements IMission {
 
-	protected int configId;//任务ID
-	protected int state;//任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取
-	protected int progress;//任务进度
-	protected long recvTime;//任务接取时间
+	protected int configId;		//	任务ID
+	protected int state;		//	任务状态:0=未完成;1=已完成;2=已領取;
+	protected int progress;		//	任务进度
+	protected long recvTime;	//	任务接取时间
+	protected long additional; 	//	额外参数,部分任务会用上
 	
 	public AbstractMission(int configId) {
 		this.configId = configId;
@@ -29,7 +30,7 @@ public abstract class AbstractMission implements IMission {
 		this.configId = configId;
 	}
 	
-	/** 任务状态:0=未接取;1=已接取未完成;2=已完成未领取;3=已完成已领取 **/
+	/** 任务状态:0=未完成;1=已完成;2=已領取; **/
 	public int getState(){
 		return this.state;
 	}
@@ -57,6 +58,16 @@ public abstract class AbstractMission implements IMission {
 	}
 	
 	@Override
+	public void setAdditional(long additional) {
+		this.additional = additional;
+	}
+	
+	@Override
+	public long getAdditional() {
+		return additional;
+	}
+	
+	@Override
 	public String toString() {
 		return "Mission[ configId= "+ configId +", state= "+ state +", progress= "+ progress +", recvTime= "+ recvTime +"]";
 	}
@@ -72,7 +83,7 @@ public abstract class AbstractMission implements IMission {
 
 		if(isNone() && this.isMissionCanComplete())
 		{//状态为未完成且当前可以完成
-			setState(MissionState.STATE_ACTIVED.getValue());
+			setState(MissionState.STATE_COMPLETE.getValue());
 		}
 		return true;
 	}

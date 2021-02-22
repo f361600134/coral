@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.coral.orm.core.annotation.Column;
 import org.coral.orm.core.db.process.DataProcessorAsyn;
+import org.coral.server.core.server.IPersistence;
 import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.helper.uuid.SnowflakeGenerator;
 import org.coral.server.game.module.attribute.domain.IAttributeEntity;
@@ -20,7 +21,7 @@ import com.google.common.collect.Maps;
  * @author Jeremy
  */
 @Repository
-public class Hero extends HeroPo implements IAttributeEntity {
+public class Hero extends HeroPo implements IAttributeEntity, IPersistence {
 
 	private static final long serialVersionUID = -6477234322349578720L;
 
@@ -97,5 +98,5 @@ public class Hero extends HeroPo implements IAttributeEntity {
 		processorAsyn.insert(hero);
 		return hero;
 	}
-	
+
 }

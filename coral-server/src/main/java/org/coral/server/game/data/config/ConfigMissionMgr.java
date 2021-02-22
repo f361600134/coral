@@ -120,7 +120,7 @@ public class ConfigMissionMgr {
 //	//按完成类型分类的任务
 //	private static Map<Integer, List<Integer>> typeCompleteMissions;	//completeType:mission ids
 //	
-//	public static void analyse(){
+	public static void analyse(){}
 //		List<ConfigMission> tempDailyMissions = Lists.newArrayList();
 //		Map<Integer, Integer> tempMissionEffects = Maps.newHashMap();
 //		List<ConfigMission> tempVipMissions = Lists.newArrayList();
@@ -185,8 +185,8 @@ public class ConfigMissionMgr {
 //		typeCompleteMissions = tempTypeCompleteMissions;
 //	}
 //	
-//	public static void complete(){
-//	}
+	public static void complete(){
+	}
 //	
 //	/**
 //	 * 获取所有配置任务列表

@@ -1,12 +1,13 @@
 package org.coral.server.game.module.item.domain;
 
+import org.coral.server.core.server.IPersistence;
 import org.coral.server.game.data.proto.PBBag;
 
 /**
  * 物品抽象类
  * @author Jeremy
  */
-public interface IItem {
+public interface IItem extends IPersistence{
 
 	/**
 	 * 获取唯一id
@@ -72,10 +73,4 @@ public interface IItem {
 		return builder.build();
 	}
 	
-	void save();
-
-	void update();
-
-	void remove();
-
 }

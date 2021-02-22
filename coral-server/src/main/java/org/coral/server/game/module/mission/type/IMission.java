@@ -22,6 +22,11 @@ public interface IMission {
 	/** 设置状态*/
 	public void setState(int state);
 	
+	/** 设置额外参数*/
+	public void setAdditional(long additional);
+	/** 获取额外参数*/
+	public long getAdditional();
+	
 	//此项仅支持单条件达成值
 	//达成类型, 达成条件, 达成值如果为多条件, 则用数组表示
 	//对于任务执行, 则通过完成类型,多个任务执行代理同一条任务
@@ -35,16 +40,16 @@ public interface IMission {
 	@JSONField(serialize=false)
 	public int getCompleteValue();
 	
-	/**是否未激活*/
+	/**是否未完成*/
 	@JSONField(serialize = false)
 	default public boolean isNone() {
 		return getState() == MissionState.STATE_NONE.getValue();
 	}
 	
-	/**是否激活*/
+	/**是否完成*/
 	@JSONField(serialize = false)
-	default public boolean isActived() {
-		return getState() == MissionState.STATE_ACTIVED.getValue();
+	default public boolean isComplete() {
+		return getState() == MissionState.STATE_COMPLETE.getValue();
 	}
 	/**是否已领奖*/
 	@JSONField(serialize = false)
