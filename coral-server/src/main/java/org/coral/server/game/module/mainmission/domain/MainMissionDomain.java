@@ -1,7 +1,5 @@
 package org.coral.server.game.module.mainmission.domain;
 
-import java.util.Collection;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.server.game.data.config.ConfigMissionMgr;
@@ -9,6 +7,7 @@ import org.coral.server.game.data.config.pojo.ConfigMission;
 import org.coral.server.game.helper.context.SpringContextHolder;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.mission.handler.AbstractMissionHandler;
+import org.coral.server.game.module.mission.type.AbstractMission;
 import org.coral.server.game.module.mission.type.IMission;
 import org.coral.server.game.module.mission.type.MainMissionType;
 import org.coral.server.game.module.mission.type.MissionTypeData;
@@ -31,19 +30,13 @@ public class MainMissionDomain extends AbstractMissionHandler{
 		this.mainMission = mainMission;
 	}
 	
-	@Override
-	public Collection<? extends IMission> getMissions() {
-		return mainMission.getMissionData().getMissionPojos().values();
-	}
-	
-	@Override
-	public IMission getMission(int configId) {
-		return mainMission.getMissionData().getMission(configId);
-	}
-	
-	@Override
 	public long getPlayerId() {
 		return mainMission.getPlayerId();
+	}
+	
+	@Override
+	public MissionTypeData<? extends AbstractMission> getMissionTypeData() {
+		return mainMission.getMissionData();
 	}
 	
 	@Override
@@ -75,5 +68,15 @@ public class MainMissionDomain extends AbstractMissionHandler{
 		missionData.addMissionPojo(nextNission);
 		mainMission.update();
 	}
+	
+//	@Override
+//	public Collection<? extends IMission> getMissions() {
+//		return mainMission.getMissionData().getMissionPojos().values();
+//	}
+//	
+//	@Override
+//	public IMission getMission(int configId) {
+//		return mainMission.getMissionData().getMission(configId);
+//	}
 	
 }

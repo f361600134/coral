@@ -6,7 +6,9 @@ import java.util.List;
 import org.coral.server.core.event.IEvent;
 import org.coral.server.game.data.proto.PBBag;
 import org.coral.server.game.helper.result.ErrorCode;
+import org.coral.server.game.module.mission.type.AbstractMission;
 import org.coral.server.game.module.mission.type.IMission;
+import org.coral.server.game.module.mission.type.MissionTypeData;
 
 /**
  * 	任务处理类接口
@@ -16,20 +18,27 @@ import org.coral.server.game.module.mission.type.IMission;
 public interface IMissionHandler {
 	
 	
-	public long getPlayerId();
+//	public long getPlayerId();
+//	
+//	/**
+//	 * 	通过任务id获取到任务
+//	 * @param configId
+//	 * @return
+//	 */
+//	public IMission getMission(int configId);
+//	
+//	/**
+//	 * 获取所有的任务集合
+//	 * @return
+//	 */
+//	public Collection<? extends IMission> getMissions();
 	
 	/**
-	 * 	通过任务id获取到任务
-	 * @param configId
+	 * 新增接口, 获取统一的MissionTypeData, 替代掉getMission, getMissions方法
+	 * 任务处理器, 不应该直接代理任务类, 应该代理MissionTypeData, 具体任务类 由MissionTypeData去控制
 	 * @return
 	 */
-	public IMission getMission(int configId);
-	
-	/**
-	 * 获取所有的任务集合
-	 * @return
-	 */
-	public Collection<? extends IMission> getMissions();
+	public MissionTypeData<? extends AbstractMission> getMissionTypeData();
 	
 	/**
 	 * 	任务序列化

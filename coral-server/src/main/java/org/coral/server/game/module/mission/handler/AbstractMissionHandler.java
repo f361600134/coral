@@ -20,6 +20,7 @@ import com.google.common.collect.Multimap;
 
 /**
  * 任务处理器, 每个任务模块维护自己的任务. 以及任务类型对应的id集合
+ * 注意:因为处理器代理处理任务逻辑, 任务内的所有状态变化, 最后都需要显示的进行存储,
  * @author Jeremy
  */
 public abstract class AbstractMissionHandler implements IMissionHandler{
@@ -101,6 +102,23 @@ public abstract class AbstractMissionHandler implements IMissionHandler{
 		doReward(mission);
 		afterRewarded(mission);
 		return ErrorCode.SUCCESS;
+	}
+	
+	/**
+	 * 根据id获取任务
+	 * @param configId
+	 * @return
+	 */
+	protected IMission getMission(int configId) {
+		return getMissionTypeData().getMission(configId);
+	}
+	
+	/**
+	 * 获取任务集合
+	 * @return
+	 */
+	protected Collection<? extends IMission> getMissions() {
+		return getMissionTypeData().getMissionPojos().values();
 	}
 	
 	/**

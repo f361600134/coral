@@ -51,6 +51,7 @@ public interface IMission {
 	default public boolean isComplete() {
 		return getState() == MissionState.STATE_COMPLETE.getValue();
 	}
+	
 	/**是否已领奖*/
 	@JSONField(serialize = false)
 	default public boolean isRewarded() {

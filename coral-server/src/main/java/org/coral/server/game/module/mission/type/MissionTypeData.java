@@ -53,8 +53,20 @@ public class MissionTypeData<T extends AbstractMission> {
 		return missionPojos.get(configId);
 	}
 	
+//	/**
+//	 * 任务是否已完成, 
+//	 * @return
+//	 */
+//	public boolean isComplate(int configId) {
+//		T t = getMission(configId);
+//		if (t == null) {
+//			return false;
+//		}
+//		return t.isComplete();
+//	}
+	
 	/**
-	 * 任务是否完成
+	 * 任务是否完成/是否已领奖
 	 * @param configId
 	 */
 	public boolean isFinished(int configId) {
@@ -62,15 +74,18 @@ public class MissionTypeData<T extends AbstractMission> {
 	}
 	
 	/**
-	 * 当完成任务
+	 * 当完成任务, 
+	 * 已完成任务Id列表加入次任务, 当前已接取任务移除掉该任务
 	 */
 	public void onFinished(int configId) {
 		T t = getMission(configId);
+		if (t == null) {//FIXME 无该任务,继续移除?
+			return;
+		}
 		if (t.isRewarded()) {
 			finishIds.add(configId);
 			missionPojos.remove(configId);
 		}
-
 	}
 
 	@Override
