@@ -11,7 +11,6 @@ import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.IProtocol;
 import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.data.proto.PBLogin.ReqLogin;
-import org.coral.server.game.helper.PropertiesType;
 import org.coral.server.game.helper.ResourceType;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.module.player.domain.Player;
@@ -191,7 +190,8 @@ public class PlayerService implements IPlayerService, IResourceService {
 	@Override
 	public boolean checkEnough(long playerId, Integer configId, Integer value) {
 		final PlayerContext playerContext = getPlayerContext(playerId);
-		return PropertiesType.getType(configId).check(playerContext.getPlayer(), value);
+		//return PropertiesType.getType(configId).check(playerContext.getPlayer(), value);
+		return playerContext.getPlayer().getProperties(configId) >= value;
 	}
 
 	@Override

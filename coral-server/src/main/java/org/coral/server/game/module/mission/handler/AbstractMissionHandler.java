@@ -92,10 +92,16 @@ public abstract class AbstractMissionHandler implements IMissionHandler{
 	@Override
 	public ErrorCode onReward(int configId) {
 		IMission mission = getMission(configId);
+		if (mission == null) {
+			return ErrorCode.MISSION_NOT_EXIST; //任务不存在
+		}
 		if (mission.isNone()) {
 			return ErrorCode.MISSION_NOT_COMPLATE; //任务未完成
 		}
 		if (mission.isRewarded()) {
+			return ErrorCode.MISSION_REWARDES; //任务已领奖
+		}
+		if (getMissionTypeData().isFinished(configId)) {
 			return ErrorCode.MISSION_REWARDES; //任务已领奖
 		}
 		this.updateList.add(mission);

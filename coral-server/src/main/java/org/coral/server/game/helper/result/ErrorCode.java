@@ -64,6 +64,7 @@ public enum ErrorCode implements ModuleDefines {
     // -----------------任务---------------------
     MISSION_NOT_COMPLATE(MISSION, 1, "任务未完成"),
     MISSION_REWARDES(MISSION, 2, "任务奖励已领取"),
+    MISSION_NOT_EXIST(MISSION, 3, "任务奖励已领取"),
     
     ;
 	

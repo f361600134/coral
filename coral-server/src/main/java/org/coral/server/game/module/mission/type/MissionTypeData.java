@@ -53,18 +53,6 @@ public class MissionTypeData<T extends AbstractMission> {
 		return missionPojos.get(configId);
 	}
 	
-//	/**
-//	 * 任务是否已完成, 
-//	 * @return
-//	 */
-//	public boolean isComplate(int configId) {
-//		T t = getMission(configId);
-//		if (t == null) {
-//			return false;
-//		}
-//		return t.isComplete();
-//	}
-	
 	/**
 	 * 任务是否完成/是否已领奖
 	 * @param configId
