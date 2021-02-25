@@ -5,9 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.google.common.collect.Maps;
 
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-
 public class ReactiveTest {
 	
 	public static void main(String[] args) {
@@ -16,19 +13,18 @@ public class ReactiveTest {
 		commands.put("Michael", 15);
 		commands.put("Mark", 33);
 		
-		Observable
-		.just("Ben", "Michael", "Mark")
+//		Observable.just("Ben", "Michael", "Mark")
 		//.take(2)
 //		.flatMap(e->{
 //			System.out.println(e+", Thread:"+Thread.currentThread().getName());
 //			return Observable.just(commands.get(e));
 //		})
-		.doOnNext(e->{
-			 System.out.println(e+", Thread:"+Thread.currentThread().getName());
-		})
-		.subscribeOn(Schedulers.computation())
+//		.doOnNext(e->{
+//			 System.out.println(e+", Thread:"+Thread.currentThread().getName());
+//		})
+//		.subscribeOn(Schedulers.computation())
 //		.publish()
-		.subscribe();
+//		.subscribe();
 		try {
 			TimeUnit.SECONDS.sleep(10);
 		} catch (InterruptedException e1) {

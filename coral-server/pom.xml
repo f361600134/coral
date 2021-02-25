@@ -7,11 +7,11 @@
 	<parent>
 		<groupId>com.fatiny</groupId>
 		<artifactId>coral</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 <!-- 	<groupId>com.fatiny</groupId> -->
 	<artifactId>coral-server</artifactId>
-<!-- 	<version>0.0.1-SNAPSHOT</version> -->
+<!-- 	<version>0.0.1</version> -->
 	<name>coral-server</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -72,14 +72,19 @@
 			<artifactId>coral-net</artifactId>
 			<version>0.0.1</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>com.fatiny</groupId>
+			<artifactId>coral-api</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>dubbo</artifactId>
-			<version>2.6.7</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.alibaba</groupId> -->
+<!-- 			<artifactId>dubbo</artifactId> -->
+<!-- 			<version>2.6.7</version> -->
+<!-- 		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm -->
 		<dependency>
@@ -95,32 +100,27 @@
 			<version>1.9.4</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.commons</groupId> -->
+<!-- 			<artifactId>commons-lang3</artifactId> -->
 			<!-- <version>3.8.1</version> -->
-		</dependency>
+<!-- 		</dependency> -->
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+        <!-- https://mvnrepository.com/artifact/io.dubbo.springboot/spring-boot-starter-dubbo -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>4.4</version>
+		    <groupId>io.dubbo.springboot</groupId>
+		    <artifactId>spring-boot-starter-dubbo</artifactId>
+		    <version>1.0.0</version>
 		</dependency>
+        
 		
-		<!-- https://mvnrepository.com/artifact/org.redisson/redisson -->
+		<!-- 坑爹的zk需要依赖这个  -->
 		<dependency>
-		    <groupId>org.redisson</groupId>
-		    <artifactId>redisson</artifactId>
-		    <version>3.14.1</version>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>1.2.17</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.google.inject</groupId> -->
-		<!-- <artifactId>guice</artifactId> -->
-		<!-- <version>4.2.3</version> -->
-		<!-- </dependency> -->
-
 	</dependencies>
+	
+	
 </project>

@@ -6,6 +6,7 @@ import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.coral.server.game.helper.uuid.SnowflakeGenerator;
 import org.coral.server.game.module.resource.IResourceGroupService;
 import org.coral.server.game.module.user.User;
+import org.coral.server.game.module.user.service.TestConService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class InitialRunner implements CommandLineRunner {
 	@Autowired 
 	private IResourceGroupService resourceService;
 	
+@Autowired private TestConService testService;
+	
 //	private Processor processor;
 //	
 ////	@Autowired private DataSource ds;
@@ -36,6 +39,7 @@ public class InitialRunner implements CommandLineRunner {
 	
 	public void run(String... args) throws Exception {
 		try {
+			testService.print();
 //			log.info("generater:{}", generater.nextId());
 //			Map<Integer, Integer> rewardMap = Maps.newHashMap(); 
 //			rewardMap.put(90001, 1);

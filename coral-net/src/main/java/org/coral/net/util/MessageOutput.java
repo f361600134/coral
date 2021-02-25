@@ -5,15 +5,15 @@ import com.google.protobuf.GeneratedMessageLite;
 
 public class MessageOutput {
 	
-	private GeneratedMessageLite messageLite;
+	private GeneratedMessageLite<?, ?> messageLite;
 	
-	public static MessageOutput create(GeneratedMessageLite messageLite) {
+	public static MessageOutput create(GeneratedMessageLite<?, ?> messageLite) {
 		MessageOutput output = new MessageOutput();
 		output.messageLite = messageLite;
 		return output;
 	}
 	
-	public static String toString(GeneratedMessageLite messageLite) {
+	public static String toString(GeneratedMessageLite<?, ?> messageLite) {
 		return JSON.toJSONString(messageLite, ProtobufPropertyFilter.INST);
 	}
 	

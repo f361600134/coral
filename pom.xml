@@ -5,12 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.fatiny</groupId>
 	<artifactId>coral</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<modules>
+		<module>coral-api</module>
 		<module>coral-orm</module>
 		<module>coral-net</module>
 		<module>coral-server</module>
+		<module>coral-test</module>
 	</modules>
 
 	<dependencyManagement>
@@ -43,7 +45,6 @@
 	</dependencies>
 
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
