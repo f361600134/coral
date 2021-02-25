@@ -4,7 +4,7 @@ package org.coral.server.core.server;
 import org.coral.net.core.base.Commander;
 import org.coral.net.core.base.GameSession;
 import org.coral.net.core.base.Packet;
-import org.coral.net.core.base.ServerHandler;
+import org.coral.net.core.base.ServerController;
 import org.coral.net.core.executor.DisruptorDispatchTask;
 import org.coral.net.core.executor.DisruptorStrategy;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ import io.netty.buffer.ByteBuf;
  */
 @Primary
 @Component
-public class GameServerHandler extends ServerHandler {
+public class GameServerHandler extends ServerController {
 	
 	private static final Logger log = LoggerFactory.getLogger(GameServerHandler.class);
 	

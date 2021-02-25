@@ -3,7 +3,7 @@ package org.coral.net.network;
 import javax.annotation.PreDestroy;
 
 import org.coral.net.common.NetConfig;
-import org.coral.net.core.base.IServerHandler;
+import org.coral.net.core.base.IServerController;
 import org.coral.net.network.bootstrap.IServer;
 import org.coral.net.network.tcp.TcpServerStarter;
 import org.coral.net.network.websocket.WebSocketServerStarter;
@@ -23,7 +23,7 @@ public class LocalNetService implements InitializingBean{
 	
 	@Autowired private NetConfig config;
 	
-	@Autowired private IServerHandler serverHandler;
+	@Autowired private IServerController serverHandler;
 	
 	private IServer tcpServer;
 	private IServer websocketServer;

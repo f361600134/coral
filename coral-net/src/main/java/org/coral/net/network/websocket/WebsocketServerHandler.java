@@ -3,7 +3,7 @@ package org.coral.net.network.websocket;
 import java.io.IOException;
 
 import org.coral.net.core.base.GameSession;
-import org.coral.net.core.base.IServerHandler;
+import org.coral.net.core.base.IServerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,9 +43,9 @@ public class WebsocketServerHandler extends SimpleChannelInboundHandler<Object> 
 	private WebSocketServerHandshaker handshaker;
 
 	private GameSession session;
-	private IServerHandler serverHandler;
+	private IServerController serverHandler;
 
-	public WebsocketServerHandler(IServerHandler serverHandler) {
+	public WebsocketServerHandler(IServerController serverHandler) {
 		this.serverHandler = serverHandler;
 	}
 

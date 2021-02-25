@@ -88,15 +88,15 @@ public class DisruptorExecutorGroup {
 		getExecutor(index).execute(task);
 	}
 	
-	/**
-	 * 执行
-	 * @date 2020年7月7日
-	 * @param index 唯一编号
-	 * @param task 任务
-	 */
-	public void execute(ExecutorSelector selector, final Runnable task) {
-		int	index = selector.selectorId() % size();
-		getExecutor(index).execute(task);
-	}
+//	/**
+//	 * 执行
+//	 * @date 2020年7月7日
+//	 * @param index 唯一编号
+//	 * @param task 任务
+//	 */
+//	public void execute(ExecutorSelector selector, final Runnable task) {
+//		int	index = selector.selectorId() % size();
+//		getExecutor(index).execute(task);
+//	}
 	
 }

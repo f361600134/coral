@@ -3,7 +3,7 @@ package org.coral.net.network.tcp;
 import java.io.IOException;
 
 import org.coral.net.core.base.GameSession;
-import org.coral.net.core.base.IServerHandler;
+import org.coral.net.core.base.IServerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,9 +22,9 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	private static final Logger log = LoggerFactory.getLogger(TcpServerHandler.class);
 
 	private GameSession session;
-	private IServerHandler serverHandler;
+	private IServerController serverHandler;
 
-	public TcpServerHandler(IServerHandler serverHandler) {
+	public TcpServerHandler(IServerController serverHandler) {
 		this.serverHandler = serverHandler;
 	}
 

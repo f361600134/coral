@@ -1,7 +1,7 @@
 package org.coral.net.network.tcp;
 
 import org.coral.net.common.NetConfig;
-import org.coral.net.core.base.IServerHandler;
+import org.coral.net.core.base.IServerController;
 import org.coral.net.network.bootstrap.AbstractServer;
 import org.coral.net.network.bootstrap.IdleDetectionHandler;
 import org.slf4j.Logger;
@@ -33,7 +33,7 @@ public class TcpServerStarter extends AbstractServer {
 
 	private static final Logger log = LoggerFactory.getLogger(TcpServerStarter.class);
 
-	private IServerHandler serverHandler;
+	private IServerController serverHandler;
 
 	/**
 	 * NioEventLoop并不是一个纯粹的I/O线程，它除了负责I/O的读写之外 创建了两个NioEventLoopGroup，
@@ -47,12 +47,12 @@ public class TcpServerStarter extends AbstractServer {
 		super();
 	}
 
-	public TcpServerStarter(IServerHandler serverHandler, NetConfig config) {
+	public TcpServerStarter(IServerController serverHandler, NetConfig config) {
 		super(config.getServerIp(), config.getTcpPort());
 		this.serverHandler = serverHandler;
 	}
 
-	public TcpServerStarter(IServerHandler serverHandler, String ip, int port) {
+	public TcpServerStarter(IServerController serverHandler, String ip, int port) {
 		super(ip, port);
 		this.serverHandler = serverHandler;
 	}

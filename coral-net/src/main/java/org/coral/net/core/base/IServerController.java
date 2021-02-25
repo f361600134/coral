@@ -5,7 +5,7 @@ import io.netty.buffer.ByteBuf;
 /**
  * IServerHandler
  */
-public interface IServerHandler {
+public interface IServerController {
 	
 	void onConnect(GameSession session);
 

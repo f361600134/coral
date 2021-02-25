@@ -8,7 +8,7 @@ import java.util.Map;
 import org.coral.net.core.annotation.Cmd;
 import org.coral.net.core.base.Commander;
 import org.coral.net.core.base.GameSession;
-import org.coral.net.core.base.IHandler;
+import org.coral.net.core.base.IController;
 import org.coral.net.core.base.Packet;
 import org.coral.net.util.MessageOutput;
 import org.slf4j.Logger;
@@ -20,13 +20,17 @@ import org.springframework.stereotype.Component;
 import com.google.protobuf.GeneratedMessageLite;
 
 @Component
-public class HandlerProcessor implements InitializingBean{
+public class ControllerProcessor implements InitializingBean{
 	
-	private static final Logger log = LoggerFactory.getLogger(HandlerProcessor.class);
+	private static final Logger log = LoggerFactory.getLogger(ControllerProcessor.class);
 	
 	@Autowired
-	private List<IHandler> handlerList;
+	private List<IController> handlerList;
 	
+	/**
+	 * key：协议id
+	 * value: 消息对象
+	 */
 	private Map<Integer, Commander> commanderMap;
 	
 	/**
@@ -35,8 +39,8 @@ public class HandlerProcessor implements InitializingBean{
 	public void afterPropertiesSet() throws Exception {
 		long startTime = System.currentTimeMillis();
 		commanderMap = new HashMap<Integer, Commander>();
-		for (IHandler handler : handlerList) {
-			Method[] methods = handler.getClass().getDeclaredMethods();
+		for (IController controller : handlerList) {
+			Method[] methods = controller.getClass().getDeclaredMethods();
 			for (Method method : methods) {
 				Cmd cmd = method.getAnnotation(Cmd.class);
 				if (cmd == null) continue;
@@ -45,10 +49,9 @@ public class HandlerProcessor implements InitializingBean{
 					//log.error("协议号[{}]重复, 请检查!!!", cmd.id());
 					throw new RuntimeException("发现重复协议号:"+cmd.id());
 				}
-				commanderMap.put(cmd.id(), new Commander(handler, cmd.mustLogin(), method));
+				commanderMap.put(cmd.id(), new Commander(controller, cmd.mustLogin(), method));
 			}
 		}
-		//log.info("=========commanderMap==========={}", commanderMap.keySet());
 		log.info("The initialization message is complete and takes [{}] milliseconds.", (System.currentTimeMillis() - startTime));
 	}
 	
@@ -74,7 +77,7 @@ public class HandlerProcessor implements InitializingBean{
 			log.debug("收到协议[{}], pid={}, params={}, size={}B",
 					cmd, session.getPlayerId(), MessageOutput.create(params), bytes.length);
 
-			commander.getMethod().invoke(commander.getHandler(), session, params);
+			commander.getMethod().invoke(commander.getController(), session, params);
 
 			long used = System.currentTimeMillis() - begin;
 			// 协议处理超过1秒

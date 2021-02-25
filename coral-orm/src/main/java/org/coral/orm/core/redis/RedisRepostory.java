@@ -25,7 +25,7 @@ public class RedisRepostory<T extends BasePo> implements IRedisRepository<T>{
 	}
 	
 	public void add(T t) {
-		redisTemplate.expire(clientName, 1, TimeUnit.MINUTES);
+		//redisTemplate.expire(clientName, 1, TimeUnit.MINUTES);
 		redisTemplate.opsForHash().put(clientName, t.cacheId(), t);
 	}
 	

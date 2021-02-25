@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.coral.net.core.annotation.Cmd;
 import org.coral.net.core.base.GameSession;
-import org.coral.net.core.base.IHandler;
+import org.coral.net.core.base.IController;
 import org.coral.server.game.data.proto.PBDefine.PBProtocol;
 import org.coral.server.game.data.proto.PBPlayer.ReqChat;
 import org.coral.server.game.module.chat.service.ChatService;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Controller;
  * @author Jeremy
  */
 @Controller
-public class ChatController implements IHandler{
+public class ChatController implements IController{
 
 
     private static final Log log = LogFactory.getLog(ChatController.class);

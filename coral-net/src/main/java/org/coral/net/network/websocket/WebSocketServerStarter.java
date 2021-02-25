@@ -1,7 +1,7 @@
 package org.coral.net.network.websocket;
 
 import org.coral.net.common.NetConfig;
-import org.coral.net.core.base.IServerHandler;
+import org.coral.net.core.base.IServerController;
 import org.coral.net.network.bootstrap.AbstractServer;
 import org.coral.net.network.bootstrap.IdleDetectionHandler;
 import org.coral.net.network.tcp.TcpProtocolEncoder;
@@ -39,7 +39,7 @@ public class WebSocketServerStarter extends AbstractServer {
 
 	private static final Logger log = LoggerFactory.getLogger(WebSocketServerStarter.class);
 
-	private IServerHandler serverHandler;
+	private IServerController serverHandler;
 
 	 /**
      * NioEventLoop并不是一个纯粹的I/O线程，它除了负责I/O的读写之外
@@ -55,12 +55,12 @@ public class WebSocketServerStarter extends AbstractServer {
 		super();
 	}
 			
-	public WebSocketServerStarter (IServerHandler serverHandler, NetConfig config) {
+	public WebSocketServerStarter (IServerController serverHandler, NetConfig config) {
 		super(config.getServerIp(), config.getTcpPort());
 		this.serverHandler = serverHandler;
 	}
 	
-	public WebSocketServerStarter (IServerHandler serverHandler, String ip, int port) {
+	public WebSocketServerStarter (IServerController serverHandler, String ip, int port) {
 		super(ip, port);
 		this.serverHandler = serverHandler;
 	}
