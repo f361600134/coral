@@ -1,11 +1,10 @@
-package org.coral.server.utils;
-
-import com.esotericsoftware.reflectasm.MethodAccess;
+package org.coral.net.core.reflect;
 
 import java.lang.reflect.Method;
 
+import com.esotericsoftware.reflectasm.MethodAccess;
+
 /**
- * 
  * 方法执行封装
  *
  */

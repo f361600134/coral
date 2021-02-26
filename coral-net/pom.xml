@@ -7,11 +7,9 @@
 	<parent>
 		<groupId>com.fatiny</groupId>
 		<artifactId>coral</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
-<!-- 	<groupId>com.fatiny</groupId> -->
 	<artifactId>coral-net</artifactId>
-	<version>0.0.1</version>
 	<name>coral-net</name>
 	<url>http://maven.apache.org</url>
 
@@ -87,6 +85,13 @@
 			<groupId>com.lmax</groupId>
 			<artifactId>disruptor</artifactId>
 			<version>3.4.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm -->
+		<dependency>
+			<groupId>com.esotericsoftware</groupId>
+			<artifactId>reflectasm</artifactId>
+			<version>1.11.9</version>
 		</dependency>
 
 	</dependencies>

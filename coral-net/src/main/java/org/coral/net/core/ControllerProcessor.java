@@ -49,7 +49,7 @@ public class ControllerProcessor implements InitializingBean{
 					//log.error("协议号[{}]重复, 请检查!!!", cmd.id());
 					throw new RuntimeException("发现重复协议号:"+cmd.id());
 				}
-				commanderMap.put(cmd.id(), new Commander(controller, cmd.mustLogin(), method));
+				commanderMap.put(cmd.id(), Commander.create(controller, cmd.mustLogin(), method));
 			}
 		}
 		log.info("The initialization message is complete and takes [{}] milliseconds.", (System.currentTimeMillis() - startTime));
@@ -77,7 +77,8 @@ public class ControllerProcessor implements InitializingBean{
 			log.debug("收到协议[{}], pid={}, params={}, size={}B",
 					cmd, session.getPlayerId(), MessageOutput.create(params), bytes.length);
 
-			commander.getMethod().invoke(commander.getController(), session, params);
+			//commander.getMethod().invoke(commander.getController(), session, params);
+			commander.getInvoker().invoke(params);
 
 			long used = System.currentTimeMillis() - begin;
 			// 协议处理超过1秒
