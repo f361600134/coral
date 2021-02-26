@@ -99,6 +99,28 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.4</version>
 		</dependency>
+		
+	    <!-- dubbo的依赖 -->
+	    <dependency>
+	        <groupId>org.apache.dubbo</groupId>
+	        <artifactId>dubbo-spring-boot-starter</artifactId>
+	        <version>2.7.6</version>
+	    </dependency>
+	    
+	    <!-- zk的依赖 -->
+	    <dependency>
+	        <groupId>org.apache.dubbo</groupId>
+	        <artifactId>dubbo-dependencies-zookeeper</artifactId>
+	        <version>2.7.6</version>
+	        <type>pom</type>
+	        <exclusions>
+	            <exclusion>
+	                <groupId>org.slf4j</groupId>
+	                <artifactId>slf4j-log4j12</artifactId>
+	            </exclusion>
+	        </exclusions>
+	    </dependency>
+		
 
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.apache.commons</groupId> -->
@@ -106,20 +128,21 @@
 			<!-- <version>3.8.1</version> -->
 <!-- 		</dependency> -->
 		
-        <!-- https://mvnrepository.com/artifact/io.dubbo.springboot/spring-boot-starter-dubbo -->
-		<dependency>
-		    <groupId>io.dubbo.springboot</groupId>
-		    <artifactId>spring-boot-starter-dubbo</artifactId>
-		    <version>1.0.0</version>
-		</dependency>
+<!--         https://mvnrepository.com/artifact/io.dubbo.springboot/spring-boot-starter-dubbo -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>io.dubbo.springboot</groupId> -->
+<!-- 		    <artifactId>spring-boot-starter-dubbo</artifactId> -->
+<!-- 		    <version>1.0.0</version> -->
+<!-- 		</dependency> -->
         
 		
 		<!-- 坑爹的zk需要依赖这个  -->
-		<dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>1.2.17</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>log4j</groupId> -->
+<!-- 		    <artifactId>log4j</artifactId> -->
+<!-- 		    <version>1.2.17</version> -->
+<!-- 		</dependency> -->
+
 	</dependencies>
 	
 	

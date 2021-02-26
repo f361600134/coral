@@ -52,4 +52,15 @@
 3. 预计完成: 减负, 剔除掉服务器工程多余的第三方依赖包, 目前启动时间增加了60%, 优化项目启动速度!
 4. 预计完成: 压力测试, 查看线程量是否超过了指定数量.
 
+2021.02.26
+1. 今天发现使用springboot-dubbo依赖包,移动后对象的依赖变成了dubbo管理, spring无法代理, 提示大量如下错误,
+ Bean 'io.dubbo.springboot.DubboAutoConfiguration' of type 
+ [io.dubbo.springboot.DubboAutoConfiguration$$EnhancerBySpringCGLIB$$bb51a857] 
+ is not eligible for getting processed by all BeanPostProcessors 
+ (for example: not eligible for auto-proxying)
+在网上查阅资料得知, 业务bean在BeanPostProcessors(BPP)实例化前被实例化了。理想情况下应该让spring先实例化所有的BPP后，再实例化我们的业务bean，
+这样业务bean才能被所有BPP处理，如果有业务bean先于任何BPP实例化，那么这个业务bean就不会被还未实例化的BPP处理了，这个就是日志提示的原因。
+
+尝试了网上几种解决方法, 并不能解决实质问题, 我这里产生的原因就是, 只要集成了springboot-dubbo 并且扫描业务service就会出现此问题
+最終解決方法：springboot-dubbo改为了apache-dubbo依赖, 解决了代理问题
 

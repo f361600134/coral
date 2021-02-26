@@ -1,15 +1,15 @@
 package org.coral.server.game.module.user.service;
 
-import org.springframework.stereotype.Component;
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.stereotype.Service;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.coral.api.dto.Tester;
 import com.coral.api.service.ITestService;
 
-@Component
+@Service
 public class TestConService {
 
-	@Reference(version = "1.0.0")
+	@Reference
 	private ITestService testService;
 
 	public void print() {
