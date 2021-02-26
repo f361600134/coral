@@ -1,6 +1,5 @@
 package org.coral.server;
 
-import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.coral.net.common.NetConfig;
 import org.coral.net.common.TaskThreadPoolConfig;
 import org.coral.orm.common.OrmConfig;
@@ -12,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
+
 /**
  * Hello world!
  *
@@ -22,8 +23,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableConfigurationProperties({ 
 	OrmConfig.class , NetConfig.class, 
 	ServerConfig.class, TaskThreadPoolConfig.class}) // 开启配置属性支持
-@DubboComponentScan(basePackages = "org.coral.server.game.module.user.service")
-//@EnableDubbo
+//@DubboComponentScan(basePackages = "org.coral.server.game.module.user.service")
+@EnableDubbo
 public class App 
 {
     public static void main( String[] args )

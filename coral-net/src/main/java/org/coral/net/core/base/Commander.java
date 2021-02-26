@@ -28,7 +28,7 @@ public class Commander {
 	}
 	
 	public static Commander create(IController controller, boolean mustLogin, Method method) throws Exception {
-		return create(controller, mustLogin, method);
+		return new Commander(controller, mustLogin, method);
 	}
 
 	public boolean isMustLogin() {
