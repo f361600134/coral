@@ -1,6 +1,5 @@
 package org.coral.server.core.server;
 
-import org.coral.orm.core.base.BasePo;
 import org.coral.server.core.annotation.NotUse;
 
 /**
@@ -11,7 +10,16 @@ import org.coral.server.core.annotation.NotUse;
  * @param <T>
  */
 @NotUse
-public class AbstractModuleDomain<T extends BasePo> implements IModuleDomain<T>{
+public class AbstractModuleDomain<T> implements IModuleDomain<T>{
 	
+	public Class<T> clazz;
+
+	public Class<T> getClazz() {
+		return clazz;
+	}
+
+	public void setClazz(Class<T> clazz) {
+		this.clazz = clazz;
+	}
 
 }

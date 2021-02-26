@@ -13,10 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 
-/**
- * Hello world!
- *
- */
 //@EnableScheduling
 @SpringBootApplication
 @ComponentScan({"org.coral"})

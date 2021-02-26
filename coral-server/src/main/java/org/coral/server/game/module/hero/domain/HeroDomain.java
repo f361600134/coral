@@ -4,12 +4,13 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.coral.server.core.server.AbstractModuleDomain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 
-public class HeroDomain {
+public class HeroDomain extends AbstractModuleDomain<Hero>{
 	
 	/**
 	 * 武将数量最大限制, 虽然不限制, 单位了避免问题,这里限制总数量

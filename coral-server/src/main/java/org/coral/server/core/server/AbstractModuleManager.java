@@ -1,7 +1,9 @@
 package org.coral.server.core.server;
 
+import java.util.List;
 import java.util.Map;
 
+import org.coral.orm.core.base.BasePo;
 import org.coral.orm.core.db.process.DataProcessorAsyn;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +15,8 @@ public abstract class AbstractModuleManager<T> implements IModuleManager<T>{
 	
 	/**玩家域缓存*/
 	protected final Map<Long, T> domains;
+	
+	protected Class<T> clazz;
 	
 	public AbstractModuleManager() {
 		this.domains = Maps.newConcurrentMap();
@@ -41,6 +45,16 @@ public abstract class AbstractModuleManager<T> implements IModuleManager<T>{
 	 * @param playerId
 	 * @return
 	 */
-	public abstract T getFromDb(long playerId);
+	public T getFromDb(long playerId) {
+		try {
+//			T domain = clazz.newInstance();
+//			List list = process.selectByIndex(domain.getBasePoClazz(), new Object[] {playerId});
+//			domain.initData(list);
+//			return domain;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }

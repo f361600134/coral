@@ -60,6 +60,14 @@ public interface IBasePo {
 	 */
 	public void afterLoad();
 	
+	/**
+	 * 	当前对象实体
+	 * @return
+	 */
+	default public Class<?> clazz(){
+		return null;
+	}
+	
 	///////////////////////////////////////
 //	default public void save() {}
 //	

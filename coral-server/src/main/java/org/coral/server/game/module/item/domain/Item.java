@@ -60,5 +60,10 @@ public class Item extends ItemPo implements IItem{
 		this.setCount(expect);
 		return expect;
 	}
+	
+	@Override
+	public Class<?> clazz() {
+		return Item.class;
+	}
 
 }
