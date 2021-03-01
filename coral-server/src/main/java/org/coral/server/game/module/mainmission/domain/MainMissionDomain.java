@@ -2,7 +2,6 @@ package org.coral.server.game.module.mainmission.domain;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.coral.server.core.event.IEvent;
@@ -12,7 +11,6 @@ import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.helper.result.ErrorCode;
 import org.coral.server.game.module.mission.handler.DefaultMissionHandler.Builder;
 import org.coral.server.game.module.mission.handler.IMissionHandler;
-import org.coral.server.game.module.mission.type.AbstractMission;
 import org.coral.server.game.module.mission.type.IMission;
 import org.coral.server.game.module.mission.type.MainMissionType;
 import org.coral.server.game.module.mission.type.MissionTypeData;
@@ -34,40 +32,41 @@ public class MainMissionDomain extends AbstractModuleDomain<MainMission> impleme
 	@Override
 	public void initData(List<MainMission> v) {
 		super.initData(v);
-		//this.missionHandler = new DefaultMissionHandler(getPlayerId(), bean.getMissionData());
 		this.missionHandler = Builder.newBuilder()
 				.playerId(getPlayerId())
-				.missionData(bean.getMissionData())
+				.missionData(getMissionTypeData())
 				.afterRewardedListener((mission, missionData)->{
 					//	主线任务完成后,需要接取下一条任务
-					final int configId = mission.getConfigId();
-					//	领奖后,主线任务移除掉旧务,加入任务链的下一个任务  
-					//MissionTypeData<MainMissionType> missionData = mainMission.getMissionData();
-					//missionData.onFinished(configId);
+					//final int configId = mission.getConfigId();
 					//ConfigMission config = ConfigMissionMgr.getConfig(configId);
 					//int nextConfigId = config.getNextMissionId();
 					int nextConfigId = 0;
-					AbstractMission nextNission = MainMissionType.create(nextConfigId);
-					//FIXME 这里很懵逼?为什么呢
-					//missionData.addMissionPojo(nextNission);
+					IMission nextNission = MainMissionType.create(nextConfigId);
+					missionData.addMissionPojo(nextNission);
 				})
 				.build();
-//		missionHandler.afterRewarded(new IMissionListener<IMission>() {
-//			@Override
-//			public void call(IMission mission) {
-//				
-//			}
-//		});
 	}
 	
 	@Override
-	public MissionTypeData<? extends AbstractMission> getMissionTypeData() {
+	public MissionTypeData<? extends IMission> getMissionTypeData() {
+		//初始化时指定了具体子类型, 所以获取的时候, 为了通用处理,需要使用?表示为Imission子类型
 		return bean.getMissionData();
 	}
 	
 	@Override
 	public Collection<PBMissionInfo> toProto() {
 		return missionHandler.toProto();
+	}
+	
+	/**
+	 * warning: 可能会有强转异常
+	 */
+	@SuppressWarnings("unchecked")
+	public void onInit() {
+		int configId = 0;
+		IMission initNission = MainMissionType.create(configId);
+		MissionTypeData<IMission> missionData = (MissionTypeData<IMission>)getMissionTypeData();
+		missionData.addMissionPojo(initNission);
 	}
 	
 	@Override
@@ -92,5 +91,5 @@ public class MainMissionDomain extends AbstractModuleDomain<MainMission> impleme
 	public List<IMission> getUpdateList() {
 		return missionHandler.getUpdateList();
 	}
-	
+
 }

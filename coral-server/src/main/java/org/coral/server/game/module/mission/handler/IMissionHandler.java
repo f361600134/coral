@@ -2,12 +2,13 @@ package org.coral.server.game.module.mission.handler;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import org.coral.server.core.event.IEvent;
 import org.coral.server.game.data.proto.PBBag;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.helper.result.ErrorCode;
-import org.coral.server.game.module.mission.type.AbstractMission;
 import org.coral.server.game.module.mission.type.IMission;
 import org.coral.server.game.module.mission.type.MissionTypeData;
 
@@ -25,7 +26,7 @@ public interface IMissionHandler {
 	 * 任务处理器, 不应该直接代理任务类, 应该代理MissionTypeData, 具体任务类 由MissionTypeData去控制
 	 * @return
 	 */
-	public MissionTypeData<? extends AbstractMission> getMissionTypeData();
+	public MissionTypeData<? extends IMission> getMissionTypeData();
 	
 	/**
 	 * 	任务序列化

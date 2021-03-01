@@ -40,6 +40,10 @@ public abstract class AbstractModuleDomain<T> implements IModuleDomain<T>{
 		return basePoClazz;
 	}
 
+	/**
+	 * 初始化数据, 对于单条数据, 直接以此条数据作为bean对象
+	 * 如果数据为空, 则初始化新的一条数据
+	 */
 	@Override
 	public void initData(List<T> v) {
 		if (v == null || v.isEmpty()) {
@@ -49,9 +53,10 @@ public abstract class AbstractModuleDomain<T> implements IModuleDomain<T>{
 				logger.error("AbstractModuleDomain initData error", e);
 			} 
 		}
-		if (v.size() == 1) {
+		else if (v.size() == 1) {
 			this.bean = v.get(0);
-		}else {
+		}
+		else {
 			logger.info("AbstractModuleDomain initData has an error, the v.size > 1");
 		}
 	}

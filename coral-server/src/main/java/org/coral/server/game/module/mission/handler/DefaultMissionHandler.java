@@ -3,6 +3,7 @@ package org.coral.server.game.module.mission.handler;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 import org.coral.server.core.event.IEvent;
 import org.coral.server.game.data.proto.PBBag;
@@ -12,7 +13,6 @@ import org.coral.server.game.helper.result.ErrorCode;
 import org.coral.server.game.module.mission.domain.MissionState;
 import org.coral.server.game.module.mission.manager.MissionProcessManager;
 import org.coral.server.game.module.mission.process.IMissionProcess;
-import org.coral.server.game.module.mission.type.AbstractMission;
 import org.coral.server.game.module.mission.type.IMission;
 import org.coral.server.game.module.mission.type.MissionTypeData;
 import org.coral.server.game.module.resource.IResourceGroupService;
@@ -41,12 +41,12 @@ public class DefaultMissionHandler implements IMissionHandler {
 	/**
 	 * 被代理的任务数据
 	 */
-	private MissionTypeData<? extends AbstractMission> missionData;
+	private MissionTypeData<IMission> missionData;
 
 	/**
 	 * 任务奖励后监听器, 用于处理发奖之后操作
 	 */
-	private IMissionListener<IMission, MissionTypeData<? extends AbstractMission>> afterRewardedListener;
+	private IMissionListener<IMission, MissionTypeData<IMission>> afterRewardedListener;
 
 	/**
 	 * key:任务类型 value: 任务id集合
@@ -89,7 +89,7 @@ public class DefaultMissionHandler implements IMissionHandler {
 	 * @return void
 	 * @date 2021年2月28日下午10:24:28
 	 */
-	public DefaultMissionHandler afterRewarded(IMissionListener<IMission, MissionTypeData<? extends AbstractMission>> listener) {
+	public DefaultMissionHandler afterRewarded(IMissionListener<IMission, MissionTypeData<IMission>> listener) {
 		this.afterRewardedListener = listener;
 		return this;
 	}
@@ -106,6 +106,16 @@ public class DefaultMissionHandler implements IMissionHandler {
 	public List<IMission> getUpdateList() {
 		return updateList;
 	}
+	
+//	/**
+//	 * 不同模块的初始化不一致例如:
+//	 * 1. 主线任务初始化第一条任务,默认接取第一条
+//	 * 2.七天任务默认初始化所有任务,默认都接取
+//	 */
+//	@Override
+//	public <T> ErrorCode onInit(T t, Function<T, ErrorCode> func) {
+//		return func.apply(t);
+//	}
 
 	/**
 	 * 处理任务 1.任务处理管理器通过任务类型获取到处理类, 2.通过任务类型获取到任务列表 3.当前任务集合,通过任务列表获取到任务对象,
@@ -177,12 +187,12 @@ public class DefaultMissionHandler implements IMissionHandler {
 	 * 
 	 * @return
 	 */
-	protected Collection<? extends IMission> getMissions() {
+	protected Collection<IMission> getMissions() {
 		return getMissionTypeData().getMissionPojos().values();
 	}
 
 	@Override
-	public MissionTypeData<? extends AbstractMission> getMissionTypeData() {
+	public MissionTypeData<IMission> getMissionTypeData() {
 		return missionData;
 	}
 
@@ -209,8 +219,8 @@ public class DefaultMissionHandler implements IMissionHandler {
 	public static class Builder {
 
 		private long playerId;
-		private MissionTypeData<? extends AbstractMission> missionData;
-		private IMissionListener<IMission, MissionTypeData<? extends AbstractMission>> afterRewardedListener;
+		private MissionTypeData<IMission> missionData;
+		private IMissionListener<IMission, MissionTypeData<IMission>> afterRewardedListener;
 
 		long getPlayerId() {
 			return playerId;
@@ -221,20 +231,21 @@ public class DefaultMissionHandler implements IMissionHandler {
 			return this;
 		}
 
-		MissionTypeData<? extends AbstractMission> getMissionData() {
+		MissionTypeData<IMission> getMissionData() {
 			return missionData;
 		}
 
-		public Builder missionData(MissionTypeData<? extends AbstractMission> missionData) {
-			this.missionData = missionData;
+		@SuppressWarnings("unchecked")
+		public <V extends IMission> Builder missionData(MissionTypeData<V> missionData) {
+			this.missionData = (MissionTypeData<IMission>) missionData;
 			return this;
 		}
-
-		IMissionListener<IMission, MissionTypeData<? extends AbstractMission>> getAfterRewardedListener() {
+		
+		IMissionListener<IMission, MissionTypeData<IMission>> getAfterRewardedListener() {
 			return afterRewardedListener;
 		}
 
-		public Builder afterRewardedListener(IMissionListener<IMission, MissionTypeData<? extends AbstractMission>> afterRewardedListener) {
+		public Builder afterRewardedListener(IMissionListener<IMission, MissionTypeData<IMission>> afterRewardedListener) {
 			this.afterRewardedListener = afterRewardedListener;
 			return this;
 		}

@@ -18,7 +18,7 @@ public class MainMission extends MainMissionPo implements IPersistence{
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * MissionTypeDatade 的定义, 是为了实现所有任务的统一处理, 以及保存
+	 * MissionTypeData 的定义, 是为了实现所有任务的统一处理, 以及保存
 	 * 但是, 也带来了不好的方面, 在MainMission内缓存的任务对象的生命周期, 由外部任务处理器去控制
 	 * 破坏了内聚性, 
 	 * 	任务对象, 此对象不应该提供接口给外部修改.
