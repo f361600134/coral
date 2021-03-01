@@ -1,5 +1,7 @@
 package org.coral.server.game.module.mission.type;
 
+import java.util.Map;
+
 import org.coral.server.game.data.config.ConfigMissionMgr;
 
 /**
@@ -23,10 +25,14 @@ public class MainMissionType extends AbstractMission{
 	}
 
 	@Override
-	
 	public int getCompleteValue() { 
 		return ConfigMissionMgr.getConfig(configId).getCompleteTotal();
 	}	
+	
+	@Override
+	public Map<Integer, Integer> getReward() {
+		return ConfigMissionMgr.getConfig(configId).getRewardMap();
+	}
 
 	public static MainMissionType create(int configId) {
 		return new MainMissionType(configId);

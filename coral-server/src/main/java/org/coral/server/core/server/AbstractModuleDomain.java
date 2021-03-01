@@ -1,6 +1,12 @@
 package org.coral.server.core.server;
 
-import org.coral.server.core.annotation.NotUse;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.List;
+import org.coral.orm.core.db.process.DataProcessorAsyn;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 这里的ModuleDomain, 封装Pojo对象, 那么所有玩家的Pojo对象, 就只有一条数据.
@@ -9,17 +15,45 @@ import org.coral.server.core.annotation.NotUse;
  * @author Jeremy
  * @param <T>
  */
-@NotUse
-public class AbstractModuleDomain<T> implements IModuleDomain<T>{
+public abstract class AbstractModuleDomain<T> implements IModuleDomain<T>{
 	
-	public Class<T> clazz;
-
-	public Class<T> getClazz() {
-		return clazz;
+	private Logger logger = LoggerFactory.getLogger(this.getClass()); 
+	
+	@Autowired protected DataProcessorAsyn process;
+	
+	private Class<T> basePoClazz;
+	
+	protected T bean;
+	
+	@SuppressWarnings("unchecked")
+	public AbstractModuleDomain() {
+		try {
+			Type superClass = getClass().getGenericSuperclass();
+			this.basePoClazz = (Class<T>)(((ParameterizedType) superClass).getActualTypeArguments()[0]);
+		} catch (Exception e) {
+			logger.error("AbstractModuleDomain error", e);
+		}
+	}
+	
+	@Override
+	public Class<T> getBasePoClazz() {
+		return basePoClazz;
 	}
 
-	public void setClazz(Class<T> clazz) {
-		this.clazz = clazz;
+	@Override
+	public void initData(List<T> v) {
+		if (v == null || v.isEmpty()) {
+			try {
+				this.bean = basePoClazz.newInstance();
+			} catch (Exception e) {
+				logger.error("AbstractModuleDomain initData error", e);
+			} 
+		}
+		if (v.size() == 1) {
+			this.bean = v.get(0);
+		}else {
+			logger.info("AbstractModuleDomain initData has an error, the v.size > 1");
+		}
 	}
-
+	
 }

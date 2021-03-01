@@ -3,6 +3,7 @@ package org.coral.server.game.module.item.domain;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import org.coral.server.core.server.AbstractModuleDomain;
 import org.coral.server.game.helper.log.NatureEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @auth Jeremy
  * @date 2020年12月17日下午10:02:51
  */
-public class ItemDomain {
+public class ItemDomain extends AbstractModuleDomain<Item>{
 	
 	private static final Logger log = LoggerFactory.getLogger(ItemDomain.class);
 	

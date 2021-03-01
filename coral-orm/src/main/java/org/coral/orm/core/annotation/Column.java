@@ -5,14 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Column {
 	
 	/**Column name*/
 	String value() default "";
-	
 	
 }

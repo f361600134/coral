@@ -44,16 +44,6 @@ public class ItemDomainPlus extends AbstractModuleMultiDomain<Item>{
 	}
 
 	/**
-	 * 初始化背包
-	 */
-	public void initItemBag(List<Item> itemList) {
-		// 初始化背包
-		for (Item item : itemList) {
-			beanMap.put(item.getItemId(), item);
-		}
-	}
-	
-	/**
 	 * 判断物品是否可以添加
 	 * @param playerId
 	 * @param configId

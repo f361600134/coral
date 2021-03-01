@@ -1,8 +1,8 @@
 package com.coral.test.service;
 
-import org.apache.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.coral.api.dto.Tester;
 import com.coral.api.service.ITestService;
 

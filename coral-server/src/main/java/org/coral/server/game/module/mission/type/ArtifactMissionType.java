@@ -1,5 +1,7 @@
 package org.coral.server.game.module.mission.type;
 
+import java.util.Map;
+
 /**
  * 	任务类型-神器任务
  * @author Jeremy
@@ -51,6 +53,12 @@ public class ArtifactMissionType extends AbstractMission{
 	@Override
 	public String toString() {
 		return "ArtifactMissionType [id=" + id + "]";
+	}
+
+	@Override
+	public Map<Integer, Integer> getReward() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

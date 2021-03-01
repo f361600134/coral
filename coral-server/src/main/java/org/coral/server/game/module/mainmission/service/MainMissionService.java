@@ -3,6 +3,7 @@ package org.coral.server.game.module.mainmission.service;
 import java.util.List;
 
 import org.coral.server.core.event.PlayerEventBase;
+import org.coral.server.game.helper.log.NatureEnum;
 import org.coral.server.game.helper.result.ErrorCode;
 import org.coral.server.game.module.mainmission.domain.MainMissionDomain;
 import org.coral.server.game.module.mainmission.manager.MainMissionManager;
@@ -79,7 +80,7 @@ public class MainMissionService implements IMainMissionService{
 		if (domain == null) {
 			return ErrorCode.UNKNOWN_ERROR; //错误码
 		}
-		ErrorCode errorCode = domain.onReward(configId);
+		ErrorCode errorCode = domain.onReward(configId, NatureEnum.Unknown);
 		if (errorCode.isSuccess()) {
 			//	更新任务状态
 			responseMissions(domain);

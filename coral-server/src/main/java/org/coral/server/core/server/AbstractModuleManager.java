@@ -1,15 +1,21 @@
 package org.coral.server.core.server;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
 import org.coral.orm.core.base.BasePo;
 import org.coral.orm.core.db.process.DataProcessorAsyn;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.collect.Maps;
 
-public abstract class AbstractModuleManager<T> implements IModuleManager<T>{
+public abstract class AbstractModuleManager<T extends IModuleDomain<? extends BasePo>> implements IModuleManager<T>{
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass()); 
 	
 	@Autowired protected DataProcessorAsyn process;
 	
@@ -18,8 +24,15 @@ public abstract class AbstractModuleManager<T> implements IModuleManager<T>{
 	
 	protected Class<T> clazz;
 	
+	@SuppressWarnings("unchecked")
 	public AbstractModuleManager() {
 		this.domains = Maps.newConcurrentMap();
+		try {
+			Type superClass = getClass().getGenericSuperclass();
+			this.clazz = (Class<T>)(((ParameterizedType) superClass).getActualTypeArguments()[0]);
+		} catch (Exception e) {
+			logger.error("AbstractModuleDomain error", e);
+		}
 	}
 	
 	/**
@@ -45,14 +58,15 @@ public abstract class AbstractModuleManager<T> implements IModuleManager<T>{
 	 * @param playerId
 	 * @return
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public T getFromDb(long playerId) {
 		try {
-//			T domain = clazz.newInstance();
-//			List list = process.selectByIndex(domain.getBasePoClazz(), new Object[] {playerId});
-//			domain.initData(list);
-//			return domain;
+			T domain = clazz.newInstance();
+			List list = process.selectByIndex(domain.getBasePoClazz(), new Object[] {playerId});
+			domain.initData(list);
+			return domain;
 		}catch (Exception e) {
-			e.printStackTrace();
+			logger.error("getFromDb error", e);
 		}
 		return null;
 	}

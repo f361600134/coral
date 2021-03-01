@@ -12,12 +12,4 @@ import org.springframework.stereotype.Component;
 @Component
 public class ItemManager extends AbstractModuleManager<ItemDomain>{
 	
-//	@Override
-//	public ItemDomain getFromDb(long playerId) {
-//		ItemDomain domain = new ItemDomain();
-//		List<Item> items = process.selectByIndex(Item.class, new Object[] {playerId});
-//		domain.initItemBag(items);
-//		return domain;
-//	}
-	
 }

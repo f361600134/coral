@@ -1,5 +1,7 @@
 package org.coral.server.game.module.mission.type;
 
+import java.util.Map;
+
 import org.coral.server.game.data.proto.PBBag;
 import org.coral.server.game.module.mission.domain.MissionState;
 
@@ -39,6 +41,9 @@ public interface IMission {
 	/** 达成值*/
 	@JSONField(serialize=false)
 	public int getCompleteValue();
+	/** 任务奖励*/
+	@JSONField(serialize=false)
+	public Map<Integer, Integer> getReward();
 	
 	/**是否未完成*/
 	@JSONField(serialize = false)
