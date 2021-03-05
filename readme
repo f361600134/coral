@@ -64,3 +64,9 @@
 尝试了网上几种解决方法, 并不能解决实质问题, 我这里产生的原因就是, 只要集成了springboot-dubbo 并且扫描业务service就会出现此问题
 最終解決方法：springboot-dubbo改为了apache-dubbo依赖, 解决了代理问题
 
+
+2021.03.05
+使用github国内使用极度不稳定, 修改后的内容无法提交, 所以放弃使用github. 项目迁移至gitee.
+此项目终结
+
+
